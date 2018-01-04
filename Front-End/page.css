@@ -1,0 +1,15 @@
+.carousel-control {
+  padding-top:15%!important;
+  width:2%!important;
+  margin-left: 0px!important;
+  padding-left: 0px!important;
+  color:red!important;
+  font-size:80px!important;
+}
+.carousel-control.left{
+	background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 0%)!important;
+}
+.carousel-control.right{
+	background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 0%)!important;
+	right: 54px!important;
+}

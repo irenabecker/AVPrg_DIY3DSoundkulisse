@@ -1,0 +1,119 @@
+//
+// Slide Panel Top
+// --------------------------------------------------
+
+header {
+    #home-accordion {
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        // Button close
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            z-index: 100;
+            color: @white;
+            .opacity(1);
+            background: transparent;
+            border: 0;
+            font-size: 1.4em;
+        }
+        .panel {
+            border-radius: 0;
+            border: none;
+            background-color: @brand-primary;
+        }
+        .panel-body {
+            .title {
+                text-transform: uppercase;
+                font-size: 1.4em;
+                font-weight: normal;
+                color: @white;
+            }
+        }
+        .panel-heading {
+            color: @white;
+            background-color: @brand-primary;
+            padding: 0;
+            border-radius: 0;
+            h4 {
+                padding: 0;
+                margin: 0;
+                text-transform: uppercase;
+                font-weight: normal;
+                a {
+                    position: relative;
+                    display: block;
+                    padding: 10px 10px 20px;
+                    .transition(all 150ms ease);
+                    &:hover,
+                    &:focus {
+                        text-decoration: none;
+                    }
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        left: 49%;
+                        bottom: -18px;
+                        .square(40px);
+                        border-radius: 50%;
+                        .box-shadow(0px 1px 1px -1px rgba(0,0,0,.8));
+                    }
+                    &[aria-expanded="true"] {
+                        padding-top: 0;
+                        .box-shadow(0px 1px 1px 0px rgba(0,0,0,.8));
+                        span {
+                            .opacity(0);
+                            .transition(all 150ms ease);
+                        }
+                        &:after {
+                            background: @brand-primary url(../images/arrow-up.png) no-repeat center center;
+                        }
+                    }
+                    &[aria-expanded="false"] {
+                        .box-shadow(0px 0px 2px 0px rgba(0,0,0,.8));
+                        span {
+                            .opacity(1);
+                            .transition(all 150ms ease);
+                        }
+                        &:after {
+                            background: @brand-primary url(../images/double-arrow.png) no-repeat center center;
+                        }
+                    }
+                }
+            }
+            &:hover {
+                background-color: darken(@brand-primary, 5%);
+                h4 {
+                    a {
+                        text-decoration: none;
+                        &[aria-expanded=true],
+                        &[aria-expanded=false] {
+                            &:after {
+                                background-color: darken(@brand-primary, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+// Responsive
+// --------------------------------------------------
+// Tablet paysage
+@media  (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+
+}
+// Tablet portrait
+@media  (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+
+}
+// Mobile
+@media (max-width: @screen-xs-max) {
+
+}
