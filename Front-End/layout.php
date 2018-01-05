@@ -14,14 +14,27 @@
               <?php include("bootstrap-slide-panel/index.html") ?>
         </div>
     </div>
-    <div class="row" style="padding-left:3%;">
-        <div class="col-sm-7">       
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    <div class="row">
+        <div class="col-sm-8" style="border:1px solid #000000;">       
+              <canvas id="myCanvas" width="200" height="288"></canvas>
         </div>
-        <div class="col-sm-5">       
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        <div class="col-sm-4" style="border:1px solid #000000;">       
+              
+            <canvas id="myCanvas2" width="200" height="288"></canvas>
+
         </div>
     </div>
+        <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <hr>
+                    <p class="text-center"><a href="https://github.com/irenabecker/AVPrg_DIY3DSoundkulisse" target="_blank">DIY3D</a> Created by - <a href="https://github.com/KevinHagen" target="_blank">@Kevin Hagen</a> <a href="https://github.com/irenabecker" target="_blank">, @Irena Becker</a> <a href="https://github.com/CarinaKr" target="_blank">, @Carina Krafft</a> <a href="https://github.com/JordanisLaza" target="_blank">, @Jordanis Lazarides</a> </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /footer -->
 
 
 </body>

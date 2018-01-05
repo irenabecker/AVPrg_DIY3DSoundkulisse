@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="bootstrap-slide-panel/css/app-front.min.css">
     <script src="bootstrap-slide-panel/js/modernizr-2.8.3.min.js"></script>
     <script src='bootstrap-slide-panel/js/jquery-1.11.2.min.js' type='text/javascript'></script>
-    <script src='bootstrap-slide-panel/js/searchFigures.js' type='text/javascript'></script>   
+    <script src='bootstrap-slide-panel/js/searchFigures.js' type='text/javascript'></script>
     <!--[if lt IE 9]>
             <script src="/js/respond.min.js"></script>
         <![endif]-->
@@ -44,13 +44,13 @@
                                     </form>
                                 </div>
                                 <div class="col-sm-12" style="margin-left: -30px;">
-                                    <div id="myCarousel" class="carousel slide myUL">
+                                    <div id="myCarousel" class="carousel slide myUL" data-interval="false" >
                                         <!-- Carousel items -->
                                         <div class="carousel-inner">
                                             <div class="item active">
                                                 <div class="col-sm-3 content" style="padding-top: 2%; margin-left: 1%;">
                                                     <div class="thumbnail figures">
-                                                        <img src="http://fakeimg.pl/400x175/" alt="fake image" class="img-responsive">
+                                                        <img src="resources/IMG_3268.jpg" alt="fake image" class="img-responsive">
                                                         <div class="caption">
                                                             <h3>Dreieck</h3>
                                                             <p>1Excepteur sint obcaecat cupiditat non proident culpa. Qui ipsorum lingua Celtae, nostra Galli appellantur.</p>
@@ -58,7 +58,10 @@
                                                                 <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
                                                                 <span id="frequencyOutput" class="output">1000 Hz</span>
                                                             </div>
-                                                            <strong>Wert 1:</strong>
+                                                            <div id="frequencyContainer"><strong>Frequency</strong>
+                                                                <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+                                                                <span id="frequencyOutput" class="output">1000 Hz</span>
+                                                            </div>
                                                             <br>
                                                             <strong>Wert 2:</strong>
                                                             <br>
@@ -69,8 +72,8 @@
                                                             <strong>Wert 5:</strong>
                                                             <br>
                                                             <br>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
+                                                            <a href="#" class="btn btn-danger btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
+                                                            <a href="#" class="btn btn-success btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
                                                             <br>
                                                         </div>
                                                     </div>
@@ -85,6 +88,10 @@
                                                                 <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
                                                                 <span id="frequencyOutput" class="output">1000 Hz</span>
                                                             </div>
+                                                            <div id="frequencyContainer"><strong>Frequency</strong>
+                                                                <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+                                                                <span id="frequencyOutput" class="output">1000 Hz</span>
+                                                            </div>
                                                             <br>
                                                             <strong>Wert 2:</strong>
                                                             <br>
@@ -95,8 +102,8 @@
                                                             <strong>Wert 5:</strong>
                                                             <br>
                                                             <br>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
+                                                            <a href="#" class="btn btn-danger btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
+                                                            <a href="#" class="btn btn-success btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
                                                             <br>
                                                         </div>
                                                     </div>
@@ -111,6 +118,10 @@
                                                                 <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
                                                                 <span id="frequencyOutput" class="output">1000 Hz</span>
                                                             </div>
+                                                            <div id="frequencyContainer"><strong>Frequency</strong>
+                                                                <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+                                                                <span id="frequencyOutput" class="output">1000 Hz</span>
+                                                            </div>
                                                             <br>
                                                             <strong>Wert 2:</strong>
                                                             <br>
@@ -121,8 +132,8 @@
                                                             <strong>Wert 5:</strong>
                                                             <br>
                                                             <br>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
+                                                            <a href="#" class="btn btn-danger btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
+                                                            <a href="#" class="btn btn-success btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
                                                             <br>
                                                         </div>
                                                     </div>
@@ -137,31 +148,6 @@
                                                                 <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
                                                                 <span id="frequencyOutput" class="output">1000 Hz</span>
                                                             </div>
-                                                            <br>
-                                                            <strong>Wert 2:</strong>
-                                                            <br>
-                                                            <strong>Wert 3:</strong>
-                                                            <br>
-                                                            <strong>Wert 4:</strong>
-                                                            <br>
-                                                            <strong>Wert 5:</strong>
-                                                            <br>
-                                                            <br>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
-                                                            <br>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/item-->
-                                            <div class="item">
-                                                <div class="col-sm-3 content" style="padding-top: 2%; margin-left: 1%!important;">
-                                                    <div class="thumbnail figures">
-                                                        <img src="http://fakeimg.pl/400x175/" alt="fake image" class="img-responsive">
-                                                        <div class="caption">
-                                                            <h3>Stern</h3>
-                                                            <p>5Excepteur sint obcaecat cupiditat non proident culpa. Qui ipsorum lingua Celtae, nostra Galli appellantur.</p>
                                                             <div id="frequencyContainer"><strong>Frequency</strong>
                                                                 <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
                                                                 <span id="frequencyOutput" class="output">1000 Hz</span>
@@ -176,8 +162,41 @@
                                                             <strong>Wert 5:</strong>
                                                             <br>
                                                             <br>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
+                                                            <a href="#" class="btn btn-danger btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
+                                                            <a href="#" class="btn btn-success btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
+                                                            <br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/item-->
+                                            <div class="item" id="test">
+                                                <div class="col-sm-3 content" style="padding-top: 2%; margin-left: 1%!important;">
+                                                    <div class="thumbnail figures">
+                                                        <img src="http://fakeimg.pl/400x175/" alt="fake image" class="img-responsive">
+                                                        <div class="caption">
+                                                            <h3>Stern</h3>
+                                                            <p>5Excepteur sint obcaecat cupiditat non proident culpa. Qui ipsorum lingua Celtae, nostra Galli appellantur.</p>
+                                                            <div id="frequencyContainer"><strong>Frequency</strong>
+                                                                <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+                                                                <span id="frequencyOutput" class="output">1000 Hz</span>
+                                                            </div>
+                                                            <div id="frequencyContainer"><strong>Frequency</strong>
+                                                                <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+                                                                <span id="frequencyOutput" class="output">1000 Hz</span>
+                                                            </div>
+                                                            <br>
+                                                            <strong>Wert 2:</strong>
+                                                            <br>
+                                                            <strong>Wert 3:</strong>
+                                                            <br>
+                                                            <strong>Wert 4:</strong>
+                                                            <br>
+                                                            <strong>Wert 5:</strong>
+                                                            <br>
+                                                            <br>
+                                                            <a href="#" class="btn btn-danger btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
+                                                            <a href="#" class="btn btn-success btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
                                                             <br>
                                                         </div>
                                                     </div>
@@ -192,6 +211,10 @@
                                                                 <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
                                                                 <span id="frequencyOutput" class="output">1000 Hz</span>
                                                             </div>
+                                                            <div id="frequencyContainer"><strong>Frequency</strong>
+                                                                <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+                                                                <span id="frequencyOutput" class="output">1000 Hz</span>
+                                                            </div>
                                                             <br>
                                                             <strong>Wert 2:</strong>
                                                             <br>
@@ -202,8 +225,8 @@
                                                             <strong>Wert 5:</strong>
                                                             <br>
                                                             <br>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
+                                                            <a href="#" class="btn btn-danger btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
+                                                            <a href="#" class="btn btn-success btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
                                                             <br>
                                                         </div>
                                                     </div>
@@ -218,28 +241,6 @@
                                                                 <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
                                                                 <span id="frequencyOutput" class="output">1000 Hz</span>
                                                             </div>
-                                                            <br>
-                                                            <strong>Wert 2:</strong>
-                                                            <br>
-                                                            <strong>Wert 3:</strong>
-                                                            <br>
-                                                            <strong>Wert 4:</strong>
-                                                            <br>
-                                                            <strong>Wert 5:</strong>
-                                                            <br>
-                                                            <br>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
-                                                            <br>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3 content" style="padding-top: 2%; margin-left: -1%;">
-                                                    <div class="thumbnail figures">
-                                                        <img src="http://fakeimg.pl/400x175/" alt="fake image" class="img-responsive">
-                                                        <div class="caption">
-                                                            <h3>Test11</h3>
-                                                            <p>8Excepteur sint obcaecat cupiditat non proident culpa. Qui ipsorum lingua Celtae, nostra Galli appellantur.</p>
                                                             <div id="frequencyContainer"><strong>Frequency</strong>
                                                                 <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
                                                                 <span id="frequencyOutput" class="output">1000 Hz</span>
@@ -254,8 +255,38 @@
                                                             <strong>Wert 5:</strong>
                                                             <br>
                                                             <br>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
-                                                            <a href="#" class="btn btn-primary btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
+                                                            <a href="#" class="btn btn-danger btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
+                                                            <a href="#" class="btn btn-success btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
+                                                            <br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 content" style="padding-top: 2%; margin-left: -1%;">
+                                                    <div class="thumbnail figures">
+                                                        <img src="http://fakeimg.pl/400x175/" alt="fake image" class="img-responsive">
+                                                        <div class="caption">
+                                                            <h3>Test11</h3>
+                                                            <p>8Excepteur sint obcaecat cupiditat non proident culpa. Qui ipsorum lingua Celtae, nostra Galli appellantur.</p>
+                                                            <div id="frequencyContainer"><strong>Frequency</strong>
+                                                                <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+                                                                <span id="frequencyOutput" class="output">1000 Hz</span>
+                                                            </div>
+                                                            <div id="frequencyContainer"><strong>Frequency</strong>
+                                                                <input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+                                                                <span id="frequencyOutput" class="output">1000 Hz</span>
+                                                            </div>
+                                                            <br>
+                                                            <strong>Wert 2:</strong>
+                                                            <br>
+                                                            <strong>Wert 3:</strong>
+                                                            <br>
+                                                            <strong>Wert 4:</strong>
+                                                            <br>
+                                                            <strong>Wert 5:</strong>
+                                                            <br>
+                                                            <br>
+                                                            <a href="#" class="btn btn-danger btn-sm col-sm-5 col-sm-offset-1" role="button">Configure</a>
+                                                            <a href="#" class="btn btn-success btn-sm col-sm-5 col-sm-offset-1" role="button">Add</a>
                                                             <br>
                                                         </div>
                                                     </div>
@@ -265,8 +296,8 @@
                                             <!--/item-->
                                         </div>
                                         <!--/carousel-inner-->
-                                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                                        <a class="right carousel-control" href="#myCarousel" data-slide="next" style="margin-right:-60px!important; ">›</a>
+                                        <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="margin-left: -25px!important;">‹</a>
+                                        <a class="right carousel-control" href="#myCarousel" data-slide="next" style="margin-right:-75px!important; ">›</a>
                                     </div>
                                     <!--/myCarousel-->
                                 </div>
@@ -289,18 +320,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="text-center">Einleitung</h1>
+                    <h3 class="text-center">Einleitung</h3>
                     <hr>
-                    <p class="lead text-justify">
+                    <p class="lead text-justify" style="font-size: 13px;">
                         DIY-3D-Soundkulisse ist ein Projekt zum Thema „tangible sound control“ und beschäftigt sich mit der Frage, wie man einem Benutzer die Möglichkeit geben kann, die Soundkulisse eines gegebenen Raumes mittels greifbarer Kontrollelemente nach seinen Wünschen anpassen zu können. Entstanden ist die Idee bei der Vorführung der 3D-Soundanlage des Tonlabors der HAW. Eine der ersten Sachen die uns in den Sinn kamen, war dass es damit möglich sein müsste, einem User einen Raum soundtechnisch so einzurichten, wie er es will. Seien es harmonische Naturklänge, vertraute Geräusche von zuhause oder andere noch so verrückte Dinge – man schiebt sich einen Klang dorthin wo man ihn haben will, richtet sich den Raum ein, quasi wie ein Zimmer, und schließt dann die Augen um sich der Soundkulisse hinzugeben.
                     </p>
-                    <h1 class="text-center">Funktionsweise</h1>
+                    <h3 class="text-center">Funktionsweise</h3>
                     <p class="text-center">
                         1: Mach das
                         <br> 2: Mach das
                         <br> 3: Mach das
                         <br> 4: Mach das
-                        <br> 5: Mach das
                         <br>
                     </p>
                 </div>
@@ -308,17 +338,6 @@
         </div>
     </section>
     <!-- /section -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr>
-                    <p class="text-center"><a href="https://github.com/irenabecker/AVPrg_DIY3DSoundkulisse" target="_blank">DIY3D</a> Created by - <a href="https://github.com/KevinHagen" target="_blank">@Kevin Hagen</a> <a href="https://github.com/irenabecker" target="_blank">, @Irena Becker</a> <a href="https://github.com/CarinaKr" target="_blank">, @Carina Krafft</a> <a href="https://github.com/JordanisLaza" target="_blank">, @Jordanis Lazarides</a> </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- /footer -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
     window.jQuery || document.write('<script src="bootstrap-slide-panel/js/jquery-1.11.2.min.js"><\/script>')
