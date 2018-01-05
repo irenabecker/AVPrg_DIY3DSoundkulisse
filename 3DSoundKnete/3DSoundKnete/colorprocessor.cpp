@@ -3,7 +3,7 @@
 using namespace cv;
 
 ColorProcessor::ColorProcessor()
-    :threshold(0)
+    :threshold(10)
 {
 
 }
@@ -25,7 +25,7 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
            int g = inputPixel[1];
            int b = inputPixel[0];
 
-           int distance = sqrt((r-101)*(r-101) + (g-33)*(g-33) + (b-40)*(b-40));
+           int distance = sqrt((r-23)*(r-23) + (g-0)*(g-0) + (b-142)*(b-142));
 
            if(distance < threshold){
                r = g = b = 255;

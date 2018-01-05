@@ -1,1 +1,4 @@
-﻿  3DSoundKnete.vcxproj -> D:\github\3DSoundKnete\3DSoundKnete\..\x64\Debug\3DSoundKnete.exe
+﻿  colorprocessor.cpp
+colorprocessor.cpp(11): warning C4100: "format": Unreferenzierter formaler Parameter
+colorprocessor.cpp(28): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+  3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\3DSoundKnete\3DSoundKnete\..\x64\Debug\3DSoundKnete.exe

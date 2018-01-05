@@ -6,7 +6,7 @@
 #include "videoengine.h"
 //#include "copyprocessor.h"
 //#include "brightnessprocessor.h"
-//#include "colorprocessor.h"
+#include "colorprocessor.h"
 
 namespace Ui {
 	class DSoundKnete;
@@ -21,16 +21,16 @@ public:
 	~DSoundKnete();
 
 	private slots:
-	void on_actionVideoTop_triggered();
-	void on_actionVideoFront_triggered();
+	void on_actionVideo_Top_triggered();
+	void on_actionVideo_Front_triggered();
 	//void on_actionKamera_ffnen_triggered();
-	//void on_actionPlay_triggered();
+	void on_actionPlay_triggered();
 
 private:
 	Ui::DSoundKnete *ui;
 	VideoEngine *videoThreadTop;
 	VideoEngine *videoTreadFront;
-	//ColorProcessor *videoProcessor;
+	ColorProcessor *videoProcessor;
 };
 
 #endif // DSOUNDKNETE_H

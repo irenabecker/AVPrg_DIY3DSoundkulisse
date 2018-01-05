@@ -8,11 +8,11 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 	, ui(new Ui::DSoundKnete)
 	, videoThreadTop(new VideoEngine)
 	, videoTreadFront(new VideoEngine)
-	//, videoProcessor(new ColorProcessor)
+	, videoProcessor(new ColorProcessor)
 {
 	ui->setupUi(this);
-	//videoThreadTop->setProcessor(videoProcessor);
-	//videoTreadFront->setProcessor(videoProcessor);
+	videoThreadTop->setProcessor(videoProcessor);
+	videoTreadFront->setProcessor(videoProcessor);
 	//for top camera
 	connect(videoThreadTop, &VideoEngine::sendInputImage,
 		ui->inputFrameTop, &VideoWidget::setImage);
@@ -31,10 +31,10 @@ DSoundKnete::~DSoundKnete()
 	delete videoThreadTop;
 	delete videoTreadFront;
 	delete ui;
-	//delete videoProcessor;
+	delete videoProcessor;
 }
 
-void DSoundKnete::on_actionVideoTop_triggered()
+void DSoundKnete::on_actionVideo_Top_triggered()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), QDir::homePath());
 
@@ -42,11 +42,17 @@ void DSoundKnete::on_actionVideoTop_triggered()
 		videoThreadTop->openFile(fileName);
 	}
 }
-void DSoundKnete::on_actionVideoFront_triggered()
+void DSoundKnete::on_actionVideo_Front_triggered()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), QDir::homePath());
 
 	if (!fileName.isEmpty()) {
 		videoTreadFront->openFile(fileName);
 	}
+}
+
+void DSoundKnete::on_actionPlay_triggered()
+{
+	videoThreadTop->start();
+	videoTreadFront->start();
 }
