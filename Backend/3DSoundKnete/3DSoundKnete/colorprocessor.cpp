@@ -10,7 +10,6 @@ ColorProcessor::ColorProcessor()
 {
     items.push_back(createNewItem("red", 160,255, 157, 255, 127, 255));
     items.push_back(createNewItem("yellow", 48, 22, 101, 205, 164, 253));
-    //items.push_back(createNewItem("lime", )))
 }
 
 void ColorProcessor::startProcessing(const VideoFormat& format)
@@ -35,34 +34,6 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
        morphologicalOpening(items[i].threshold);
        morphologicalClosing(items[i].threshold);
        drawItem(items[i].x, items[i].y, items[i], HSV);
-   }
-
-   Mat output(input.rows, input.cols, input.type());
-   for(int x = 0; x < input.cols; x++)
-   {
-       for(int y = 0; y < input.rows; y++)
-       {
-            Vec3b outputPixel(0,0,0);
-            output.at<Vec3b>(y,x) = outputPixel;
-
-            Vec3b inputPixel(0,0,0);
-            for(int i = 0; i < items.size(); i++)
-            {
-                inputPixel = items[i].threshold.at<Vec3b>(y,x);
-                int v = inputPixel[2];
-                int s = inputPixel[1];
-                int h = inputPixel[0];
-                Vec3b outputPixelTwo(v,s,h);
-                if(v == 255)
-                    output.at<Vec3b>(y,x) = outputPixelTwo;
-            }
-/*
-            Vec3b inputPixel = input.at<Vec3b>(y,x);
-            int r = inputPixel[2];
-            int g = inputPixel[1];
-            int b = inputPixel[0];
-*/
-       }
    }
 
    return dynamicTestItem.threshold;
