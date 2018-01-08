@@ -76,7 +76,7 @@ public:
         inputFrameTop->setAlignment(Qt::AlignCenter);
         processedFrameTop = new VideoWidget(centralWidget);
         processedFrameTop->setObjectName(QStringLiteral("processedFrameTop"));
-        processedFrameTop->setGeometry(QRect(290, 20, 150, 110));
+        processedFrameTop->setGeometry(QRect(230, 10, 401, 211));
         processedFrameTop->setFrameShape(QFrame::Box);
         processedFrameTop->setScaledContents(false);
         processedFrameTop->setAlignment(Qt::AlignCenter);
@@ -88,7 +88,7 @@ public:
         inputFrameFront->setAlignment(Qt::AlignCenter);
         processedFrameFront = new VideoWidget(centralWidget);
         processedFrameFront->setObjectName(QStringLiteral("processedFrameFront"));
-        processedFrameFront->setGeometry(QRect(460, 20, 150, 110));
+        processedFrameFront->setGeometry(QRect(480, 240, 150, 110));
         processedFrameFront->setFrameShape(QFrame::Box);
         processedFrameFront->setScaledContents(false);
         processedFrameFront->setAlignment(Qt::AlignCenter);
@@ -146,7 +146,7 @@ public:
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 644, 20));
+        menuBar->setGeometry(QRect(0, 0, 644, 21));
         menuVideo = new QMenu(menuBar);
         menuVideo->setObjectName(QStringLiteral("menuVideo"));
         menuVideodatei_ffnen = new QMenu(menuVideo);
