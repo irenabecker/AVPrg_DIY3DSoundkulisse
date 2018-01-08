@@ -1,5 +1,3 @@
-﻿  Moc'ing videoengine.h...
-  moc: D:\github\AVPrg_DIY3DSoundkulisse\3DSoundKnete\3DSoundKnete\videoengine.h: No such file
-  Moc'ing videowidget.h...
-  moc: D:\github\AVPrg_DIY3DSoundkulisse\3DSoundKnete\3DSoundKnete\videowidget.h: No such file
-C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppCommon.targets(171,5): error MSB6006: "cmd.exe" wurde mit dem Code 1 beendet.
+﻿  shapeRecognition.cpp
+shapeRecognition.cpp(14): warning C4100: "format": Unreferenzierter formaler Parameter
+  3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\..\x64\Debug\3DSoundKnete.exe

@@ -8,11 +8,12 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 	, ui(new Ui::DSoundKnete)
 	, videoThreadTop(new VideoEngine)
 	, videoTreadFront(new VideoEngine)
-	, videoProcessor(new ColorProcessor)
+	//, videoProcessor(new ColorProcessor)
+	,shapeRecognition(new ShapeRecognition)
 {
 	ui->setupUi(this);
-	videoThreadTop->setProcessor(videoProcessor);
-	videoTreadFront->setProcessor(videoProcessor);
+	videoThreadTop->setProcessor(shapeRecognition);
+	videoTreadFront->setProcessor(shapeRecognition);
 	//for top camera
 	connect(videoThreadTop, &VideoEngine::sendInputImage,
 		ui->inputFrameTop, &VideoWidget::setImage);
@@ -31,12 +32,13 @@ DSoundKnete::~DSoundKnete()
 	delete videoThreadTop;
 	delete videoTreadFront;
 	delete ui;
-	delete videoProcessor;
+	//delete videoProcessor;
+	delete shapeRecognition;
 }
 
 void DSoundKnete::on_actionVideo_Top_triggered()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), QDir::homePath());
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Backend/Videos");
 
 	if (!fileName.isEmpty()) {
 		videoThreadTop->openFile(fileName);
@@ -44,7 +46,7 @@ void DSoundKnete::on_actionVideo_Top_triggered()
 }
 void DSoundKnete::on_actionVideo_Front_triggered()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), QDir::homePath());
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Videos");
 
 	if (!fileName.isEmpty()) {
 		videoTreadFront->openFile(fileName);

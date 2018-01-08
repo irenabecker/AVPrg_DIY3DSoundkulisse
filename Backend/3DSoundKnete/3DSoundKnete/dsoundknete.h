@@ -7,6 +7,7 @@
 //#include "copyprocessor.h"
 //#include "brightnessprocessor.h"
 #include "colorprocessor.h"
+#include "shapeRecognition.h"
 
 namespace Ui {
 	class DSoundKnete;
@@ -31,6 +32,7 @@ private:
 	VideoEngine *videoThreadTop;
 	VideoEngine *videoTreadFront;
 	ColorProcessor *videoProcessor;
+	ShapeRecognition *shapeRecognition;
 };
 
 #endif // DSOUNDKNETE_H
