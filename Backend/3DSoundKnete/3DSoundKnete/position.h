@@ -2,7 +2,7 @@
 #define POSITIONPROCESSOR_H
 
 
-class PositionProcessor : public PositionProcessor
+class PositionProcessor
 {
 public:
 	PositionProcessor();

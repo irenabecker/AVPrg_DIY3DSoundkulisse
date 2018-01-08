@@ -18,5 +18,5 @@ void PositionProcessor::setZero(int top[2], int front[2])
 
 void PositionProcessor::findPosition(int pObject)
 {
-	int posX=
+    //int posX=
 }

@@ -21,7 +21,7 @@
 #include <QPixmap>
 #include <QDebug>
 
-#include "D:/OpenCV/opencv/build/include/opencv2/opencv.hpp"
+#include "opencv2/opencv.hpp"
 
 
 

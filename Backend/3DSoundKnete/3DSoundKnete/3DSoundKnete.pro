@@ -19,4 +19,4 @@ OBJECTS_DIR += debug
 UI_DIR += ./GeneratedFiles
 RCC_DIR += ./GeneratedFiles
 include(3DSoundKnete.pri)
-include(../opencv/opencv.pri)
+include(../opencv/videoengine.pri)
