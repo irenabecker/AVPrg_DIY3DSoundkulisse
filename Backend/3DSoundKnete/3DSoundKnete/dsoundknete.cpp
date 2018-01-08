@@ -38,7 +38,11 @@ DSoundKnete::~DSoundKnete()
 
 void DSoundKnete::on_actionVideo_Top_triggered()
 {
+<<<<<<< HEAD
 	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Backend/Videos");
+=======
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Videos");
+>>>>>>> 3dfc8b8b6a254db6da0ebcdf2675c93608dd7feb
 
 	if (!fileName.isEmpty()) {
 		videoThreadTop->openFile(fileName);
@@ -46,7 +50,11 @@ void DSoundKnete::on_actionVideo_Top_triggered()
 }
 void DSoundKnete::on_actionVideo_Front_triggered()
 {
+<<<<<<< HEAD
 	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Videos");
+=======
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Videos");
+>>>>>>> 3dfc8b8b6a254db6da0ebcdf2675c93608dd7feb
 
 	if (!fileName.isEmpty()) {
 		videoTreadFront->openFile(fileName);
@@ -57,4 +65,40 @@ void DSoundKnete::on_actionPlay_triggered()
 {
 	videoThreadTop->start();
 	videoTreadFront->start();
+}
+
+void DSoundKnete::on_actionKamera_ffnen_triggered()
+{
+    videoThreadTop->openCamera();
+}
+
+void DSoundKnete::on_hmax_valueChanged(int value)
+{
+    videoProcessor->H_MAX = value;
+}
+
+
+void DSoundKnete::on_smin_valueChanged(int value)
+{
+    videoProcessor->S_MIN = value;
+}
+
+void DSoundKnete::on_smax_valueChanged(int value)
+{
+    videoProcessor->S_MAX = value;
+}
+
+void DSoundKnete::on_vmin_valueChanged(int value)
+{
+    videoProcessor->V_MIN = value;
+}
+
+void DSoundKnete::on_vmax_valueChanged(int value)
+{
+    videoProcessor->V_MAX = value;
+}
+
+void DSoundKnete::on_hmin_valueChanged(int value)
+{
+    videoProcessor->V_MIN = value;
 }

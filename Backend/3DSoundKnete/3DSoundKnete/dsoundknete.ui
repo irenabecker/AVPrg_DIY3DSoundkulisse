@@ -102,108 +102,187 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="x1">
+   <widget class="QSlider" name="hmax">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>140</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>X1:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="y1">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>160</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Y1:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="y2">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>160</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Y2:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="x2">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>140</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>X2:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>220</y>
-      <width>81</width>
+      <x>240</x>
+      <y>240</y>
+      <width>160</width>
       <height>16</height>
      </rect>
     </property>
-    <property name="text">
-     <string>In 3D-Space:</string>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="xges">
+   <widget class="QSlider" name="smin">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>250</y>
+      <x>240</x>
+      <y>280</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="hmin">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>260</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="value">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="smax">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>300</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="value">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="vmin">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>320</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="vmax">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>340</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="value">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hminLabel">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>260</y>
       <width>47</width>
       <height>13</height>
      </rect>
     </property>
     <property name="text">
-     <string>X ges:</string>
+     <string>255</string>
     </property>
    </widget>
-   <widget class="QLabel" name="yges">
+   <widget class="QLabel" name="hmaxLabel">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>270</y>
+      <x>410</x>
+      <y>240</y>
       <width>47</width>
       <height>13</height>
      </rect>
     </property>
     <property name="text">
-     <string>Y ges:</string>
+     <string>0</string>
     </property>
    </widget>
-   <widget class="QLabel" name="zges">
+   <widget class="QLabel" name="sminLabel">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>290</y>
+      <x>410</x>
+      <y>280</y>
       <width>47</width>
       <height>13</height>
      </rect>
     </property>
     <property name="text">
-     <string>Z ges:</string>
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="smaxLabel">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>300</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>255</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="vminLabel">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>320</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="vmaxLabel">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>340</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>255</string>
     </property>
    </widget>
   </widget>
@@ -213,7 +292,7 @@
      <x>0</x>
      <y>0</y>
      <width>644</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVideo">
@@ -269,5 +348,182 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>hmax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>hmax</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>smax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>smax</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>277</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>smin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>smin</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>257</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vmax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>vmax</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>337</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vmin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>vmin</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>317</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hmin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>hminLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>287</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>433</x>
+     <y>266</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hmax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>hmaxLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>267</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>433</x>
+     <y>286</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>smax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>smaxLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>433</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>smin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sminLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>433</x>
+     <y>306</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vmin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>vminLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>347</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>433</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vmax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>vmaxLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>433</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

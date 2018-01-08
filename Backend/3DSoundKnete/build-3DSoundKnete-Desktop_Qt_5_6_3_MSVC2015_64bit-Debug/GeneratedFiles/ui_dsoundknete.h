@@ -18,6 +18,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QWidget>
 #include "videowidget.h"
 
@@ -43,6 +44,12 @@ public:
     QLabel *xges;
     QLabel *yges;
     QLabel *zges;
+    QSlider *hmax;
+    QSlider *smin;
+    QSlider *hmin;
+    QSlider *smax;
+    QSlider *vmin;
+    QSlider *vmax;
     QMenuBar *menuBar;
     QMenu *menuVideo;
     QMenu *menuVideodatei_ffnen;
@@ -111,10 +118,40 @@ public:
         zges = new QLabel(centralWidget);
         zges->setObjectName(QStringLiteral("zges"));
         zges->setGeometry(QRect(310, 290, 47, 13));
+        hmax = new QSlider(centralWidget);
+        hmax->setObjectName(QStringLiteral("hmax"));
+        hmax->setGeometry(QRect(460, 200, 160, 16));
+        hmax->setMaximum(179);
+        hmax->setOrientation(Qt::Horizontal);
+        smin = new QSlider(centralWidget);
+        smin->setObjectName(QStringLiteral("smin"));
+        smin->setGeometry(QRect(460, 230, 160, 16));
+        smin->setMaximum(255);
+        smin->setOrientation(Qt::Horizontal);
+        hmin = new QSlider(centralWidget);
+        hmin->setObjectName(QStringLiteral("hmin"));
+        hmin->setGeometry(QRect(460, 180, 160, 16));
+        hmin->setMaximum(179);
+        hmin->setOrientation(Qt::Horizontal);
+        smax = new QSlider(centralWidget);
+        smax->setObjectName(QStringLiteral("smax"));
+        smax->setGeometry(QRect(460, 250, 160, 16));
+        smax->setMaximum(255);
+        smax->setOrientation(Qt::Horizontal);
+        vmin = new QSlider(centralWidget);
+        vmin->setObjectName(QStringLiteral("vmin"));
+        vmin->setGeometry(QRect(460, 290, 160, 16));
+        vmin->setMaximum(255);
+        vmin->setOrientation(Qt::Horizontal);
+        vmax = new QSlider(centralWidget);
+        vmax->setObjectName(QStringLiteral("vmax"));
+        vmax->setGeometry(QRect(460, 310, 160, 16));
+        vmax->setMaximum(255);
+        vmax->setOrientation(Qt::Horizontal);
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 644, 21));
+        menuBar->setGeometry(QRect(0, 0, 644, 20));
         menuVideo = new QMenu(menuBar);
         menuVideo->setObjectName(QStringLiteral("menuVideo"));
         menuVideodatei_ffnen = new QMenu(menuVideo);
@@ -132,6 +169,12 @@ public:
         menuPlay->addAction(actionPlay);
 
         retranslateUi(DSoundKnete);
+        QObject::connect(hmin, SIGNAL(valueChanged(int)), hmin, SLOT(setValue(int)));
+        QObject::connect(hmax, SIGNAL(valueChanged(int)), hmax, SLOT(setValue(int)));
+        QObject::connect(smax, SIGNAL(valueChanged(int)), smax, SLOT(setValue(int)));
+        QObject::connect(smin, SIGNAL(valueChanged(int)), smin, SLOT(setValue(int)));
+        QObject::connect(vmax, SIGNAL(valueChanged(int)), vmax, SLOT(setValue(int)));
+        QObject::connect(vmin, SIGNAL(valueChanged(int)), vmin, SLOT(setValue(int)));
 
         QMetaObject::connectSlotsByName(DSoundKnete);
     } // setupUi
