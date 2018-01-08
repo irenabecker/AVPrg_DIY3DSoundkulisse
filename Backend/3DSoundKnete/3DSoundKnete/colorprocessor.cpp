@@ -17,38 +17,24 @@ void ColorProcessor::setThreshold(int threshold){
 
 
 cv::Mat ColorProcessor::process(const cv::Mat& input){
-   Mat output(input.rows, input.cols, input.type());
-   for(int x = 0; x < input.cols; x++){
-       for(int y = 0; y < input.rows; y++){
-           Vec3b inputPixel = input.at<Vec3b>(y,x);
-           int r = inputPixel[2];
-           int g = inputPixel[1];
-           int b = inputPixel[0];
+   HSV(input.rows, input.cols, input.type());
+   cvtColor(input, HSV, COLOR_BGR2HSV);
 
-           int distance = sqrt((r-23)*(r-23) + (g-0)*(g-0) + (b-142)*(b-142));
-
-           if(distance < threshold){
-               r = g = b = 255;
-			   avrX[0] = (avrX[0] + x) / counterX[0];
-			   counterX[0]++,
-			   avrY[0] = (avrY[0] + y) / counterY[0];
-			   counterY[0]++;
-           }
-           else{
-               r = g = b = 0;
-           }
-           Vec3b outputPixel(b, g, r);
-           output.at<Vec3b>(y,x) = outputPixel;
-       }
+   //Loop through each item in the list and colorize it
+   for(int i = 0; i < items.size(); i++)
+   {
+       inRange(HSV,
+               Scalar(items[i].H_MIN, items[i].H_MIN, items[i].H_MIN),
+               Scalar(items[i].H_MIN, items[i].H_MIN, items[i].H_MIN),
+               items[i]);
+       morphologicalOpening(items[i]);
+       morphologicalClosing(items[i]);
    }
+
    return output;
 }
 
-int ColorProcessor :: getX(int pObject)
+void ColorProcessor::drawItem(int x, int y, item itemToDraw)
 {
-	return avrX[pObject];
-}
-int ColorProcessor::getY(int pObject)
-{
-	return avrY[pObject];
+
 }

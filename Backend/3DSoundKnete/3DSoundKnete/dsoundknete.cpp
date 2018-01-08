@@ -36,7 +36,7 @@ DSoundKnete::~DSoundKnete()
 
 void DSoundKnete::on_actionVideo_Top_triggered()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), QDir::homePath());
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Videos");
 
 	if (!fileName.isEmpty()) {
 		videoThreadTop->openFile(fileName);
@@ -44,7 +44,7 @@ void DSoundKnete::on_actionVideo_Top_triggered()
 }
 void DSoundKnete::on_actionVideo_Front_triggered()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), QDir::homePath());
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Videos");
 
 	if (!fileName.isEmpty()) {
 		videoTreadFront->openFile(fileName);
@@ -55,4 +55,9 @@ void DSoundKnete::on_actionPlay_triggered()
 {
 	videoThreadTop->start();
 	videoTreadFront->start();
+}
+
+void DSoundKnete::on_actionKamera_ffnen_triggered()
+{
+    videoThreadTop->openCamera();
 }
