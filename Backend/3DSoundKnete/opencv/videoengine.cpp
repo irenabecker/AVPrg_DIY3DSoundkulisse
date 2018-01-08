@@ -100,7 +100,10 @@ void VideoEngine::run()
 
             // Process Video Frame
             if (shapeProcessor != 0){
-                cvFrame = shapeProcessor->process(cvFrame);
+				//delete/empty Data-class-objects
+				cv::Mat shapeProcessedFrame = shapeProcessor->process(cvFrame);
+				//get list of Data-objects from shapeProcessor
+				cvFrame = colorProcessor->process(cvFrame);
             }
 
             emit sendProcessedImage(cvMatToQImage(cvFrame));
