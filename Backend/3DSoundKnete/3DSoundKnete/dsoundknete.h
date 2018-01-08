@@ -26,6 +26,18 @@ public:
     void on_actionKamera_ffnen_triggered();
 	void on_actionPlay_triggered();
 
+    void on_hmax_valueChanged(int value);
+
+    void on_vmax_valueChanged(int value);
+
+    void on_smin_valueChanged(int value);
+
+    void on_smax_valueChanged(int value);
+
+    void on_vmin_valueChanged(int value);
+
+    void on_hmin_valueChanged(int value);
+
 private:
 	Ui::DSoundKnete *ui;
 	VideoEngine *videoThreadTop;

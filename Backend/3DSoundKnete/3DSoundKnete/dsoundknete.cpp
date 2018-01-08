@@ -61,3 +61,34 @@ void DSoundKnete::on_actionKamera_ffnen_triggered()
 {
     videoThreadTop->openCamera();
 }
+
+void DSoundKnete::on_hmax_valueChanged(int value)
+{
+    videoProcessor->H_MAX = value;
+}
+
+
+void DSoundKnete::on_smin_valueChanged(int value)
+{
+    videoProcessor->S_MIN = value;
+}
+
+void DSoundKnete::on_smax_valueChanged(int value)
+{
+    videoProcessor->S_MAX = value;
+}
+
+void DSoundKnete::on_vmin_valueChanged(int value)
+{
+    videoProcessor->V_MIN = value;
+}
+
+void DSoundKnete::on_vmax_valueChanged(int value)
+{
+    videoProcessor->V_MAX = value;
+}
+
+void DSoundKnete::on_hmin_valueChanged(int value)
+{
+    videoProcessor->V_MIN = value;
+}
