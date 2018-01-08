@@ -29,6 +29,10 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
 
            if(distance < threshold){
                r = g = b = 255;
+			   avrX[0] = (avrX[0] + x) / counterX[0];
+			   counterX[0]++,
+			   avrY[0] = (avrY[0] + y) / counterY[0];
+			   counterY[0]++;
            }
            else{
                r = g = b = 0;
@@ -38,4 +42,13 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
        }
    }
    return output;
+}
+
+int ColorProcessor :: getX(int pObject)
+{
+	return avrX[pObject];
+}
+int ColorProcessor::getY(int pObject)
+{
+	return avrY[pObject];
 }
