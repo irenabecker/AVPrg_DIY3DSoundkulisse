@@ -72,7 +72,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		{
 			center[i]=setLabel(dst, "RECT", contours_poly[i]);
 		}
-		else if (contours_poly[i].size() >= 3 && contours_poly[i].size() <= 8)
+		else if (contours_poly[i].size() >= 3 && contours_poly[i].size() < 8)
 		{
 			center[i] = setLabel(dst, "TRI", contours_poly[i]);
 		}

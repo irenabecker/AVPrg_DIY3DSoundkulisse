@@ -8,12 +8,12 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 	, ui(new Ui::DSoundKnete)
 	, videoThreadTop(new VideoEngine)
 	, videoTreadFront(new VideoEngine)
-	, videoProcessor(new ColorProcessor)
+	, colorProcessor(new ColorProcessor)
 	,shapeRecognition(new ShapeRecognition)
 {
 	ui->setupUi(this);
-	videoThreadTop->setProcessor(shapeRecognition);
-	videoTreadFront->setProcessor(shapeRecognition);
+	videoThreadTop->setProcessor(colorProcessor,shapeRecognition);
+	videoTreadFront->setProcessor(colorProcessor,shapeRecognition);
 	/*videoThreadTop->setProcessor(videoProcessor);
 	videoThreadTop->setProcessor(videoProcessor);*/
 	//for top camera
@@ -34,7 +34,7 @@ DSoundKnete::~DSoundKnete()
 	delete videoThreadTop;
 	delete videoTreadFront;
 	delete ui;
-	delete videoProcessor;
+	delete colorProcessor;
 	delete shapeRecognition;
 }
 
@@ -70,31 +70,31 @@ void DSoundKnete::on_actionKamera_ffnen_triggered()
 
 void DSoundKnete::on_hmax_valueChanged(int value)
 {
-    videoProcessor->H_MAX = value;
+    colorProcessor->H_MAX = value;
 }
 
 
 void DSoundKnete::on_smin_valueChanged(int value)
 {
-    videoProcessor->S_MIN = value;
+	colorProcessor->S_MIN = value;
 }
 
 void DSoundKnete::on_smax_valueChanged(int value)
 {
-    videoProcessor->S_MAX = value;
+	colorProcessor->S_MAX = value;
 }
 
 void DSoundKnete::on_vmin_valueChanged(int value)
 {
-    videoProcessor->V_MIN = value;
+	colorProcessor->V_MIN = value;
 }
 
 void DSoundKnete::on_vmax_valueChanged(int value)
 {
-    videoProcessor->V_MAX = value;
+	colorProcessor->V_MAX = value;
 }
 
 void DSoundKnete::on_hmin_valueChanged(int value)
 {
-    videoProcessor->V_MIN = value;
+	colorProcessor->V_MIN = value;
 }

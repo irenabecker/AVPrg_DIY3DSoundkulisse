@@ -17,7 +17,7 @@ public:
     ~VideoEngine();
     void openFile(const QString& file);
     void openCamera(int device = 0);
-    void setProcessor(VideoProcessor*);
+    void setProcessor(VideoProcessor*,VideoProcessor*);
     const VideoFormat& videoFormat() const;
     int framePosition();
 protected:
@@ -32,7 +32,8 @@ private:
     VideoFormat _videoFormat;
     bool stopped;
     QMutex mutex;
-    VideoProcessor* processor;
+    VideoProcessor* shapeProcessor;
+	VideoProcessor* colorProcessor;
     bool usingCamera;
 };
 

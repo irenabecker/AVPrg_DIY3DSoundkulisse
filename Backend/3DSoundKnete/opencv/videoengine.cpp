@@ -10,7 +10,8 @@
 
 VideoEngine::VideoEngine()
     : stopped(false)
-    , processor(0)
+    , shapeProcessor(0)
+	, colorProcessor(0)
     , usingCamera(false)
 {
 }
@@ -21,8 +22,9 @@ VideoEngine::~VideoEngine(){
 const VideoFormat& VideoEngine::videoFormat() const{
     return _videoFormat;
 }
-void VideoEngine::setProcessor(VideoProcessor *processor){
-    this->processor = processor;
+void VideoEngine::setProcessor(VideoProcessor *cprocessor, VideoProcessor *sprocessor){
+    this->shapeProcessor = sprocessor;
+	this->colorProcessor = cprocessor;
 }
 
 void VideoEngine::openFile(const QString& file){
@@ -84,17 +86,21 @@ void VideoEngine::run()
             frameNumber++;
             if (frameNumber == 1){
                 _videoFormat.setType(cvFrame.type());
-                if (processor != 0){
-                    processor->startProcessing(_videoFormat);
+                if (shapeProcessor != 0){
+					shapeProcessor->startProcessing(_videoFormat);
                 }
+				if (colorProcessor != 0)
+				{
+					colorProcessor->startProcessing(_videoFormat);
+				}
             }
 
             // queue the image to the gui
             emit sendInputImage(cvMatToQImage(cvFrame));
 
             // Process Video Frame
-            if (processor != 0){
-                cvFrame = processor->process(cvFrame);
+            if (shapeProcessor != 0){
+                cvFrame = shapeProcessor->process(cvFrame);
             }
 
             emit sendProcessedImage(cvMatToQImage(cvFrame));

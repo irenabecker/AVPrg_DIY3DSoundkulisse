@@ -43,7 +43,7 @@ private:
 	Ui::DSoundKnete *ui;
 	VideoEngine *videoThreadTop;
 	VideoEngine *videoTreadFront;
-	ColorProcessor *videoProcessor;
+	ColorProcessor *colorProcessor;
 	ShapeRecognition *shapeRecognition;
 };
 
