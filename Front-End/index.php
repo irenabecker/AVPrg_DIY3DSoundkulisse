@@ -9,16 +9,19 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-12">       
+
+        <?php include("background-carousel/background-carousel.php") ?>
+ 
+         <div class="row">
+            <div class="col-md-12">       
               <?php include("bootstrap-slide-panel/index.html") ?>
+            </div>
         </div>
-    </div>
     <div class="row">
-        <div class="col-sm-8" style="border:1px solid #000000;">       
+        <div class="col-sm-8 well" style="border:1px solid #000000;">       
               <canvas id="myCanvas" width="200" height="288"></canvas>
         </div>
-        <div class="col-sm-4" style="border:1px solid #000000;">       
+        <div class="col-sm-4 well" style="border:1px solid #000000;">       
               
             <canvas id="myCanvas2" width="200" height="288"></canvas>
 
@@ -35,8 +38,6 @@
         </div>
     </footer>
     <!-- /footer -->
-
-
 </body>
 
 </html>
