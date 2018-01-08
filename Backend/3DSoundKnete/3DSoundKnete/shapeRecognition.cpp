@@ -1,4 +1,5 @@
 #include "shapeRecognition.h"
+#include "dsoundknete.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -54,16 +55,31 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		{
 			center[i]=setLabel(dst, "RECT", contours_poly[i]);
 			//create new Data-class and write center[i] and "RECT" in Data-class
+            DSoundKnete::objects.push_back(
+                        DSoundKnete::createNewObjData(
+                            DSoundKnete::RECTANGLE,
+                            center[i])
+                        );
 		}
 		else if (contours_poly[i].size() >= 3 && contours_poly[i].size() < 8)
 		{
 			center[i] = setLabel(dst, "TRI", contours_poly[i]);
 			//create new Data-class and write center[i] and "TRI" in Data-class
+            DSoundKnete::objects.push_back(
+                        DSoundKnete::createNewObjData(
+                            DSoundKnete::TRIANGLE,
+                            center[i])
+                        );
 		}
 		else if (contours_poly[i].size() >4)
 		{
 			center[i] = setLabel(dst, "Circle", contours_poly[i]);
 			//create new Data-class and write center[i] and "CIRCLE" in Data-class
+            DSoundKnete::objects.push_back(
+                        DSoundKnete::createNewObjData(
+                            DSoundKnete::CIRCLE,
+                            center[i])
+                        );
 		}
 		
 	}

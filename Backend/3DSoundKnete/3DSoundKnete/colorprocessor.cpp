@@ -1,4 +1,5 @@
 #include "colorprocessor.h"
+#include "dsoundknete.h"
 #include <math.h>
 #include <iostream>
 
