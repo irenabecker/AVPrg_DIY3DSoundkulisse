@@ -46,22 +46,49 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{7ef04d7d-d6f0-459c-a953-a941b41b40aa}</UniqueIdentifier>
+      <UniqueIdentifier>{62d5c861-b58a-403f-9e6a-9a2e5c7bfd7d}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{ea6f1073-22fa-4bb5-bfd0-6080718e0607}</UniqueIdentifier>
+      <UniqueIdentifier>{45ab508e-1442-4b46-bd06-7c7b8342e41d}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="colorprocessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="dsoundknete.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="position.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opencv\videoengine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opencv\videoformat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\opencv\videowidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_videowidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_videowidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_videoengine.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_videoengine.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_dsoundknete.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -72,44 +99,41 @@
     <ClCompile Include="GeneratedFiles\qrc_dsoundknete.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_videowidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_videowidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="videowidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_videoengine.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_videoengine.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="videoengine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="colorprocessor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="videoformat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="position.cpp">
+    <ClCompile Include="shapeRecognition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="colorprocessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\opencv\cvmattoqimage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <CustomBuild Include="dsoundknete.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="videowidget.h">
+    <ClInclude Include="position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="..\opencv\videoengine.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="videoengine.h">
+    <ClInclude Include="..\opencv\videoformat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\opencv\videoprocessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="..\opencv\videowidget.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <ClInclude Include="GeneratedFiles\ui_dsoundknete.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeRecognition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="dsoundknete.ui">
@@ -120,28 +144,5 @@
     <CustomBuild Include="dsoundknete.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_dsoundknete.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="videoprocessor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="colorprocessor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="videoformat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cvmattoqimage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="position.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="3DSoundKnete.pro" />
   </ItemGroup>
 </Project>

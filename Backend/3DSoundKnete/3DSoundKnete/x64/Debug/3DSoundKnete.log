@@ -1,5 +1,22 @@
-﻿  Moc'ing videoengine.h...
-  moc: D:\github\AVPrg_DIY3DSoundkulisse\3DSoundKnete\3DSoundKnete\videoengine.h: No such file
-  Moc'ing videowidget.h...
-  moc: D:\github\AVPrg_DIY3DSoundkulisse\3DSoundKnete\3DSoundKnete\videowidget.h: No such file
-C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppCommon.targets(171,5): error MSB6006: "cmd.exe" wurde mit dem Code 1 beendet.
+﻿  Moc'ing dsoundknete.h...
+  Uic'ing dsoundknete.ui...
+  moc_dsoundknete.cpp
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+  colorprocessor.cpp
+colorprocessor.cpp(16): warning C4100: "format": Unreferenzierter formaler Parameter
+colorprocessor.cpp(71): warning C4100: "frame": Unreferenzierter formaler Parameter
+colorprocessor.cpp(71): warning C4100: "y": Unreferenzierter formaler Parameter
+colorprocessor.cpp(71): warning C4100: "x": Unreferenzierter formaler Parameter
+  dsoundknete.cpp
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+  main.cpp
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+  Code wird generiert...
+  LINK : ..\x64\Debug\\3DSoundKnete.exe wurde nicht gefunden oder beim letzten inkrementellen Linkvorgang nicht erstellt; vollständiger Link wird durchgeführt.
+  3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\..\x64\Debug\3DSoundKnete.exe
