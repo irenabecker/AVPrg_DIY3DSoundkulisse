@@ -110,7 +110,8 @@ cv::Point ShapeRecognition::setLabel(cv::Mat& im, const std::string label, std::
 	cv::rectangle(im, pt + cv::Point(0, baseline), pt + cv::Point(text.width, -text.height), CV_RGB(255, 255, 255), CV_FILLED);
 	cv::putText(im, label, pt, fontface, scale, CV_RGB(255,0,0), thickness, 8);
 
-	return pt;
+	cv::Point c(r.x + (r.width / 2), r.y + (r.height / 2));
+	return c;
 }
 
 

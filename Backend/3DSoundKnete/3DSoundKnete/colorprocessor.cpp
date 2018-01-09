@@ -29,6 +29,10 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
         //Auslagern in Methode (getColorAtPoint(x,y); && checkForColor(Scalar(bgr)) ???
         int currentX = DSoundKnete::objects[i].position.x;
         int currentY = DSoundKnete::objects[i].position.y;
+		if (currentX < 0 || currentY < 0)
+		{
+			cout << "error" << endl;
+		}
         Vec3b currentPixel = input.at<Vec3b>(currentY, currentX);
         int v = currentPixel[2];
         int s = currentPixel[1];

@@ -98,17 +98,17 @@ void VideoEngine::run()
 
             // queue the image to the gui
             emit sendInputImage(cvMatToQImage(cvFrame));
-
+			cv::Mat shapeProcessedFrame;
             // Process Video Frame
             if (shapeProcessor != 0){
 				//delete/empty Data-class-objects
                 DSoundKnete::emptyDataList();
-				cv::Mat shapeProcessedFrame = shapeProcessor->process(cvFrame);
+				shapeProcessedFrame = shapeProcessor->process(cvFrame);
 				//get list of Data-objects from shapeProcessor
-                cvFrame = colorProcessor->process(shapeProcessedFrame);
+                cvFrame = colorProcessor->process(cvFrame);
             }
 
-            emit sendProcessedImage(cvMatToQImage(cvFrame));
+            emit sendProcessedImage(cvMatToQImage(shapeProcessedFrame));
 
             // check if stopped
             QMutexLocker locker(&mutex);
