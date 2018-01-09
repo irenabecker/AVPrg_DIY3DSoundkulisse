@@ -21,7 +21,7 @@ public:
 	explicit DSoundKnete(QWidget *parent = 0);
     ~DSoundKnete();
 
-    enum COLOR{RED,GREEN,BLUE};
+    enum COLOR{RED,GREEN,BLUE,CALIBRATION_COLOR};
     enum SHAPE{RECTANGLE,CIRCLE,TRIANGLE};
 
     typedef struct{
@@ -45,10 +45,10 @@ private slots:
 
 private:
 	Ui::DSoundKnete *ui;
-	VideoEngine *videoThreadTop;
+    VideoEngine *videoThreadTop;
     VideoEngine *videoThreadFront;
-	ColorProcessor *colorProcessor;
     ShapeRecognition *shapeRecognition;
+    ColorProcessor *colorProcessor;
 	drumstick::rt::MIDIOutput midiOutput;
 	int midichannel;
 };

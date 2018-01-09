@@ -19,6 +19,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 #include "videowidget.h"
 
@@ -38,6 +39,7 @@ public:
     VideoWidget *inputFrameFront;
     VideoWidget *processedFrameFront;
     QLabel *label;
+    QPushButton *calibrateButton;
     QMenuBar *menuBar;
     QMenu *menuVideo;
     QMenu *menuVideodatei_ffnen;
@@ -47,6 +49,7 @@ public:
     {
         if (DSoundKnete->objectName().isEmpty())
             DSoundKnete->setObjectName(QStringLiteral("DSoundKnete"));
+        DSoundKnete->setEnabled(true);
         DSoundKnete->resize(901, 577);
         actionKamera_ffnen = new QAction(DSoundKnete);
         actionKamera_ffnen->setObjectName(QStringLiteral("actionKamera_ffnen"));
@@ -88,10 +91,15 @@ public:
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(270, 350, 101, 16));
+        calibrateButton = new QPushButton(centralWidget);
+        calibrateButton->setObjectName(QStringLiteral("calibrateButton"));
+        calibrateButton->setEnabled(false);
+        calibrateButton->setGeometry(QRect(50, 350, 131, 41));
+        calibrateButton->setCheckable(false);
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 901, 21));
+        menuBar->setGeometry(QRect(0, 0, 901, 20));
         menuVideo = new QMenu(menuBar);
         menuVideo->setObjectName(QStringLiteral("menuVideo"));
         menuVideodatei_ffnen = new QMenu(menuVideo);
@@ -125,6 +133,7 @@ public:
         inputFrameFront->setText(QString());
         processedFrameFront->setText(QString());
         label->setText(QApplication::translate("DSoundKnete", "MIDI Output Device", Q_NULLPTR));
+        calibrateButton->setText(QApplication::translate("DSoundKnete", "Calibrate", Q_NULLPTR));
         menuVideo->setTitle(QApplication::translate("DSoundKnete", "Video", Q_NULLPTR));
         menuVideodatei_ffnen->setTitle(QApplication::translate("DSoundKnete", "Videodatei \303\226ffnen ...", Q_NULLPTR));
         menuPlay->setTitle(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));

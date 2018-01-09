@@ -6,6 +6,7 @@
 #include <string>
 #include "videoengine.h"
 #include "dsoundknete.h"
+#include "calibration.h"
 
 // http://stackoverflow.com/questions/7801522/integrating-opencv-with-larger-programs
 
@@ -104,9 +105,10 @@ void VideoEngine::run()
                 DSoundKnete::emptyDataList();
                 shapeProcessedFrame = shapeProcessor->process(cvFrame);
                 cvFrame = colorProcessor->process(cvFrame);
-                //framecoutn++
-                //if(calibrated && frameCount > sendDataThreshold)
-                //DSoundKnete::SendFile
+                //Only send data to frontend, when camera is calibrated and enough frames have been processed
+                std::cout << Calibration::getCalibrated() << endl;
+                if(Calibration::getCalibrated() && frameNumber % SEND_DATA_FRAME_THRESHOLD == 0)
+                    DSoundKnete::sendData();
             }
 
             emit sendProcessedImage(cvMatToQImage(shapeProcessedFrame));

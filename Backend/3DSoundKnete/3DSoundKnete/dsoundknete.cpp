@@ -1,6 +1,7 @@
 #include <QFileDialog>
 #include "dsoundknete.h"
 #include "ui_dsoundknete.h"
+#include "calibration.h"
 
 std::vector<DSoundKnete::objData> DSoundKnete::objects(5);
 
@@ -10,7 +11,7 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 	, videoThreadTop(new VideoEngine)
     , videoThreadFront(new VideoEngine)
 	, colorProcessor(new ColorProcessor)
-    ,shapeRecognition(new ShapeRecognition)
+    , shapeRecognition(new ShapeRecognition)
 {
     ui->setupUi(this);
 	videoThreadTop->setProcessor(colorProcessor,shapeRecognition);
@@ -51,8 +52,9 @@ DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point)
 
     temp.objectShape = shape;
     temp.absolutePosition = point;
-    //TODO:
-    //calculate relative position
+
+    if(Calibration::getCalibrated())
+        temp.relativePosition = Calibration::calcRelative(temp.absolutePosition.x, temp.absolutePosition.y);
 
     return temp;
 }
@@ -66,7 +68,15 @@ void DSoundKnete::sendData()
 {
 	for (int i = 0; i < objects.size(); i++)
 	{
-
+        /*
+         * Colors: 0 = RED, 1 = GREEN, 2 = BLUE
+         * Shapes: 0 = RECTANGLE, 1 = CIRCLE, 2 = TRIANGLE
+         */
+        //Blauer Kreis, Blaues Rechteck, rotes dreieck, roter kreis
+        std::cout << "i: " << i << ", Shape: " << objects[i].objectShape
+                  << ", AbsPoint: " << objects[i].absolutePosition
+                  << ", RelPoint: " << objects[i].relativePosition
+                  << ", Color: " << objects[i].objectColor  << endl;
 	}
 }
 
@@ -93,6 +103,7 @@ void DSoundKnete::on_actionPlay_triggered()
 {
 	videoThreadTop->start();
     videoThreadFront->start();
+    ui->calibrateButton->setEnabled(true);
 }
 
 void DSoundKnete::on_actionKamera_ffnen_triggered()
@@ -102,6 +113,6 @@ void DSoundKnete::on_actionKamera_ffnen_triggered()
 
 void DSoundKnete::on_comboBox_activated(const QString &arg1)
 {
-	midiOutput.open(arg1);
+    midiOutput.open(arg1);
 }
 

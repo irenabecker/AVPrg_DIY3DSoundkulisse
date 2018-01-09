@@ -35,6 +35,8 @@ private:
     VideoProcessor* shapeProcessor;
 	VideoProcessor* colorProcessor;
     bool usingCamera;
+    const int SEND_DATA_FRAME_THRESHOLD = 24;
+    int currentFrameCount;
 };
 
 
