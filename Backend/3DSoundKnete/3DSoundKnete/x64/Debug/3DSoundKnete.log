@@ -1,1 +1,6 @@
-﻿  3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\..\x64\Debug\3DSoundKnete.exe
+﻿  dsoundknete.cpp
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+dsoundknete.cpp(93): warning C4100: "arg1": Unreferenzierter formaler Parameter
+  3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\..\x64\Debug\3DSoundKnete.exe

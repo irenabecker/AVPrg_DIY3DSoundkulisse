@@ -112,7 +112,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-<<<<<<< HEAD
+<!--<<<<<<< HEAD
    <widget class="QSlider" name="hmax">
     <property name="geometry">
      <rect>
@@ -295,7 +295,7 @@
     <property name="text">
      <string>255</string>
     </property>
-   </widget>
+   </widget>-->
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -309,8 +309,17 @@
      <string>MIDI Output Device</string>
     </property>
    </widget>
-=======
->>>>>>> 032ddc56fe7611807f960f332a9a3b51f94a0a16
+    <!--<widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+        <rect>
+          <x>150</x>
+          <y>20</y>
+          <width>181</width>
+          <height>22</height>
+        </rect>
+      </property>
+    </widget>-->
+    
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

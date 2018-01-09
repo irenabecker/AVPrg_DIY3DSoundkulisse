@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -36,22 +37,7 @@ public:
     VideoWidget *processedFrameTop;
     VideoWidget *inputFrameFront;
     VideoWidget *processedFrameFront;
-<<<<<<< HEAD
-    QSlider *hmax;
-    QSlider *smin;
-    QSlider *hmin;
-    QSlider *smax;
-    QSlider *vmin;
-    QSlider *vmax;
-    QLabel *hminLabel;
-    QLabel *hmaxLabel;
-    QLabel *sminLabel;
-    QLabel *smaxLabel;
-    QLabel *vminLabel;
-    QLabel *vmaxLabel;
     QLabel *label;
-=======
->>>>>>> 032ddc56fe7611807f960f332a9a3b51f94a0a16
     QMenuBar *menuBar;
     QMenu *menuVideo;
     QMenu *menuVideodatei_ffnen;
@@ -99,63 +85,9 @@ public:
         processedFrameFront->setFrameShape(QFrame::Box);
         processedFrameFront->setScaledContents(false);
         processedFrameFront->setAlignment(Qt::AlignCenter);
-<<<<<<< HEAD
-        hmax = new QSlider(centralWidget);
-        hmax->setObjectName(QStringLiteral("hmax"));
-        hmax->setGeometry(QRect(40, 360, 160, 16));
-        hmax->setMaximum(255);
-        hmax->setOrientation(Qt::Horizontal);
-        smin = new QSlider(centralWidget);
-        smin->setObjectName(QStringLiteral("smin"));
-        smin->setGeometry(QRect(40, 400, 160, 16));
-        smin->setMaximum(255);
-        smin->setOrientation(Qt::Horizontal);
-        hmin = new QSlider(centralWidget);
-        hmin->setObjectName(QStringLiteral("hmin"));
-        hmin->setGeometry(QRect(40, 380, 160, 16));
-        hmin->setMaximum(255);
-        hmin->setValue(255);
-        hmin->setOrientation(Qt::Horizontal);
-        smax = new QSlider(centralWidget);
-        smax->setObjectName(QStringLiteral("smax"));
-        smax->setGeometry(QRect(40, 420, 160, 16));
-        smax->setMaximum(255);
-        smax->setValue(255);
-        smax->setOrientation(Qt::Horizontal);
-        vmin = new QSlider(centralWidget);
-        vmin->setObjectName(QStringLiteral("vmin"));
-        vmin->setGeometry(QRect(40, 440, 160, 16));
-        vmin->setMaximum(255);
-        vmin->setOrientation(Qt::Horizontal);
-        vmax = new QSlider(centralWidget);
-        vmax->setObjectName(QStringLiteral("vmax"));
-        vmax->setGeometry(QRect(40, 460, 160, 16));
-        vmax->setMaximum(255);
-        vmax->setValue(255);
-        vmax->setOrientation(Qt::Horizontal);
-        hminLabel = new QLabel(centralWidget);
-        hminLabel->setObjectName(QStringLiteral("hminLabel"));
-        hminLabel->setGeometry(QRect(220, 380, 47, 13));
-        hmaxLabel = new QLabel(centralWidget);
-        hmaxLabel->setObjectName(QStringLiteral("hmaxLabel"));
-        hmaxLabel->setGeometry(QRect(220, 360, 47, 13));
-        sminLabel = new QLabel(centralWidget);
-        sminLabel->setObjectName(QStringLiteral("sminLabel"));
-        sminLabel->setGeometry(QRect(220, 400, 47, 13));
-        smaxLabel = new QLabel(centralWidget);
-        smaxLabel->setObjectName(QStringLiteral("smaxLabel"));
-        smaxLabel->setGeometry(QRect(220, 420, 47, 13));
-        vminLabel = new QLabel(centralWidget);
-        vminLabel->setObjectName(QStringLiteral("vminLabel"));
-        vminLabel->setGeometry(QRect(220, 440, 47, 13));
-        vmaxLabel = new QLabel(centralWidget);
-        vmaxLabel->setObjectName(QStringLiteral("vmaxLabel"));
-        vmaxLabel->setGeometry(QRect(220, 460, 47, 13));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(270, 350, 101, 16));
-=======
->>>>>>> 032ddc56fe7611807f960f332a9a3b51f94a0a16
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -192,16 +124,7 @@ public:
         processedFrameTop->setText(QString());
         inputFrameFront->setText(QString());
         processedFrameFront->setText(QString());
-<<<<<<< HEAD
-        hminLabel->setText(QApplication::translate("DSoundKnete", "255", Q_NULLPTR));
-        hmaxLabel->setText(QApplication::translate("DSoundKnete", "0", Q_NULLPTR));
-        sminLabel->setText(QApplication::translate("DSoundKnete", "0", Q_NULLPTR));
-        smaxLabel->setText(QApplication::translate("DSoundKnete", "255", Q_NULLPTR));
-        vminLabel->setText(QApplication::translate("DSoundKnete", "0", Q_NULLPTR));
-        vmaxLabel->setText(QApplication::translate("DSoundKnete", "255", Q_NULLPTR));
         label->setText(QApplication::translate("DSoundKnete", "MIDI Output Device", Q_NULLPTR));
-=======
->>>>>>> 032ddc56fe7611807f960f332a9a3b51f94a0a16
         menuVideo->setTitle(QApplication::translate("DSoundKnete", "Video", Q_NULLPTR));
         menuVideodatei_ffnen->setTitle(QApplication::translate("DSoundKnete", "Videodatei \303\226ffnen ...", Q_NULLPTR));
         menuPlay->setTitle(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));
