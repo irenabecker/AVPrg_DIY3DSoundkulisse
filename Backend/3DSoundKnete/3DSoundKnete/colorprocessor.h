@@ -13,8 +13,8 @@ public:
     cv::Mat HSV;
 
  private:
-    int getHueAtPoint(int x, int y);
-    int checkForColor(int hueToCheck);
+    cv::Vec3b getHSVAtPoint(int x, int y);
+    int checkForColor(int hueToCheck, int satToCeck, int valToCheck);
 };
 
 #endif // COLORPROCESSOR_H

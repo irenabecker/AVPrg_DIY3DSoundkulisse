@@ -106,7 +106,6 @@ void VideoEngine::run()
                 shapeProcessedFrame = shapeProcessor->process(cvFrame);
                 cvFrame = colorProcessor->process(cvFrame);
                 //Only send data to frontend, when camera is calibrated and enough frames have been processed
-                std::cout << Calibration::getCalibrated() << endl;
                 if(Calibration::getCalibrated() && frameNumber % SEND_DATA_FRAME_THRESHOLD == 0)
                     DSoundKnete::sendData();
             }

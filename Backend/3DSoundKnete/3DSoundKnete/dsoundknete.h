@@ -34,14 +34,15 @@ public:
     static std::vector<objData> objects;
     static void emptyDataList();
     static objData createNewObjData(SHAPE shape, cv::Point point);
-	static void sendData();
+    static void sendData();
 
 private slots:
 	void on_actionVideo_Top_triggered();
 	void on_actionVideo_Front_triggered();
     void on_actionKamera_ffnen_triggered();
 	void on_actionPlay_triggered();
-	void on_comboBox_activated(const QString &arg1);
+    void on_comboBox_activated(const QString &arg1);
+    void on_calibrateButton_clicked();
 
 private:
 	Ui::DSoundKnete *ui;

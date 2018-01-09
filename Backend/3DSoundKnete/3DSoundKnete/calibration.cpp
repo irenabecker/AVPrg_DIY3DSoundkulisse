@@ -22,7 +22,7 @@ void Calibration::calibrate()
 {
     //make sure the flag is set to false when the process starts
     calibrated = false;
-std::cout << "calibrate" << endl;
+    std::cout << "calibrate" << endl;
     //loop through all shapes and store calibrationObjects in vector<Point>
     std::vector<cv::Point> calibrationObjectPositions(0);
     for (int i = 0; i < DSoundKnete::objects.size(); i++)
@@ -32,6 +32,7 @@ std::cout << "calibrate" << endl;
         {
             calibrationObjectPositions.push_back(DSoundKnete::objects.at(i).absolutePosition);
         }
+        std::cout << "shape: " << DSoundKnete::objects.at(i).objectShape << " col:" << DSoundKnete::objects.at(i).objectColor << " | "<< endl;
     }
 
     //< 2 calibrationobjects: room can't be calced.

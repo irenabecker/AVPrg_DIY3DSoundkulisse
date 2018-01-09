@@ -23,21 +23,23 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
     {
         int currentX = DSoundKnete::objects[i].absolutePosition.x;
         int currentY = DSoundKnete::objects[i].absolutePosition.y;
-        int h = getHueAtPoint(currentX, currentY);
-        DSoundKnete::objects[i].objectColor = (DSoundKnete::COLOR) checkForColor(h);
+        Vec3b hsv = getHSVAtPoint(currentX, currentY);
+        DSoundKnete::objects[i].objectColor = (DSoundKnete::COLOR) checkForColor(hsv[0],hsv[1],hsv[2]);
     }
 
    return input;
 }
 
-int ColorProcessor::getHueAtPoint(int x, int y)
+Vec3b ColorProcessor::getHSVAtPoint(int x, int y)
 {
-    int h = HSV.at<Vec3b>(y,x)[0];
-    return h;
+    Vec3b temp = HSV.at<Vec3b>(y,x);
+    return temp;
 }
 
-int ColorProcessor::checkForColor(int hueToCheck)
+int ColorProcessor::checkForColor(int hueToCheck, int satToCeck, int valToCheck)
 {
+    if(valToCheck < 40)
+        return DSoundKnete::CALIBRATION_COLOR;
     if(hueToCheck > 155 && hueToCheck < 180 || hueToCheck > 0 && hueToCheck < 15)
         return DSoundKnete::RED;
     if(hueToCheck > 105 && hueToCheck < 155)

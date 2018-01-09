@@ -116,3 +116,7 @@ void DSoundKnete::on_comboBox_activated(const QString &arg1)
     midiOutput.open(arg1);
 }
 
+void DSoundKnete::on_calibrateButton_clicked()
+{
+    Calibration::calibrate();
+}

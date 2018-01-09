@@ -8,7 +8,7 @@ class Calibration {
 public:
     Calibration();
     static cv::Point calcRelative(int globalX, int globalY);
-    void calibrate();
+    static void calibrate();
     static bool getCalibrated() {return calibrated;}
 private:
     static int boardWidth, boardHeight;
