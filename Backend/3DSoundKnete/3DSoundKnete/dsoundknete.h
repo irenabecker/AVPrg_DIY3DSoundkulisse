@@ -7,7 +7,7 @@
 #include "videoengine.h"
 #include "colorprocessor.h"
 #include "shapeRecognition.h"
-//#include "midioutput.h"
+#include "midioutput.h"
 
 namespace Ui {
 	class DSoundKnete;

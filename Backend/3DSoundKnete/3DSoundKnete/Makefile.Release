@@ -14,10 +14,10 @@ CXX           = cl
 DEFINES       = -DUNICODE -DWIN32 -DWIN64 -DWIN64 -DQT_DLL -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DNDEBUG
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -O2 -MD -W3 -w44456 -w44457 -w44458 $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:strictStrings -Zc:throwingNew -O2 -MD -GR -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
-INCPATH       = -I. -IGeneratedFiles -I. -IGeneratedFiles\Debug -I..\opencv -I. -I..\opencv -IC:\OpenCV\opencv\build\include -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtOpenGL -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtANGLE -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore -IGeneratedFiles\release -IGeneratedFiles -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc2015 
+INCPATH       = -I. -IGeneratedFiles -I. -IGeneratedFiles\Debug -I..\opencv -I. -I..\opencv -IC:\OpenCV\opencv\build\include -I..\drumstick -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtOpenGL -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtANGLE -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore -IGeneratedFiles\release -IGeneratedFiles -IC:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc2015 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\qtmain.lib shell32.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib opengl32.lib glu32.lib /LIBPATH:C:\OpenCV\opencv\build\x64\vc14\lib C:\OpenCV\opencv\build\x64\vc14\lib\opencv_world310.lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5OpenGL.lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Widgets.lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Gui.lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Core.lib 
+LIBS          = /LIBPATH:C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\qtmain.lib shell32.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib opengl32.lib glu32.lib /LIBPATH:C:\OpenCV\opencv\build\x64\vc14\lib C:\OpenCV\opencv\build\x64\vc14\lib\opencv_world310.lib winmm.lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5OpenGL.lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Widgets.lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Gui.lib C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Core.lib 
 QMAKE         = C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -50,10 +50,14 @@ SOURCES       = main.cpp \
 		shapeRecognition.cpp \
 		..\opencv\videoengine.cpp \
 		..\opencv\videowidget.cpp \
-		..\opencv\videoformat.cpp GeneratedFiles\qrc_dsoundknete.cpp \
+		..\opencv\videoformat.cpp \
+		..\drumstick\winmidiinput.cpp \
+		..\drumstick\winmidioutput.cpp GeneratedFiles\qrc_dsoundknete.cpp \
 		GeneratedFiles\release\moc_dsoundknete.cpp \
 		GeneratedFiles\release\moc_videoengine.cpp \
-		GeneratedFiles\release\moc_videowidget.cpp
+		GeneratedFiles\release\moc_videowidget.cpp \
+		GeneratedFiles\release\moc_midiinput.cpp \
+		GeneratedFiles\release\moc_midioutput.cpp
 OBJECTS       = release\main.obj \
 		release\dsoundknete.obj \
 		release\colorprocessor.obj \
@@ -62,10 +66,14 @@ OBJECTS       = release\main.obj \
 		release\videoengine.obj \
 		release\videowidget.obj \
 		release\videoformat.obj \
+		release\winmidiinput.obj \
+		release\winmidioutput.obj \
 		release\qrc_dsoundknete.obj \
 		release\moc_dsoundknete.obj \
 		release\moc_videoengine.obj \
-		release\moc_videowidget.obj
+		release\moc_videowidget.obj \
+		release\moc_midiinput.obj \
+		release\moc_midioutput.obj
 
 DIST          =  dsoundknete.h \
 		colorprocessor.h \
@@ -76,14 +84,18 @@ DIST          =  dsoundknete.h \
 		..\opencv\cvmattoqimage.h \
 		..\opencv\videoprocessor.h \
 		..\opencv\videoformat.h \
-		..\opencv\cvmattoqimage.h main.cpp \
+		..\opencv\cvmattoqimage.h \
+		..\drumstick\midiinput.h \
+		..\drumstick\midioutput.h main.cpp \
 		dsoundknete.cpp \
 		colorprocessor.cpp \
 		position.cpp \
 		shapeRecognition.cpp \
 		..\opencv\videoengine.cpp \
 		..\opencv\videowidget.cpp \
-		..\opencv\videoformat.cpp
+		..\opencv\videoformat.cpp \
+		..\drumstick\winmidiinput.cpp \
+		..\drumstick\winmidioutput.cpp
 QMAKE_TARGET  = 3DSoundKnete
 DESTDIR        = ..\x64\Debug\ #avoid trailing-slash linebreak
 TARGET         = 3DSoundKnete.exe
@@ -193,6 +205,26 @@ DESTDIR_TARGET = ..\x64\Debug\3DSoundKnete.exe
 	$<
 <<
 
+{..\drumstick}.cpp{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{..\drumstick}.cc{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{..\drumstick}.cxx{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{..\drumstick}.c{release\}.obj::
+	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
 ####### Build rules
 
 first: all
@@ -209,10 +241,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) 3DSoundKnete.zip $(SOURCES) $(DIST) 3DSoundKnete.pro C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\spec_pre.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\angle.conf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\msvc-base.conf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\qconfig.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_labscontrols_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_labstemplates_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_platformsupport_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\qt_functions.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\qt_config.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\qt_config.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc2015\qmake.conf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\spec_post.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\default_pre.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\default_pre.prf 3DSoundKnete.pri ..\opencv\opencv.pri ..\opencv\videoengine.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\resolve_config.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\default_post.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\build_pass.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\qml_debug.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\rtti.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\precompile_header.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\warn_on.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\qt.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\resources.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\moc.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\uic.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\file_copies.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\windows.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\exceptions.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\yacc.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\lex.prf 3DSoundKnete.pro dsoundknete.qrc C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\qtmain.prl C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5OpenGL.prl C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Widgets.prl C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Gui.prl C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Core.prl   dsoundknete.qrc dsoundknete.h colorprocessor.h position.h shapeRecognition.h ..\opencv\videoengine.h ..\opencv\videowidget.h ..\opencv\cvmattoqimage.h ..\opencv\videoprocessor.h ..\opencv\videoformat.h ..\opencv\cvmattoqimage.h main.cpp dsoundknete.cpp colorprocessor.cpp position.cpp shapeRecognition.cpp ..\opencv\videoengine.cpp ..\opencv\videowidget.cpp ..\opencv\videoformat.cpp dsoundknete.ui    
+	$(ZIP) 3DSoundKnete.zip $(SOURCES) $(DIST) 3DSoundKnete.pro C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\spec_pre.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\angle.conf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\msvc-base.conf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\qconfig.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_labscontrols_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_labstemplates_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_platformsupport_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\qt_functions.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\qt_config.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\qt_config.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc2015\qmake.conf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\spec_post.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\default_pre.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\default_pre.prf 3DSoundKnete.pri ..\opencv\opencv.pri ..\opencv\videoengine.pri ..\drumstick\drumstick.pro C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\resolve_config.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\default_post.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\build_pass.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\qml_debug.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\rtti.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\precompile_header.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\warn_on.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\qt.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\resources.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\moc.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\uic.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\file_copies.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\windows.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\exceptions.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\yacc.prf C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\lex.prf 3DSoundKnete.pro dsoundknete.qrc C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\qtmain.prl C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5OpenGL.prl C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Widgets.prl C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Gui.prl C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\lib\Qt5Core.prl   dsoundknete.qrc dsoundknete.h colorprocessor.h position.h shapeRecognition.h ..\opencv\videoengine.h ..\opencv\videowidget.h ..\opencv\cvmattoqimage.h ..\opencv\videoprocessor.h ..\opencv\videoformat.h ..\opencv\cvmattoqimage.h ..\drumstick\midiinput.h ..\drumstick\midioutput.h main.cpp dsoundknete.cpp colorprocessor.cpp position.cpp shapeRecognition.cpp ..\opencv\videoengine.cpp ..\opencv\videowidget.cpp ..\opencv\videoformat.cpp ..\drumstick\winmidiinput.cpp ..\drumstick\winmidioutput.cpp dsoundknete.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.obj release\dsoundknete.obj release\colorprocessor.obj release\position.obj release\shapeRecognition.obj release\videoengine.obj release\videowidget.obj release\videoformat.obj release\qrc_dsoundknete.obj release\moc_dsoundknete.obj release\moc_videoengine.obj release\moc_videowidget.obj
+	-$(DEL_FILE) release\main.obj release\dsoundknete.obj release\colorprocessor.obj release\position.obj release\shapeRecognition.obj release\videoengine.obj release\videowidget.obj release\videoformat.obj release\winmidiinput.obj release\winmidioutput.obj release\qrc_dsoundknete.obj release\moc_dsoundknete.obj release\moc_videoengine.obj release\moc_videowidget.obj release\moc_midiinput.obj release\moc_midioutput.obj
 	-$(DEL_FILE) ..\x64\Debug\3DSoundKnete.exp
 
 distclean: clean 
@@ -236,9 +268,9 @@ compiler_rcc_clean:
 GeneratedFiles\qrc_dsoundknete.cpp: dsoundknete.qrc
 	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\rcc.exe -name dsoundknete dsoundknete.qrc -o GeneratedFiles\qrc_dsoundknete.cpp
 
-compiler_moc_header_make_all: GeneratedFiles\release\moc_dsoundknete.cpp GeneratedFiles\release\moc_videoengine.cpp GeneratedFiles\release\moc_videowidget.cpp
+compiler_moc_header_make_all: GeneratedFiles\release\moc_dsoundknete.cpp GeneratedFiles\release\moc_videoengine.cpp GeneratedFiles\release\moc_videowidget.cpp GeneratedFiles\release\moc_midiinput.cpp GeneratedFiles\release\moc_midioutput.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) GeneratedFiles\release\moc_dsoundknete.cpp GeneratedFiles\release\moc_videoengine.cpp GeneratedFiles\release\moc_videowidget.cpp
+	-$(DEL_FILE) GeneratedFiles\release\moc_dsoundknete.cpp GeneratedFiles\release\moc_videoengine.cpp GeneratedFiles\release\moc_videowidget.cpp GeneratedFiles\release\moc_midiinput.cpp GeneratedFiles\release\moc_midioutput.cpp
 GeneratedFiles\release\moc_dsoundknete.cpp: C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QMainWindow \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qmainwindow.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qwidget.h \
@@ -409,7 +441,7 @@ GeneratedFiles\release\moc_dsoundknete.cpp: C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\incl
 		colorprocessor.h \
 		shapeRecognition.h \
 		dsoundknete.h
-	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles/Debug -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/OpenCV/opencv/build/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtGui -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtCore dsoundknete.h -o GeneratedFiles\release\moc_dsoundknete.cpp
+	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles/Debug -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/OpenCV/opencv/build/include -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtGui -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtCore dsoundknete.h -o GeneratedFiles\release\moc_dsoundknete.cpp
 
 GeneratedFiles\release\moc_videoengine.cpp: C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QThread \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qthread.h \
@@ -558,7 +590,7 @@ GeneratedFiles\release\moc_videoengine.cpp: C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\incl
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qset.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontiguouscache.h \
 		..\opencv\videoengine.h
-	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles/Debug -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/OpenCV/opencv/build/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtGui -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtCore ..\opencv\videoengine.h -o GeneratedFiles\release\moc_videoengine.cpp
+	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles/Debug -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/OpenCV/opencv/build/include -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtGui -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtCore ..\opencv\videoengine.h -o GeneratedFiles\release\moc_videoengine.cpp
 
 GeneratedFiles\release\moc_videowidget.cpp: C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QLabel \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qlabel.h \
@@ -668,7 +700,156 @@ GeneratedFiles\release\moc_videowidget.cpp: C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\incl
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\QImage \
 		..\opencv\videowidget.h
-	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles/Debug -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/OpenCV/opencv/build/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtGui -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtCore ..\opencv\videowidget.h -o GeneratedFiles\release\moc_videowidget.cpp
+	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles/Debug -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/OpenCV/opencv/build/include -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtGui -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtCore ..\opencv\videowidget.h -o GeneratedFiles\release\moc_videowidget.cpp
+
+GeneratedFiles\release\moc_midiinput.cpp: C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QObject \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfeatures.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypetraits.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qisenum.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_gcc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv7.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv6.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv5.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_ia64.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_x86.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_unix.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QString \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QStringList \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QSettings \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsettings.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		..\drumstick\midioutput.h \
+		..\drumstick\midiinput.h
+	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles/Debug -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/OpenCV/opencv/build/include -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtGui -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtCore ..\drumstick\midiinput.h -o GeneratedFiles\release\moc_midiinput.cpp
+
+GeneratedFiles\release\moc_midioutput.cpp: C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QObject \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfeatures.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypetraits.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qisenum.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_gcc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv7.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv6.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv5.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_ia64.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_x86.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_unix.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QString \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QStringList \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QSettings \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsettings.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		..\drumstick\midioutput.h
+	C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete/GeneratedFiles/Debug -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -IC:/OpenCV/opencv/build/include -IC:/Users/Kevin/Documents/GitHub/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtGui -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.6.3/5.6.3/msvc2015_64/include/QtCore ..\drumstick\midioutput.h -o GeneratedFiles\release\moc_midioutput.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1165,13 +1346,8 @@ release\dsoundknete.obj: dsoundknete.cpp C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qinputmethod.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QButtonGroup \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qbuttongroup.h \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QHeaderView \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qframe.h \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qabstractitemmodel.h \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QComboBox \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qcombobox.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qabstractitemdelegate.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qstyleoption.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qabstractspinbox.h \
@@ -1182,13 +1358,19 @@ release\dsoundknete.obj: dsoundknete.cpp C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qstyle.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qtabbar.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qrubberband.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qframe.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QHeaderView \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qheaderview.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qitemselectionmodel.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QLabel \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qlabel.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QMenu \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qmenu.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QMenuBar \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qmenubar.h \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QSlider \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QWidget \
 		../opencv/videowidget.h
 
@@ -1244,7 +1426,124 @@ release\colorprocessor.obj: colorprocessor.cpp colorprocessor.h \
 		C:\OpenCV\opencv\build\include\opencv2\imgcodecs\imgcodecs_c.h \
 		C:\OpenCV\opencv\build\include\opencv2\videoio\videoio_c.h \
 		C:\OpenCV\opencv\build\include\opencv2\ml.hpp \
-		../opencv/videoformat.h
+		../opencv/videoformat.h \
+		dsoundknete.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QMainWindow \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qmainwindow.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfeatures.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypetraits.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qisenum.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_gcc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv7.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv6.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv5.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_ia64.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_x86.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_unix.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpaintdevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpalette.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qbrush.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qmatrix.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpolygon.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qline.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qtransform.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpainterpath.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qimage.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpixelformat.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpixmap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfontinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qcursor.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qicon.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\QImage \
+		../opencv/videoengine.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QThread \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qthread.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QMutex \
+		../opencv/cvmattoqimage.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\QPixmap \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QDebug \
+		shapeRecognition.h
 
 release\position.obj: position.cpp position.h
 
@@ -1300,7 +1599,124 @@ release\shapeRecognition.obj: shapeRecognition.cpp shapeRecognition.h \
 		C:\OpenCV\opencv\build\include\opencv2\videoio\videoio_c.h \
 		C:\OpenCV\opencv\build\include\opencv2\ml.hpp \
 		../opencv/videoprocessor.h \
-		../opencv/videoformat.h
+		../opencv/videoformat.h \
+		dsoundknete.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QMainWindow \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qmainwindow.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfeatures.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypetraits.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qisenum.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_gcc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv7.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv6.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv5.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_ia64.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_x86.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_unix.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpaintdevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpalette.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qbrush.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qmatrix.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpolygon.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qline.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qtransform.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpainterpath.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qimage.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpixelformat.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpixmap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfontinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qcursor.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qicon.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\QImage \
+		../opencv/videoengine.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QThread \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qthread.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QMutex \
+		../opencv/cvmattoqimage.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\QPixmap \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QDebug \
+		colorprocessor.h
 
 release\videoengine.obj: ..\opencv\videoengine.cpp C:\OpenCV\opencv\build\include\opencv2\opencv.hpp \
 		C:\OpenCV\opencv\build\include\opencv2\core.hpp \
@@ -1454,7 +1870,28 @@ release\videoengine.obj: ..\opencv\videoengine.cpp C:\OpenCV\opencv\build\includ
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\QPixmap \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpixmap.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsharedpointer.h \
-		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsharedpointer_impl.h
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
+		dsoundknete.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QMainWindow \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qmainwindow.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qpalette.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qbrush.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qfontinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qcursor.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtGui\qicon.h \
+		colorprocessor.h \
+		shapeRecognition.h
 
 release\videowidget.obj: ..\opencv\videowidget.cpp ../opencv/videowidget.h \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtWidgets\QLabel \
@@ -1618,6 +2055,159 @@ release\videoformat.obj: ..\opencv\videoformat.cpp ../opencv/videoformat.h \
 		C:\OpenCV\opencv\build\include\opencv2\videoio\videoio_c.h \
 		C:\OpenCV\opencv\build\include\opencv2\ml.hpp
 
+release\winmidiinput.obj: ..\drumstick\winmidiinput.cpp C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QString \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfeatures.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypetraits.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qisenum.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_gcc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv7.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv6.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv5.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_ia64.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_x86.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_unix.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QMap \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QDebug \
+		../drumstick/midiinput.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QObject \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QStringList \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QSettings \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsettings.h \
+		../drumstick/midioutput.h
+
+release\winmidioutput.obj: ..\drumstick\winmidioutput.cpp C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QDebug \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qfeatures.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtypetraits.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qisenum.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_gcc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv7.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv6.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_armv5.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_ia64.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_x86.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qatomic_unix.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QStringList \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QByteArray \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QVarLengthArray \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qmath.h \
+		../drumstick/midioutput.h \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QObject \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QString \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\QSettings \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\include\QtCore\qsettings.h
+
 release\qrc_dsoundknete.obj: GeneratedFiles\qrc_dsoundknete.cpp 
 
 release\moc_dsoundknete.obj: GeneratedFiles\release\moc_dsoundknete.cpp 
@@ -1625,6 +2215,10 @@ release\moc_dsoundknete.obj: GeneratedFiles\release\moc_dsoundknete.cpp
 release\moc_videoengine.obj: GeneratedFiles\release\moc_videoengine.cpp 
 
 release\moc_videowidget.obj: GeneratedFiles\release\moc_videowidget.cpp 
+
+release\moc_midiinput.obj: GeneratedFiles\release\moc_midiinput.cpp 
+
+release\moc_midioutput.obj: GeneratedFiles\release\moc_midioutput.cpp 
 
 ####### Install
 

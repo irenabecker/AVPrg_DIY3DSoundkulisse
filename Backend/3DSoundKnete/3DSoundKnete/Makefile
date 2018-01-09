@@ -199,6 +199,7 @@ Makefile: 3DSoundKnete.pro C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc201
 		3DSoundKnete.pri \
 		..\opencv\opencv.pri \
 		..\opencv\videoengine.pri \
+		..\drumstick\drumstick.pro \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\resolve_config.prf \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\exclusive_builds_post.prf \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\default_post.prf \
@@ -350,6 +351,7 @@ C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\win32\default_pre.prf:
 3DSoundKnete.pri:
 ..\opencv\opencv.pri:
 ..\opencv\videoengine.pri:
+..\drumstick\drumstick.pro:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\resolve_config.prf:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\exclusive_builds_post.prf:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\features\default_post.prf:
