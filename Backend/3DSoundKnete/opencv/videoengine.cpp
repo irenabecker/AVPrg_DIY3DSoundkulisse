@@ -101,11 +101,12 @@ void VideoEngine::run()
 			cv::Mat shapeProcessedFrame;
             // Process Video Frame
             if (shapeProcessor != 0){
-				//delete/empty Data-class-objects
                 DSoundKnete::emptyDataList();
-				shapeProcessedFrame = shapeProcessor->process(cvFrame);
-				//get list of Data-objects from shapeProcessor
+                shapeProcessedFrame = shapeProcessor->process(cvFrame);
                 cvFrame = colorProcessor->process(cvFrame);
+                //framecoutn++
+                //if(calibrated && frameCount > sendDataThreshold)
+                //DSoundKnete::SendFile
             }
 
             emit sendProcessedImage(cvMatToQImage(shapeProcessedFrame));

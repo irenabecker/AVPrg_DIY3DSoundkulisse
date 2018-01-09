@@ -13,6 +13,7 @@ Calibration::Calibration()
  */
 Calibration::calibrate()
 {
+
     boardWidth = globalXReferences[1] - globalXReferences[0];
     boardHeight = globalYReferences[1] - globalYReferences[0];
 }

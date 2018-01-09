@@ -51,6 +51,8 @@ DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point)
 
     temp.objectShape = shape;
     temp.absolutePosition = point;
+    //TODO:
+    //calculate relative position
 
     return temp;
 }
