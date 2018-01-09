@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    width: 33%;
+    height: 33%;
+    float: left;
+}
+
+#sphereb {
+    background: #0000F4;
+}
+
+#spherer {
+    background: #FA0000;
+}
+
+#sphereg {
+    background: #00F000;
+}
+
+#coneb {
+    background: #0000A5;
+}
+
+#coner {
+    background: #C10000;
+}
+
+#coneg {
+    background: #00AB00;
+}
+
+#cubeb {
+    background: #000099;
+}
+
+#cuber {
+    background: #870000;
+}
+
+#cubeg {
+    background: #009D00;
+}
