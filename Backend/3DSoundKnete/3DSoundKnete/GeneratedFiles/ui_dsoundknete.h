@@ -15,11 +15,9 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QSlider>
 #include <QtWidgets/QWidget>
 #include "videowidget.h"
 
@@ -38,6 +36,7 @@ public:
     VideoWidget *processedFrameTop;
     VideoWidget *inputFrameFront;
     VideoWidget *processedFrameFront;
+<<<<<<< HEAD
     QSlider *hmax;
     QSlider *smin;
     QSlider *hmin;
@@ -51,6 +50,8 @@ public:
     QLabel *vminLabel;
     QLabel *vmaxLabel;
     QLabel *label;
+=======
+>>>>>>> 032ddc56fe7611807f960f332a9a3b51f94a0a16
     QMenuBar *menuBar;
     QMenu *menuVideo;
     QMenu *menuVideodatei_ffnen;
@@ -98,6 +99,7 @@ public:
         processedFrameFront->setFrameShape(QFrame::Box);
         processedFrameFront->setScaledContents(false);
         processedFrameFront->setAlignment(Qt::AlignCenter);
+<<<<<<< HEAD
         hmax = new QSlider(centralWidget);
         hmax->setObjectName(QStringLiteral("hmax"));
         hmax->setGeometry(QRect(40, 360, 160, 16));
@@ -152,6 +154,8 @@ public:
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(270, 350, 101, 16));
+=======
+>>>>>>> 032ddc56fe7611807f960f332a9a3b51f94a0a16
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -173,17 +177,6 @@ public:
         menuPlay->addAction(actionPlay);
 
         retranslateUi(DSoundKnete);
-        QObject::connect(hmax, SIGNAL(valueChanged(int)), hmax, SLOT(setValue(int)));
-        QObject::connect(smax, SIGNAL(valueChanged(int)), smax, SLOT(setValue(int)));
-        QObject::connect(smin, SIGNAL(valueChanged(int)), smin, SLOT(setValue(int)));
-        QObject::connect(vmax, SIGNAL(valueChanged(int)), vmax, SLOT(setValue(int)));
-        QObject::connect(vmin, SIGNAL(valueChanged(int)), vmin, SLOT(setValue(int)));
-        QObject::connect(hmin, SIGNAL(valueChanged(int)), hminLabel, SLOT(setNum(int)));
-        QObject::connect(hmax, SIGNAL(valueChanged(int)), hmaxLabel, SLOT(setNum(int)));
-        QObject::connect(smax, SIGNAL(valueChanged(int)), smaxLabel, SLOT(setNum(int)));
-        QObject::connect(smin, SIGNAL(valueChanged(int)), sminLabel, SLOT(setNum(int)));
-        QObject::connect(vmin, SIGNAL(valueChanged(int)), vminLabel, SLOT(setNum(int)));
-        QObject::connect(vmax, SIGNAL(valueChanged(int)), vmaxLabel, SLOT(setNum(int)));
 
         QMetaObject::connectSlotsByName(DSoundKnete);
     } // setupUi
@@ -199,6 +192,7 @@ public:
         processedFrameTop->setText(QString());
         inputFrameFront->setText(QString());
         processedFrameFront->setText(QString());
+<<<<<<< HEAD
         hminLabel->setText(QApplication::translate("DSoundKnete", "255", Q_NULLPTR));
         hmaxLabel->setText(QApplication::translate("DSoundKnete", "0", Q_NULLPTR));
         sminLabel->setText(QApplication::translate("DSoundKnete", "0", Q_NULLPTR));
@@ -206,6 +200,8 @@ public:
         vminLabel->setText(QApplication::translate("DSoundKnete", "0", Q_NULLPTR));
         vmaxLabel->setText(QApplication::translate("DSoundKnete", "255", Q_NULLPTR));
         label->setText(QApplication::translate("DSoundKnete", "MIDI Output Device", Q_NULLPTR));
+=======
+>>>>>>> 032ddc56fe7611807f960f332a9a3b51f94a0a16
         menuVideo->setTitle(QApplication::translate("DSoundKnete", "Video", Q_NULLPTR));
         menuVideodatei_ffnen->setTitle(QApplication::translate("DSoundKnete", "Videodatei \303\226ffnen ...", Q_NULLPTR));
         menuPlay->setTitle(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));
