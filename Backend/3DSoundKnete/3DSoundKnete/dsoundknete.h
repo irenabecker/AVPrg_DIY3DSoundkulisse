@@ -34,6 +34,7 @@ public:
     static std::vector<objData> objects;
     static void emptyDataList();
     static objData createNewObjData(SHAPE shape, cv::Point point);
+	static void sendData();
 
 private slots:
 	void on_actionVideo_Top_triggered();
@@ -48,7 +49,7 @@ private:
     VideoEngine *videoThreadFront;
 	ColorProcessor *colorProcessor;
     ShapeRecognition *shapeRecognition;
-	//drumstick::rt::MIDIOutput midiOutput;
+	drumstick::rt::MIDIOutput midiOutput;
 	int midichannel;
 };
 #endif // DSOUNDKNETE_H

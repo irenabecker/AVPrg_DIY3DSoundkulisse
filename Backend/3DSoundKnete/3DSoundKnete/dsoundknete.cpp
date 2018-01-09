@@ -29,9 +29,9 @@ DSoundKnete::DSoundKnete(QWidget *parent)
         ui->processedFrameFront, &VideoWidget::setImage);
 
 	//for MIDI connection
-	//QStringList connections = midiOutput.connections(true);
-	//ui->comboBox->addItems(connections);
-	//midiOutput.open("Microsoft GS Wavetable Synth");
+	QStringList connections = midiOutput.connections(true);
+	ui->comboBox->addItems(connections);
+	midiOutput.open("Microsoft GS Wavetable Synth");
 	midichannel = 1;
 }
 
@@ -60,6 +60,14 @@ DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point)
 void DSoundKnete::emptyDataList()
 {
     objects.clear();
+}
+
+void DSoundKnete::sendData()
+{
+	for (int i = 0; i < objects.size(); i++)
+	{
+
+	}
 }
 
 void DSoundKnete::on_actionVideo_Top_triggered()
@@ -94,6 +102,6 @@ void DSoundKnete::on_actionKamera_ffnen_triggered()
 
 void DSoundKnete::on_comboBox_activated(const QString &arg1)
 {
-	//midiOutput.open(arg1);
+	midiOutput.open(arg1);
 }
 
