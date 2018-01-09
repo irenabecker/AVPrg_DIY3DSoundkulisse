@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QImage>
+#include <stdio.h>
 #include "videoengine.h"
 #include "colorprocessor.h"
 #include "shapeRecognition.h"
@@ -57,5 +58,4 @@ private:
 	ColorProcessor *colorProcessor;
     ShapeRecognition *shapeRecognition;
 };
-
 #endif // DSOUNDKNETE_H

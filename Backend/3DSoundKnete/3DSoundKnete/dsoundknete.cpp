@@ -2,6 +2,7 @@
 #include "dsoundknete.h"
 #include "ui_dsoundknete.h"
 
+std::vector<DSoundKnete::objData> DSoundKnete::objects(5);
 
 DSoundKnete::DSoundKnete(QWidget *parent)
 	: QMainWindow(parent)
@@ -14,8 +15,6 @@ DSoundKnete::DSoundKnete(QWidget *parent)
     ui->setupUi(this);
 	videoThreadTop->setProcessor(colorProcessor,shapeRecognition);
     videoThreadFront->setProcessor(colorProcessor,shapeRecognition);
-	/*videoThreadTop->setProcessor(videoProcessor);
-	videoThreadTop->setProcessor(videoProcessor);*/
 
 	//for top camera
 	connect(videoThreadTop, &VideoEngine::sendInputImage,
@@ -27,11 +26,11 @@ DSoundKnete::DSoundKnete(QWidget *parent)
     connect(videoThreadFront, &VideoEngine::sendInputImage,
 		ui->inputFrameFront, &VideoWidget::setImage);
     connect(videoThreadFront, &VideoEngine::sendProcessedImage,
-		ui->processedFrameFront, &VideoWidget::setImage);
+        ui->processedFrameFront, &VideoWidget::setImage);
 
     objData shape1;
     shape1.objectShape = CIRCLE;
-    std::cout << objects[0].objectShape << endl;
+    std::cout << "Shape is: " << objects[0].objectShape << endl;
 }
 
 
@@ -44,7 +43,7 @@ DSoundKnete::~DSoundKnete()
 	delete shapeRecognition;
 }
 
-static DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point)
+DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point)
 {
     objData temp;
 
@@ -52,6 +51,11 @@ static DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point
     temp.position = point;
 
     return temp;
+}
+
+void DSoundKnete::emptyDataList()
+{
+    objects.clear();
 }
 
 void DSoundKnete::on_actionVideo_Top_triggered()

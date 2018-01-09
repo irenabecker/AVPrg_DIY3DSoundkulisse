@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <string>
 #include "videoengine.h"
+#include "dsoundknete.h"
 
 // http://stackoverflow.com/questions/7801522/integrating-opencv-with-larger-programs
 
@@ -101,6 +102,7 @@ void VideoEngine::run()
             // Process Video Frame
             if (shapeProcessor != 0){
 				//delete/empty Data-class-objects
+                DSoundKnete::emptyDataList();
 				cv::Mat shapeProcessedFrame = shapeProcessor->process(cvFrame);
 				//get list of Data-objects from shapeProcessor
 				cvFrame = colorProcessor->process(cvFrame);
