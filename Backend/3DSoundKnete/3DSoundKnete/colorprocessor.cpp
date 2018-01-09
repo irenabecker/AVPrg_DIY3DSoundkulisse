@@ -30,10 +30,9 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
         int currentX = DSoundKnete::objects[i].position.x;
         int currentY = DSoundKnete::objects[i].position.y;
         Vec3b currentPixel = input.at<Vec3b>(currentY, currentX);
-        int h = currentPixel[2];
-        cout << h << endl;
+        int v = currentPixel[2];
         int s = currentPixel[1];
-        int v = currentPixel[0];
+        int h = currentPixel[0];
 
         cout << "Values: " << h << "," << s << "," << v << endl;
 
@@ -46,8 +45,9 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
 
         /*
          * Colors: 0 = RED, 1 = GREEN, 2 = BLUE
-         * Shapes: 0 = SHAPE, 1 = CIRCLE, 2 = TRIANGLE
+         * Shapes: 0 = RECTANGLE, 1 = CIRCLE, 2 = TRIANGLE
          */
+        //Blauer Kreis, Blaues Rechteck, rotes dreieck, roter kreis
         std::cout << "i: " << i << ", Shape: " << DSoundKnete::objects[i].objectShape
                   << ", Point: " << DSoundKnete::objects[i].position << ", Color: "
                   << DSoundKnete::objects[i].objectColor  << endl;

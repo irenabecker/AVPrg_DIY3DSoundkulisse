@@ -105,7 +105,7 @@ void VideoEngine::run()
                 DSoundKnete::emptyDataList();
 				cv::Mat shapeProcessedFrame = shapeProcessor->process(cvFrame);
 				//get list of Data-objects from shapeProcessor
-				cvFrame = colorProcessor->process(cvFrame);
+                cvFrame = colorProcessor->process(shapeProcessedFrame);
             }
 
             emit sendProcessedImage(cvMatToQImage(cvFrame));
