@@ -6,18 +6,30 @@ $(document).ready(function() {
 
         // Search text
         var text = $(this).val().toLowerCase();
-        // Hide all content class element
-        $('.content').hide();
-
-        // Search 
-        $('.content .figures').each(function() {
-
-            if ($(this).text().toLowerCase().indexOf("" + text + "") != -1 && $(this).text().length > 0) {
-
-                $(this).closest('.content').show();
-
-            }
+        var search_result = '';
+        
+        $('#item_container').find('.item').each(function(){
+            $(this).removeClass('active');
         });
+
+        for (var i = cardboxes.length - 1; i >= 0; i--) {
+            if($(cardboxes[i]).text().toLowerCase().indexOf(text) != -1) {
+                search_result += cardboxes[i];
+            }
+        }
+
+        if(search_result.length>0) {
+            if($('#item_search').length)
+                $('#item_search').html(search_result).addClass('active');
+            else
+                $('#item_container').append(`<div class="item active" id="item_search">`+search_result+`</div>`);
+        }
+
+        if(text.length == 0) {
+            $('#item_search').remove();
+            $('#itembox_1').addClass('active');
+        }
+
     });
 
     /* Deaktivert das Enter Drücken auf der Webseite, welches dazu führt das die Seite neugeladen wird */
@@ -26,5 +38,133 @@ $(document).ready(function() {
         return e.which !== 13;
     });
 
+/*
+    var all_cards = {
+        card_1: {
+            headline: 'Dreieck',
+            value_1: 100,
+            value_2: 1000,
+        },
+        card_2: {
+            headline: 'Viereck',
+            value_1: 100,
+            value_2: 1000,
+        },
+        card_3: {
+            headline: 'Kreis',
+            value_1: 100,
+            value_2: 1000,
+        },
+        card_4: {
+            headline: 'Mond',
+            value_1: 100,
+            value_2: 1000,
+        },
+    };
+*/
 
+    // console.log(JSON.stringify(all_cards));
+
+   /* $.each(all_cards, function(index, value) {
+        var _current = all_cards[index];
+        new Card($('#itembox_1'), _current.headline);
+    }); 
+*/
+    var card_1 = new Card($('#itembox_1'), 'Dreieck', 'Blau','http://www.idc.ch/fileadmin/_migrated/pics/3238_17_Kegel_Profiler.png', 'Vogelgeschwitzer','soundvolume0','pitch0','configureButton0' );
+    var card_2 = new Card($('#itembox_1'), 'Kreis', 'Blau', 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume1','pitch1','configureButton1');
+    var card_3 = new Card($('#itembox_1'), 'Rechteck','Blau', 'https://f4.bcbits.com/img/a0809134811_10.jpg','Vogelgeschwitzer','soundvolume2','pitch2','configureButton2');
+    var card_4 = new Card($('#itembox_1'), 'Dreieck','Rot','https://images.emojiterra.com/mozilla/512px/1f53a.png','Vogelgeschwitzer','soundvolume3','pitch3','configureButton3');
+
+    var card_5 = new Card($('#itembox_2'), 'Kreis','Rot', );
+    var card_6 = new Card($('#itembox_2'), 'Rechteck','Rot');
+    var card_7 = new Card($('#itembox_2'), 'Dreieck','Grün');
+    var card_8 = new Card($('#itembox_2'), 'Kreis','Grün');
+
+    var card_8 = new Card($('#itembox_3'), 'Rechteck','Grün');
+
+    for(let i=0; i<cardboxes.length;i++){
+
+        $(document).on("click","#configureButton"+i,function() {
+
+        if($("#soundvolume"+i).is(':disabled')){
+            $("#soundvolume"+i).removeAttr('disabled');
+            $("#pitch"+i).removeAttr('disabled');
+            
+        }
+        else if($("#soundvolume"+i).is(':enabled')){
+            $("#soundvolume"+i).prop('disabled', true);
+            $("#pitch"+i).prop('disabled', true);
+
+        }
+            
+        });
+
+
+    }
+
+  /*
+        $(document).on("click","#configureButton0",function() {
+                
+            $("#soundvolume0").removeAttr('disabled');
+        });
+    */
 });
+
+
+var cardboxes = [];
+
+function Card(container, headline,  description, image, soundclipName, soundvolume, pitch, configureButton) {
+    this.init(container, headline, description, image, soundclipName,soundvolume, pitch, configureButton);
+}
+
+Card.prototype = {
+
+    init: function(container, headline, description, image, soundclipName,soundvolume,pitch,configureButton) {
+
+        this.headline = headline;
+        this.container = container;
+        this.description =  description;
+        this.image = image;
+        this.soundclipName = soundclipName;
+        this.soundvolume = soundvolume;
+        this.pitch = pitch;
+        this.configureButton = configureButton;
+
+        this.createCard();
+    },
+
+    createCard: function() {
+
+        var that = this;
+        i = cardboxes.length;
+
+        cardboxes[i] = `<div class="col-sm-3 content" id="card_`+i+`" style="padding-top: 2%; margin-left: -0.1%!important;">
+                <div class="thumbnail figures">
+                    <img src="`+that.image+`" alt="fake image" class="img-responsive">
+                    <div class="caption">
+                        <h3>`+that.headline+`</h3>
+                        <p><strong>Farbe: </strong>`+that.description+`</p>
+                        <p><strong>Soundclip:</strong><i>`+that.soundclipName+`</</p>
+
+                    <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
+                      <strong>Lautstärke:</strong>
+                      <output name="x" for="`+that.soundvolume+`" class="form-control"></output>
+                        <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
+                    </form>
+
+                    <form oninput="y.value=parseInt(`+that.pitch+`.value)">
+                      <strong>Pitch:</strong>
+                      <output name="y" for="`+that.pitch+`" class="form-control"></output>
+                        <input id=`+that.pitch+` type="range" min="0" max="100" disabled>
+                    </form>                    
+
+                    <br>
+                    <button type="button" id=`+that.configureButton+` class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
+                    <br>
+                    </div>
+                </div>
+            </div>`;
+
+        this.container.append(cardboxes[i]);
+    },
+};
