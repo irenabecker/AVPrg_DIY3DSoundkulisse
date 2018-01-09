@@ -26,7 +26,8 @@ public:
     typedef struct{
         COLOR objectColor;
         SHAPE objectShape;
-        cv::Point position;
+        cv::Point absolutePosition;
+        cv::Point relativePosition;
     } objData;
 
     static std::vector<objData> objects;
@@ -38,18 +39,6 @@ private slots:
 	void on_actionVideo_Front_triggered();
     void on_actionKamera_ffnen_triggered();
 	void on_actionPlay_triggered();
-
-    void on_hmax_valueChanged(int value);
-
-    void on_vmax_valueChanged(int value);
-
-    void on_smin_valueChanged(int value);
-
-    void on_smax_valueChanged(int value);
-
-    void on_vmin_valueChanged(int value);
-
-    void on_hmin_valueChanged(int value);
 
 private:
 	Ui::DSoundKnete *ui;

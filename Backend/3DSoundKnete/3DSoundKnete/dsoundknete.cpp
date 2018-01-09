@@ -27,10 +27,6 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 		ui->inputFrameFront, &VideoWidget::setImage);
     connect(videoThreadFront, &VideoEngine::sendProcessedImage,
         ui->processedFrameFront, &VideoWidget::setImage);
-
-    objData shape1;
-    shape1.objectShape = CIRCLE;
-    std::cout << "Shape is: " << objects[0].objectShape << endl;
 }
 
 
@@ -48,7 +44,7 @@ DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point)
     objData temp;
 
     temp.objectShape = shape;
-    temp.position = point;
+    temp.absolutePosition = point;
 
     return temp;
 }
@@ -86,35 +82,4 @@ void DSoundKnete::on_actionPlay_triggered()
 void DSoundKnete::on_actionKamera_ffnen_triggered()
 {
     videoThreadTop->openCamera();
-}
-
-void DSoundKnete::on_hmax_valueChanged(int value)
-{
-    colorProcessor->H_MAX = value;
-}
-
-
-void DSoundKnete::on_smin_valueChanged(int value)
-{
-	colorProcessor->S_MIN = value;
-}
-
-void DSoundKnete::on_smax_valueChanged(int value)
-{
-	colorProcessor->S_MAX = value;
-}
-
-void DSoundKnete::on_vmin_valueChanged(int value)
-{
-	colorProcessor->V_MIN = value;
-}
-
-void DSoundKnete::on_vmax_valueChanged(int value)
-{
-	colorProcessor->V_MAX = value;
-}
-
-void DSoundKnete::on_hmin_valueChanged(int value)
-{
-	colorProcessor->V_MIN = value;
 }
