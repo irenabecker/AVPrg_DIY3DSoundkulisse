@@ -7,7 +7,6 @@ using namespace cv;
 using namespace std;
 
 ShapeRecognition::ShapeRecognition()
-
 {
 
 }

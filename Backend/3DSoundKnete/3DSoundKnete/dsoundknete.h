@@ -7,6 +7,7 @@
 #include "videoengine.h"
 #include "colorprocessor.h"
 #include "shapeRecognition.h"
+#include "midioutput.h"
 
 namespace Ui {
 	class DSoundKnete;
@@ -38,6 +39,7 @@ private slots:
 	void on_actionVideo_Front_triggered();
     void on_actionKamera_ffnen_triggered();
 	void on_actionPlay_triggered();
+	void on_comboBox_activated(const QString &arg1);
 
     void on_hmax_valueChanged(int value);
 
@@ -57,5 +59,7 @@ private:
     VideoEngine *videoThreadFront;
 	ColorProcessor *colorProcessor;
     ShapeRecognition *shapeRecognition;
+	//drumstick::rt::MIDIOutput midiOutput;
+	int midichannel;
 };
 #endif // DSOUNDKNETE_H

@@ -20,3 +20,4 @@ UI_DIR += ./GeneratedFiles
 RCC_DIR += ./GeneratedFiles
 include(3DSoundKnete.pri)
 include(../opencv/videoengine.pri)
+include(../drumstick/drumstick.pro)

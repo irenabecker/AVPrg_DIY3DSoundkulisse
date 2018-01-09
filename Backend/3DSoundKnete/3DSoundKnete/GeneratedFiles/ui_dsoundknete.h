@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -33,6 +34,7 @@ public:
     QAction *actionVideo_Front;
     QWidget *centralWidget;
     VideoWidget *inputFrameTop;
+    QComboBox *comboBox;
     VideoWidget *processedFrameTop;
     VideoWidget *inputFrameFront;
     VideoWidget *processedFrameFront;
@@ -48,6 +50,7 @@ public:
     QLabel *smaxLabel;
     QLabel *vminLabel;
     QLabel *vmaxLabel;
+    QLabel *label;
     QMenuBar *menuBar;
     QMenu *menuVideo;
     QMenu *menuVideodatei_ffnen;
@@ -74,6 +77,9 @@ public:
         inputFrameTop->setFrameShape(QFrame::Box);
         inputFrameTop->setScaledContents(false);
         inputFrameTop->setAlignment(Qt::AlignCenter);
+        comboBox = new QComboBox(centralWidget);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->setGeometry(QRect(390, 350, 181, 22));
         processedFrameTop = new VideoWidget(centralWidget);
         processedFrameTop->setObjectName(QStringLiteral("processedFrameTop"));
         processedFrameTop->setGeometry(QRect(250, 10, 631, 321));
@@ -88,7 +94,7 @@ public:
         inputFrameFront->setAlignment(Qt::AlignCenter);
         processedFrameFront = new VideoWidget(centralWidget);
         processedFrameFront->setObjectName(QStringLiteral("processedFrameFront"));
-        processedFrameFront->setGeometry(QRect(340, 340, 541, 211));
+        processedFrameFront->setGeometry(QRect(730, 340, 151, 211));
         processedFrameFront->setFrameShape(QFrame::Box);
         processedFrameFront->setScaledContents(false);
         processedFrameFront->setAlignment(Qt::AlignCenter);
@@ -143,10 +149,13 @@ public:
         vmaxLabel = new QLabel(centralWidget);
         vmaxLabel->setObjectName(QStringLiteral("vmaxLabel"));
         vmaxLabel->setGeometry(QRect(220, 460, 47, 13));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(270, 350, 101, 16));
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 901, 20));
+        menuBar->setGeometry(QRect(0, 0, 901, 21));
         menuVideo = new QMenu(menuBar);
         menuVideo->setObjectName(QStringLiteral("menuVideo"));
         menuVideodatei_ffnen = new QMenu(menuVideo);
@@ -196,6 +205,7 @@ public:
         smaxLabel->setText(QApplication::translate("DSoundKnete", "255", Q_NULLPTR));
         vminLabel->setText(QApplication::translate("DSoundKnete", "0", Q_NULLPTR));
         vmaxLabel->setText(QApplication::translate("DSoundKnete", "255", Q_NULLPTR));
+        label->setText(QApplication::translate("DSoundKnete", "MIDI Output Device", Q_NULLPTR));
         menuVideo->setTitle(QApplication::translate("DSoundKnete", "Video", Q_NULLPTR));
         menuVideodatei_ffnen->setTitle(QApplication::translate("DSoundKnete", "Videodatei \303\226ffnen ...", Q_NULLPTR));
         menuPlay->setTitle(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));
