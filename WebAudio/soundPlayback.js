@@ -1,40 +1,44 @@
 var isPlaying = false;
 
-var context = new AudioContext();
-
 var red = document.getElementsByClassName("red");
 var green = document.getElementsByClassName("green");
 var blue = document.getElementsByClassName("blue");
+var defaultRCi, defaultRCu, defaultRSp;
+var redsources = [defaultRCi, defaultRCu, defaultRSp];
+var defaultGCi, defaultGCu, defaultGSp;
+var greensources = [defaultGCi, defaultGCu, defaultGSp];
+var defaultBCi, defaultBCu, defaultBSp;
+var bluesources = [defaultBCi, defaultBCu, defaultBSp];
 
 for (let i = 0; i < red.length; i++) {
-    var redSource = new Audio();
-    redSource.src = "1.mp3";
+    redsources[i] = new Audio();
+    redsources[i].src = "1.mp3"; 
     red[i].addEventListener("click", function (e) {
         isPlaying = true;
         if (isPlaying) {
-            playSound(redSource, i);
+            playSound(redsources[i], i);
         }
     });
 }
 
 for (let i = 0; i < green.length; i++) {
-    var greenSource = new Audio();
-    greenSource.src = "2.mp3";
+    greensources[i] = new Audio();
+    greensources[i].src = "2.mp3"; 
     green[i].addEventListener("click", function (e) {
         isPlaying = true;
         if (isPlaying) {
-            playSound(greenSource, i);
+            playSound(greensources[i], i);
         }
     });
 }
 
 for (let i = 0; i < blue.length; i++) {
-    var blueSource = new Audio();
-    blueSource.src = "3.mp3";
+    bluesources[i] = new Audio();
+    bluesources[i].src = "3.mp3"; 
     blue[i].addEventListener("click", function (e) {
         isPlaying = true;
         if (isPlaying) {
-            playSound(blueSource, i);
+            playSound(bluesources[i], i);
         }
     });
 }
@@ -42,6 +46,7 @@ for (let i = 0; i < blue.length; i++) {
 
 function playSound(data, i) {
     data.volume = i/10;
+    data.loop = true;
     data.play();
 
 }
