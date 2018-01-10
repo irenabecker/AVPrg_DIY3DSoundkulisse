@@ -12,11 +12,32 @@ $(document).ready(function() {
             $(this).removeClass('active');
         });
 
+/*
         for (var i = cardboxes.length - 1; i >= 0; i--) {
             if($(cardboxes[i]).text().toLowerCase().indexOf(text) != -1) {
                 search_result += cardboxes[i];
             }
         }
+        var tempArray=[];
+        for(var i=0;i<cardboxes.length;i++)
+        {
+            tempArray[i]=cardboxes[i];
+        }
+        cardboxes=[];
+        for(var i=0;i<search_result.length;i++)
+        {
+            cardboxes[i]=search_result[i];
+            for(var j=0;j<tempArray.length;j++)
+            {
+                if(tempArray[j]==search_result[i])
+               {
+                    tempArray[j].remove();
+               }
+            }
+        }
+        //append doesn't work here. use for loop instead or merge arrays?
+        //cardboxes.append(tempArray);
+*/
 
         if(search_result.length>0) {
             if($('#item_search').length)
@@ -70,10 +91,10 @@ $(document).ready(function() {
         new Card($('#itembox_1'), _current.headline);
     }); 
 */
-    var card_1 = new Card($('#itembox_1'), 'Dreieck', 'Blau','http://www.idc.ch/fileadmin/_migrated/pics/3238_17_Kegel_Profiler.png', 'Vogelgeschwitzer','soundvolume0','pitch0','configureButton0' );
+    var card_1 = new Card($('#itembox_1'), 'Dreieck', 'Blau','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 'Vogelgeschwitzer','soundvolume0','pitch0','configureButton0' );
     var card_2 = new Card($('#itembox_1'), 'Kreis', 'Blau', 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume1','pitch1','configureButton1');
-    var card_3 = new Card($('#itembox_1'), 'Rechteck','Blau', 'https://f4.bcbits.com/img/a0809134811_10.jpg','Vogelgeschwitzer','soundvolume2','pitch2','configureButton2');
-    var card_4 = new Card($('#itembox_1'), 'Dreieck','Rot','https://images.emojiterra.com/mozilla/512px/1f53a.png','Vogelgeschwitzer','soundvolume3','pitch3','configureButton3');
+    var card_3 = new Card($('#itembox_1'), 'Rechteck','Blau','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume2','pitch2','configureButton2');
+    var card_4 = new Card($('#itembox_1'), 'Dreieck','Rot','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume3','pitch3','configureButton3');
 
     var card_5 = new Card($('#itembox_2'), 'Kreis','Rot', );
     var card_6 = new Card($('#itembox_2'), 'Rechteck','Rot');
@@ -83,31 +104,28 @@ $(document).ready(function() {
     var card_8 = new Card($('#itembox_3'), 'Rechteck','Grün');
 
     for(let i=0; i<cardboxes.length;i++){
-
         $(document).on("click","#configureButton"+i,function() {
+
 
         if($("#soundvolume"+i).is(':disabled')){
             $("#soundvolume"+i).removeAttr('disabled');
-            $("#pitch"+i).removeAttr('disabled');
-            
+            $("#pitch"+i).removeAttr('disabled'); 
+            $("#configureButton"+i).removeClass("btn-danger");
+            $("#configureButton"+i).addClass("btn-success"); 
+            $("#configureButton"+i).text('Save');  
         }
         else if($("#soundvolume"+i).is(':enabled')){
             $("#soundvolume"+i).prop('disabled', true);
             $("#pitch"+i).prop('disabled', true);
-
+            $("#configureButton"+i).removeClass("btn-success");
+            $("#configureButton"+i).addClass("btn-danger");
+            $("#configureButton"+i).text('Configure');  
         }
             
         });
 
 
     }
-
-  /*
-        $(document).on("click","#configureButton0",function() {
-                
-            $("#soundvolume0").removeAttr('disabled');
-        });
-    */
 });
 
 
@@ -142,19 +160,20 @@ Card.prototype = {
                 <div class="thumbnail figures">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
-                        <h3>`+that.headline+`</h3>
+                        <h4>`+that.headline+`</h4>
                         <p><strong>Farbe: </strong>`+that.description+`</p>
-                        <p><strong>Soundclip:</strong><i>`+that.soundclipName+`</</p>
+                        <p><strong>Soundclip:</strong><i>`+that.soundclipName+`</i></p>
+
 
                     <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
-                      <strong>Lautstärke:</strong>
-                      <output name="x" for="`+that.soundvolume+`" class="form-control"></output>
+                      <strong>Lautstärke:</strong>hhhh
+                      <output name="x" for="`+that.soundvolume+`"></output>
                         <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
                     </form>
 
                     <form oninput="y.value=parseInt(`+that.pitch+`.value)">
                       <strong>Pitch:</strong>
-                      <output name="y" for="`+that.pitch+`" class="form-control"></output>
+                      <output name="y" for="`+that.pitch+`"></output>
                         <input id=`+that.pitch+` type="range" min="0" max="100" disabled>
                     </form>                    
 
