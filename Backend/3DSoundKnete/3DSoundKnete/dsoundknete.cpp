@@ -3,6 +3,14 @@
 #include "ui_dsoundknete.h"
 #include "calibration.h"
 
+//for web
+//#include "webcommunication.h"
+//#include "QtNetwork\qnetworkaccessmanager.h"
+//#include "QtNetwork\qnetworkrequest.h"
+//#include "QtNetwork\qnetworkreply.h"
+//#include "qurl.h"
+
+
 std::vector<DSoundKnete::objData> DSoundKnete::objects(5);
 
 DSoundKnete::DSoundKnete(QWidget *parent)
@@ -12,6 +20,7 @@ DSoundKnete::DSoundKnete(QWidget *parent)
     , videoThreadFront(new VideoEngine)
 	, colorProcessor(new ColorProcessor)
     , shapeRecognition(new ShapeRecognition)
+	//, manager(new QNetworkAccessManager(this))
 {
     ui->setupUi(this);
 	videoThreadTop->setProcessor(colorProcessor,shapeRecognition);
@@ -30,10 +39,25 @@ DSoundKnete::DSoundKnete(QWidget *parent)
         ui->processedFrameFront, &VideoWidget::setImage);
 
 	//for MIDI connection
-	QStringList connections = midiOutput.connections(true);
+	/*QStringList connections = midiOutput.connections(true);
 	ui->comboBox->addItems(connections);
 	midiOutput.open("Microsoft GS Wavetable Synth");
-	midichannel = 1;
+	midichannel = 1;*/
+	//QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+	//connect(manager, SIGNAL(finished(QNetworkReply*)),
+	//	this, SLOT(syncRequestFinished(QNetworkReply*)));
+	//QUrl url("localhost/test/PHP/db-requests.php");
+	//QNetworkRequest request(url);
+
+	//request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+	//
+
+	//QByteArray jsonString = "{\"type\":\"test\",\"loginName\":\"username@domain.com\",\"password\":\"mypass\"}";
+
+	//// Use QNetworkReply * QNetworkAccessManager::post(const QNetworkRequest & request, const QByteArray & data); to send your request. Qt will rearrange everything correctly.
+	//QNetworkReply * reply = manager->post(request, jsonString);
+
+
 }
 
 
@@ -113,7 +137,7 @@ void DSoundKnete::on_actionKamera_ffnen_triggered()
 
 void DSoundKnete::on_comboBox_activated(const QString &arg1)
 {
-    midiOutput.open(arg1);
+    //midiOutput.open(arg1);
 }
 
 void DSoundKnete::on_calibrateButton_clicked()

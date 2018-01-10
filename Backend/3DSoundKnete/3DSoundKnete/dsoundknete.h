@@ -9,6 +9,12 @@
 #include "shapeRecognition.h"
 #include "midioutput.h"
 
+//#include "webcommunication.h"
+//#include "QtNetwork\qnetworkaccessmanager.h"
+//#include "QtNetwork\qnetworkrequest.h"
+//#include "QtNetwork\qnetworkreply.h"
+//#include "qurl.h"
+
 namespace Ui {
 	class DSoundKnete;
 }
@@ -50,7 +56,8 @@ private:
     VideoEngine *videoThreadFront;
     ShapeRecognition *shapeRecognition;
     ColorProcessor *colorProcessor;
-	drumstick::rt::MIDIOutput midiOutput;
-	int midichannel;
+	//QNetworkAccessManager *manager;
+	//drumstick::rt::MIDIOutput midiOutput;
+	//int midichannel;
 };
 #endif // DSOUNDKNETE_H
