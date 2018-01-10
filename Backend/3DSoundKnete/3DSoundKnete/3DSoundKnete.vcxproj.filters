@@ -66,9 +66,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="position.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\opencv\videoengine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,68 +75,65 @@
     <ClCompile Include="..\opencv\videowidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_videowidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_videowidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_videoengine.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_videoengine.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_dsoundknete.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_dsoundknete.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_dsoundknete.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="shapeRecognition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mymidi.cpp">
+    <ClCompile Include="calibration.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\drumstick\winmidiinput.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\drumstick\winmidioutput.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_dsoundknete.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_dsoundknete.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_midiinput.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_midiinput.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_midioutput.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_midioutput.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_videoengine.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_videoengine.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_videowidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_videowidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="colorprocessor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\opencv\cvmattoqimage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="dsoundknete.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="position.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="..\opencv\videoengine.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="..\opencv\videoformat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\opencv\videoprocessor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="..\opencv\videowidget.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="GeneratedFiles\ui_dsoundknete.h">
+    <CustomBuild Include="..\drumstick\midiinput.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="shapeRecognition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mymidi.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    </CustomBuild>
+    <CustomBuild Include="..\drumstick\midioutput.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="dsoundknete.ui">
@@ -147,9 +141,27 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="dsoundknete.qrc">
-      <Filter>Resource Files</Filter>
-    </CustomBuild>
+    <ClInclude Include="calibration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="colorprocessor.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\opencv\cvmattoqimage.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeRecognition.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\opencv\videoformat.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\opencv\videoprocessor.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_dsoundknete.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="3DSoundKnete.pro" />
