@@ -106,10 +106,10 @@ void VideoEngine::run()
                 shapeProcessedFrame = shapeProcessor->process(cvFrame);
                 cvFrame = colorProcessor->process(cvFrame);
                 //Only send data to frontend, when camera is calibrated and enough frames have been processed
-                if(Calibration::getCalibrated() && frameNumber % SEND_DATA_FRAME_THRESHOLD == 0)
-                    DSoundKnete::sendData();
+				if (Calibration::getCalibrated() && frameNumber % SEND_DATA_FRAME_THRESHOLD == 0)
+					emit sendDataSignal();//DSoundKnete::sendData();
             }
-
+			emit sendDataSignal();
             emit sendProcessedImage(cvMatToQImage(shapeProcessedFrame));
 
             // check if stopped

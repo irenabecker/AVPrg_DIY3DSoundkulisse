@@ -45,30 +45,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">3DSoundKnete</TargetName>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">3DSoundKnete</TargetName>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\opencv;.;..\opencv;D:\OpenCV\opencv\build\include;..\drumstick;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtCore;release;.;$(QTDIR)\mkspecs\win32-msvc2015;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\opencv;.;..\opencv;D:\OpenCV\opencv\build\include;..\drumstick;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtCore;release;.;$(QTDIR)\mkspecs\win32-msvc2015;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
       <DebugInformationFormat>None</DebugInformationFormat>
       <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <ObjectFileName>release\</ObjectFileName>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;WIN64;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
-      <ProgramDataBaseFileName>
-      </ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -99,14 +98,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\opencv;.;..\opencv;D:\OpenCV\opencv\build\include;..\drumstick;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtCore;debug;.;$(QTDIR)\mkspecs\win32-msvc2015;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\opencv;.;..\opencv;D:\OpenCV\opencv\build\include;..\drumstick;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtCore;debug;.;$(QTDIR)\mkspecs\win32-msvc2015;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <ObjectFileName>debug\</ObjectFileName>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
@@ -115,6 +114,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(QTDIR)\lib\qtmaind.lib;shell32.lib;D:\OpenCV\opencv\build\x64\vc14\lib\opencv_world310d.lib;winmm.lib;$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -140,122 +140,123 @@
   <ItemGroup>
     <ClCompile Include="calibration.cpp" />
     <ClCompile Include="colorprocessor.cpp" />
+    <ClCompile Include="Debug\moc_dsoundknete.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_midiinput.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_midioutput.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_videoengine.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_videowidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="dsoundknete.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Release\moc_dsoundknete.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_midiinput.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_midioutput.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_videoengine.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_videowidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="shapeRecognition.cpp" />
     <ClCompile Include="..\opencv\videoengine.cpp" />
     <ClCompile Include="..\opencv\videoformat.cpp" />
     <ClCompile Include="..\opencv\videowidget.cpp" />
     <ClCompile Include="..\drumstick\winmidiinput.cpp" />
     <ClCompile Include="..\drumstick\winmidioutput.cpp" />
+    <ClCompile Include="ws_examples.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calibration.h" />
     <ClInclude Include="colorprocessor.h" />
     <ClInclude Include="..\opencv\cvmattoqimage.h" />
     <CustomBuild Include="dsoundknete.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">dsoundknete.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore dsoundknete.h -o release\moc_dsoundknete.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC dsoundknete.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_dsoundknete.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dsoundknete.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore dsoundknete.h -o debug\moc_dsoundknete.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC dsoundknete.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_dsoundknete.cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DNDEBUG "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing dsoundknete.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\debug" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing dsoundknete.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
     <CustomBuild Include="..\drumstick\midiinput.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\drumstick\midiinput.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore ..\drumstick\midiinput.h -o release\moc_midiinput.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC ../drumstick/midiinput.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_midiinput.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\drumstick\midiinput.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore ..\drumstick\midiinput.h -o debug\moc_midiinput.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC ../drumstick/midiinput.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_midiinput.cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DNDEBUG "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing midiinput.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\debug" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing midiinput.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
     <CustomBuild Include="..\drumstick\midioutput.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\drumstick\midioutput.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore ..\drumstick\midioutput.h -o release\moc_midioutput.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC ../drumstick/midioutput.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_midioutput.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\drumstick\midioutput.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore ..\drumstick\midioutput.h -o debug\moc_midioutput.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC ../drumstick/midioutput.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_midioutput.cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DNDEBUG "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing midioutput.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\debug" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing midioutput.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
+    <ClInclude Include="GeneratedFiles\ui_dsoundknete.h" />
     <ClInclude Include="shapeRecognition.h" />
     <CustomBuild Include="..\opencv\videoengine.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\opencv\videoengine.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore ..\opencv\videoengine.h -o release\moc_videoengine.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC ../opencv/videoengine.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_videoengine.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\opencv\videoengine.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore ..\opencv\videoengine.h -o debug\moc_videoengine.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC ../opencv/videoengine.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_videoengine.cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DNDEBUG "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing videoengine.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\debug" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing videoengine.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
     <ClInclude Include="..\opencv\videoformat.h" />
     <ClInclude Include="..\opencv\videoprocessor.h" />
     <CustomBuild Include="..\opencv\videowidget.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\opencv\videowidget.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore ..\opencv\videowidget.h -o release\moc_videowidget.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC ../opencv/videowidget.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_videowidget.cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\opencv\videowidget.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/mkspecs/win32-msvc2015 -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/3DSoundKnete -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/opencv -ID:/OpenCV/opencv/build/include -ID:/github/AVPrg_DIY3DSoundkulisse/Backend/3DSoundKnete/drumstick -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtWidgets -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtGui -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtANGLE -IC:/QT/QT5.6.3/5.6.3/MSVC2015_64/include/QtCore ..\opencv\videowidget.h -o debug\moc_videowidget.cpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC ../opencv/videowidget.h</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_videowidget.cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DNDEBUG "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing videowidget.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB "-I." "-I.\..\opencv" "-ID:\OpenCV\opencv\build\include" "-I.\..\drumstick" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\debug" "-I$(QTDIR)\mkspecs\win32-msvc2015"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing videowidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="debug\moc_dsoundknete.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="release\moc_dsoundknete.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="debug\moc_midiinput.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="release\moc_midiinput.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="debug\moc_midioutput.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="release\moc_midioutput.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="debug\moc_videoengine.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="release\moc_videoengine.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="debug\moc_videowidget.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="release\moc_videowidget.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClInclude Include="ui_dsoundknete.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="dsoundknete.ui">
       <FileType>Document</FileType>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">dsoundknete.ui;videowidget.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe dsoundknete.ui -o ui_dsoundknete.h</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC dsoundknete.ui</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_dsoundknete.h;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dsoundknete.ui;videowidget.h;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe dsoundknete.ui -o ui_dsoundknete.h</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC dsoundknete.ui</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_dsoundknete.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="3DSoundKnete.pro" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" Qt5Version_x0020_x64="version1" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

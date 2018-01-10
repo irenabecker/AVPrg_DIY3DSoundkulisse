@@ -1,3 +1,11 @@
+
+var objects=[{
+                "shape":"",
+                "color":"",
+                "posX":0,
+                "posY":0
+            }]
+
 function initialize(){
 	let midi = null;  // global MIDIAccess object
 	let midiInputs = [];
@@ -39,45 +47,86 @@ function initialize(){
 		return midiInput;
 	}
 	function MIDIMessageEventHandler(event) {
+        //get channel = Color
+        var channel=event.data[0]&0x0f;
+        var color="";
+        switch(channel)
+            {
+                case 0x00: color="RED";break;
+                case 0x01: color="GREEN";break;
+                case 0x02: color="BLUE";break;
+                case 0x03: color="CALIBRATION_COLOR";break;
+            }        
+        
       // Mask off the lower nibble (MIDI channel, which we don't care about)
+        //switch through calle method = shape
+        //0x90 = noteOn = RECTANGLE
+        //0x80 = noteOff = CIRCLE
+        //0xB0 = controlChange = TRIANGLE
       switch (event.data[0] & 0xf0) {
         case 0x90:
-			if (event.data[2]==0) { 
-				noteOff(event.data[1]);
-			}
-			else{
-				noteOn(event.data[1], event.data[2]);
-			}
+			noteOn(color,event.data[1], event.data[2]);
 			break;
         case 0x80:
-			noteOff(event.data[1]);
+			noteOff(color,event.data[1], event.data[2]);
 			break;
 		case 0xB0:
-			controlChange(event.data[1], event.data[2]);
-			break;
-		case 0xC0:
-			programChange(event.data[1]);
-			break;
-		case 0xE0:
-			pitchbend(event.data[1], event.data[2]);
-			break;
+			controlChange(color,event.data[1], event.data[2]);
+			break; 
+        case 0xC0:
+            resetObjects(); 
+            break;
       }
     }
-	function noteOn(noteNumber, velocity){
-		console.log(`note on: note=${noteNumber}, velocity = ${velocity}`);
+	function noteOn(color,posX,posY){
+        objects[objects.length]={ "shape":"RECTANGLE",
+                                    "color":color,
+                                    "posX":posX,
+                                    "posY":posY};
+        /*objects.append({ "shape":"RECTANGLE",
+                        "color":color,
+                        "posX":posX,
+                        "posY":posY});*/
+        //console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
+		//console.log(`note on: note=${noteNumber}, velocity = ${velocity}`);
 	}
-	function noteOff(noteNumber){
-		console.log(`note off: note=${noteNumber}`);
+	function noteOff(color, posX, posY){
+        objects[objects.length]={ "shape":"CIRCLE",
+                                    "color":color,
+                                    "posX":posX,
+                                    "posY":posY};
+        /*objects.append({ "shape":"CIRCLE",
+                        "color":color,
+                        "posX":posX,
+                        "posY":posY});*/
+       //console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
+		//console.log(`note off: note=${noteNumber}`);
 	}
-	function controlChange(controller, value){
-		console.log(`control change: controller = ${controller}, value = ${value}`);
+	function controlChange(color, posX, posY){
+        
+        objects[objects.length]={ "shape":"TRIANGLE",
+                                    "color":color,
+                                    "posX":posX,
+                                    "posY":posY};
+        /*objects.append({ "shape":"TRIANGLE",
+                        "color":color,
+                        "posX":posX,
+                        "posY":posY});*/
+        //console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
+		//console.log(`control change: controller = ${controller}, value = ${value}`);
 	}
-	function programChange(program){
-		console.log(`program change: program=${program}`);
-	}
-	function pitchbend(value1, value2){
-		console.log(value1 * 128 + " " + value2);
-		const pitchbendValue = (value1 * 128 + value2) - 8192;
-		console.log(`pitch bend: value = ${pitchbendValue}`);
-	}
+    function resetObjects()
+    {
+        console.clear();
+        for(var i=0;i<objects.length;i++)
+            {
+                console.log("Shape:, "+objects[i].shape+" Color: "+objects[i].color+", PosX: "+objects[i].posX+", PosY: "+objects[i].posY);
+            }
+        objects=[{
+                "shape":"",
+                "color":"",
+                "posX":0,
+                "posY":0
+                }];
+    }
 }

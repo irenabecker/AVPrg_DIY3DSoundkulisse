@@ -40,7 +40,10 @@ public:
     static std::vector<objData> objects;
     static void emptyDataList();
     static objData createNewObjData(SHAPE shape, cv::Point point);
-    static void sendData();
+    //void sendData();
+
+	public slots:
+	void on_dataSend();
 
 private slots:
 	void on_actionVideo_Top_triggered();
@@ -50,6 +53,7 @@ private slots:
     void on_comboBox_activated(const QString &arg1);
     void on_calibrateButton_clicked();
 
+
 private:
 	Ui::DSoundKnete *ui;
     VideoEngine *videoThreadTop;
@@ -57,7 +61,9 @@ private:
     ShapeRecognition *shapeRecognition;
     ColorProcessor *colorProcessor;
 	//QNetworkAccessManager *manager;
-	//drumstick::rt::MIDIOutput midiOutput;
-	//int midichannel;
+	drumstick::rt::MIDIOutput midiOutput;
+	int midichannel;
+	int midinote;
+	int midivolume;
 };
 #endif // DSOUNDKNETE_H
