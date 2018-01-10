@@ -146,6 +146,7 @@ void DSoundKnete::emptyDataList()
 
 void DSoundKnete::on_dataSend()
 {
+	midiOutput.sendProgram(0, 0);
 	for (int i = 0; i < objects.size(); i++)
 	{
         /*
@@ -153,14 +154,14 @@ void DSoundKnete::on_dataSend()
          * Shapes: 0 = RECTANGLE, 1 = CIRCLE, 2 = TRIANGLE
          */
         //Blauer Kreis, Blaues Rechteck, rotes dreieck, roter kreis
-		midiOutput.sendProgram(0, 0);
-        std::cout << "i: " << i << ", Shape: " << objects[i].objectShape
-                  << ", AbsPoint: " << objects[i].absolutePosition
-                  << ", RelPoint: " << objects[i].relativePosition
-                  << ", Color: " << objects[i].objectColor  << endl;
+		
+		/*qDebug() << "i: " << i << ", Shape: " << objects[i].objectShape
+			<< ", AbsPoint: " << objects[i].absolutePosition.x<<", "<< objects[i].absolutePosition.y
+			<< ", RelPoint: " << objects[i].relativePosition.x << ", " << objects[i].relativePosition.y
+			<< ", Color: " << objects[i].objectColor;*/
 		midichannel = objects[i].objectColor;
-		midinote = objects[i].absolutePosition.x;
-		midivolume = objects[i].absolutePosition.y;
+		midinote = objects[i].relativePosition.x;
+		midivolume = objects[i].relativePosition.y;
 		switch (objects[i].objectShape)
 		{
 			case RECTANGLE:

@@ -36,12 +36,12 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{ec8af701-39da-43f2-92ee-b117743b8b6d}</UniqueIdentifier>
+      <UniqueIdentifier>{8caa6420-24a1-48ab-b60a-b27c69dde4df}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{1f776c24-098d-4dea-8849-516d95315cfc}</UniqueIdentifier>
+      <UniqueIdentifier>{adcaa923-2846-46f9-94ac-9a6c8385986a}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -77,6 +77,12 @@
     <ClCompile Include="..\drumstick\winmidioutput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Debug\moc_videowidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_videowidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
     <ClCompile Include="Debug\moc_videoengine.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -100,15 +106,6 @@
     </ClCompile>
     <ClCompile Include="Release\moc_dsoundknete.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="Debug\moc_videowidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Release\moc_videowidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="ws_examples.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

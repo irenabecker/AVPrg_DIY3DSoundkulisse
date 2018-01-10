@@ -161,6 +161,7 @@ namespace rt {
 
         void sendShortMessage(WinMIDIPacket &packet)
         {
+			//qDebug() << "0: "<<packet.data[0]<<" 1:"<<packet.data[1]<<" 2: "<<packet.data[2];
             MMRESULT res;
             res = midiOutShortMsg( m_handle, packet.dwPacket );
             if ( res != MMSYSERR_NOERROR )

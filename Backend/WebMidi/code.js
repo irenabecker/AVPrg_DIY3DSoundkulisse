@@ -1,10 +1,5 @@
 
-var objects=[{
-                "shape":"",
-                "color":"",
-                "posX":0,
-                "posY":0
-            }]
+var objects=[]
 
 function initialize(){
 	let midi = null;  // global MIDIAccess object
@@ -48,6 +43,7 @@ function initialize(){
 	}
 	function MIDIMessageEventHandler(event) {
         //get channel = Color
+        console.log("event data[0]:"+event.data[0]);
         var channel=event.data[0]&0x0f;
         var color="";
         switch(channel)
@@ -87,7 +83,7 @@ function initialize(){
                         "color":color,
                         "posX":posX,
                         "posY":posY});*/
-        //console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
+        console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
 		//console.log(`note on: note=${noteNumber}, velocity = ${velocity}`);
 	}
 	function noteOff(color, posX, posY){
@@ -99,7 +95,7 @@ function initialize(){
                         "color":color,
                         "posX":posX,
                         "posY":posY});*/
-       //console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
+       console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
 		//console.log(`note off: note=${noteNumber}`);
 	}
 	function controlChange(color, posX, posY){
@@ -112,21 +108,17 @@ function initialize(){
                         "color":color,
                         "posX":posX,
                         "posY":posY});*/
-        //console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
+        console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
 		//console.log(`control change: controller = ${controller}, value = ${value}`);
 	}
     function resetObjects()
     {
-        console.clear();
-        for(var i=0;i<objects.length;i++)
+        //console.clear();
+        console.log(objects.length+", objects get emtpyed now");
+        /*for(var i=0;i<objects.length;i++)
             {
                 console.log("Shape:, "+objects[i].shape+" Color: "+objects[i].color+", PosX: "+objects[i].posX+", PosY: "+objects[i].posY);
-            }
-        objects=[{
-                "shape":"",
-                "color":"",
-                "posX":0,
-                "posY":0
-                }];
+            */
+        objects=[];
     }
 }

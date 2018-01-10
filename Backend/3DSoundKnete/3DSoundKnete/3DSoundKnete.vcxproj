@@ -178,7 +178,6 @@
     <ClCompile Include="..\opencv\videowidget.cpp" />
     <ClCompile Include="..\drumstick\winmidiinput.cpp" />
     <ClCompile Include="..\drumstick\winmidioutput.cpp" />
-    <ClCompile Include="ws_examples.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calibration.h" />
