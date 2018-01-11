@@ -22,13 +22,16 @@ var coordinatesBSphere = {x: 0.25, y: 0, z: 0.25};
 
 document.getElementById("sourceHeightSlider").oninput = function() {
     coordinatesRCylinder.x = this.value;
+    soundSourceRSp.setPosition(coordinatesRCylinder.x, coordinatesRCylinder.y, coordinatesRCylinder.z);
     console.log(this.value);
 }
 document.getElementById("sourceWidthlider").oninput = function() {
     coordinatesRCylinder.y = this.value;
+    soundSourceRSp.setPosition(coordinatesRCylinder.x, coordinatesRCylinder.y, coordinatesRCylinder.z);
 }
 document.getElementById("sourceDepthtSlider").oninput = function() {
     coordinatesRCylinder.z = this.value;
+    soundSourceRSp.setPosition(coordinatesRCylinder.x, coordinatesRCylinder.y, coordinatesRCylinder.z);
 }
 
 let onLoad = function() {
@@ -84,20 +87,6 @@ let onLoad = function() {
     
     soundSourceRSp.setPosition(coordinatesRCylinder.x, coordinatesRCylinder.y, coordinatesRCylinder.z);
 
-    // Initialize and create Canvas UI
-    let canvas = document.getElementById("canvas");
-    let elements = [
-        {
-            icon: "sourceAIcon",
-            x: 0.25,
-            y: 0.25,
-            radius: 0.04,
-            alpha: 0.75,
-            clickable: true,
-        }
-    ];
-    //canvasControl = new CanvasControl(canvas, elements, updatePositions);
-    
     
     document.getElementById("spherer").addEventListener("click", function (e) {
         sourceRedSphere.play();
