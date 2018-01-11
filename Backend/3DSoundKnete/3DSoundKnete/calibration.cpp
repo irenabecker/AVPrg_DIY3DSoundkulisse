@@ -1,5 +1,6 @@
 #include <calibration.h>
 #include <dsoundknete.h>
+#include <algorithm>
 
 bool Calibration::calibrated = false;
 int Calibration::maxCalTries = 10;
@@ -11,7 +12,6 @@ std::vector<int> Calibration::globalYReferences(2);
 
 Calibration::Calibration()
 {
-	maxCalTries = 10;
 }
 
 /*
@@ -25,7 +25,7 @@ void Calibration::calibrate()
 {
     //make sure the flag is set to false when the process starts
     calibrated = false;
-    std::cout << "calibrate" << endl;
+    qDebug() << "calibrate" << endl;
     //loop through all shapes and store calibrationObjects in vector<Point>
     std::vector<cv::Point> calibrationObjectPositions(0);
     for (int i = 0; i < DSoundKnete::objects.size(); i++)
@@ -35,7 +35,7 @@ void Calibration::calibrate()
         {
             calibrationObjectPositions.push_back(DSoundKnete::objects.at(i).absolutePosition);
         }
-        std::cout << "shape: " << DSoundKnete::objects.at(i).objectShape << " col:" << DSoundKnete::objects.at(i).objectColor << " | "<< endl;
+        qDebug() << "shape: " << DSoundKnete::objects.at(i).objectShape << " col:" << DSoundKnete::objects.at(i).objectColor << " | "<< endl;
     }
 
     //< 2 calibrationobjects: room can't be calced.
@@ -44,22 +44,22 @@ void Calibration::calibrate()
 		calibrateCounter = calibrateCounter + 1;;
 		if (calibrateCounter >= maxCalTries)
 		{
-			std::cout << "ERROR: There was one or more Calibration-Objects missing!" << endl;
+            qDebug() << "ERROR: There was one or more Calibration-Objects missing!" << endl;
 		}
         return;
     }
 
-    //Fill globalReferences with data from calibrationObjectPositions
-    for(int i = 0; i < calibrationObjectPositions.size(); i++)
-    {
-        globalXReferences[i] = calibrationObjectPositions[i].x;
-        globalYReferences[i] = calibrationObjectPositions[i].y;
-    }
+    globalXReferences[0] = std::min(calibrationObjectPositions[0].x, calibrationObjectPosition[1].x);
+    globalXReferences[1] = std::max(calibrationObjectPositions[0].x, calibrationObjectPosition[1].x);
+    globalYReferences[0] = std::min(calibrationObjectPositions[0].y, calibrationObjectPosition[1].y);
+    globalYReferences[1] = std::max(calibrationObjectPositions[0].y, calibrationObjectPosition[1].y);
 
+    //Calc Board Scales
     boardWidth = globalXReferences[1] - globalXReferences[0];
     boardHeight = globalYReferences[1] - globalYReferences[0];
 
     calibrated = true;
+    qDebug() << "INFO: Calibration done...";
 }
 
 /*

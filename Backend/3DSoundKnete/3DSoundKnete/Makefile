@@ -78,6 +78,20 @@ Makefile: 3DSoundKnete.pro C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc201
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\msvc-base.conf \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\msvc-desktop.conf \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\qconfig.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri \
@@ -101,6 +115,10 @@ Makefile: 3DSoundKnete.pro C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc201
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_help.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_labscontrols_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_labstemplates_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_location.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri \
@@ -129,8 +147,14 @@ Makefile: 3DSoundKnete.pro C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc201
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_script.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sql.pri \
@@ -144,8 +168,17 @@ Makefile: 3DSoundKnete.pro C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\win32-msvc201
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webengine.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webengine_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecore.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecore_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webview.pri \
+		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri \
 		C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri \
@@ -195,6 +228,20 @@ C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\angle.conf:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\msvc-base.conf:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\common\msvc-desktop.conf:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\qconfig.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri:
@@ -218,6 +265,10 @@ C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_gui.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_help.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_labscontrols_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_labstemplates_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_location.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri:
@@ -246,8 +297,14 @@ C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_script.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_sql.pri:
@@ -261,8 +318,17 @@ C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webengine.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webengine_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecore.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecore_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webview.pri:
+C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri:
 C:\Qt\Qt5.6.3\5.6.3\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri:

@@ -11,7 +11,9 @@ public:
     Calibration();
     static cv::Point calcRelative(int globalX, int globalY);
     static void calibrate();
-	static bool getCalibrated() { return calibrated; };
+    static bool getCalibrated() { return calibrated; }
+    static std::vector<int> getGlobalXReferences() { return globalXReferences; }
+    static std::vector<int> getGlobalYReferences() { return globalYReferences; }
 	static int getCalibrateCounter() { return calibrateCounter; }
 	static int getMaxCalTries() { return maxCalTries; }
 	static int calibrateCounter;
