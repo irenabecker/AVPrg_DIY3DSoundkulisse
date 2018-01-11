@@ -25,6 +25,8 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
         int currentY = DSoundKnete::objects[i].absolutePosition.y;
         Vec3b hsv = getHSVAtPoint(currentX, currentY);
         DSoundKnete::objects[i].objectColor = (DSoundKnete::COLOR) checkForColor(hsv[0],hsv[1],hsv[2]);
+        if(DSoundKnete::objects[i].objectColor == DSoundKnete::UNKNOWN_COLOR) //remove from list, if unknown color.
+            DSoundKnete::objects.erase(i);
     }
 
    return input;
@@ -47,5 +49,5 @@ int ColorProcessor::checkForColor(int hueToCheck, int satToCeck, int valToCheck)
     if(hueToCheck > 55 && hueToCheck < 95)
         return DSoundKnete::GREEN;
 
-    return DSoundKnete::ERROR_COLOR;
+    return DSoundKnete::UNKNOWN_COLOR;
 }
