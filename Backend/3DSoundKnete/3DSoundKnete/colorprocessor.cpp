@@ -26,7 +26,7 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
         Vec3b hsv = getHSVAtPoint(currentX, currentY);
         DSoundKnete::objects[i].objectColor = (DSoundKnete::COLOR) checkForColor(hsv[0],hsv[1],hsv[2]);
         if(DSoundKnete::objects[i].objectColor == DSoundKnete::UNKNOWN_COLOR) //remove from list, if unknown color.
-            DSoundKnete::objects.erase(i);
+               DSoundKnete::objects.erase(DSoundKnete::objects.begin()+ (i-1));
     }
 
    return input;
