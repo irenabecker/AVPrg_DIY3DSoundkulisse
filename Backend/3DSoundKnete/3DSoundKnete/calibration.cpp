@@ -49,10 +49,10 @@ void Calibration::calibrate()
         return;
     }
 
-    globalXReferences[0] = std::min(calibrationObjectPositions[0].x, calibrationObjectPosition[1].x);
-    globalXReferences[1] = std::max(calibrationObjectPositions[0].x, calibrationObjectPosition[1].x);
-    globalYReferences[0] = std::min(calibrationObjectPositions[0].y, calibrationObjectPosition[1].y);
-    globalYReferences[1] = std::max(calibrationObjectPositions[0].y, calibrationObjectPosition[1].y);
+    globalXReferences[0] = std::min(calibrationObjectPositions[0].x, calibrationObjectPositions[1].x);
+    globalXReferences[1] = std::max(calibrationObjectPositions[0].x, calibrationObjectPositions[1].x);
+    globalYReferences[0] = std::min(calibrationObjectPositions[0].y, calibrationObjectPositions[1].y);
+    globalYReferences[1] = std::max(calibrationObjectPositions[0].y, calibrationObjectPositions[1].y);
 
     //Calc Board Scales
     boardWidth = globalXReferences[1] - globalXReferences[0];
