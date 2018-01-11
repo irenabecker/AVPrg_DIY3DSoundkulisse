@@ -209,7 +209,7 @@ void DSoundKnete::on_actionPlay_triggered()
 
 void DSoundKnete::on_actionKamera_ffnen_triggered()
 {
-    videoThreadTop->openCamera(1);
+    videoThreadTop->openCamera(0);
 }
 
 void DSoundKnete::on_comboBox_activated(const QString &arg1)

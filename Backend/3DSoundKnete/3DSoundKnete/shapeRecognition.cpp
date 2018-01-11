@@ -19,20 +19,28 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 {
 	Mat output(input.rows, input.cols, input.type());
     cv::Mat dst;
-    input.copyTo(dst);
+	Mat HSV;
 	Mat canny_output;
 	vector<vector<Point>> contours;
 	vector<Vec4i> hierarchy;
 
+	input.copyTo(output);
+	if (Calibration::getCalibrated())
+	{
+		cvtColor(output, HSV, CV_BGR2HSV);
+		Mat mask;
+		inRange(HSV, Scalar(0, 0, 0), Scalar(255, 75, 255), mask);		//look for all colorless pixels
+		output.setTo(Scalar(255, 255, 255), mask);						//and set them as white in the output image
+		cvtColor(output, output, CV_HSV2RGB);
+	}
 	//IplImage* imgGrayScale = cvCreateImage(cvGetSize(img), 8, 1);
-	cv::cvtColor(input, output, CV_BGR2GRAY);
+	cv::cvtColor(output, output, CV_BGR2GRAY);
 	blur(output, output, Size(3, 3));
-
 	
 	//use Canny instead of Threshold
 //	cv::Canny(output, canny_output, 80, 240, 3);
 	cv::threshold(output, canny_output, 100, 255, CV_THRESH_BINARY_INV);
-//	canny_output.copyTo(dst);
+	canny_output.copyTo(dst);
 
 	//finding all contours in the image
 	findContours(canny_output, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
