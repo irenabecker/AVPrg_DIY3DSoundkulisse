@@ -36,12 +36,12 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{6cbc91fe-980f-4df7-adf9-bf02393fa0b4}</UniqueIdentifier>
+      <UniqueIdentifier>{891bc1f9-0461-4e2f-b8b2-916b2229e1ad}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{90aad4ae-2a84-4822-be64-9d9954129f59}</UniqueIdentifier>
+      <UniqueIdentifier>{484c7c52-d5f9-472f-8091-a59a640e0db6}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -77,16 +77,10 @@
     <ClCompile Include="..\drumstick\winmidioutput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Debug\moc_midiinput.cpp">
+    <ClCompile Include="Debug\moc_videowidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_midiinput.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="Debug\moc_dsoundknete.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Release\moc_dsoundknete.cpp">
+    <ClCompile Include="Release\moc_videowidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_videoengine.cpp">
@@ -101,10 +95,16 @@
     <ClCompile Include="Release\moc_midioutput.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Debug\moc_videowidget.cpp">
+    <ClCompile Include="Debug\moc_midiinput.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_videowidget.cpp">
+    <ClCompile Include="Release\moc_midiinput.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_dsoundknete.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_dsoundknete.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
