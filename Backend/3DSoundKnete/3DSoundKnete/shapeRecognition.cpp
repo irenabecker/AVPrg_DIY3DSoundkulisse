@@ -3,6 +3,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <calibration.h>
 using namespace cv;
 using namespace std;
 
@@ -61,7 +62,8 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		{
             center[i]=setLabel(dst, "RECT", contours_poly[i]);
 			//create new Data-class and write center[i] and "RECT" in Data-class
-            DSoundKnete::objects.push_back(
+            if(!(center[i].x == -1 || center[i].y == -1))
+                DSoundKnete::objects.push_back(
                         DSoundKnete::createNewObjData(
                             DSoundKnete::RECTANGLE,
                             center[i])
@@ -71,7 +73,8 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		{
             center[i] = setLabel(dst, "TRI", contours_poly[i]);
 			//create new Data-class and write center[i] and "TRI" in Data-class
-            DSoundKnete::objects.push_back(
+            if(!(center[i].x == -1 || center[i].y == -1))
+                DSoundKnete::objects.push_back(
                         DSoundKnete::createNewObjData(
                             DSoundKnete::TRIANGLE,
                             center[i])
@@ -81,7 +84,8 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		{
             center[i] = setLabel(dst, "Circle", contours_poly[i]);
 			//create new Data-class and write center[i] and "CIRCLE" in Data-class
-            DSoundKnete::objects.push_back(
+            if(!(center[i].x == -1 || center[i].y == -1))
+                DSoundKnete::objects.push_back(
                         DSoundKnete::createNewObjData(
                             DSoundKnete::CIRCLE,
                             center[i])
@@ -110,7 +114,18 @@ cv::Point ShapeRecognition::setLabel(cv::Mat& im, const std::string label, std::
 	cv::putText(im, label, pt, fontface, scale, CV_RGB(255,0,0), thickness, 8);
 
 	cv::Point c(r.x + (r.width / 2), r.y + (r.height / 2));
-	return c;
+
+    if(Calibration::getCalibrated())
+    {
+        if(!((c.x > Calibration::getGlobalXReferences()[0] && c.x < Calibration::getGlobalXReferences()[1])
+                && (c.y > Calibration::getGlobalYReferences()[0] && c.y < Calibration::getGlobalYReferences()[1])))
+        {
+            c.x = -1;
+            c.y = -1;
+        }
+    }
+
+    return c;
 }
 
 
