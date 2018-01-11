@@ -1,12 +1,14 @@
 $(document).ready(function() {
     // $('.ttt').hide();
     // $('.test2').hide();
+    var testshit= "shit";
 
     $('#search').keyup(function() {
 
         // Search text
         var text = $(this).val().toLowerCase();
         var search_result = '';
+
         
         $('#item_container').find('.item').each(function(){
             $(this).removeClass('active');

@@ -1,19 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <title>AVPRG</title>
+        <!-- Styling für die Navigation -->
+        <style>
+            body {
+                margin: 0;
+            }
+
+            ul {
+                font-family: monospace;
+                font-size: 1.5em;
+                text-align: left;
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 25%;
+                background-color: #f1f1f1;
+                position: fixed;
+                height: 100%;
+                overflow: auto;
+            }
+
+            li a {
+                display: block;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+            li a.active {
+                background-color: #1dba9d;
+                color: white;
+            }
+
+            li a:hover:not(.active) {
+                background-color: #555;
+                color: white;
+            }
+
+            #mainContainer {
+                margin-left: 25%;
+                padding: 1px;
+            }
+        </style>
+        <title>3D Audio Room</title>
     </head>
+
     <body>
-        <button id="spherer" class="red">Sphere</button>
-        <button id="coner" class="red">Cone</button>
-        <button id="cuber" class="red">Cube</button>
-        <button id="sphereg" class="green">Sphere</button>
-        <button id="coneg" class="green">Cone</button>
-        <button id="cubeg" class="green">Cube</button>
-        <button id="sphereb" class="blue">Sphere</button>
-        <button id="coneb" class="blue">Cone</button>
-        <button id="cubeb" class="blue">Cube</button>
-        <script src="soundPlayback.js"></script>
+
+        <div id="mainContainer">
+            <!-- Dies ist der Code für die Aufgabe -->
+            <img src="volume.svg" id="sourceAIcon" hidden>
+            <p id="spherer" class="red object">Red Sphere</p>
+            x
+            <input type="range" id="sourceHeightSlider" min="-3" max="3" value="0" style="-webkit-appearance: slider-horizontal">
+            y
+            <input type="range" id="sourceWidthlider" min="-3" max="3" value="0" style="-webkit-appearance: slider-horizontal">
+            z
+            <input type="range" id="sourceDepthtSlider" min="-3" max="3" value="0" style="-webkit-appearance: slider-horizontal">
+            <p id="coner" class="red object">Red Cone</p>
+            <p id="cuber" class="red object">Red Cube</p>
+            <p id="sphereg" class="green object">Green Sphere</p>
+            <p id="coneg" class="green object">Green Cone</p>
+            <p id="cubeg" class="green object">Green Cube</p>
+            <p id="sphereb" class="blue object">Blue Sphere</p>
+            <p id="coneb" class="blue object">Blue Cone</p>
+            <p id="cubeb" class="blue object">Blue Cube</p>
+
+            <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
+            <script src="roomModel.js"></script>
+        </div>
     </body>
 </html>
