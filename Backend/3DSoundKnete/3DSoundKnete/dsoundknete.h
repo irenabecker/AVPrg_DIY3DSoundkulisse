@@ -27,7 +27,7 @@ public:
 	explicit DSoundKnete(QWidget *parent = 0);
     ~DSoundKnete();
 
-    enum COLOR{RED,GREEN,BLUE,CALIBRATION_COLOR};
+    enum COLOR{RED,GREEN,BLUE,CALIBRATION_COLOR,ERROR_COLOR};
     enum SHAPE{RECTANGLE,CIRCLE,TRIANGLE};
 
     typedef struct{
