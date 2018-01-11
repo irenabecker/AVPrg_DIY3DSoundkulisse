@@ -45,10 +45,14 @@ DSoundKnete::DSoundKnete(QWidget *parent)
     connect(videoThreadFront, &VideoEngine::sendProcessedImage,
         ui->processedFrameFront, &VideoWidget::setImage);
 
+	//for calibration
+	bool test = connect(videoThreadTop, &VideoEngine::sendCalibratFinished,
+		this, &DSoundKnete::on_finishCalibrating);
+
 	//for MIDI connection
 	QStringList connections = midiOutput.connections(true);
 	ui->comboBox->addItems(connections);
-	bool test=connect(videoThreadTop, &VideoEngine::sendDataSignal,
+	connect(videoThreadTop, &VideoEngine::sendDataSignal,
 				this,&DSoundKnete::on_dataSend);
 	std::cout << test << endl;
 
@@ -205,7 +209,7 @@ void DSoundKnete::on_actionPlay_triggered()
 
 void DSoundKnete::on_actionKamera_ffnen_triggered()
 {
-    videoThreadTop->openCamera();
+    videoThreadTop->openCamera(1);
 }
 
 void DSoundKnete::on_comboBox_activated(const QString &arg1)
@@ -215,5 +219,13 @@ void DSoundKnete::on_comboBox_activated(const QString &arg1)
 
 void DSoundKnete::on_calibrateButton_clicked()
 {
+	ui->calibrateButton->setEnabled(false);
     Calibration::calibrate();
+	ui->calibrateButton->setEnabled(Calibration::getCalibrated());
+}
+
+void DSoundKnete::on_finishCalibrating(const bool &success)
+{
+	ui->calibrateButton->setEnabled(true);
+	//output success to label
 }

@@ -44,6 +44,7 @@ public:
 
 	public slots:
 	void on_dataSend();
+	void on_finishCalibrating(const bool &success);
 
 private slots:
 	void on_actionVideo_Top_triggered();

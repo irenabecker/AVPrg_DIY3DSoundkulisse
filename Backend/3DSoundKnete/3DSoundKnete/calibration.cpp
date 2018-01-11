@@ -2,6 +2,8 @@
 #include <dsoundknete.h>
 
 bool Calibration::calibrated = false;
+int Calibration::maxCalTries = 10;
+int Calibration::calibrateCounter = 0;
 int Calibration::boardHeight = 0;
 int Calibration::boardWidth = 0;
 std::vector<int> Calibration::globalXReferences(2);
@@ -9,6 +11,7 @@ std::vector<int> Calibration::globalYReferences(2);
 
 Calibration::Calibration()
 {
+	maxCalTries = 10;
 }
 
 /*
@@ -36,9 +39,13 @@ void Calibration::calibrate()
     }
 
     //< 2 calibrationobjects: room can't be calced.
-    if(calibrationObjectPositions.size() == 0)
+    if(calibrationObjectPositions.size() !=2)
     {
-        std::cout << "ERROR: There was one or more Calibration-Objects missing!" << endl;
+		calibrateCounter = calibrateCounter + 1;;
+		if (calibrateCounter >= maxCalTries)
+		{
+			std::cout << "ERROR: There was one or more Calibration-Objects missing!" << endl;
+		}
         return;
     }
 
@@ -69,15 +76,17 @@ void Calibration::calibrate()
  */
 cv::Point Calibration::calcRelative(int globalX, int globalY)
 {
-    int localX, localY;
+    double localX, localY;
     int relativeX, relativeY;
 
-    localX = globalX - (globalX - globalXReferences[0]);
-    localY = globalY - (globalY - globalYReferences[0]);
+	localX = globalX - globalXReferences[0];
+	localY = globalY - globalYReferences[0];
+   /* localX = globalX - abs(globalXReferences[0]-globalX );
+    localY = globalY - abs(globalYReferences[0]-globalY);*/
 
-    relativeX = boardWidth/localX;
-    relativeY = boardHeight/localY;
+    relativeX = (double)(localX/ boardWidth)*100;
+    relativeY = (double)(localY/ boardHeight)*100;
 
 
-    return cv::Point(relativeX, relativeY);
+    return cv::Point((int)relativeX, (int)relativeY);
 }

@@ -36,12 +36,12 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{8caa6420-24a1-48ab-b60a-b27c69dde4df}</UniqueIdentifier>
+      <UniqueIdentifier>{460bdb82-9d53-402e-bfec-b5037164ea39}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{adcaa923-2846-46f9-94ac-9a6c8385986a}</UniqueIdentifier>
+      <UniqueIdentifier>{00988e9f-976b-48e6-9c28-08348ebe96f0}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -77,6 +77,12 @@
     <ClCompile Include="..\drumstick\winmidioutput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Debug\moc_dsoundknete.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_dsoundknete.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
     <ClCompile Include="Debug\moc_videowidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -101,17 +107,8 @@
     <ClCompile Include="Release\moc_midiinput.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Debug\moc_dsoundknete.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Release\moc_dsoundknete.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="calibration.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="colorprocessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -149,6 +146,9 @@
   <ItemGroup>
     <CustomBuild Include="dsoundknete.ui">
       <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="calibration.h">
+      <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

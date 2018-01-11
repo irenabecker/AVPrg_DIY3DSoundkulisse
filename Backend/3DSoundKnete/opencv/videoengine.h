@@ -28,6 +28,7 @@ signals:
     void sendInputImage(const QImage&);
     void sendProcessedImage(const QImage&);
 	void sendDataSignal();
+	void sendCalibratFinished(const bool&);
 private:
     cv::VideoCapture videoCapture;
     VideoFormat _videoFormat;

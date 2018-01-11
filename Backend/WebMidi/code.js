@@ -95,7 +95,7 @@ function initialize(){
                         "color":color,
                         "posX":posX,
                         "posY":posY});*/
-       console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
+       console.log("CIRCLE, "+color+", PosX: "+posX+", PosY: "+posY);
 		//console.log(`note off: note=${noteNumber}`);
 	}
 	function controlChange(color, posX, posY){
@@ -108,7 +108,7 @@ function initialize(){
                         "color":color,
                         "posX":posX,
                         "posY":posY});*/
-        console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
+        console.log("TRIANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
 		//console.log(`control change: controller = ${controller}, value = ${value}`);
 	}
     function resetObjects()

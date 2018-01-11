@@ -106,10 +106,24 @@ void VideoEngine::run()
                 shapeProcessedFrame = shapeProcessor->process(cvFrame);
                 cvFrame = colorProcessor->process(cvFrame);
                 //Only send data to frontend, when camera is calibrated and enough frames have been processed
+				if (!Calibration::getCalibrated())
+				{
+					if (Calibration::getCalibrateCounter()>0)	//calibration got started from button in dsoundknete
+					{
+						Calibration::calibrate();					//repeat calibrating untill getCalibrated()=true, or counter runs out
+					}
+					if(Calibration::getCalibrateCounter()>=Calibration::getMaxCalTries())	//counter runs out
+					{
+						Calibration::calibrateCounter = 0;
+						emit sendCalibratFinished(false);
+					}
+				}
+				else
+				{emit sendCalibratFinished(true); }
 				if (Calibration::getCalibrated() && frameNumber % SEND_DATA_FRAME_THRESHOLD == 0)
-					emit sendDataSignal();//DSoundKnete::sendData();
+				{emit sendDataSignal();}
             }
-			emit sendDataSignal();
+			//emit sendDataSignal();
             emit sendProcessedImage(cvMatToQImage(shapeProcessedFrame));
 
             // check if stopped
