@@ -19,28 +19,8 @@
         </div>
     <div class="row">
         <div class="col-sm-8 well" style="border:1px solid #000000;"> 
-                                <video autoplay="true" id="videoElement" style="width:50%; height: 10%; margin-left: 25%;">
-             
-                        </video>      
-            
-            <script type="text/javascript">
-                                
-                var video = document.querySelector("#videoElement");
-                 
-                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
-                 
-                if (navigator.getUserMedia) {       
-                    navigator.getUserMedia({video: true}, handleVideo, videoError);
-                }
-                 
-                function handleVideo(stream) {
-                    video.src = window.URL.createObjectURL(stream);
-                }
-                 
-                function videoError(e) {
-                    // do something
-                }
-            </script>            
+            <video autoplay="true" id="videoElement" style="width:50%; height: 10%; margin-left: 25%;"></video>      
+             <script src='videoStreaming.js' type='text/javascript'></script>           
         </div>
         <div class="col-sm-4 well" style="border:1px solid #000000";">       
             <?php include("Hierarchy.html") ?>
