@@ -77,7 +77,12 @@ function createEmptySoundObjects()
     {
         currentSoundObjectsInScene.push(new SoundObject());
         //console.log(currentSoundObjectsInScene[i]);
+        //hier einfügen
     }
+}
+
+function getJSONObjects(midiJSONObjects){
+    
 }
     
 function createDefaultSoundObjects()

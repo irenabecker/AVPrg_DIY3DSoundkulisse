@@ -21,7 +21,7 @@ function initialize(){
 	  console.log( "Failed to get MIDI access - " + msg );
 	}
 
-	navigator.requestMIDIAccess().then( onMIDISuccess, onMIDIFailure );
+	navigator.requestMIDIAccess({sysex:true}).then( onMIDISuccess, onMIDIFailure );
     /*
 	function listInputsAndOutputs( midiAccess ) {
 		const inputPortSelector = document.getElementById('inputportselector');
@@ -125,6 +125,7 @@ function initialize(){
         console.log(midiJSONObjects.length + ", objects get emtpyed now");
         
         //zur anzeige weiterleiten
+        getJSONObjects(midiJSONObjects);
         
         midiJSONObjects=[];
     }
