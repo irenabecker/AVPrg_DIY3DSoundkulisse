@@ -33,13 +33,16 @@ public:
     typedef struct{
         COLOR objectColor;
         SHAPE objectShape;
+		int fillArea;
         cv::Point absolutePosition;
         cv::Point relativePosition;
+		int zPos;
+		
     } objData;
 
     static std::vector<objData> objects;
     static void emptyDataList();
-    static objData createNewObjData(SHAPE shape, cv::Point point);
+    static objData createNewObjData(SHAPE shape, cv::Point point,int fillArea);
     //void sendData();
 
 	public slots:
