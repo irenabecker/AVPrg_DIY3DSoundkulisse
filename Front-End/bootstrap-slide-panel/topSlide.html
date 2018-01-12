@@ -31,7 +31,7 @@
                         <div class="container">
                             <div class="row col-sm-12">
                                 <div class="col-sm-12">
-                                    <h4 class="title text-center">DIY3D - Soundkulisse</h4>
+                                    <h4 class="title text-center noSelect">DIY3D - Soundkulisse</h4>
                                 </div>
                                 <div class="col-sm-12 col-sm-offset-4">
                                     <form class="col-sm-7" id="searchForm">
@@ -63,21 +63,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 col-sm-offset-9">
-                            <div class="dropdown">
-                                <button id="options" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">Soundthemes<span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Natur</a></li>
-                                    <li><a href="#">Stadt</a></li>
-                                </ul>
-                            </div>
-                            <script>
-                            $(document).ready(function() {
-                                $(".dropdown-menu li a").click(function() {
-                                    $("#options").text($(this).text());
-                                });
-                            });
-                            </script>
+                        <div class="col-sm-1 col-sm-offset-8">
+                                 <label class="control-label" for="Company">Soundthemes:</label>
+                                 <select id="Company" class="form-control" name="aa">
+                                     <option value="small">Natur</option>
+                                     <option value="medium">Stadt</option>
+                                 </select> 
                         </div>
                     </div>
                 </div>
@@ -87,7 +78,7 @@
             
                             <div class="row"> 
                                 <div class="col-md-4 col-md-offset-4 text-center">DIY3D - Soundkulisse</div>
-                                <div class="col-md-4 text-right" id="impressum" style="position: fixed; right: 70px; top:15px;">Impressum</div>
+                                <div class="col-md-4 text-right" id="impressum" style="position: fixed; right: 80px; top:16px;">Impressum</div>
                             </div>
 
                             </a>                                     
@@ -118,12 +109,6 @@
                         Über die analogen Figuren kann der Nutzer die Schallquelle der Sounds bestimmen. <br>Hierzu werden die Figuren nach Belieben auf einem Brett anordnen, welches den Klangraum in Verhältnis von 1:10 wiederspiegelt.
                         <br>Auf dem digitalen Interface kann der Nutzer den jeweiligen Figuren verschiedene Sounds zuordnen und anpassen. <br>Defaultmäßig sind die Werte Sound und Lautstärke bereits gesetzt.<br><br>
                         Wir wünschen viel Spaß beim experimentieren – lasst es krachen!
-                        <h3>Projektteilnehmer:</h3>
-                        <p><a href="https://github.com/KevinHagen" target="_blank">Kevin Hagen</a>
-                            <a href="https://github.com/irenabecker" target="_blank">,Irena Becker</a>
-                            <a href="https://github.com/CarinaKr" target="_blank">, Carina Krafft</a>
-                            <a href="https://github.com/JordanisLaza" target="_blank">, Jordanis Lazarides</a>
-                        </p>
                     </p>
                 </div>
             </div>

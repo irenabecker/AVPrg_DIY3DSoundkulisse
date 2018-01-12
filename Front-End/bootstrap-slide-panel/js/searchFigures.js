@@ -1,7 +1,6 @@
 $(document).ready(function() {
     // $('.ttt').hide();
     // $('.test2').hide();
-    var testshit= "shit";
 
     $('#search').keyup(function() {
 
@@ -93,17 +92,17 @@ $(document).ready(function() {
         new Card($('#itembox_1'), _current.headline);
     }); 
 */
-    var card_1 = new Card($('#itembox_1'), 'Dreieck', 'Blau','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 'Vogelgeschwitzer','soundvolume0','pitch0','configureButton0' );
-    var card_2 = new Card($('#itembox_1'), 'Kreis', 'Blau', 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume1','pitch1','configureButton1');
-    var card_3 = new Card($('#itembox_1'), 'Rechteck','Blau','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume2','pitch2','configureButton2');
-    var card_4 = new Card($('#itembox_1'), 'Dreieck','Rot','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume3','pitch3','configureButton3');
+    var card_0 = new Card($('#itembox_1'), 'Dreieck', 'Blau','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 'Vogelgeschwitzer','soundvolume0','pitch0','configureButton0' );
+    var card_1 = new Card($('#itembox_1'), 'Kreis', 'Blau', 'https://ae01.alicdn.com/kf/HTB1ikMkIpXXXXX_XpXXq6xXFXXXK/Charming-modeschmuck-perlen-Charming-40mm-Blau-Mexican-Opal-Kugel-Kristallkugel-chalcedon-Gro%C3%9Fhandel-und-einzelhandel.jpg_220x220.jpg','Vogelgeschwitzer','soundvolume1','pitch1','configureButton1');
+    var card_2 = new Card($('#itembox_1'), 'Rechteck','Blau','http://web-spiele.de/onlinespiele/tetris-und-co/moonstar/_shot.gif','Vogelgeschwitzer','soundvolume2','pitch2','configureButton2');
+    var card_3 = new Card($('#itembox_1'), 'Dreieck','Rot','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume3','pitch3','configureButton3');
 
-    var card_5 = new Card($('#itembox_2'), 'Kreis','Rot', );
-    var card_6 = new Card($('#itembox_2'), 'Rechteck','Rot');
-    var card_7 = new Card($('#itembox_2'), 'Dreieck','Grün');
-    var card_8 = new Card($('#itembox_2'), 'Kreis','Grün');
+    var card_4 = new Card($('#itembox_2'), 'Kreis','Rot','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume4','pitch4','configureButton4' );
+    var card_5 = new Card($('#itembox_2'), 'Rechteck','Rot','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume5','pitch5','configureButton5');
+    var card_6 = new Card($('#itembox_2'), 'Dreieck','Grün','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume6','pitch6','configureButton6');
+    var card_7 = new Card($('#itembox_2'), 'Kreis','Grün','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume7','pitch7','configureButton7');
 
-    var card_8 = new Card($('#itembox_3'), 'Rechteck','Grün');
+    var card_8 = new Card($('#itembox_3'), 'Rechteck','Grün','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume8','pitch8','configureButton8');
 
     for(let i=0; i<cardboxes.length;i++){
         $(document).on("click","#configureButton"+i,function() {
@@ -159,7 +158,7 @@ Card.prototype = {
         i = cardboxes.length;
 
         cardboxes[i] = `<div class="col-sm-3 content" id="card_`+i+`" style="padding-top: 2%; margin-left: -0.1%!important;">
-                <div class="thumbnail figures">
+                <div class="thumbnail figures" style="background-color:#cac5c5;!important">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
                         <h4>`+that.headline+`</h4>
@@ -168,7 +167,7 @@ Card.prototype = {
 
 
                     <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
-                      <strong>Lautstärke:</strong>hhhh
+                      <strong>Lautstärke:</strong>
                       <output name="x" for="`+that.soundvolume+`"></output>
                         <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
                     </form>

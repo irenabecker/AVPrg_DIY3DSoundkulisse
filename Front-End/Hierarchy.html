@@ -1,4 +1,4 @@
-<div style="height: 392px; overflow-y:scroll; padding-left:20px; ">
+<div style="height: 400px; overflow-y:scroll; padding-left:20px; ">
     <script type="text/javascript">
     var Figur = {
         Name: "Dreieck",
@@ -12,14 +12,14 @@
      Figur.ausgabe();
     </script>
 
-    <div class="col-sm-12">
-    <button data-toggle="collapse" data-target="#demo" id="a" onclick="colorchange('a')">Figur: Dreieck Farbe: Blau Position: "1"</button>  
-</div>
+    <div class="col-sm-12" style="padding-left: 0px;">
+    	<button data-toggle="collapse" data-target="#demo" id="a" onclick="colorchange('a')" class="font-size-19 " style="background:white;">Figur: Dreieck Farbe: Blau Position: "1"</button>  
+	</div>
     <div id="demo" class="collapse">
-            <div class="col-sm-8" style="border-style: groove;">
+            <div class="col-sm-9 border-groove">
 
                         <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
-                      <strong>Lautstärke:</strong>hhhh
+                      <strong>Lautstärke:</strong>
                       <output name="x" for="`+that.soundvolume+`"></output>
                         <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
                     </form>
@@ -30,48 +30,46 @@
                         <input id=`+that.pitch+` type="range" min="0" max="100" disabled>
                     </form> 
                     <br>
-            </div>
 
-                <div class="col-sm-4 col-sm-offset-1">
+                <div class="col-sm-3 col-sm-offset-1">
                     <button type="button" class="btn btn-xs btn-danger btn-change">Reset to Default </button>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3 col-sm-offset-2" style="padding-bottom: 5%;" >
                     <button type="button" class="btn btn-xs btn-warning btn-change">Configure</button>
                 </div>
-
+            </div>
     </div>
 
-
-        <button data-toggle="collapse" data-target="#demo2" id="b" onclick="colorchange('b')" style="background:white;">Figur: Dreieck Farbe: Blau Position: "2"<br></button>
-
+    	<div class="col-sm-12" style="padding-left: 0px;">
+        	<button data-toggle="collapse" data-target="#demo2" id="b" onclick="colorchange('b')" class="font-size-19" style="background:white;">Figur: Dreieck Farbe: Blau Position: "2"<br></button>
+		</div>
 
     <div id="demo2" class="collapse">
-                <p>Text Object 2</p><br>
+    	    <div class="col-sm-9 border-groove">
 
-            <div class="col-sm-8">
-
-                        <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
-                      <strong>Lautstärke:</strong>hhhh
+                <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
+                      <strong>Lautstärke:</strong>
                       <output name="x" for="`+that.soundvolume+`"></output>
                         <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
-                    </form>
+                </form>
 
-                    <form oninput="y.value=parseInt(`+that.pitch+`.value)">
+                <form oninput="y.value=parseInt(`+that.pitch+`.value)">
                       <strong>Pitch:</strong>
                       <output name="y" for="`+that.pitch+`"></output>
                         <input id=`+that.pitch+` type="range" min="0" max="100" disabled>
-                    </form> 
+                </form> 
                     <br>
-            </div>
 
-                <div class="col-sm-4 col-sm-offset-1">
+                <div class="col-sm-4 col-sm-offset-2">
                     <button type="button" class="btn btn-xs btn-danger btn-change">Reset to Default </button>
                 </div>
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-xs btn-warning btn-change">Configure</button>
                 </div>
+            </div>
     </div>
     <br>
+
 
 <script type="text/javascript">
         function colorchange(id) {
@@ -86,32 +84,29 @@
     <br>
 
     <div class="col-sm-8">
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "2"<br>
-    Figur: Dreieck Farbe: Blau Position: "3"<br>
-    Figur: Dreieck Farbe: Blau Position: "4"<br>
-    Figur: Dreieck Farbe: Blau Position: "5"<br>
-    Figur: Dreieck Farbe: Blau Position: "6"<br>
-    Figur: Dreieck Farbe: Blau Position: "7"<br>
-    Figur: Dreieck Farbe: Blau Position: "8"<br>
-    Figur: Dreieck Farbe: Blau Position: "9"<br>
-    Figur: Dreieck Farbe: Blau Position: "10"<br>
-    Figur: Dreieck Farbe: Blau Position: "11"<br>
-    Figur: Dreieck Farbe: Blau Position: "12"<br>
-    Figur: Dreieck Farbe: Blau Position: "13"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    Figur: Dreieck Farbe: Blau Position: "1"<br>
-
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "2"<br>
+	    Figur: Dreieck Farbe: Blau Position: "3"<br>
+	    Figur: Dreieck Farbe: Blau Position: "4"<br>
+	    Figur: Dreieck Farbe: Blau Position: "5"<br>
+	    Figur: Dreieck Farbe: Blau Position: "6"<br>
+	    Figur: Dreieck Farbe: Blau Position: "7"<br>
+	    Figur: Dreieck Farbe: Blau Position: "8"<br>
+	    Figur: Dreieck Farbe: Blau Position: "9"<br>
+	    Figur: Dreieck Farbe: Blau Position: "10"<br>
+	    Figur: Dreieck Farbe: Blau Position: "11"<br>
+	    Figur: Dreieck Farbe: Blau Position: "12"<br>
+	    Figur: Dreieck Farbe: Blau Position: "13"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
+	    Figur: Dreieck Farbe: Blau Position: "1"<br>
     </div>
-
-
 </div>

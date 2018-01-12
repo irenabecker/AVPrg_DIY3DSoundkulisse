@@ -2,6 +2,7 @@
 
 //WebAudio Basic Setup
 var context = new AudioContext();
+var audioObjects = [];
 var soundClipStrings = {
     natSounds: ['natSound1.wav', 'natSound2.wav'],
     citySounds: ['citySound1.wav', 'citySound2.wav', 'citySound3.wav']
@@ -9,6 +10,8 @@ var soundClipStrings = {
 
 var colors = ['red','green','blue'];
 var shapes = ['rectangle', 'circle', 'triangle'];
+//delete later
+var testSounds = ['natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav', 'citySound3.wav','natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav'];
 
 var defaultSoundObjects = [];
 var currentSoundObjectsInScene = [];
@@ -17,45 +20,15 @@ let maxItemsInScene = 20;
 //SoundThemes
 var natureSoundTheme;
 var citySoundTheme;
-/*
-//3D WebAudio Setup
-//Set room acoustics properties (in meters)
-var dimensions = {
-    width: 10.1,
-    height: 10.1,
-    depth: 25.1
-};
 
-//materials for the "walls" (for different sound reflections)
-var materials = {
-    left: 'brick-bare',
-    right: 'curtain-heavy',
-    front: 'marble',
-    back: 'glass-thin',
-    down: 'grass',
-    up: 'transparent'
-};
-
-//Third Order Ambisonic ResonanceAudio scene
-var resonanceAudioScene = new ResonanceAudio(audioContext, {
-    ambisonicOrder: 3,
-    dimensions: dimensions,
-    materials: materials
-});
-
-//Send ResonanceAudios binaural output to stereo out (2 channel audio)
-resonanceAudioScene.output.connect(context.destination);
-
-//This provides us with the ambisonicOutput, probably the one we need in maxsp (given as web audio node)
-//resonanceAudioScene.ambisonicOutput
-*/
 //Cache the DOM here
 var startBtn = document.getElementById('startBtn');
 
 function init() 
 {
-    let threeDAudio = new threeDAudio(context);
-    fillThemes();
+    let threeDAudioObj = new threeDAudio(context);
+    //fillThemes();
+    createAudioObjects();
     createDefaultSoundObjects();
     createEmptySoundObjects();
 }
@@ -69,7 +42,7 @@ function fillThemes()
         let audioSources = [];
         for(i = 0; i < soundClipCollection.length; i++) 
         {
-            audioSources.push(new Audio('../../Sounds/TestSounds/' + soundClipCollection[i]);
+            audioSources.push(new Audio('../../Sounds/TestSounds/' + soundClipCollection[i]));
         }
                               natureSoundTheme = new SoundTheme(audioSources);
     }
@@ -89,17 +62,32 @@ function fillThemes()
     */
 }
 
+function createAudioObjects() 
+{
+    let i;
+    for(i = 0; i < testSounds.length; i++) 
+    {
+        audioObjects.push('../../Sounds/TestSounds/' + testSounds[i]);
+    }
+}
+
 function createEmptySoundObjects() 
 {
     for(let i = 0; i < maxItemsInScene; i++)
     {
         currentSoundObjectsInScene.push(new SoundObject());
-        console.log(currentSoundObjectsInScene[i]);
+        //console.log(currentSoundObjectsInScene[i]);
+        //hier einfügen
     }
+}
+
+function getJSONObjects(midiJSONObjects){
+    
 }
     
 function createDefaultSoundObjects()
 {
+    let nextAudioObjectIndex = 0;
     for(let i = 0; i < colors.length;i++) 
     {
         for(let j = 0; j < shapes.length; j++) 
@@ -107,17 +95,20 @@ function createDefaultSoundObjects()
             defaultSoundObjects.push(new SoundObject(
                 shapes[j],
                 colors[i],
-                undefined,
-                undefined,
-                undefined,
+                audioObjects[nextAudioObjectIndex],
+                Math.floor(Math.random() * 6),
+                Math.floor(Math.random() * 6),
                 1,
                 1
             ));
+            nextAudioObjectIndex++;
         }
     }
+    console.log(defaultSoundObjects);
 }
     
 //listeners
 startBtn.addEventListener('click', function() {
    //start audio here 
+    init();
 });
