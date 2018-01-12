@@ -7,6 +7,13 @@ var soundClipStrings = {
     citySounds: ['citySound1.wav', 'citySound2.wav', 'citySound3.wav']
 };
 
+var colors = ['red','green','blue'];
+var shapes = ['rectangle', 'circle', 'triangle'];
+
+var defaultSoundObjects = [];
+var currentSoundObjectsInScene = [];
+let maxItemsInScene = 20;
+
 //SoundThemes
 var natureSoundTheme;
 var citySoundTheme;
@@ -45,6 +52,14 @@ resonanceAudioScene.output.connect(context.destination);
 //Cache the DOM here
 var startBtn = document.getElementById('startBtn');
 
+function init() 
+{
+    let threeDAudio = new threeDAudio(context);
+    fillThemes();
+    createDefaultSoundObjects();
+    createEmptySoundObjects();
+}
+
 //create new Audio-Sources in here and pass them into the corresponding theme.
 function fillThemes() 
 {
@@ -74,6 +89,34 @@ function fillThemes()
     */
 }
 
+function createEmptySoundObjects() 
+{
+    for(let i = 0; i < maxItemsInScene; i++)
+    {
+        currentSoundObjectsInScene.push(new SoundObject());
+        console.log(currentSoundObjectsInScene[i]);
+    }
+}
+    
+function createDefaultSoundObjects()
+{
+    for(let i = 0; i < colors.length;i++) 
+    {
+        for(let j = 0; j < shapes.length; j++) 
+        {
+            defaultSoundObjects.push(new SoundObject(
+                shapes[j],
+                colors[i],
+                undefined,
+                undefined,
+                undefined,
+                1,
+                1
+            ));
+        }
+    }
+}
+    
 //listeners
 startBtn.addEventListener('click', function() {
    //start audio here 
