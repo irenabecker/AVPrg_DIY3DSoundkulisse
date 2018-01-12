@@ -1,22 +1,14 @@
-function SoundObject(shape, color, soundClip, xPosition, yPosition, speed, volume) 
+function SoundObject(shape, color, audioObject, xPosition, yPosition, speed, volume) 
 {
     this.shape = shape;
     this.color = color;
-    this.soundClip = soundClip;
+    this.audioObject = audioObject;
     this.xPosition = xPosition;
     this.yPosition = yPosition;
     //this.zPosition = zPosition;
     this.speed = speed;
     this.volume = volume;
 }
-
-SoundObject.prototype.myMethod() {
-    this.xPosition = value;
-}
-
-var x = new SoundObject(1,2,3,4,5,6,7);
-
-x.myMethod();
 
 //Create a SoundTheme for related sounds and store them in an array
 //Maybe also setup default configurations here?

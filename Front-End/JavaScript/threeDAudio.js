@@ -4,6 +4,7 @@ function threeDAudio(audioContext)
 {
     this.audioContext = audioContext;
     
+    //materials for the "walls" (for different sound reflections)
     this.materials = {
         left: 'transparent',
         right: 'transparent',
@@ -20,11 +21,16 @@ function threeDAudio(audioContext)
         depth: 25.1
     };
     
+    //Third Order Ambisonic ResonanceAudio scene
     this.resonanceAudioScene = new ResonanceAudio(this.audioContext, {
        ambisonicOrder: 3,
-        dimensions: dimensions,
-        materials: materials
+        dimensions: this.dimensions,
+        materials: this.materials
     });
     
-    resonanceAudioScene.output.connect(context.destination);
+    //Send ResonanceAudios binaural output to stereo out (2 channel audio)
+    this.resonanceAudioScene.output.connect(context.destination);
+    
+    //This provides us with the ambisonicOutput, probably the one we need in maxsp (given as web audio node)
+    //resonanceAudioScene.ambisonicOutput
 }
