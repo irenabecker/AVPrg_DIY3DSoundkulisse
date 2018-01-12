@@ -10,6 +10,7 @@ class Calibration
 public:
     Calibration();
     static cv::Point calcRelative(int globalX, int globalY);
+	static int calcZPos(DSoundKnete::objData obj);
     static void calibrate();
     static bool getCalibrated() { return calibrated; }
     static std::vector<int> getGlobalXReferences() { return globalXReferences; }
@@ -22,6 +23,7 @@ private:
     static bool calibrated;
     static std::vector<int> globalXReferences;
     static std::vector<int> globalYReferences;
+	static int stdFillArea;
 	
 	static int maxCalTries;
 };

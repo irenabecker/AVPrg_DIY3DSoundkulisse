@@ -130,15 +130,20 @@ DSoundKnete::~DSoundKnete()
 	delete shapeRecognition;
 }
 
-DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point)
+DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point, int fillArea)
 {
     objData temp;
 
     temp.objectShape = shape;
     temp.absolutePosition = point;
+	temp.fillArea = fillArea;
 
-    if(Calibration::getCalibrated())
-        temp.relativePosition = Calibration::calcRelative(temp.absolutePosition.x, temp.absolutePosition.y);
+	if (Calibration::getCalibrated())
+	{
+		temp.relativePosition = Calibration::calcRelative(temp.absolutePosition.x, temp.absolutePosition.y);
+		temp.zPos = Calibration::calcZPos(temp);
+	}
+
 
     return temp;
 }
@@ -227,5 +232,13 @@ void DSoundKnete::on_calibrateButton_clicked()
 void DSoundKnete::on_finishCalibrating(const bool &success)
 {
 	ui->calibrateButton->setEnabled(true);
+	if (success)
+	{
+		ui->calibrateLabel->setText("Calibration successfull");
+	}
+	else
+	{
+		ui->calibrateLabel->setText("Calibration failed!\n Place two black cubes on the corners and re-calibrate.");
+	}
 	//output success to label
 }

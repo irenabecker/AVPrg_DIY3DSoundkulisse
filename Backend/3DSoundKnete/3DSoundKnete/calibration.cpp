@@ -58,6 +58,8 @@ void Calibration::calibrate()
     boardWidth = globalXReferences[1] - globalXReferences[0];
     boardHeight = globalYReferences[1] - globalYReferences[0];
 
+	//fill Area for zPos
+	stdFillArea = DSoundKnete::DSoundKnete::objects[0].fillArea;
     calibrated = true;
     qDebug() << "INFO: Calibration done...";
 }
@@ -89,4 +91,12 @@ cv::Point Calibration::calcRelative(int globalX, int globalY)
 
 
     return cv::Point((int)relativeX, (int)relativeY);
+}
+
+int Calibration::calcZPos(DSoundKnete::objData obj)
+{
+	int zPos;
+
+
+	return zPos;
 }

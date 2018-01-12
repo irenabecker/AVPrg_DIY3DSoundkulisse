@@ -74,8 +74,9 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
                 DSoundKnete::objects.push_back(
                         DSoundKnete::createNewObjData(
                             DSoundKnete::RECTANGLE,
-                            center[i])
-                        );
+                            center[i],
+							std::fabs(cv::contourArea(contours[i]))
+                        ));
 		}
 		else if (contours_poly[i].size() >= 3 && contours_poly[i].size() < 8)
 		{
@@ -85,8 +86,9 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
                 DSoundKnete::objects.push_back(
                         DSoundKnete::createNewObjData(
                             DSoundKnete::TRIANGLE,
-                            center[i])
-                        );
+                            center[i],
+							std::fabs(cv::contourArea(contours[i]))
+                        ));
 		}
 		else if (contours_poly[i].size() >4)
 		{
@@ -96,7 +98,8 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
                 DSoundKnete::objects.push_back(
                         DSoundKnete::createNewObjData(
                             DSoundKnete::CIRCLE,
-                            center[i])
+                            center[i],
+							std::fabs(cv::contourArea(contours[i])))
                         );
 		}
 		

@@ -40,6 +40,7 @@ public:
     VideoWidget *processedFrameFront;
     QLabel *label;
     QPushButton *calibrateButton;
+    QLabel *calibrateLabel;
     QMenuBar *menuBar;
     QMenu *menuVideo;
     QMenu *menuVideodatei_ffnen;
@@ -96,10 +97,17 @@ public:
         calibrateButton->setEnabled(false);
         calibrateButton->setGeometry(QRect(50, 350, 131, 41));
         calibrateButton->setCheckable(false);
+        calibrateLabel = new QLabel(centralWidget);
+        calibrateLabel->setObjectName(QStringLiteral("calibrateLabel"));
+        calibrateLabel->setGeometry(QRect(50, 410, 211, 41));
+        QFont font;
+        font.setPointSize(12);
+        calibrateLabel->setFont(font);
+        calibrateLabel->setWordWrap(true);
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 901, 20));
+        menuBar->setGeometry(QRect(0, 0, 901, 21));
         menuVideo = new QMenu(menuBar);
         menuVideo->setObjectName(QStringLiteral("menuVideo"));
         menuVideodatei_ffnen = new QMenu(menuVideo);
@@ -134,6 +142,7 @@ public:
         processedFrameFront->setText(QString());
         label->setText(QApplication::translate("DSoundKnete", "MIDI Output Device", Q_NULLPTR));
         calibrateButton->setText(QApplication::translate("DSoundKnete", "Calibrate", Q_NULLPTR));
+        calibrateLabel->setText(QApplication::translate("DSoundKnete", "Calibration", Q_NULLPTR));
         menuVideo->setTitle(QApplication::translate("DSoundKnete", "Video", Q_NULLPTR));
         menuVideodatei_ffnen->setTitle(QApplication::translate("DSoundKnete", "Videodatei \303\226ffnen ...", Q_NULLPTR));
         menuPlay->setTitle(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));
