@@ -5,18 +5,27 @@ function SoundObject(shape, color, soundClip, xPosition, yPosition, speed, volum
     this.soundClip = soundClip;
     this.xPosition = xPosition;
     this.yPosition = yPosition;
+    //this.zPosition = zPosition;
     this.speed = speed;
     this.volume = volume;
-    //this.zPosition = zPosition;
 }
+
+SoundObject.prototype.myMethod() {
+    this.xPosition = value;
+}
+
+var x = new SoundObject(1,2,3,4,5,6,7);
+
+x.myMethod();
 
 //Create a SoundTheme for related sounds and store them in an array
 //Maybe also setup default configurations here?
-function SoundTheme() 
+function SoundTheme(audioSources) 
 {
     let i;
     this.soundClips = [];
-    this.audioSources = [];
+    this.audioSources = audioSources;
+    /*
     //arguments.length returns the length of passed in arguments
     for(i = 0; i < arguments.length; i++) 
     {
@@ -24,4 +33,5 @@ function SoundTheme()
         var audioSource = context.createMediaElementSource(arguments[i]);
         audioSource.push(audioSource);
     }
+    */
 }
