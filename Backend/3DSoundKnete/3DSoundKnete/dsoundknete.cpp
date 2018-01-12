@@ -155,8 +155,20 @@ void DSoundKnete::emptyDataList()
 
 void DSoundKnete::on_dataSend()
 {
+	QByteArray data;
+	data.resize(6);
+	
+	
 	for (int i = 0; i < objects.size(); i++)
 	{
+		data[0] = 0xf0;	//start byte
+		data[1] = (0x0f & objects[i].objectShape) | (0xf0 & objects[i].objectColor);	//first 4 bit: shape; second 4 bit: color
+		data[2] = objects[i].relativePosition.x;	//xPos
+		data[3] = objects[i].relativePosition.y;	//yPos
+		data[4] = objects[i].zPos;	//zPos
+
+		data[5] = 0xf7;	//end byte
+		midiOutput.sendSysex(data);
         /*
          * Colors: 0 = RED, 1 = GREEN, 2 = BLUE
          * Shapes: 0 = RECTANGLE, 1 = CIRCLE, 2 = TRIANGLE
@@ -167,7 +179,7 @@ void DSoundKnete::on_dataSend()
 			<< ", AbsPoint: " << objects[i].absolutePosition.x<<", "<< objects[i].absolutePosition.y
 			<< ", RelPoint: " << objects[i].relativePosition.x << ", " << objects[i].relativePosition.y
 			<< ", Color: " << objects[i].objectColor;*/
-		midichannel = objects[i].objectColor;
+		/*midichannel = objects[i].objectColor;
 		midinote = objects[i].relativePosition.x;
 		midivolume = objects[i].relativePosition.y;
 		switch (objects[i].objectShape)
@@ -181,9 +193,12 @@ void DSoundKnete::on_dataSend()
 			case TRIANGLE:
 				midiOutput.sendController(midichannel, midinote, midivolume);
 				break;
-		}
+		}*/
+		
 	}
 	midiOutput.sendProgram(0, 0);
+
+
 }
 
 void DSoundKnete::on_actionVideo_Top_triggered()
