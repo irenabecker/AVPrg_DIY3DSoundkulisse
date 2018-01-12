@@ -11,18 +11,17 @@
 
 <body>
         <?php include("background-carousel/background-carousel.php") ?>
- 
          <div class="row">
             <div class="col-md-12">       
               <?php include("bootstrap-slide-panel/topSlide.html") ?>
             </div>
         </div>
     <div class="row">
-        <div class="col-sm-8 well" style="border:1px solid #000000;"> 
-            <video autoplay="true" id="videoElement" style="width:50%; height: 10%; margin-left: 25%;"></video>      
+        <div class="col-sm-5 well" style="border:1px solid #000000; height: 440px!important; margin-left: 13.7%!important;"> 
+            <video autoplay="true" id="videoElement" style="height: 100%; padding-left:8%!important;"></video>      
              <script src='videoStreaming.js' type='text/javascript'></script>           
         </div>
-        <div class="col-sm-4 well" style="border:1px solid #000000";">       
+        <div class="col-sm-3 well" style="border:1px solid #000000; width: 31%;">       
             <?php include("Hierarchy.html") ?>
         </div>
     </div>
