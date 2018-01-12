@@ -103,6 +103,7 @@ public:
         QFont font;
         font.setPointSize(12);
         calibrateLabel->setFont(font);
+        calibrateLabel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
         calibrateLabel->setWordWrap(true);
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
@@ -142,7 +143,7 @@ public:
         processedFrameFront->setText(QString());
         label->setText(QApplication::translate("DSoundKnete", "MIDI Output Device", Q_NULLPTR));
         calibrateButton->setText(QApplication::translate("DSoundKnete", "Calibrate", Q_NULLPTR));
-        calibrateLabel->setText(QApplication::translate("DSoundKnete", "Calibration", Q_NULLPTR));
+        calibrateLabel->setText(QString());
         menuVideo->setTitle(QApplication::translate("DSoundKnete", "Video", Q_NULLPTR));
         menuVideodatei_ffnen->setTitle(QApplication::translate("DSoundKnete", "Videodatei \303\226ffnen ...", Q_NULLPTR));
         menuPlay->setTitle(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));

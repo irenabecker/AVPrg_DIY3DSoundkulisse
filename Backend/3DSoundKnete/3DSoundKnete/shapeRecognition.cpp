@@ -31,10 +31,9 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		Mat mask;
 		inRange(HSV, Scalar(0, 0, 0), Scalar(179, 75, 255), mask);		//look for all colorless pixels
 		output.setTo(Scalar(255, 255, 255), mask);						//set them as white pixels in output
-		output.copyTo(dst);
 	}
+	
 	output.copyTo(dst);
-
 	cv::cvtColor(output, output, CV_BGR2GRAY);
 	blur(output, output, Size(3, 3));
 	

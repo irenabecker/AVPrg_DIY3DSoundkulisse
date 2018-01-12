@@ -141,7 +141,7 @@ DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point,
 	if (Calibration::getCalibrated())
 	{
 		temp.relativePosition = Calibration::calcRelative(temp.absolutePosition.x, temp.absolutePosition.y);
-		temp.zPos = Calibration::calcZPos(temp);
+		temp.zPos = Calibration::calcZPos(temp.absolutePosition.x,temp.absolutePosition.y,temp.fillArea,temp.objectShape);
 	}
 
 
@@ -155,7 +155,6 @@ void DSoundKnete::emptyDataList()
 
 void DSoundKnete::on_dataSend()
 {
-	midiOutput.sendProgram(0, 0);
 	for (int i = 0; i < objects.size(); i++)
 	{
         /*
@@ -184,6 +183,7 @@ void DSoundKnete::on_dataSend()
 				break;
 		}
 	}
+	midiOutput.sendProgram(0, 0);
 }
 
 void DSoundKnete::on_actionVideo_Top_triggered()
@@ -234,11 +234,13 @@ void DSoundKnete::on_finishCalibrating(const bool &success)
 	ui->calibrateButton->setEnabled(true);
 	if (success)
 	{
+		ui->calibrateLabel->setStyleSheet("{ color : green; }");
 		ui->calibrateLabel->setText("Calibration successfull");
 	}
 	else
 	{
-		ui->calibrateLabel->setText("Calibration failed!\n Place two black cubes on the corners and re-calibrate.");
+		ui->calibrateLabel->setStyleSheet("{ color : red; }");
+		ui->calibrateLabel->setText("Calibration failed!");
 	}
 	//output success to label
 }

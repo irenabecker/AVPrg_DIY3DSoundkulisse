@@ -9,6 +9,10 @@ int Calibration::boardHeight = 0;
 int Calibration::boardWidth = 0;
 std::vector<int> Calibration::globalXReferences(2);
 std::vector<int> Calibration::globalYReferences(2);
+int Calibration::stdFillArea=0;
+int Calibration::focalLength=0;
+cv::Point Calibration::boardCenter(0,0);
+std::vector<int> Calibration::stdSize = { 100,75,50 };
 
 Calibration::Calibration()
 {
@@ -34,6 +38,8 @@ void Calibration::calibrate()
                 && DSoundKnete::objects.at(i).objectColor == DSoundKnete::CALIBRATION_COLOR)
         {
             calibrationObjectPositions.push_back(DSoundKnete::objects.at(i).absolutePosition);
+			//fill Area for zPos
+			stdFillArea = DSoundKnete::objects.at(i).fillArea;	
         }
         qDebug() << "shape: " << DSoundKnete::objects.at(i).objectShape << " col:" << DSoundKnete::objects.at(i).objectColor << " | "<< endl;
     }
@@ -57,9 +63,12 @@ void Calibration::calibrate()
     //Calc Board Scales
     boardWidth = globalXReferences[1] - globalXReferences[0];
     boardHeight = globalYReferences[1] - globalYReferences[0];
+	boardCenter.x = globalXReferences[0] + (boardWidth/2);
+	boardCenter.y = globalYReferences[0] + (boardHeight / 2);
 
-	//fill Area for zPos
-	stdFillArea = DSoundKnete::DSoundKnete::objects[0].fillArea;
+	//calculate focal length F=(P*D)/W
+	focalLength = (stdFillArea * 112) / stdSize.at(0);	
+
     calibrated = true;
     qDebug() << "INFO: Calibration done...";
 }
@@ -83,20 +92,23 @@ cv::Point Calibration::calcRelative(int globalX, int globalY)
 
 	localX = globalX - globalXReferences[0];
 	localY = globalY - globalYReferences[0];
-   /* localX = globalX - abs(globalXReferences[0]-globalX );
-    localY = globalY - abs(globalYReferences[0]-globalY);*/
 
     relativeX = (double)(localX/ boardWidth)*100;
     relativeY = (double)(localY/ boardHeight)*100;
 
-
     return cv::Point((int)relativeX, (int)relativeY);
 }
 
-int Calibration::calcZPos(DSoundKnete::objData obj)
+int Calibration::calcZPos(int absolutePositionX,int absolutePositionY, int fillArea,int shape)
 {
 	int zPos;
-
+	double distanceToCamera;
+	double absDistanceToCenter;
+	double relDistanceToCenter;
+	absDistanceToCenter = sqrt(pow((boardCenter.x - absolutePositionX), 2) + pow((boardCenter.y - absolutePositionY), 2));
+	relDistanceToCenter = (absDistanceToCenter / boardWidth) * 100;
+	distanceToCamera = (focalLength * stdSize.at(shape)) / fillArea;	//stdSize has same order as enum SHAPE: REC, CIRCLE, TRI
+	zPos= sqrt(pow((distanceToCamera), 2) - pow((relDistanceToCenter), 2));
 
 	return zPos;
 }
