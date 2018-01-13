@@ -114,10 +114,9 @@ function createDefaultSoundObjects()
 }
 
 //use audioSource.src = newSourcePath and audioSource.play here
+let currentObjectIndex = 0;
 function getJSONObjects(midiJSONObjects)
 {
-    let currentObjectIndex = 0;
-    function increaseIndex(){currentObjectIndex++;}
     console.log('Just received this: ' + midiJSONObjects);
     let i;
     for(i = 0; i < midiJSONObjects.length; i++)
@@ -129,15 +128,12 @@ function getJSONObjects(midiJSONObjects)
         tempObject.soundFileName = tempDefault.soundFileName;
         tempObject.speed = tempDefault.speed;
         tempObject.volume = tempDefault.volume;
-        console.log('Temp object is: ' + tempObject);
         
-        if(checkForDuplicate(currentObjectIndex, tempObject))
+        if(!checkForDuplicate(currentObjectIndex, tempObject))
         {
             currentSoundObjectsInScene[currentObjectIndex] = Object.assign({}, tempObject);
-            console.log('new Object: ' + currentSoundObjectsInScene[currentObjectIndex]);
 
-            increaseIndex();
-            console.log(currentObjectIndex);
+            currentObjectIndex++;
         }
         //else just update the object
     }
@@ -148,7 +144,7 @@ function findCorrespondingDefaultSoundObject(shape, color)
     let i;
     for(i = 0; i < defaultSoundObjects.length; i++) 
     {
-        if(defaultSoundObjects[i].shape.toLocaleLowerCase() == shape.toLowerCase() && defaultSoundObjects[i].color.toLowerCase() == color.toLowerCase())
+        if(defaultSoundObjects[i].shape == shape && defaultSoundObjects[i].color == color)
         {
             return defaultSoundObjects[i];
         }
@@ -160,12 +156,13 @@ function checkForDuplicate(upperBoundary, objToCheck)
 {
     let i;
     let isDuplicate = false;
-    
+    console.log(objToCheck);
+    console.log(objToCheck.xPosition);
     for(i = 0; i < upperBoundary; i++) 
     {
         //criteria for duplicate: almost same coords, shape and color
         if(inRange(objToCheck, currentSoundObjectsInScene[i]) && objToCheck.shape == currentSoundObjectsInScene[i].shape && objToCheck.color == currentSoundObjectsInScene[i].color)
-            isDuplicate = true;
+        {isDuplicate = true;console.log('found dup');}
     }
     
     return isDuplicate;
@@ -175,7 +172,7 @@ function inRange(objToCheck, existingObj)
 {
     function compareSingleCoord(coordToCheck, existingCoord)
     {
-        return coordToCheck > (existingCoord + TOLERATION_RADIUS) && coordToCheck < (existingCoord - TOLERATION_RADIUS)
+        return coordToCheck < (existingCoord + TOLERATION_RADIUS) && coordToCheck > (existingCoord - TOLERATION_RADIUS)
     }
     return compareSingleCoord(objToCheck.xPosition, existingObj.xPosition) && compareSingleCoord(objToCheck.yPosition, existingObj.yPosition) && compareSingleCoord(objToCheck.zPosition, existingObj.zPosition);
 }

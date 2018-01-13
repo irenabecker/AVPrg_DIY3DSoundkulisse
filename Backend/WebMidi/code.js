@@ -71,11 +71,11 @@ function initialize(){
     
 	function createJSONObject(shape,color,posX,posY,posZ){
         midiJSONObjects.push('{' +
-            '"shape":"'+shape+'",' +
-            '"color":"'+color+'",' +
-            '"posX":"'+posX+'",' +
-            '"posY":"'+posY+'",' +
-            '"posZ":"'+posZ+ 
+            '"shape":"'+shape.toLowerCase()+'",' +
+            '"color":"'+color.toLowerCase()+'",' +
+            '"xPosition":"'+posX+'",' +
+            '"yPosition":"'+posY+'",' +
+            '"zPosition":"'+posZ+ 
         '"}');
         console.log("Shape: "+shape+ " color: "+color+", PosX: "+posX+", PosY: "+posY+", PosZ: "+posZ);
 	}
