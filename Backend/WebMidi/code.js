@@ -3,7 +3,19 @@ var midiJSONObjects=[];
 
 function initialize(){
     
-    
+    //for testing without backend
+    createJSONObject("RECTANGLE","RED",10,20,30);
+    resetJSONObjects();
+    createJSONObject("RECTANGLE","RED",100,20,30);
+    resetJSONObjects();
+    createJSONObject("RECTANGLE","GREEN",11,21,31);
+    resetJSONObjects();
+    createJSONObject("RECTANGLE","BLUE",12,22,32);
+    resetJSONObjects();
+    createJSONObject("CIRCLE","RED",14,24,34);
+    resetJSONObjects();
+    createJSONObject("CIRCLE","RED",144,2220,340);
+    resetJSONObjects();
     
 	let midi = null;  // global MIDIAccess object
 	let midiInputs = [];
