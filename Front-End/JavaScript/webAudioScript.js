@@ -166,8 +166,9 @@ function checkForDuplicate(objToCheck, compareToList)
 
 function updateObjectsInScene(midiData)
 {
-    let maskArray=[];
+    
     let newMidiDataArray = midiData;
+    let maskArray=new Array(newMidiDataArray.length);
     let i;
     for(i=0;i<currentSoundObjectsInScene.length;i++)
     {   
@@ -180,7 +181,7 @@ function updateObjectsInScene(midiData)
                 currentSoundObjectsInScene[i].xPosition=midiData[dupIndex].xPosition;
                 currentSoundObjectsInScene[i].yPosition=midiData[dupIndex].yPosition;
                 currentSoundObjectsInScene[i].zPosiiton=midiData[dupIndex].zPosition;  
-                maskArray[dubIndex]=true;
+                maskArray[dupIndex]=true;
             }   
             else
             {
@@ -192,10 +193,10 @@ function updateObjectsInScene(midiData)
         }
     }
     
-    for(var j=0;j<newMidiDataArray;j++)
+    for(var j=newMidiDataArray.length-1;j>=0;j--)
     {
         if(maskArray[j])
-        {newMidiDataArray.splice(dupIndex,1);} //remove according MIDI from Array}
+        {newMidiDataArray.splice(j,1);} //remove according MIDI from Array}
     }
     
     //console.log(newMidiDataArray);
