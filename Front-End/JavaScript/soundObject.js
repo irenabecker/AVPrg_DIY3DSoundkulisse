@@ -1,8 +1,9 @@
-function SoundObject(shape, color, audioObject, xPosition, yPosition, speed, volume) 
+function SoundObject(shape, color, audioSourceIndex, soundFileName, xPosition, yPosition, speed, volume) 
 {
     this.shape = shape;
     this.color = color;
-    this.audioObject = audioObject;
+    this.audioSourceIndex = audioSourceIndex;
+    this.soundFileName = soundFileName;
     this.xPosition = xPosition;
     this.yPosition = yPosition;
     //this.zPosition = zPosition;

@@ -1,4 +1,3 @@
-
 var midiJSONObjects=[]
 
 function initialize(){
@@ -9,7 +8,6 @@ function initialize(){
 	  console.log( "MIDI ready!" );
 	  midi = midiAccess;  // store in the global (in real usage, would probably keep in an object instance)
         let inputs = midi.inputs.values();
-		//listInputsAndOutputs(midi);
       //Loop through all Midi-Inputs
         for (let input = inputs.next(); input && !input.done; input = inputs.next()) 
             {
@@ -79,32 +77,9 @@ function initialize(){
             '"posY":'+posY+
             '"posZ":'+posZ+
         '}');
-        console.log("Shape "+shape+", Color: "+color+", PosX: "+posX+", PosY: "+posY+", PosZ: "+posZ);
-	}
-    /*
-	function noteOff(color, posX, posY){
-        midiJSONObjects.push({ 
-            "shape":"CIRCLE",
-            "color":color,
-            "posX":posX,
-            "posY":posY
-        });
-        
-       console.log("CIRCLE, "+color+", PosX: "+posX+", PosY: "+posY);
+        console.log("Shape: "+shape+ " color: "+color+", PosX: "+posX+", PosY: "+posY);
 	}
     
-	function controlChange(color, posX, posY){
-        
-        midiJSONObjects.push('{
-            "shape":"TRIANGLE",
-            "color":color,
-            "posX":posX,
-            "posY":posY
-        }');
-                             
-        console.log("TRIANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
-	}
-    */
     function resetJSONObjects()
     {
         console.log(midiJSONObjects.length + ", objects get emtpyed now");
