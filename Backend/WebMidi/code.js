@@ -3,11 +3,11 @@ var midiJSONObjects=[];
 
 function initialize(){
     
-    window.setInterval(function() {
+    /*window.setInterval(function() {
         createJSONObject('RECTANGLE', 'RED', 10,20,30);
         createJSONObject('RECTANGLE', 'RED', Math.floor(Math.random()*100),Math.floor(Math.random()*100),Math.floor(Math.random()*100));
         resetJSONObjects();
-    }, 5000);
+    }, 5000);*/
     
 	let midi = null;  // global MIDIAccess object
 	let midiInputs = [];

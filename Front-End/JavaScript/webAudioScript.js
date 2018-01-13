@@ -122,6 +122,15 @@ function getJSONObjects(midiJSONObjects)
     let tempObjects = parseAllCurrentJSONToSoundObj(midiJSONObjects);
     let newObjects = updateObjectsInScene(tempObjects);
     createNewSoundObjects(newObjects);
+    
+    for(var i=0;i<currentSoundObjectsInScene.length;i++)
+        {
+            if(currentSoundObjectsInScene[i].xPosition!=undefined)
+                {
+                    console.log(currentSoundObjectsInScene[i]);
+                }
+        }
+    //console.log(currentSoundObjectsInScene);
 }
 
 function findCorrespondingDefaultSoundObject(shape, color) 
@@ -203,7 +212,7 @@ function createNewSoundObjects(newObjects)
         for(property in tempObject)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
     }
-    console.log(currentSoundObjectsInScene);
+    //console.log(currentSoundObjectsInScene);
 }
 
 function parseAllCurrentJSONToSoundObj(jsonObj) 
