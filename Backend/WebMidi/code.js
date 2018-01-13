@@ -77,7 +77,7 @@ function initialize(){
             '"posY":'+posY+
             '"posZ":'+posZ+
         '}');
-        console.log("Shape: "+shape+ " color: "+color+", PosX: "+posX+", PosY: "+posY);
+        console.log("Shape: "+shape+ " color: "+color+", PosX: "+posX+", PosY: "+posY+", PosZ: "+posZ);
 	}
     
     function resetJSONObjects()
