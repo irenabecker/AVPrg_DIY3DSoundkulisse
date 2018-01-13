@@ -2,13 +2,21 @@ var midiJSONObjects=[];
 
 
 function initialize(){
-    
+    //for testing without backend
+    testObj = {shape:'RECTANGLE', color: 'RED', xPosition: 10, yPosition: 20, zPosition: 30}
+    function moveTestObj() 
+    {
+        testObj.xPosition += Math.floor(Math.random()* 5);
+        testObj.yPosition += Math.floor(Math.random()* 5);
+        testObj.zPosition += Math.floor(Math.random()* 5);
+    }
     window.setInterval(function() {
-        createJSONObject('RECTANGLE', 'RED', 10,20,30);
-        createJSONObject('RECTANGLE', 'RED', Math.floor(Math.random()*100),Math.floor(Math.random()*100),Math.floor(Math.random()*100));
+        //createJSONObject('RECTANGLE', 'RED', Math.floor(Math.random()*100),Math.floor(Math.random()*100),Math.floor(Math.random()*100));
+        moveTestObj();
+        createJSONObject(testObj.shape, testObj.color, testObj.xPosition, testObj.yPosition, testObj.zPosition);
         resetJSONObjects();
     }, 5000);
-    
+    //*/
 	let midi = null;  // global MIDIAccess object
 	let midiInputs = [];
     

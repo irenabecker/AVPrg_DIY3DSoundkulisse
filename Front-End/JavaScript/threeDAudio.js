@@ -54,5 +54,9 @@ threeDAudio.prototype.updateDimensions = function(dimensions)
 
 threeDAudio.prototype.updateThreeDSource = function(index, xPos, yPos, zPos)
 {
-    this.sources[index].setPosition(xPos, yPos, zPos);
+    let newXPos = this.dimensions.width * (xPos/100);
+    let newYPos = this.dimensions.depth * (yPos/100);
+    let newZPos = this.dimensions.height * (zPos/100);
+    
+    this.sources[index].setPosition(newXPos, newYPos, newZPos);
 }

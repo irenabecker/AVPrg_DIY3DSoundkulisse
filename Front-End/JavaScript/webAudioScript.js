@@ -78,6 +78,7 @@ function createAudioSources()
     for(i = 0; i < testSounds.length; i++) 
     {
         htmlAudioElements.push(new Audio());
+        console.log(htmlAudioElements[i].paused);
         mediaElementAudioSources[i] = context.createMediaElementSource(htmlAudioElements[i]);
         mediaElementAudioSources[i].connect(threeDAudioObj.sources[i].input);
     }       
@@ -122,6 +123,27 @@ function getJSONObjects(midiJSONObjects)
     let tempObjects = parseAllCurrentJSONToSoundObj(midiJSONObjects);
     let newObjects = updateObjectsInScene(tempObjects);
     createNewSoundObjects(newObjects);
+    updateAudioSources();
+}
+
+function updateAudioSources() 
+{
+    let i;
+    for(i = 0; i < htmlAudioElements.length; i++) 
+    {
+        if(currentSoundObjectsInScene[i].soundFileName != undefined && htmlAudioElements[i].paused)
+        {
+            htmlAudioElements[i].play();
+            htmlAudioElements[i].loop = true;
+        }
+        
+        threeDAudioObj.updateThreeDSource(
+            i,
+            currentSoundObjectsInScene[i].xPosition,
+            currentSoundObjectsInScene[i].yPosition,
+            currentSoundObjectsInScene[i].zPosition
+        );
+    }
 }
 
 function findCorrespondingDefaultSoundObject(shape, color) 
