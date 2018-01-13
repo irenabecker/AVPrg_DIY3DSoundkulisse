@@ -36,8 +36,6 @@ public:
     VideoWidget *inputFrameTop;
     QComboBox *comboBox;
     VideoWidget *processedFrameTop;
-    VideoWidget *inputFrameFront;
-    VideoWidget *processedFrameFront;
     QLabel *label;
     QPushButton *calibrateButton;
     QLabel *calibrateLabel;
@@ -77,18 +75,6 @@ public:
         processedFrameTop->setFrameShape(QFrame::Box);
         processedFrameTop->setScaledContents(false);
         processedFrameTop->setAlignment(Qt::AlignCenter);
-        inputFrameFront = new VideoWidget(centralWidget);
-        inputFrameFront->setObjectName(QStringLiteral("inputFrameFront"));
-        inputFrameFront->setGeometry(QRect(20, 190, 191, 141));
-        inputFrameFront->setFrameShape(QFrame::Box);
-        inputFrameFront->setScaledContents(false);
-        inputFrameFront->setAlignment(Qt::AlignCenter);
-        processedFrameFront = new VideoWidget(centralWidget);
-        processedFrameFront->setObjectName(QStringLiteral("processedFrameFront"));
-        processedFrameFront->setGeometry(QRect(730, 340, 151, 211));
-        processedFrameFront->setFrameShape(QFrame::Box);
-        processedFrameFront->setScaledContents(false);
-        processedFrameFront->setAlignment(Qt::AlignCenter);
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(270, 350, 101, 16));
@@ -103,7 +89,6 @@ public:
         QFont font;
         font.setPointSize(12);
         calibrateLabel->setFont(font);
-        calibrateLabel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
         calibrateLabel->setWordWrap(true);
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
@@ -122,7 +107,6 @@ public:
         menuVideo->addAction(menuVideodatei_ffnen->menuAction());
         menuVideo->addAction(actionKamera_ffnen);
         menuVideodatei_ffnen->addAction(actionVideo_Top);
-        menuVideodatei_ffnen->addAction(actionVideo_Front);
         menuPlay->addAction(actionPlay);
 
         retranslateUi(DSoundKnete);
@@ -135,15 +119,13 @@ public:
         DSoundKnete->setWindowTitle(QApplication::translate("DSoundKnete", "DSoundKnete", Q_NULLPTR));
         actionKamera_ffnen->setText(QApplication::translate("DSoundKnete", "Kamera \303\226ffnen", Q_NULLPTR));
         actionPlay->setText(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));
-        actionVideo_Top->setText(QApplication::translate("DSoundKnete", "Video Top", Q_NULLPTR));
+        actionVideo_Top->setText(QApplication::translate("DSoundKnete", "Open Video", Q_NULLPTR));
         actionVideo_Front->setText(QApplication::translate("DSoundKnete", "Video Front", Q_NULLPTR));
         inputFrameTop->setText(QString());
         processedFrameTop->setText(QString());
-        inputFrameFront->setText(QString());
-        processedFrameFront->setText(QString());
         label->setText(QApplication::translate("DSoundKnete", "MIDI Output Device", Q_NULLPTR));
         calibrateButton->setText(QApplication::translate("DSoundKnete", "Calibrate", Q_NULLPTR));
-        calibrateLabel->setText(QString());
+        calibrateLabel->setText(QApplication::translate("DSoundKnete", "Place two black cubes to calibrate your room.", Q_NULLPTR));
         menuVideo->setTitle(QApplication::translate("DSoundKnete", "Video", Q_NULLPTR));
         menuVideodatei_ffnen->setTitle(QApplication::translate("DSoundKnete", "Videodatei \303\226ffnen ...", Q_NULLPTR));
         menuPlay->setTitle(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));
