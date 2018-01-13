@@ -32,12 +32,14 @@ var startBtn = document.getElementById('startBtn');
 
 function init() 
 {
-    initialize(); // code.js
+    
     threeDAudioObj = new threeDAudio(context);
     //fillThemes();
     createAudioSources();
     createDefaultSoundObjects();
     createEmptySoundObjects();
+    
+    initialize(); // code.js
 }
 
 //create new Audio-Sources in here and pass them into the corresponding theme.
@@ -128,14 +130,19 @@ function getJSONObjects(midiJSONObjects)
         tempObject.soundFileName = tempDefault.soundFileName;
         tempObject.speed = tempDefault.speed;
         tempObject.volume = tempDefault.volume;
-        
-        if(!checkForDuplicate(currentObjectIndex, tempObject))
+        let dupIndex=checkForDuplicate(currentObjectIndex, tempObject)
+        if(dupIndex>currentObjectIndex)  //checkForDuplicate returnd uppderBoundary+1
         {
             currentSoundObjectsInScene[currentObjectIndex] = Object.assign({}, tempObject);
 
             currentObjectIndex++;
         }
-        //else just update the object
+        else
+        {
+            currentSoundObjectsInScene[dupIndex].xPosition=tempObject.xPosition;
+            currentSoundObjectsInScene[dupIndex].yPosition=tempObject.yPosition;
+            currentSoundObjectsInScene[dupIndex].zPosiiton=tempObject.zPosition;       
+        }
     }
 }
 
@@ -156,16 +163,22 @@ function checkForDuplicate(upperBoundary, objToCheck)
 {
     let i;
     let isDuplicate = false;
+    let duplicateIndex=upperBoundary+1;
     console.log(objToCheck);
     console.log(objToCheck.xPosition);
     for(i = 0; i < upperBoundary; i++) 
     {
         //criteria for duplicate: almost same coords, shape and color
         if(inRange(objToCheck, currentSoundObjectsInScene[i]) && objToCheck.shape == currentSoundObjectsInScene[i].shape && objToCheck.color == currentSoundObjectsInScene[i].color)
-        {isDuplicate = true;console.log('found dup');}
+        {
+            duplicateIndex=i;
+            isDuplicate = true;
+            console.log('found dup');
+        }
     }
     
-    return isDuplicate;
+    //return isDuplicate;
+    return duplicateIndex;
 }
             
 function inRange(objToCheck, existingObj) 

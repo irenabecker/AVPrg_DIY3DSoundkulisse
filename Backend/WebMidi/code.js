@@ -1,6 +1,12 @@
-var midiJSONObjects=[]
+var midiJSONObjects=[];
+
 
 function initialize(){
+    
+    //for testing without backend
+    createJSONObject("RECTANGLE","RED",10,20,30);
+    resetJSONObjects();
+    
 	let midi = null;  // global MIDIAccess object
 	let midiInputs = [];
     
