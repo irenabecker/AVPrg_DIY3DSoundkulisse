@@ -229,7 +229,7 @@ void DSoundKnete::on_actionPlay_triggered()
 
 void DSoundKnete::on_actionKamera_ffnen_triggered()
 {
-    videoThreadTop->openCamera(0);
+    videoThreadTop->openCamera(1);
 }
 
 void DSoundKnete::on_comboBox_activated(const QString &arg1)
@@ -249,12 +249,12 @@ void DSoundKnete::on_finishCalibrating(const bool &success)
 	ui->calibrateButton->setEnabled(true);
 	if (success)
 	{
-		ui->calibrateLabel->setStyleSheet("{ color : green; }");
+		ui->calibrateLabel->setStyleSheet("QLabel { color: green }");
 		ui->calibrateLabel->setText("Calibration successfull");
 	}
 	else
 	{
-		ui->calibrateLabel->setStyleSheet("{ color : red; }");
+		ui->calibrateLabel->setStyleSheet("QLabel { color: red }");
 		ui->calibrateLabel->setText("Calibration failed!");
 	}
 	//output success to label
