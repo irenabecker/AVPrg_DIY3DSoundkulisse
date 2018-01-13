@@ -103,6 +103,7 @@ function createDefaultSoundObjects()
                 testSounds[currentHtmlAudioElement],
                 undefined,
                 undefined,
+                undefined,
                 1,
                 1
             ));
@@ -127,38 +128,32 @@ function findCorrespondingDefaultSoundObject(shape, color)
 {
     let i;
     for(i = 0; i < defaultSoundObjects.length; i++) 
-    {
         if(defaultSoundObjects[i].shape == shape && defaultSoundObjects[i].color == color)
-        {
             return defaultSoundObjects[i];
-        }
-    }
 }
 
-var TOLERATION_RADIUS = 15;
+var TOLERATION_RADIUS = 1;
 function checkForDuplicate(objToCheck, compareToList)
 {
     let i;
     let duplicateIndex=compareToList.length+1;
-    //console.log(objToCheck);
-    //console.log(objToCheck.xPosition);
     for(i = 0; i < compareToList.length; i++) 
     {
         //criteria for duplicate: almost same coords, shape and color
         if(inRange(objToCheck, compareToList[i]) && objToCheck.shape == compareToList[i].shape && objToCheck.color == compareToList[i].color)
         {
             duplicateIndex=i;
-            console.log('found dup');
         }
     }
     
-    //return isDuplicate;
     return duplicateIndex;
 }
 
 function updateObjectsInScene(midiData)
 {
+    
     let newMidiDataArray = midiData;
+    let maskArray=new Array(newMidiDataArray.length);
     let i;
     for(i=0;i<currentSoundObjectsInScene.length;i++)
     {   
@@ -171,7 +166,7 @@ function updateObjectsInScene(midiData)
                 currentSoundObjectsInScene[i].xPosition=midiData[dupIndex].xPosition;
                 currentSoundObjectsInScene[i].yPosition=midiData[dupIndex].yPosition;
                 currentSoundObjectsInScene[i].zPosiiton=midiData[dupIndex].zPosition;  
-                newMidiDataArray.splice(dupIndex,dupIndex); //remove according MIDI from Array
+                maskArray[dupIndex]=true;
             }   
             else
             {
@@ -183,8 +178,11 @@ function updateObjectsInScene(midiData)
         }
     }
     
-    console.log(newMidiDataArray);
-    console.log(midiData);
+    for(var j=newMidiDataArray.length-1;j>=0;j--)
+    {
+        if(maskArray[j])
+        {newMidiDataArray.splice(j,1);} //remove according MIDI from Array}
+    }
     
     return newMidiDataArray;
 }
@@ -201,8 +199,11 @@ function createNewSoundObjects(newObjects)
         tempObject.soundFileName = tempDefault.soundFileName;
         tempObject.speed = tempDefault.speed;
         tempObject.volume = tempDefault.volume;
-        currentSoundObjectsInScene[tempObject.index]=Object.assign({},tempObject); 
+        
+        for(property in tempObject)
+            currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
     }
+    console.log(currentSoundObjectsInScene);
 }
 
 function parseAllCurrentJSONToSoundObj(jsonObj) 
@@ -210,23 +211,18 @@ function parseAllCurrentJSONToSoundObj(jsonObj)
     let i;
     tempObjects = [];
     for(i = 0; i < jsonObj.length; i++)
-    {
         tempObjects.push(JSON.parse(jsonObj[i]));
-    }
-
+    
    return tempObjects;
 }
 
 function findEmptyIndex()
 {
     let i;
+    
     for(i=0;i<currentSoundObjectsInScene.length;i++)
-    {
        if(currentSoundObjectsInScene[i].xPosition==undefined)
-        {
           return i;
-        }
-    }
    
    console.log("Too many objects in scene!!"); 
 }
@@ -237,7 +233,10 @@ function inRange(objToCheck, existingObj)
     {
         return coordToCheck < (existingCoord + TOLERATION_RADIUS) && coordToCheck > (existingCoord - TOLERATION_RADIUS)
     }
-    return compareSingleCoord(objToCheck.xPosition, existingObj.xPosition) && compareSingleCoord(objToCheck.yPosition, existingObj.yPosition) && compareSingleCoord(objToCheck.zPosition, existingObj.zPosition);
+    
+    return compareSingleCoord(objToCheck.xPosition, existingObj.xPosition) 
+        && compareSingleCoord(objToCheck.yPosition, existingObj.yPosition) 
+        && compareSingleCoord(objToCheck.zPosition, existingObj.zPosition);
 }
 
 //EventListener (=> Hierachy und DropDown Slider hier funktionalität geben)

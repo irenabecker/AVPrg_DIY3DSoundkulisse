@@ -3,12 +3,8 @@ var midiJSONObjects=[];
 
 function initialize(){
     
-    createJSONObject("RECTANGLE","RED",10,20,30);
-    createJSONObject("RECTANGLE","RED",20,40,10);
-    createJSONObject("RECTANGLE","RED",20,40,5);
-    resetJSONObjects();
-    
     window.setInterval(function() {
+        createJSONObject('RECTANGLE', 'RED', 10,20,30);
         createJSONObject('RECTANGLE', 'RED', Math.floor(Math.random()*100),Math.floor(Math.random()*100),Math.floor(Math.random()*100));
         resetJSONObjects();
     }, 5000);
