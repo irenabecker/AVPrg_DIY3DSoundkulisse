@@ -27,11 +27,12 @@ var shapes = ['rectangle', 'circle', 'triangle'];
 //delete later
 var testSounds = ['natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav', 'citySound3.wav','natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav'];
 
-//Cache the DOM here
+//Cache the DOM here (=> hierarchy und dropdown items hier empfangen)
 var startBtn = document.getElementById('startBtn');
 
 function init() 
 {
+    initialize(); // code.js
     threeDAudioObj = new threeDAudio(context);
     //fillThemes();
     createAudioSources();
@@ -115,10 +116,71 @@ function createDefaultSoundObjects()
 //use audioSource.src = newSourcePath and audioSource.play here
 function getJSONObjects(midiJSONObjects)
 {
-    
+    let currentObjectIndex = 0;
+    function increaseIndex(){currentObjectIndex++;}
+    console.log('Just received this: ' + midiJSONObjects);
+    let i;
+    for(i = 0; i < midiJSONObjects.length; i++)
+    {
+        let tempObject = JSON.parse(midiJSONObjects[i]);
+        let tempDefault = findCorrespondingDefaultSoundObject(tempObject.shape, tempObject.color);
+        
+        tempObject.audioSourceIndex = currentObjectIndex;
+        tempObject.soundFileName = tempDefault.soundFileName;
+        tempObject.speed = tempDefault.speed;
+        tempObject.volume = tempDefault.volume;
+        console.log('Temp object is: ' + tempObject);
+        
+        if(checkForDuplicate(currentObjectIndex, tempObject))
+        {
+            currentSoundObjectsInScene[currentObjectIndex] = Object.assign({}, tempObject);
+            console.log('new Object: ' + currentSoundObjectsInScene[currentObjectIndex]);
+
+            increaseIndex();
+            console.log(currentObjectIndex);
+        }
+        //else just update the object
+    }
 }
 
-//EventListener
+function findCorrespondingDefaultSoundObject(shape, color) 
+{
+    let i;
+    for(i = 0; i < defaultSoundObjects.length; i++) 
+    {
+        if(defaultSoundObjects[i].shape.toLocaleLowerCase() == shape.toLowerCase() && defaultSoundObjects[i].color.toLowerCase() == color.toLowerCase())
+        {
+            return defaultSoundObjects[i];
+        }
+    }
+}
+
+var TOLERATION_RADIUS = 15;
+function checkForDuplicate(upperBoundary, objToCheck)
+{
+    let i;
+    let isDuplicate = false;
+    
+    for(i = 0; i < upperBoundary; i++) 
+    {
+        //criteria for duplicate: almost same coords, shape and color
+        if(inRange(objToCheck, currentSoundObjectsInScene[i]) && objToCheck.shape == currentSoundObjectsInScene[i].shape && objToCheck.color == currentSoundObjectsInScene[i].color)
+            isDuplicate = true;
+    }
+    
+    return isDuplicate;
+}
+            
+function inRange(objToCheck, existingObj) 
+{
+    function compareSingleCoord(coordToCheck, existingCoord)
+    {
+        return coordToCheck > (existingCoord + TOLERATION_RADIUS) && coordToCheck < (existingCoord - TOLERATION_RADIUS)
+    }
+    return compareSingleCoord(objToCheck.xPosition, existingObj.xPosition) && compareSingleCoord(objToCheck.yPosition, existingObj.yPosition) && compareSingleCoord(objToCheck.zPosition, existingObj.zPosition);
+}
+
+//EventListener (=> Hierachy und DropDown Slider hier funktionalität geben)
 startBtn.addEventListener('click', function() {
    //start audio here 
     init();

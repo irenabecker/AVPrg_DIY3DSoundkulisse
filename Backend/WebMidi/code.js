@@ -28,7 +28,7 @@ function initialize(){
             {
                 out+=" event data["+i+"]:"+event.data[i];
             }
-        console.log(out);
+        //console.log(out);
         
         if((event.data[0]&0xf0)==0xC0)
         {
@@ -71,12 +71,12 @@ function initialize(){
     
 	function createJSONObject(shape,color,posX,posY,posZ){
         midiJSONObjects.push('{' +
-            '"shape":'+shape+',' +
-            '"color":'+color+',' +
-            '"posX":'+posX+','+
-            '"posY":'+posY+
-            '"posZ":'+posZ+
-        '}');
+            '"shape":"'+shape+'",' +
+            '"color":"'+color+'",' +
+            '"posX":"'+posX+'",' +
+            '"posY":"'+posY+'",' +
+            '"posZ":"'+posZ+ 
+        '"}');
         console.log("Shape: "+shape+ " color: "+color+", PosX: "+posX+", PosY: "+posY+", PosZ: "+posZ);
 	}
     
@@ -85,7 +85,7 @@ function initialize(){
         console.log(midiJSONObjects.length + ", objects get emtpyed now");
         
         //zur anzeige weiterleiten
-        //getJSONObjects(midiJSONObjects);
+        getJSONObjects(midiJSONObjects);
         
         midiJSONObjects=[];
     }
