@@ -71,50 +71,6 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="VideoWidget" name="inputFrameFront">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>190</y>
-      <width>191</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="scaledContents">
-     <bool>false</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="VideoWidget" name="processedFrameFront">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>340</y>
-      <width>151</width>
-      <height>211</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="scaledContents">
-     <bool>false</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -161,11 +117,8 @@
       <pointsize>12</pointsize>
      </font>
     </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 0, 0);</string>
-    </property>
     <property name="text">
-     <string/>
+     <string>Place two black cubes to calibrate your room.</string>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
@@ -190,7 +143,6 @@
       <string>Videodatei Öffnen ...</string>
      </property>
      <addaction name="actionVideo_Top"/>
-     <addaction name="actionVideo_Front"/>
     </widget>
     <addaction name="menuVideodatei_ffnen"/>
     <addaction name="actionKamera_ffnen"/>
@@ -216,7 +168,7 @@
   </action>
   <action name="actionVideo_Top">
    <property name="text">
-    <string>Video Top</string>
+    <string>Open Video</string>
    </property>
   </action>
   <action name="actionVideo_Front">

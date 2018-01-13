@@ -2,6 +2,6 @@
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-dsoundknete.cpp(164): warning C4309: "Argument": Verkürzung eines konstanten Wertes
-dsoundknete.cpp(170): warning C4309: "Argument": Verkürzung eines konstanten Wertes
+dsoundknete.cpp(96): warning C4309: "Argument": Verkürzung eines konstanten Wertes
+dsoundknete.cpp(102): warning C4309: "Argument": Verkürzung eines konstanten Wertes
   3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\debug\3DSoundKnete.exe
