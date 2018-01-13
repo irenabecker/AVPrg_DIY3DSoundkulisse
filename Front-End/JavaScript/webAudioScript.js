@@ -86,10 +86,7 @@ function createAudioSources()
 function createEmptySoundObjects() 
 {
     for(let i = 0; i < maxItemsInScene; i++)
-    {
         currentSoundObjectsInScene.push(new SoundObject());
-        //hier einfügen
-    }
 }
 
 function createDefaultSoundObjects()
@@ -104,8 +101,8 @@ function createDefaultSoundObjects()
                 colors[i],
                 undefined,
                 testSounds[currentHtmlAudioElement],
-                Math.floor(Math.random() * 6),
-                Math.floor(Math.random() * 6),
+                undefined,
+                undefined,
                 1,
                 1
             ));
@@ -194,4 +191,24 @@ function inRange(objToCheck, existingObj)
 startBtn.addEventListener('click', function() {
    //start audio here 
     init();
+    resetToDefaultSettings(currentSoundObjectsInScene[0]);
+    console.log(currentSoundObjectsInScene[0]);
 });
+
+function resetToDefaultSettings(objToReset) 
+{
+    let tempObj = findCorrespondingDefaultSoundObject(objToReset.shape, objToReset.color);
+    
+    for(property in tempObj)
+        if(tempObj[property] != null)
+            objToReset[property] = tempObj[property];
+    
+    console.log('Reset Object to: \n' + JSON.stringify(objToReset));
+    //updateUIElement(uiElement)
+}
+
+function updateHierarchyElement(index)
+{
+    //hierarchyVolumeSliders[index].value = currentSoundObjectsInScene[index].volume;
+    //hierarchyPitchSliders[index].value = currentSoundObjectsInScene[index].pitch;
+}
