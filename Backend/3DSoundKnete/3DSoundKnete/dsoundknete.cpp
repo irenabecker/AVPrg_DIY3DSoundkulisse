@@ -74,7 +74,7 @@ void DSoundKnete::on_dataSend()
 	QByteArray data;
 	data.resize(6);
 	
-	
+    qDebug() << objects.size();
 	for (int i = 0; i < objects.size(); i++)
 	{
 		data[0] = 0xf0;	//start byte
@@ -90,6 +90,11 @@ void DSoundKnete::on_dataSend()
          * Shapes: 0 = RECTANGLE, 1 = CIRCLE, 2 = TRIANGLE
          */
         //Blauer Kreis, Blaues Rechteck, rotes dreieck, roter kreis		
+        qDebug() << "Sending: " << objects[i].objectShape << ", "
+                                << objects[i].objectColor << ", "
+                                << objects[i].relativePosition.x << ", "
+                                << objects[i].relativePosition.y << ", "
+                                <<  objects[i].zPos;
 	}
 	midiOutput.sendProgram(0,0);
 
@@ -124,7 +129,7 @@ void DSoundKnete::on_actionPlay_triggered()
 
 void DSoundKnete::on_actionKamera_ffnen_triggered()
 {
-    videoThreadTop->openCamera(1);
+    videoThreadTop->openCamera(0);
 }
 
 void DSoundKnete::on_comboBox_activated(const QString &arg1)
