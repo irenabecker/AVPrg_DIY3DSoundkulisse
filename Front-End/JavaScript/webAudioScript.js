@@ -202,7 +202,10 @@ function createNewSoundObjects(newObjects)
         
         for(property in tempObject)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
+        htmlAudioElements[tempObject.index].src = TESTSOUNDS_PATH + tempObject.soundFileName;
+        htmlAudioElements[tempObject.index].play();
     }
+    
     console.log(currentSoundObjectsInScene);
 }
 
