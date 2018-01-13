@@ -86,10 +86,7 @@ function createAudioSources()
 function createEmptySoundObjects() 
 {
     for(let i = 0; i < maxItemsInScene; i++)
-    {
         currentSoundObjectsInScene.push(new SoundObject());
-        //hier einfügen
-    }
 }
 
 function createDefaultSoundObjects()
@@ -104,8 +101,8 @@ function createDefaultSoundObjects()
                 colors[i],
                 undefined,
                 testSounds[currentHtmlAudioElement],
-                Math.floor(Math.random() * 6),
-                Math.floor(Math.random() * 6),
+                undefined,
+                undefined,
                 1,
                 1
             ));
@@ -121,8 +118,8 @@ function createDefaultSoundObjects()
 function getJSONObjects(midiJSONObjects)
 {
     console.log('Just received this: ' + midiJSONObjects);
-    let tempObjects=parseJSON(midiJSONObjects);
-    let newObjects=updateObjectsInScene(tempObjects);
+    let tempObjects = parseAllCurrentJSONToSoundObj(midiJSONObjects);
+    let newObjects = updateObjectsInScene(tempObjects);
     createNewSoundObjects(newObjects);
 }
 
@@ -159,51 +156,56 @@ function checkForDuplicate(objToCheck, compareToList)
     return duplicateIndex;
 }
 
-function updateObjectsInScene(midiJSONObjects)
+function updateObjectsInScene(midiData)
 {
-    let newJSONArray=midiJSONObjects;
+    let newMidiDataArray = midiData;
     let i;
     for(i=0;i<currentSoundObjectsInScene.length;i++)
-    {   if(currentSoundObjectsInScene[i].xPosition!=null)
+    {   
+        if(currentSoundObjectsInScene[i].xPosition!=undefined)
         {
-            let dupIndex=checkForDuplicate(currentSoundObjectsInScene[i],midiJSONObjects)
+            let dupIndex=checkForDuplicate(currentSoundObjectsInScene[i],midiData)
             //currendSoundObjectsInScene[i] still exists
-            if(dupIndex<midiJSONObjects.length )     
+            if(dupIndex<midiData.length )     
             {
-                currentSoundObjectsInScene[i].xPosition=midiJSONObjects[dupIndex].xPosition;
-                currentSoundObjectsInScene[i].yPosition=midiJSONObjects[dupIndex].yPosition;
-                currentSoundObjectsInScene[i].zPosiiton=midiJSONObjects[dupIndex].zPosition;  
-                newJSONArray.splice(dupIndex,dupIndex); //remove according MIDI from Array
+                currentSoundObjectsInScene[i].xPosition=midiData[dupIndex].xPosition;
+                currentSoundObjectsInScene[i].yPosition=midiData[dupIndex].yPosition;
+                currentSoundObjectsInScene[i].zPosiiton=midiData[dupIndex].zPosition;  
+                newMidiDataArray.splice(dupIndex,dupIndex); //remove according MIDI from Array
             }   
             else
             {
                 for(property in currentSoundObjectsInScene[i])
                 {
-                    currentSoundObjectsInScene[i][property] = null;  //Object has been removed from the scene 
+                    currentSoundObjectsInScene[i][property] = undefined;  //Object has been removed from the scene 
                 }   
             }
         }
     }
     
-    return newJSONArray;
+    console.log(newMidiDataArray);
+    console.log(midiData);
+    
+    return newMidiDataArray;
 }
+
 function createNewSoundObjects(newObjects)
 {
     let i;
     for(i = 0; i < newObjects.length; i++)
     {
-        let tempObject=newObjects[i];
+        let tempObject = newObjects[i];
         let tempDefault = findCorrespondingDefaultSoundObject(tempObject.shape, tempObject.color);
         
-        tempObject.audioSourceIndex = findEmptyIndex();
+        tempObject.index = findEmptyIndex();
         tempObject.soundFileName = tempDefault.soundFileName;
         tempObject.speed = tempDefault.speed;
         tempObject.volume = tempDefault.volume;
-        currentSoundObjectsInScene[tempObject.audioSourceIndex]=Object.assign({},tempObject); 
-        console.log("debug");
+        currentSoundObjectsInScene[tempObject.index]=Object.assign({},tempObject); 
     }
 }
-function parseJSON(jsonObj) 
+
+function parseAllCurrentJSONToSoundObj(jsonObj) 
 {
     let i;
     tempObjects = [];
@@ -214,12 +216,13 @@ function parseJSON(jsonObj)
 
    return tempObjects;
 }
+
 function findEmptyIndex()
 {
     let i;
     for(i=0;i<currentSoundObjectsInScene.length;i++)
     {
-       if(currentSoundObjectsInScene[i].xPosition==null)
+       if(currentSoundObjectsInScene[i].xPosition==undefined)
         {
           return i;
         }
@@ -242,3 +245,21 @@ startBtn.addEventListener('click', function() {
    //start audio here 
     init();
 });
+
+function resetToDefaultSettings(objToReset) 
+{
+    let tempObj = findCorrespondingDefaultSoundObject(objToReset.shape, objToReset.color);
+    
+    for(property in tempObj)
+        if(tempObj[property] != undefined)
+            objToReset[property] = tempObj[property];
+    
+    console.log('Reset Object to: \n' + JSON.stringify(objToReset));
+    //updateUIElement(uiElement)
+}
+
+function updateHierarchyElement(index)
+{
+    //hierarchyVolumeSliders[index].value = currentSoundObjectsInScene[index].volume;
+    //hierarchyPitchSliders[index].value = currentSoundObjectsInScene[index].pitch;
+}
