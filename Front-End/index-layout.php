@@ -16,14 +16,23 @@
               <?php include("bootstrap-slide-panel/topSlide.html") ?>
             </div>
         </div>
-    <div class="row">
-        <div class="col-sm-5 well" style="border:1px solid #000000; height: 440px!important; margin-left: 13.7%!important;"> 
-            <video autoplay="true" id="videoElement" style="height: 100%; padding-left:8%!important;"></video>      
-             <script src='videoStreaming.js' type='text/javascript'></script>           
+
+    <section role="main" style="margin-top: 0%!important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 well">
+            <div class="col-sm-5 col-sm-offset-1 " style="border-right:3px solid #000000; height: 440px!important;"> 
+               <video autoplay="true" id="videoElement" style="height: 100%; padding-left:8%!important;"></video>      
+                 <script src='videoStreaming.js' type='text/javascript'></script>           
+            </div>
+            <div class="col-sm-2 " style="width: 40%;">       
+                 <?php include("Hierarchy.html") ?>
+            </div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-3 well" style="border:1px solid #000000; width: 31%;">       
-            <?php include("Hierarchy.html") ?>
-        </div>
+    </section>
+
     </div>
         <footer>
         <div class="container">
