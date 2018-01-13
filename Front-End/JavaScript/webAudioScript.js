@@ -5,6 +5,7 @@ var context = new AudioContext();
 var htmlAudioElements = [];
 var mediaElementAudioSources = [];
 let threeDAudioObj = {};
+let audioFader = {};
 
 //SoundObjects
 var defaultSoundObjects = [];
@@ -34,6 +35,7 @@ function init()
 {
     
     threeDAudioObj = new threeDAudio(context);
+    audioFader = new AudioFader(3000, 2500, 100);
     //fillThemes();
     createAudioSources();
     createDefaultSoundObjects();
@@ -53,7 +55,7 @@ function fillThemes()
         {
             audioSources.push(new Audio('../../Sounds/TestSounds/' + soundClipCollection[i]));
         }
-                              natureSoundTheme = new SoundTheme(audioSources);
+        natureSoundTheme = new SoundTheme(audioSources);
     }
     /*
     //Nature-Sounds
@@ -133,6 +135,7 @@ function updateAudioSources()
     {
         if(currentSoundObjectsInScene[i].soundFileName != undefined && htmlAudioElements[i].paused)
         {
+            audioFader.fadeIn(htmlAudioElements[i]);
             htmlAudioElements[i].play();
             htmlAudioElements[i].loop = true;
         }
@@ -192,6 +195,7 @@ function updateObjectsInScene(midiData)
             }   
             else
             {
+                audioFader.fadeOut(currentSoundObjectsInScene[i]);
                 for(property in currentSoundObjectsInScene[i])
                 {
                     currentSoundObjectsInScene[i][property] = undefined;  //Object has been removed from the scene 
@@ -224,8 +228,6 @@ function createNewSoundObjects(newObjects)
         
         for(property in tempObject)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
-        htmlAudioElements[tempObject.index].src = TESTSOUNDS_PATH + tempObject.soundFileName;
-        htmlAudioElements[tempObject.index].play();
     }
 }
 
