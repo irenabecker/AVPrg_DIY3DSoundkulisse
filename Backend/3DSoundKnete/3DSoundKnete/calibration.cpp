@@ -109,6 +109,7 @@ int Calibration::calcZPos(int absolutePositionX,int absolutePositionY, int fillA
 	relDistanceToCenter = (absDistanceToCenter / boardWidth) * 100;
 	distanceToCamera = (focalLength * stdSize.at(shape)) / fillArea;	//stdSize has same order as enum SHAPE: REC, CIRCLE, TRI
 	zPos= sqrt(pow((distanceToCamera), 2) - pow((relDistanceToCenter), 2));
-
+	if(zPos>100)
+	{zPos = 100;}
 	return zPos;
 }
