@@ -227,8 +227,12 @@ function createNewSoundObjects(newObjects)
         htmlAudioElements[tempObject.index].src = TESTSOUNDS_PATH + tempObject.soundFileName;
         htmlAudioElements[tempObject.index].play();
     }
+<<<<<<< HEAD
+    //console.log(currentSoundObjectsInScene);
+=======
     
     console.log(currentSoundObjectsInScene);
+>>>>>>> 85ca5f8131c2d56ea581a636f056258501827bfe
 }
 
 function parseAllCurrentJSONToSoundObj(jsonObj) 

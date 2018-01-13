@@ -2,7 +2,8 @@ var midiJSONObjects=[];
 
 
 function initialize(){
-    //for testing without backend
+    
+    /*//for testing without backend
     testObj = {shape:'RECTANGLE', color: 'RED', xPosition: 10, yPosition: 20, zPosition: 30}
     function moveTestObj() 
     {
@@ -15,8 +16,8 @@ function initialize(){
         moveTestObj();
         createJSONObject(testObj.shape, testObj.color, testObj.xPosition, testObj.yPosition, testObj.zPosition);
         resetJSONObjects();
-    }, 5000);
-    //*/
+    }, 5000);*/
+    
 	let midi = null;  // global MIDIAccess object
 	let midiInputs = [];
     
