@@ -195,7 +195,7 @@ function updateObjectsInScene(midiData)
             }   
             else
             {
-                audioFader.fadeOut(currentSoundObjectsInScene[i]);
+                audioFader.fadeOut(htmlAudioElements[i]);
                 for(property in currentSoundObjectsInScene[i])
                 {
                     currentSoundObjectsInScene[i][property] = undefined;  //Object has been removed from the scene 
