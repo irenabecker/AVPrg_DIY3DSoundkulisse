@@ -116,34 +116,14 @@ function createDefaultSoundObjects()
 }
 
 //use audioSource.src = newSourcePath and audioSource.play here
-let currentObjectIndex = 0;
+//let currentObjectIndex = 0;
+ let objectsInScene=[];
 function getJSONObjects(midiJSONObjects)
 {
     console.log('Just received this: ' + midiJSONObjects);
-    let i;
-    for(i = 0; i < midiJSONObjects.length; i++)
-    {
-        let tempObject = JSON.parse(midiJSONObjects[i]);
-        let tempDefault = findCorrespondingDefaultSoundObject(tempObject.shape, tempObject.color);
-        
-        tempObject.audioSourceIndex = currentObjectIndex;
-        tempObject.soundFileName = tempDefault.soundFileName;
-        tempObject.speed = tempDefault.speed;
-        tempObject.volume = tempDefault.volume;
-        let dupIndex=checkForDuplicate(currentObjectIndex, tempObject)
-        if(dupIndex>currentObjectIndex)  //checkForDuplicate returnd uppderBoundary+1
-        {
-            currentSoundObjectsInScene[currentObjectIndex] = Object.assign({}, tempObject);
-
-            currentObjectIndex++;
-        }
-        else
-        {
-            currentSoundObjectsInScene[dupIndex].xPosition=tempObject.xPosition;
-            currentSoundObjectsInScene[dupIndex].yPosition=tempObject.yPosition;
-            currentSoundObjectsInScene[dupIndex].zPosiiton=tempObject.zPosition;       
-        }
-    }
+    let tempObjects=parseJSON(midiJSONObjects);
+    let newObjects=updateObjectsInScene(tempObjects);
+    createNewSoundObjects(newObjects);
 }
 
 function findCorrespondingDefaultSoundObject(shape, color) 
@@ -159,26 +139,93 @@ function findCorrespondingDefaultSoundObject(shape, color)
 }
 
 var TOLERATION_RADIUS = 15;
-function checkForDuplicate(upperBoundary, objToCheck)
+function checkForDuplicate(objToCheck, compareToList)
 {
     let i;
-    let isDuplicate = false;
-    let duplicateIndex=upperBoundary+1;
-    console.log(objToCheck);
-    console.log(objToCheck.xPosition);
-    for(i = 0; i < upperBoundary; i++) 
+    let duplicateIndex=compareToList.length+1;
+    //console.log(objToCheck);
+    //console.log(objToCheck.xPosition);
+    for(i = 0; i < compareToList.length; i++) 
     {
         //criteria for duplicate: almost same coords, shape and color
-        if(inRange(objToCheck, currentSoundObjectsInScene[i]) && objToCheck.shape == currentSoundObjectsInScene[i].shape && objToCheck.color == currentSoundObjectsInScene[i].color)
+        if(inRange(objToCheck, compareToList[i]) && objToCheck.shape == compareToList[i].shape && objToCheck.color == compareToList[i].color)
         {
             duplicateIndex=i;
-            isDuplicate = true;
             console.log('found dup');
         }
     }
     
     //return isDuplicate;
     return duplicateIndex;
+}
+
+function updateObjectsInScene(midiJSONObjects)
+{
+    let newJSONArray=midiJSONObjects;
+    let i;
+    for(i=0;i<currentSoundObjectsInScene.length;i++)
+    {   if(currentSoundObjectsInScene[i].xPosition!=null)
+        {
+            let dupIndex=checkForDuplicate(currentSoundObjectsInScene[i],midiJSONObjects)
+            //currendSoundObjectsInScene[i] still exists
+            if(dupIndex<midiJSONObjects.length )     
+            {
+                currentSoundObjectsInScene[i].xPosition=midiJSONObjects[dupIndex].xPosition;
+                currentSoundObjectsInScene[i].yPosition=midiJSONObjects[dupIndex].yPosition;
+                currentSoundObjectsInScene[i].zPosiiton=midiJSONObjects[dupIndex].zPosition;  
+                newJSONArray.splice(dupIndex,dupIndex); //remove according MIDI from Array
+            }   
+            else
+            {
+                for(property in currentSoundObjectsInScene[i])
+                {
+                    currentSoundObjectsInScene[i][property] = null;  //Object has been removed from the scene 
+                }   
+            }
+        }
+    }
+    
+    return newJSONArray;
+}
+function createNewSoundObjects(newObjects)
+{
+    let i;
+    for(i = 0; i < newObjects.length; i++)
+    {
+        let tempObject=newObjects[i];
+        let tempDefault = findCorrespondingDefaultSoundObject(tempObject.shape, tempObject.color);
+        
+        tempObject.audioSourceIndex = findEmptyIndex();
+        tempObject.soundFileName = tempDefault.soundFileName;
+        tempObject.speed = tempDefault.speed;
+        tempObject.volume = tempDefault.volume;
+        currentSoundObjectsInScene[tempObject.audioSourceIndex]=Object.assign({},tempObject); 
+        console.log("debug");
+    }
+}
+function parseJSON(jsonObj) 
+{
+    let i;
+    tempObjects = [];
+    for(i = 0; i < jsonObj.length; i++)
+    {
+        tempObjects.push(JSON.parse(jsonObj[i]));
+    }
+
+   return tempObjects;
+}
+function findEmptyIndex()
+{
+    let i;
+    for(i=0;i<currentSoundObjectsInScene.length;i++)
+    {
+       if(currentSoundObjectsInScene[i].xPosition==null)
+        {
+          return i;
+        }
+    }
+   
+   console.log("Too many objects in scene!!"); 
 }
             
 function inRange(objToCheck, existingObj) 
