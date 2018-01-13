@@ -33,4 +33,26 @@ function threeDAudio(audioContext)
     
     //This provides us with the ambisonicOutput, probably the one we need in maxsp (given as web audio node)
     //resonanceAudioScene.ambisonicOutput
+    
+    this.sources = [];
+    let i;
+    for(i = 0; i < maxItemsInScene; i++)
+        this.sources.push(this.resonanceAudioScene.createSource());
+}
+
+threeDAudio.prototype.updateMaterials = function(materials) 
+{
+    this.materials = materials;
+    this.resonanceAudioScene.setRoomProperties(this.dimensions, this.materials);
+}
+
+threeDAudio.prototype.updateDimensions = function(dimensions) 
+{
+    this.dimensions = dimensions;
+    this.resonanceAudioScene.setRoomProperties(this.dimensions, this.materials);
+}
+
+threeDAudio.prototype.updateThreeDSource = function(index, xPos, yPos, zPos)
+{
+    this.sources[index].setPosition(xPos, yPos, zPos);
 }

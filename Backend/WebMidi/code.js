@@ -1,4 +1,3 @@
-
 var midiJSONObjects=[]
 
 function initialize(){
@@ -9,7 +8,6 @@ function initialize(){
 	  console.log( "MIDI ready!" );
 	  midi = midiAccess;  // store in the global (in real usage, would probably keep in an object instance)
         let inputs = midi.inputs.values();
-		//listInputsAndOutputs(midi);
       //Loop through all Midi-Inputs
         for (let input = inputs.next(); input && !input.done; input = inputs.next()) 
             {
@@ -22,33 +20,6 @@ function initialize(){
 	}
 
 	navigator.requestMIDIAccess({sysex:true}).then( onMIDISuccess, onMIDIFailure );
-    /*
-	function listInputsAndOutputs( midiAccess ) {
-		const inputPortSelector = document.getElementById('inputportselector');
-		for (let input of midiAccess.inputs.values()) {
-		  var opt = document.createElement("option");
-		  opt.text = input.name;
-		  document.getElementById("inputportselector").add(opt);
-		  midiInputs.push(input);
-		  console.log( "Input port [type:'" + input.type + "'] id:'" + input.id +
-			"' manufacturer:'" + input.manufacturer + "' name:'" + input.name +
-			"' version:'" + input.version + "'" );
-		}
-		if (midiInputs.length > 1){
-			inputPortSelector.addEventListener('click', ()=>{
-				selectMidiInput(inputPortSelector.selectedIndex);
-			});
-		}
-		selectMidiInput(inputPortSelector.selectedIndex);
-	}
-    */
-	/*
-	function selectMidiInput(index){
-		const selectedIndex = document.getElementById('inputportselector').selectedIndex;
-		const midiInput = midiInputs[selectedIndex];
-		midiInput.onmidimessage = MIDIMessageEventHandler;
-		return midiInput;
-	}*/
     
 	function MIDIMessageEventHandler(event) {
         //get channel = Color
@@ -94,32 +65,9 @@ function initialize(){
             '"posX":'+posX+','+
             '"posY":'+posY+
         '}');
-        console.log("RECTANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
-	}
-    /*
-	function noteOff(color, posX, posY){
-        midiJSONObjects.push({ 
-            "shape":"CIRCLE",
-            "color":color,
-            "posX":posX,
-            "posY":posY
-        });
-        
-       console.log("CIRCLE, "+color+", PosX: "+posX+", PosY: "+posY);
+        console.log("Shape: "+shape+ " color: "+color+", PosX: "+posX+", PosY: "+posY);
 	}
     
-	function controlChange(color, posX, posY){
-        
-        midiJSONObjects.push('{
-            "shape":"TRIANGLE",
-            "color":color,
-            "posX":posX,
-            "posY":posY
-        }');
-                             
-        console.log("TRIANGLE, "+color+", PosX: "+posX+", PosY: "+posY);
-	}
-    */
     function resetJSONObjects()
     {
         console.log(midiJSONObjects.length + ", objects get emtpyed now");

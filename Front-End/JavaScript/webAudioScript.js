@@ -1,8 +1,22 @@
 //This should be the first script, executed by web page
 
-//WebAudio Basic Setup
+//WebAudio Setup
 var context = new AudioContext();
-var audioObjects = [];
+var htmlAudioElements = [];
+var mediaElementAudioSources = [];
+let threeDAudioObj = {};
+
+//SoundObjects
+var defaultSoundObjects = [];
+var currentSoundObjectsInScene = [];
+let maxItemsInScene = 20;
+
+//SoundThemes
+var natureSoundTheme = {};
+var citySoundTheme= {};
+
+var SOUNDS_PATH = '../../Sounds/';
+var TESTSOUNDS_PATH = SOUNDS_PATH + 'TestSounds/';
 var soundClipStrings = {
     natSounds: ['natSound1.wav', 'natSound2.wav'],
     citySounds: ['citySound1.wav', 'citySound2.wav', 'citySound3.wav']
@@ -13,22 +27,14 @@ var shapes = ['rectangle', 'circle', 'triangle'];
 //delete later
 var testSounds = ['natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav', 'citySound3.wav','natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav'];
 
-var defaultSoundObjects = [];
-var currentSoundObjectsInScene = [];
-let maxItemsInScene = 20;
-
-//SoundThemes
-var natureSoundTheme;
-var citySoundTheme;
-
 //Cache the DOM here
 var startBtn = document.getElementById('startBtn');
 
 function init() 
 {
-    let threeDAudioObj = new threeDAudio(context);
+    threeDAudioObj = new threeDAudio(context);
     //fillThemes();
-    createAudioObjects();
+    createAudioSources();
     createDefaultSoundObjects();
     createEmptySoundObjects();
 }
@@ -62,13 +68,16 @@ function fillThemes()
     */
 }
 
-function createAudioObjects() 
+function createAudioSources() 
 {
     let i;
+    
     for(i = 0; i < testSounds.length; i++) 
     {
-        audioObjects.push('../../Sounds/TestSounds/' + testSounds[i]);
-    }
+        htmlAudioElements.push(new Audio());
+        mediaElementAudioSources[i] = context.createMediaElementSource(htmlAudioElements[i]);
+        mediaElementAudioSources[i].connect(threeDAudioObj.sources[i].input);
+    }       
 }
 
 function createEmptySoundObjects() 
@@ -76,18 +85,13 @@ function createEmptySoundObjects()
     for(let i = 0; i < maxItemsInScene; i++)
     {
         currentSoundObjectsInScene.push(new SoundObject());
-        //console.log(currentSoundObjectsInScene[i]);
         //hier einfügen
     }
 }
 
-function getJSONObjects(midiJSONObjects){
-    
-}
-    
 function createDefaultSoundObjects()
 {
-    let nextAudioObjectIndex = 0;
+    let currentHtmlAudioElement = 0;
     for(let i = 0; i < colors.length;i++) 
     {
         for(let j = 0; j < shapes.length; j++) 
@@ -95,19 +99,26 @@ function createDefaultSoundObjects()
             defaultSoundObjects.push(new SoundObject(
                 shapes[j],
                 colors[i],
-                audioObjects[nextAudioObjectIndex],
+                undefined,
+                testSounds[currentHtmlAudioElement],
                 Math.floor(Math.random() * 6),
                 Math.floor(Math.random() * 6),
                 1,
                 1
             ));
-            nextAudioObjectIndex++;
+            currentHtmlAudioElement++;
         }
     }
-    console.log(defaultSoundObjects);
+    //console.log(defaultSoundObjects);
 }
+
+//use audioSource.src = newSourcePath and audioSource.play here
+function getJSONObjects(midiJSONObjects)
+{
     
-//listeners
+}
+
+//EventListener
 startBtn.addEventListener('click', function() {
    //start audio here 
     init();
