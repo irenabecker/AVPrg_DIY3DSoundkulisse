@@ -79,10 +79,10 @@ function initialize(){
         midiJSONObjects.push('{' +
             '"shape":"'+shape.toLowerCase()+'",' +
             '"color":"'+color.toLowerCase()+'",' +
-            '"xPosition":"'+posX+'",' +
-            '"yPosition":"'+posY+'",' +
-            '"zPosition":"'+posZ+ 
-        '"}');
+            '"xPosition":'+posX+',' +
+            '"yPosition":'+posY+',' +
+            '"zPosition":'+posZ+ 
+        '}');
         console.log("Shape: "+shape+ " color: "+color+", PosX: "+posX+", PosY: "+posY+", PosZ: "+posZ);
 	}
     
