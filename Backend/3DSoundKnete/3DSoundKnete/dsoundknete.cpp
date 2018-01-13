@@ -162,7 +162,7 @@ void DSoundKnete::on_dataSend()
 	for (int i = 0; i < objects.size(); i++)
 	{
 		data[0] = 0xf0;	//start byte
-		data[1] = (0x0f & objects[i].objectShape) | (0xf0 & objects[i].objectColor);	//first 4 bit: shape; second 4 bit: color
+		data[1] = (objects[i].objectShape << 4) | (objects[i].objectColor);	//first 4 bit: shape; second 4 bit: color
 		data[2] = objects[i].relativePosition.x;	//xPos
 		data[3] = objects[i].relativePosition.y;	//yPos
 		data[4] = objects[i].zPos;	//zPos
@@ -196,7 +196,7 @@ void DSoundKnete::on_dataSend()
 		}*/
 		
 	}
-	midiOutput.sendProgram(0, 0);
+	midiOutput.sendProgram(0,0);
 
 
 }

@@ -22,9 +22,22 @@ function initialize(){
 	navigator.requestMIDIAccess({sysex:true}).then( onMIDISuccess, onMIDIFailure );
     
 	function MIDIMessageEventHandler(event) {
+        //log all data in console
+        var out="";
+        for(var i=0;i<event.data.length;i++)
+            {
+                out+=" event data["+i+"]:"+event.data[i];
+            }
+        console.log(out);
+        
+        if((event.data[0]&0xf0)==0xC0)
+        {
+            resetJSONObjects(); 
+            return;
+        }
+        
         //get channel = Color
-        console.log("event data[0]:"+event.data[0]);
-        var channel=event.data[0]&0x0f;
+        var channel=event.data[1]&0x0f;
         var color="";
         switch(channel)
             {
@@ -39,31 +52,30 @@ function initialize(){
         //0x90 = noteOn = RECTANGLE
         //0x80 = noteOff = CIRCLE
         //0xB0 = controlChange = TRIANGLE
-        let shape;
-      switch (event.data[0] & 0xf0) {
-        case 0x90:
+        let shape='';
+      switch (event.data[1] & 0xf0) {
+        case 0x00:
 			shape = 'RECTANGLE';
 			break;
-        case 0x80:
+        case 0x10:
               shape = 'CIRCLE';
 			break;
-		case 0xB0:
+		case 0x20:
               shape = 'TRIANGLE';
 			break; 
-        case 0xC0:
-            resetJSONObjects(); 
-            break;
       }
-        if (shape.length != 0)
-            createJSONObject(shape,color,event.data[1], event.data[2]);
+    
+    if (shape.length != 0)
+        createJSONObject(shape,color,event.data[2], event.data[3],event.data[4]);
     }
     
-	function createJSONObject(shape,color,posX,posY){
+	function createJSONObject(shape,color,posX,posY,posZ){
         midiJSONObjects.push('{' +
             '"shape":'+shape+',' +
             '"color":'+color+',' +
             '"posX":'+posX+','+
             '"posY":'+posY+
+            '"posZ":'+posZ+
         '}');
         console.log("Shape: "+shape+ " color: "+color+", PosX: "+posX+", PosY: "+posY);
 	}
@@ -73,7 +85,7 @@ function initialize(){
         console.log(midiJSONObjects.length + ", objects get emtpyed now");
         
         //zur anzeige weiterleiten
-        getJSONObjects(midiJSONObjects);
+        //getJSONObjects(midiJSONObjects);
         
         midiJSONObjects=[];
     }
