@@ -5,9 +5,10 @@ function initialize(){
     
     //for testing without backend
     createJSONObject("RECTANGLE","RED",10,20,30);
-    resetJSONObjects();
     createJSONObject("RECTANGLE","RED",100,20,30);
     resetJSONObjects();
+    createJSONObject("RECTANGLE","RED",12,20,30);
+    createJSONObject("RECTANGLE","RED",100,22,30);
     createJSONObject("RECTANGLE","GREEN",11,21,31);
     resetJSONObjects();
     createJSONObject("RECTANGLE","BLUE",12,22,32);

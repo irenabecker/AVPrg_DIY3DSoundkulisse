@@ -121,6 +121,14 @@ function getJSONObjects(midiJSONObjects)
     let tempObjects = parseAllCurrentJSONToSoundObj(midiJSONObjects);
     let newObjects = updateObjectsInScene(tempObjects);
     createNewSoundObjects(newObjects);
+    
+    for(var i=0;i<currentSoundObjectsInScene.length;i++)
+        {
+            if(currentSoundObjectsInScene[i].xPosition!=undefined)
+                {
+                    console.log(currentSoundObjectsInScene[i]);
+                }
+        }
 }
 
 function findCorrespondingDefaultSoundObject(shape, color) 
@@ -158,6 +166,7 @@ function checkForDuplicate(objToCheck, compareToList)
 
 function updateObjectsInScene(midiData)
 {
+    let maskArray=[];
     let newMidiDataArray = midiData;
     let i;
     for(i=0;i<currentSoundObjectsInScene.length;i++)
@@ -171,7 +180,7 @@ function updateObjectsInScene(midiData)
                 currentSoundObjectsInScene[i].xPosition=midiData[dupIndex].xPosition;
                 currentSoundObjectsInScene[i].yPosition=midiData[dupIndex].yPosition;
                 currentSoundObjectsInScene[i].zPosiiton=midiData[dupIndex].zPosition;  
-                newMidiDataArray.splice(dupIndex,dupIndex); //remove according MIDI from Array
+                maskArray[dubIndex]=true;
             }   
             else
             {
@@ -183,8 +192,14 @@ function updateObjectsInScene(midiData)
         }
     }
     
-    console.log(newMidiDataArray);
-    console.log(midiData);
+    for(var j=0;j<newMidiDataArray;j++)
+    {
+        if(maskArray[j])
+        {newMidiDataArray.splice(dupIndex,1);} //remove according MIDI from Array}
+    }
+    
+    //console.log(newMidiDataArray);
+    //console.log(midiData);
     
     return newMidiDataArray;
 }
