@@ -92,18 +92,21 @@ $(document).ready(function() {
         new Card($('#itembox_1'), _current.headline);
     }); 
 */
-    var card_0 = new Card($('#itembox_1'), 'Dreieck', 'Blau','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 'Vogelgeschwitzer','soundvolume0','pitch0','configureButton0' );
-    var card_1 = new Card($('#itembox_1'), 'Kreis', 'Blau', 'https://ae01.alicdn.com/kf/HTB1ikMkIpXXXXX_XpXXq6xXFXXXK/Charming-modeschmuck-perlen-Charming-40mm-Blau-Mexican-Opal-Kugel-Kristallkugel-chalcedon-Gro%C3%9Fhandel-und-einzelhandel.jpg_220x220.jpg','Vogelgeschwitzer','soundvolume1','pitch1','configureButton1');
-    var card_2 = new Card($('#itembox_1'), 'Rechteck','Blau','http://web-spiele.de/onlinespiele/tetris-und-co/moonstar/_shot.gif','Vogelgeschwitzer','soundvolume2','pitch2','configureButton2');
-    var card_3 = new Card($('#itembox_1'), 'Dreieck','Rot','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume3','pitch3','configureButton3');
+    var cards=[];
+    cards[0] = new Card($('#itembox_1'), 'Triangle', 'Blue','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 'Vogelgeschwitzer','soundvolume0','pitch0','configureButton0' );
+    cards[1] = new Card($('#itembox_1'), 'Circle', 'Blue', 'https://ae01.alicdn.com/kf/HTB1ikMkIpXXXXX_XpXXq6xXFXXXK/Charming-modeschmuck-perlen-Charming-40mm-Blau-Mexican-Opal-Kugel-Kristallkugel-chalcedon-Gro%C3%9Fhandel-und-einzelhandel.jpg_220x220.jpg','Vogelgeschwitzer','soundvolume1','pitch1','configureButton1');
+    cards[2] = new Card($('#itembox_1'), 'Rectangle','Blue','http://web-spiele.de/onlinespiele/tetris-und-co/moonstar/_shot.gif','Vogelgeschwitzer','soundvolume2','pitch2','configureButton2');
+    cards[3] = new Card($('#itembox_1'), 'Triangle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume3','pitch3','configureButton3');
 
-    var card_4 = new Card($('#itembox_2'), 'Kreis','Rot','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume4','pitch4','configureButton4' );
-    var card_5 = new Card($('#itembox_2'), 'Rechteck','Rot','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume5','pitch5','configureButton5');
-    var card_6 = new Card($('#itembox_2'), 'Dreieck','Grün','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume6','pitch6','configureButton6');
-    var card_7 = new Card($('#itembox_2'), 'Kreis','Grün','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume7','pitch7','configureButton7');
+    cards[4] = new Card($('#itembox_2'), 'Circle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume4','pitch4','configureButton4' );
+    cards[5] = new Card($('#itembox_2'), 'Rectangle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume5','pitch5','configureButton5');
+    cards[6] = new Card($('#itembox_2'), 'Triangle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume6','pitch6','configureButton6');
+    cards[7] = new Card($('#itembox_2'), 'Circle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume7','pitch7','configureButton7');
 
-    var card_8 = new Card($('#itembox_3'), 'Rechteck','Grün','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume8','pitch8','configureButton8');
+    cards[8] = new Card($('#itembox_3'), 'Rectangle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume8','pitch8','configureButton8');
 
+    setSlideDownCards(cards);
+    
     for(let i=0; i<cardboxes.length;i++){
         $(document).on("click","#configureButton"+i,function() {
 
@@ -121,6 +124,7 @@ $(document).ready(function() {
             $("#configureButton"+i).removeClass("btn-success");
             $("#configureButton"+i).addClass("btn-danger");
             $("#configureButton"+i).text('Configure');  
+            saveDefaultCard(i); 
         }
             
         });
@@ -148,6 +152,7 @@ Card.prototype = {
         this.soundvolume = soundvolume;
         this.pitch = pitch;
         this.configureButton = configureButton;
+        this.defaultSoundObject=findCorrespondingDefaultSoundObject( headline.toLowerCase(), description.toLowerCase());
 
         this.createCard();
     },
@@ -165,19 +170,24 @@ Card.prototype = {
                         <p><strong>Farbe: </strong>`+that.description+`</p>
                         <p><strong>Soundclip:</strong><i>`+that.soundclipName+`</i></p>
 
+                    <form>
+                        <strong>Lautstärke:</strong>
+                        <div id="slider">
+                            <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
+                            <span class="highlight"></span>
+                            <output class="rangevalue" id="rangevalue">50</output>
+                        </div>   
+                    </form>  
 
-                    <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
-                      <strong>Lautstärke:</strong>
-                      <output name="x" for="`+that.soundvolume+`"></output>
-                        <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
-                    </form>
-
-                    <form oninput="y.value=parseInt(`+that.pitch+`.value)">
-                      <strong>Pitch:</strong>
-                      <output name="y" for="`+that.pitch+`"></output>
-                        <input id=`+that.pitch+` type="range" min="0" max="100" disabled>
-                    </form>                    
-
+                    
+                    <form>
+                        <strong>Pitch:</strong>
+                        <div id="slider">
+                            <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
+                            <span class="highlight"></span>
+                            <output id="rangevalue">50</output>
+                        </div>   
+                    </form>  
                     <br>
                     <button type="button" id=`+that.configureButton+` class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
                     <br>
