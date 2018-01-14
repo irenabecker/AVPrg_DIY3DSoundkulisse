@@ -28,6 +28,11 @@ var colors = ['Red','Green','Blue'];
 var shapes = ['Rectangle', 'Circle', 'Triangle'];
 //delete later
 var testSounds = ['natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav', 'citySound3.wav','natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav'];
+var themeTest = [
+    ['natSound1.wav', 'natSound2.wav', 'citySound2.wav'], //nature
+    ['citySound1.wav', 'citySound2.wav', 'citySound3.wav'], //city
+    ['citySound2.wav', 'natSound1.wav', 'natSound2.wav']  //theme3
+];
 
 //Cache the DOM here (=> hierarchy und dropdown items hier empfangen)
 //var startBtn = document.getElementById('startBtn');
@@ -39,6 +44,7 @@ var slideDownSoundClipText = [];
 var slideDownPitchSliders = [];
 var slideDownPitchText = []; //use this to update pitch text amount
 console.log(slideDownFigures);
+var slideDownThemes = document.getElementById('themes');
 
 //DOM from hierarchy view (must be dynamically accessed...)
 var hierarchyVolumeSliders = [];
@@ -58,7 +64,7 @@ function fillSlideDownCards()
         
         //cache each slider etc
         slideDownSoundClipText.push(document.getElementById('soundClip'+i));
-        for(let j = 0; j < testSounds.length; j++)
+        for(let j = 0; j < themeTest[0].length; j++)
         {
             option = document.createElement('option');
             option.value = defaultSoundObjects[j].soundFileName;
@@ -82,7 +88,7 @@ function init()
     
     threeDAudioObj = new threeDAudio(context);
     audioFader = new AudioFader(3000, 2500, 100);
-    //fillThemes();
+    fillThemes();
     createAudioSources();
     createDefaultSoundObjects();
     createEmptySoundObjects();
@@ -95,6 +101,34 @@ function init()
 function fillThemes() 
 {
     let i;
+    console.log(themeTest.length);
+    for(let i = 0; i < themeTest.length; i++)
+    {
+        option = document.createElement('option');
+        let theme;
+        switch(i)
+        {
+            case 0:
+                theme = 'Nature';
+                break;
+            case 1:
+                theme = 'City';
+                break;
+            case 2:
+                theme = 'Mix';
+                break;
+            default:
+                theme = undefined;
+                console.log('ERROR: Cant find theme with index ' + i);
+                break;
+        }
+        option.value = theme;
+        option.innerHTML = theme;
+        slideDownThemes.appendChild(option);
+    }
+    slideDownThemes.addEventListener('change', function(e){swapTheme()});
+    /*
+    let i;
     for(soundClipCollection in soundClipStrings) 
     {
         let audioSources = [];
@@ -104,7 +138,6 @@ function fillThemes()
         }
         natureSoundTheme = new SoundTheme(audioSources);
     }
-    /*
     //Nature-Sounds
     let natSound1 = new Audio('../../Sounds/TestSounds/natSound1.wav');
     let natSound2 = new Audio('../../Sounds/TestSounds/natSound2.wav');
@@ -149,7 +182,7 @@ function createDefaultSoundObjects()
                 shapes[j].toLowerCase(),
                 colors[i].toLowerCase(),
                 undefined,
-                testSounds[currentHtmlAudioElement],
+                themeTest[0][j], //default theme: nature
                 undefined,
                 undefined,
                 undefined,
@@ -399,4 +432,40 @@ function switchSoundClipForDefaultObject(index)
            && currentSoundObjectsInScene[i].shape == defaultSoundObjects[index].shape
            && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
         {currentSoundObjectsInScene[i].updateSoundClip(newClipString);console.log('call for : ' + JSON.stringify(currentSoundObjectsInScene[i]));}
+}
+
+function swapTheme()
+{
+    console.log(slideDownThemes.selectedIndex);
+    let parsedIndex = slideDownThemes.selectedIndex;
+    //change the soundclips of all defaultSoundObjects
+    let i, j;
+    for(i = 0; i < defaultSoundObjects.length; i++)
+    {
+        defaultSoundObjects[i].soundFileName = themeTest[parsedIndex][(i%shapes.length)];
+    }
+    
+    //clear all current soundClipDropDowns options
+    for(i = 0; i < slideDownSoundClipText.length; i++)
+        for(j = 0; j < slideDownSoundClipText[i].options.length; j++)
+            slideDownThemes.remove(j);
+    
+    //fill the soundClipDropDowns with options again
+    for(i = 0; i < slideDownSoundClipText.length; i++)
+        for(j = 0; j < themeTest[parsedIndex].length; j++)
+        {
+            option = document.createElement('option');
+            option.value = defaultSoundObjects[j].soundFileName;
+            option.innerHTML = defaultSoundObjects[j].soundFileName;
+            slideDownSoundClipText[i].appendChild(option);
+        }
+    
+    //Call updateSoundClip(newClipString) for each currentSoundObjectsInScene
+    for(i = 0; i < currentSoundObjectsInScene.length; i++) 
+        if(currentSoundObjectsInScene[i].xPosition != undefined)
+        {
+            var tempDefault = findCorrespondingDefaultSoundObject(currentSoundObjectsInScene[i].shape, currentSoundObjectsInScene[i].color);
+            if(tempDefault.shape == currentSoundObjectsInScene[i].shape && tempDefault.color == currentSoundObjectsInScene[i].color)
+                currentSoundObjectsInScene[i].updateSoundClip(tempDefault.soundFileName);
+        }
 }
