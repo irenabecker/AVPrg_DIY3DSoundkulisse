@@ -9,9 +9,9 @@ function AudioFader(fadeInTime, fadeOutTime, step)
     
     this.fadeIn = function(audioSource)
     {
-        console.log('Fading In source: ' + audioSource);
+        //console.log('Fading In source: ' + audioSource);
         audioSource.volume = 0.0;
-        let currentTime = that.fadeInTime;
+        let currentTime = 0;
         let interval = setInterval(function() {
             currentTime += that.step;
             
@@ -24,9 +24,9 @@ function AudioFader(fadeInTime, fadeOutTime, step)
     
     this.fadeOut = function(audioSource)
     {
-        console.log('Fading out source: ' + audioSource);
+        //console.log('Fading out source: ' + audioSource);
         audioSource.volume = 1.0;
-        let currentTime = that.fadeOutTime;
+        let currentTime = 0;
         let interval = setInterval(function() {
             currentTime += that.step;
             

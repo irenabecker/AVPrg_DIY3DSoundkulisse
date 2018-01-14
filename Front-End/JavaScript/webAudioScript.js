@@ -80,7 +80,6 @@ function createAudioSources()
     for(i = 0; i < testSounds.length; i++) 
     {
         htmlAudioElements.push(new Audio());
-        console.log(htmlAudioElements[i].paused);
         mediaElementAudioSources[i] = context.createMediaElementSource(htmlAudioElements[i]);
         mediaElementAudioSources[i].connect(threeDAudioObj.sources[i].input);
     }       
@@ -113,7 +112,6 @@ function createDefaultSoundObjects()
             currentHtmlAudioElement++;
         }
     }
-    //console.log(defaultSoundObjects);
 }
 
 //use audioSource.src = newSourcePath and audioSource.play here
@@ -121,7 +119,7 @@ function createDefaultSoundObjects()
  let objectsInScene=[];
 function getJSONObjects(midiJSONObjects)
 {
-    console.log('Just received this: ' + midiJSONObjects);
+    //console.log('Just received this: ' + midiJSONObjects);
     let tempObjects = parseAllCurrentJSONToSoundObj(midiJSONObjects);
     let newObjects = updateObjectsInScene(tempObjects);
     createNewSoundObjects(newObjects);
@@ -135,6 +133,7 @@ function updateAudioSources()
     {
         if(currentSoundObjectsInScene[i].soundFileName != undefined && htmlAudioElements[i].paused)
         {
+            console.log('fade it in');
             audioFader.fadeIn(htmlAudioElements[i]);
             htmlAudioElements[i].play();
             htmlAudioElements[i].loop = true;
@@ -195,6 +194,7 @@ function updateObjectsInScene(midiData)
             }   
             else
             {
+                console.log('fade it out');
                 audioFader.fadeOut(htmlAudioElements[i]);
                 for(property in currentSoundObjectsInScene[i])
                 {
