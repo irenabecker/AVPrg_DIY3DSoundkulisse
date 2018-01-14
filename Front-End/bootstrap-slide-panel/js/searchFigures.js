@@ -63,22 +63,22 @@ $(document).ready(function() {
 /*
     var all_cards = {
         card_1: {
-            headline: 'Dreieck',
+            shape: 'Dreieck',
             value_1: 100,
             value_2: 1000,
         },
         card_2: {
-            headline: 'Viereck',
+            shape: 'Viereck',
             value_1: 100,
             value_2: 1000,
         },
         card_3: {
-            headline: 'Kreis',
+            shape: 'Kreis',
             value_1: 100,
             value_2: 1000,
         },
         card_4: {
-            headline: 'Mond',
+            shape: 'Mond',
             value_1: 100,
             value_2: 1000,
         },
@@ -89,7 +89,7 @@ $(document).ready(function() {
 
    /* $.each(all_cards, function(index, value) {
         var _current = all_cards[index];
-        new Card($('#itembox_1'), _current.headline);
+        new Card($('#itembox_1'), _current.shape);
     }); 
 */
     var cards=[];
@@ -125,7 +125,6 @@ $(document).ready(function() {
             $("#configureButton"+i).removeClass("btn-success");
             $("#configureButton"+i).addClass("btn-danger");
             $("#configureButton"+i).text('Configure');  
-            saveDefaultCard(i); 
         }
             
         });
@@ -137,6 +136,19 @@ $(document).ready(function() {
 
 var cardboxes = [];
 
+/*function Card(container, image, index) {
+    this.init(container, image, index);
+}
+
+Card.prototype = {
+
+    init: function(container, image, index) {
+
+        this.container = container;
+        this.image = image;
+        this.index = index;
+        this.createCard();
+    },*/
 function Card(container, headline,  description, image, soundclipName, soundvolume, pitch, configureButton) {
     this.init(container, headline, description, image, soundclipName,soundvolume, pitch, configureButton);
 }
@@ -157,24 +169,30 @@ Card.prototype = {
 
         this.createCard();
     },
-
+  
     createCard: function() {
 
         var that = this;
         i = cardboxes.length;
-
+/*
+<select id="selectList">
+            <option value="natSound1.wav">NatSound1</option>
+            <option value="natSound2.wav">NatSound2</option>
+            <option value="citySound1.wav">CitySound1</option>
+        </select>
+*/
         cardboxes[i] = `<div class="col-sm-3 content" id="card_`+i+`" style="padding-top: 2%; margin-left: -0.1%!important;">
                 <div class="thumbnail figures" style="background-color:#cac5c5;!important">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
-                        <h4>`+that.headline+`</h4>
-                        <p><strong>Farbe: </strong>`+that.description+`</p>
-                        <p><strong>Soundclip:</strong><i>`+that.soundclipName+`</i></p>
+                        <h4 id="shape`+that.index+`"></h4>
+                        <p><strong>Farbe: </strong><div id="col`+that.index+`"></div></p>
+                        <p><strong>Soundclip:</strong><select id="soundClip`+that.index+`"></select></p>
 
                     <form>
                         <strong>Lautstärke:</strong>
                         <div id="slider">
-                            <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
+                            <input class="bar" type="range" id="soundvolume`+that.index+`" value="50" oninput="rangevalue.value=value" disabled/>
                             <span class="highlight"></span>
                             <output class="rangevalue" id="rangevalue">50</output>
                         </div>   
@@ -184,13 +202,13 @@ Card.prototype = {
                     <form>
                         <strong>Pitch:</strong>
                         <div id="slider">
-                            <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
+                            <input class="bar" type="range" id="pitch`+that.index+`" value="50" oninput="rangevalue.value=value" disabled/>
                             <span class="highlight"></span>
                             <output id="rangevalue">50</output>
                         </div>   
                     </form>  
                     <br>
-                    <button type="button" id=`+that.configureButton+` class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
+                    <button type="button" id="configureButton`+that.index+`" class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
                     <br>
                     </div>
                 </div>
