@@ -1,24 +1,7 @@
-﻿  Moc'ing dsoundknete.h...
-  Moc'ing midiinput.h...
-  Moc'ing midioutput.h...
-  Moc'ing videoengine.h...
-  Moc'ing videowidget.h...
-  moc_dsoundknete.cpp
+﻿  colorprocessor.cpp
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-  moc_midiinput.cpp
-  moc_midioutput.cpp
-  moc_videoengine.cpp
-d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-  moc_videowidget.cpp
-  dsoundknete.cpp
-d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-dsoundknete.cpp(80): warning C4309: "Argument": Verkürzung eines konstanten Wertes
-dsoundknete.cpp(86): warning C4309: "Argument": Verkürzung eines konstanten Wertes
-  Code wird generiert...
+colorprocessor.cpp(14): warning C4100: "format": Unreferenzierter formaler Parameter
+colorprocessor.cpp(44): warning C4100: "satToCeck": Unreferenzierter formaler Parameter
   3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\debug\3DSoundKnete.exe

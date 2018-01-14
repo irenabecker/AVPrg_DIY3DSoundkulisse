@@ -2,6 +2,7 @@
 #include <math.h>
 #include <iostream>
 #include "dsoundknete.h"
+#include "calibration.h"
 
 using namespace std;
 using namespace cv;
@@ -25,8 +26,10 @@ cv::Mat ColorProcessor::process(const cv::Mat& input){
         int currentY = DSoundKnete::objects[i].absolutePosition.y;
         Vec3b hsv = getHSVAtPoint(currentX, currentY);
         DSoundKnete::objects[i].objectColor = (DSoundKnete::COLOR) checkForColor(hsv[0],hsv[1],hsv[2]);
-        if(DSoundKnete::objects[i].objectColor == DSoundKnete::UNKNOWN_COLOR) //remove from list, if unknown color.
-               DSoundKnete::objects.erase(DSoundKnete::objects.begin()+ (i));
+		if (DSoundKnete::objects[i].objectColor == DSoundKnete::UNKNOWN_COLOR) //remove from list, if unknown color.
+		{DSoundKnete::objects.erase(DSoundKnete::objects.begin() + (i));}
+		else if (Calibration::getCalibrated() && DSoundKnete::objects[i].objectColor == DSoundKnete::CALIBRATION_COLOR)
+		{DSoundKnete::objects.erase(DSoundKnete::objects.begin() + (i));}
     }
 
    return input;
