@@ -315,8 +315,9 @@ function createNewSoundObjects(newObjects)
         
         for(property in tempObject)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
-        
+
         //add a new element to the hierarchy here (by prototype?) => add eventlistener as shown in line 66
+        addObjectToHierachy(currentSoundObjectsInScene[tempObject.index],tempObject.index);
     }
 }
 
@@ -328,6 +329,7 @@ function removeSoundObject(index)
         currentSoundObjectsInScene[index][property] = undefined;  //Object has been removed from the scene 
     
     currentSoundObjectsInScene[index].isFading = false;
+    deleteObjectFromHierachy(index);
 }
 
 function parseAllCurrentJSONToSoundObj(jsonObj) 

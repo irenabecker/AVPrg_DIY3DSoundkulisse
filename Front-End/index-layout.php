@@ -8,7 +8,17 @@
         <link href="slider.css" rel="stylesheet" type="text/css" />
     </head>
 
-    <body onload="init()">
+    <body>
+       
+        <script type="text/javascript" src ="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
+        <script src="../Backend/WebMidi/code.js"></script>
+        <script src="JavaScript/threeDAudio.js"></script>
+        <script src="JavaScript/audioFader.js"></script>  
+        <script src ="JavaScript/soundObject.js"></script>
+        <script src ="JavaScript/hierachy.js"></script>
+        <script src="JavaScript/btnListener.js"></script>
+        <script src ="JavaScript/webAudioScript.js"></script>
+        
         <!--<script src="bootstrap-slide-panel/js/modernizr-2.8.3.min.js"></script>
     <script src='bootstrap-slide-panel/js/jquery-1.11.2.min.js' type='text/javascript'></script>
         <script src='bootstrap-slide-panel/js/searchFigures.js' type='text/javascript'></script>-->
@@ -16,13 +26,5 @@
         <?php include("bootstrap-slide-panel/topSlide.html") ?>
         <?php include("videoTransfer.html") ?>
         <?php include("footer.html") ?>
-        
-        <script type="text/javascript" src ="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
-        <script src="JavaScript/code.js"></script>
-        <script src="JavaScript/threeDAudio.js"></script>
-        <script src="JavaScript/audioFader.js"></script>
-        
-        <script src ="JavaScript/soundObject.js"></script>
-        <script src ="JavaScript/webAudioScript.js"></script>
     </body>
 </html>
