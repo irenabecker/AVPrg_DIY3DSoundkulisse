@@ -35,7 +35,7 @@ function init()
 {
     
     threeDAudioObj = new threeDAudio(context);
-    audioFader = new AudioFader(3000, 2500, 100);
+    audioFader = new AudioFader(2000, 4000, 100);
     //fillThemes();
     createAudioSources();
     createDefaultSoundObjects();
@@ -130,7 +130,7 @@ function getJSONObjects(midiJSONObjects)
 function updateAudioSources() 
 {
     let i;
-    for(i = 0; i < htmlAudioElements.length; i++) 
+    for(i = 0; i < htmlAudioElements.length; i++) //should rather only loop over all elements below the highest filled one
     {
         if(currentSoundObjectsInScene[i].soundFileName != undefined && htmlAudioElements[i].paused)
         {
@@ -139,13 +139,13 @@ function updateAudioSources()
             htmlAudioElements[i].play();
             htmlAudioElements[i].loop = true;
         }
-        
-        threeDAudioObj.updateThreeDSource(
-            i,
-            currentSoundObjectsInScene[i].xPosition,
-            currentSoundObjectsInScene[i].yPosition,
-            currentSoundObjectsInScene[i].zPosition
-        );
+        if(currentSoundObjectsInScene[i].xPosition != undefined)
+            threeDAudioObj.updateThreeDSource(
+                i,
+                currentSoundObjectsInScene[i].xPosition,
+                currentSoundObjectsInScene[i].yPosition,
+                currentSoundObjectsInScene[i].zPosition
+            );
     }
 }
 
@@ -231,7 +231,7 @@ function createNewSoundObjects(newObjects)
 
 function removeSoundObject(index)
 {
-    //htmlAudioElements[index].pause();
+    htmlAudioElements[index].pause();
     for(property in currentSoundObjectsInScene[index])
         currentSoundObjectsInScene[index][property] = undefined;  //Object has been removed from the scene 
     
