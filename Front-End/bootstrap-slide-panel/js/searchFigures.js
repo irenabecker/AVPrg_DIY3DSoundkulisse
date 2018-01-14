@@ -63,22 +63,22 @@ $(document).ready(function() {
 /*
     var all_cards = {
         card_1: {
-            headline: 'Dreieck',
+            shape: 'Dreieck',
             value_1: 100,
             value_2: 1000,
         },
         card_2: {
-            headline: 'Viereck',
+            shape: 'Viereck',
             value_1: 100,
             value_2: 1000,
         },
         card_3: {
-            headline: 'Kreis',
+            shape: 'Kreis',
             value_1: 100,
             value_2: 1000,
         },
         card_4: {
-            headline: 'Mond',
+            shape: 'Mond',
             value_1: 100,
             value_2: 1000,
         },
@@ -89,23 +89,19 @@ $(document).ready(function() {
 
    /* $.each(all_cards, function(index, value) {
         var _current = all_cards[index];
-        new Card($('#itembox_1'), _current.headline);
+        new Card($('#itembox_1'), _current.shape);
     }); 
 */
     var cards=[];
-    cards[0] = new Card($('#itembox_1'), 'Triangle', 'Blue','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 'Vogelgeschwitzer','soundvolume0','pitch0','configureButton0' );
-    cards[1] = new Card($('#itembox_1'), 'Circle', 'Blue', 'https://ae01.alicdn.com/kf/HTB1ikMkIpXXXXX_XpXXq6xXFXXXK/Charming-modeschmuck-perlen-Charming-40mm-Blau-Mexican-Opal-Kugel-Kristallkugel-chalcedon-Gro%C3%9Fhandel-und-einzelhandel.jpg_220x220.jpg','Vogelgeschwitzer','soundvolume1','pitch1','configureButton1');
-    cards[2] = new Card($('#itembox_1'), 'Rectangle','Blue','http://web-spiele.de/onlinespiele/tetris-und-co/moonstar/_shot.gif','Vogelgeschwitzer','soundvolume2','pitch2','configureButton2');
-    cards[3] = new Card($('#itembox_1'), 'Triangle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume3','pitch3','configureButton3');
-
-    cards[4] = new Card($('#itembox_2'), 'Circle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume4','pitch4','configureButton4' );
-    cards[5] = new Card($('#itembox_2'), 'Rectangle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume5','pitch5','configureButton5');
-    cards[6] = new Card($('#itembox_2'), 'Triangle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume6','pitch6','configureButton6');
-    cards[7] = new Card($('#itembox_2'), 'Circle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume7','pitch7','configureButton7');
-
-    cards[8] = new Card($('#itembox_3'), 'Rectangle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png','Vogelgeschwitzer','soundvolume8','pitch8','configureButton8');
-
-    setSlideDownCards(cards);
+    cards[0] = new Card($('#itembox_1'), 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 0 );
+    cards[1] = new Card($('#itembox_1'), 'https://ae01.alicdn.com/kf/HTB1ikMkIpXXXXX_XpXXq6xXFXXXK/Charming-modeschmuck-perlen-Charming-40mm-Blau-Mexican-Opal-Kugel-Kristallkugel-chalcedon-Gro%C3%9Fhandel-und-einzelhandel.jpg_220x220.jpg', 1);
+    cards[2] = new Card($('#itembox_1'), 'http://web-spiele.de/onlinespiele/tetris-und-co/moonstar/_shot.gif', 2);
+    cards[3] = new Card($('#itembox_1'),'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 3);
+    cards[4] = new Card($('#itembox_2'), 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 4 );
+    cards[5] = new Card($('#itembox_2'), 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 5);
+    cards[6] = new Card($('#itembox_2'), 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 6);
+    cards[7] = new Card($('#itembox_2'), 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 7);
+    cards[8] = new Card($('#itembox_3'), 'http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png', 8);
     
     for(let i=0; i<cardboxes.length;i++){
         $(document).on("click","#configureButton"+i,function() {
@@ -124,7 +120,6 @@ $(document).ready(function() {
             $("#configureButton"+i).removeClass("btn-success");
             $("#configureButton"+i).addClass("btn-danger");
             $("#configureButton"+i).text('Configure');  
-            saveDefaultCard(i); 
         }
             
         });
@@ -136,23 +131,17 @@ $(document).ready(function() {
 
 var cardboxes = [];
 
-function Card(container, headline,  description, image, soundclipName, soundvolume, pitch, configureButton) {
-    this.init(container, headline, description, image, soundclipName,soundvolume, pitch, configureButton);
+function Card(container, image, index) {
+    this.init(container, image, index);
 }
 
 Card.prototype = {
 
-    init: function(container, headline, description, image, soundclipName,soundvolume,pitch,configureButton) {
+    init: function(container, image, index) {
 
-        this.headline = headline;
         this.container = container;
-        this.description =  description;
         this.image = image;
-        this.soundclipName = soundclipName;
-        this.soundvolume = soundvolume;
-        this.pitch = pitch;
-        this.configureButton = configureButton;
-        this.defaultSoundObject=findCorrespondingDefaultSoundObject( headline.toLowerCase(), description.toLowerCase());
+        this.index = index;
 
         this.createCard();
     },
@@ -161,19 +150,25 @@ Card.prototype = {
 
         var that = this;
         i = cardboxes.length;
-
+/*
+<select id="selectList">
+            <option value="natSound1.wav">NatSound1</option>
+            <option value="natSound2.wav">NatSound2</option>
+            <option value="citySound1.wav">CitySound1</option>
+        </select>
+*/
         cardboxes[i] = `<div class="col-sm-3 content" id="card_`+i+`" style="padding-top: 2%; margin-left: -0.1%!important;">
                 <div class="thumbnail figures" style="background-color:#cac5c5;!important">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
-                        <h4>`+that.headline+`</h4>
-                        <p><strong>Farbe: </strong>`+that.description+`</p>
-                        <p><strong>Soundclip:</strong><i>`+that.soundclipName+`</i></p>
+                        <h4 id="shape`+that.index+`"></h4>
+                        <p><strong>Farbe: </strong><div id="col`+that.index+`"></div></p>
+                        <p><strong>Soundclip:</strong><select id="soundClip`+that.index+`"></select></p>
 
                     <form>
                         <strong>Lautstärke:</strong>
                         <div id="slider">
-                            <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
+                            <input class="bar" type="range" id="soundvolume`+that.index+`" value="50" oninput="rangevalue.value=value" disabled/>
                             <span class="highlight"></span>
                             <output class="rangevalue" id="rangevalue">50</output>
                         </div>   
@@ -183,13 +178,13 @@ Card.prototype = {
                     <form>
                         <strong>Pitch:</strong>
                         <div id="slider">
-                            <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
+                            <input class="bar" type="range" id="pitch`+that.index+`" value="50" oninput="rangevalue.value=value" disabled/>
                             <span class="highlight"></span>
                             <output id="rangevalue">50</output>
                         </div>   
                     </form>  
                     <br>
-                    <button type="button" id=`+that.configureButton+` class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
+                    <button type="button" id="configureButton`+that.index+`" class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
                     <br>
                     </div>
                 </div>

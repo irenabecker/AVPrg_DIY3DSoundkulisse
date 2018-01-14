@@ -12,6 +12,25 @@ function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, z
     this.isFading = isFading;
 }
 
+SoundObject.prototype.updateVolume = function(newValue) 
+{
+    this.volume = newValue;
+    console.log('change for' + JSON.stringify(this));
+    htmlAudioElements[this.index].volume = newValue;
+}
+
+SoundObject.prototype.updatePitch = function(newValue) 
+{
+    this.pitch = newValue;
+    //htmlAudioElements[this.index].volume = newValue;
+}
+
+SoundObject.prototype.updateSoundClip = function(newValue) 
+{
+    this.soundFileName = newValue;
+    audioFader.fadeOut(htmlAudioElements[this.index], playNewAudioSource, this.index);
+}
+
 //Create a SoundTheme for related sounds and store them in an array
 //Maybe also setup default configurations here?
 function SoundTheme(audioSources) 

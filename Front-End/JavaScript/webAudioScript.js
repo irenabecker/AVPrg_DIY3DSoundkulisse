@@ -24,13 +24,58 @@ var soundClipStrings = {
     citySounds: ['citySound1.wav', 'citySound2.wav', 'citySound3.wav']
 };
 
-var colors = ['red','green','blue'];
-var shapes = ['rectangle', 'circle', 'triangle'];
+var colors = ['Red','Green','Blue'];
+var shapes = ['Rectangle', 'Circle', 'Triangle'];
 //delete later
 var testSounds = ['natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav', 'citySound3.wav','natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav'];
 
 //Cache the DOM here (=> hierarchy und dropdown items hier empfangen)
-var startBtn = document.getElementById('startBtn');
+//var startBtn = document.getElementById('startBtn');
+//DOM From SlideDownView
+var slideDownFigures = document.getElementsByClassName('caption');
+var slideDownVolumeSliders = [];
+var slideDownVolumeText = []; //use this to update volume text amount
+var slideDownSoundClipText = [];
+var slideDownPitchSliders = [];
+var slideDownPitchText = []; //use this to update pitch text amount
+console.log(slideDownFigures);
+
+//DOM from hierarchy view (must be dynamically accessed...)
+var hierarchyVolumeSliders = [];
+var hierarchyPitchSliders = [];
+
+function fillSlideDownCards() 
+{
+    let i;
+    for(i = 0; i < slideDownFigures.length; i++) 
+    {
+        //Set Shape and Color
+        let currElement = i;
+        document.getElementById('shape'+i).innerHTML = " " + defaultSoundObjects[i].shape;
+        console.log(document.getElementById('shape'+i));
+        console.log(document.getElementById('col'+i));
+        document.getElementById('col'+i).innerHTML = " " + defaultSoundObjects[i].color + " ";
+        
+        //cache each slider etc
+        slideDownSoundClipText.push(document.getElementById('soundClip'+i));
+        for(let j = 0; j < testSounds.length; j++)
+        {
+            option = document.createElement('option');
+            option.value = defaultSoundObjects[j].soundFileName;
+            option.innerHTML = defaultSoundObjects[j].soundFileName;
+            slideDownSoundClipText[i].appendChild(option);
+        }
+        slideDownSoundClipText[i].addEventListener('change', function(e){switchSoundClipForDefaultObject(currElement)})
+        
+        slideDownVolumeSliders.push(document.getElementById('soundvolume'+i));
+        slideDownVolumeSliders[i].value = defaultSoundObjects[i].volume;
+        slideDownVolumeSliders[i].addEventListener('input', function(e){slideDownVolumeSlider(currElement)});
+        
+        slideDownPitchSliders.push(document.getElementById('pitch'+i));
+        slideDownPitchSliders[i].value = defaultSoundObjects[i].pitch;
+        slideDownPitchSliders[i].addEventListener('input', function(e){slideDownPitchSlider(currElement)});
+    }
+}
 
 function init() 
 {
@@ -41,11 +86,9 @@ function init()
     createAudioSources();
     createDefaultSoundObjects();
     createEmptySoundObjects();
+    fillSlideDownCards();
     
     initialize(); // code.js
-    
-    //htmlAudioElements[8].src = TESTSOUNDS_PATH + 'natSound1.wav';
-    //htmlAudioElements[8].play();
 }
 
 //create new Audio-Sources in here and pass them into the corresponding theme.
@@ -103,8 +146,8 @@ function createDefaultSoundObjects()
         for(let j = 0; j < shapes.length; j++) 
         {
             defaultSoundObjects.push(new SoundObject(
-                shapes[j],
-                colors[i],
+                shapes[j].toLowerCase(),
+                colors[i].toLowerCase(),
                 undefined,
                 testSounds[currentHtmlAudioElement],
                 undefined,
@@ -117,6 +160,7 @@ function createDefaultSoundObjects()
             currentHtmlAudioElement++;
         }
     }
+    console.log(defaultSoundObjects);
 }
 
 //use audioSource.src = newSourcePath and audioSource.play here
@@ -138,11 +182,7 @@ function updateAudioSources()
     {
         if(currentSoundObjectsInScene[i].soundFileName != undefined && htmlAudioElements[i].paused)
         {
-            console.log('fade it in: ' + JSON.stringify(currentSoundObjectsInScene[i]));
-            audioFader.fadeIn(htmlAudioElements[i]);
-            htmlAudioElements[i].src = TESTSOUNDS_PATH + currentSoundObjectsInScene[i].soundFileName;
-            htmlAudioElements[i].play();
-            htmlAudioElements[i].loop = true;
+            playNewAudioSource(i);
         }
         if(currentSoundObjectsInScene[i].xPosition != undefined)
             threeDAudioObj.updateThreeDSource(
@@ -154,6 +194,15 @@ function updateAudioSources()
     }
 }
 
+function playNewAudioSource(index)
+{
+    console.log('fade it in: ' + JSON.stringify(currentSoundObjectsInScene[index]));
+    audioFader.fadeIn(htmlAudioElements[index]);
+    htmlAudioElements[index].src = TESTSOUNDS_PATH + currentSoundObjectsInScene[index].soundFileName;
+    htmlAudioElements[index].play();
+    htmlAudioElements[index].loop = true;
+}
+
 function findCorrespondingDefaultSoundObject(shape, color) 
 {
     let i;
@@ -162,12 +211,8 @@ function findCorrespondingDefaultSoundObject(shape, color)
             return defaultSoundObjects[i];
 }
 
-<<<<<<< HEAD
-var TOLERATION_RADIUS = 10;
-=======
 //this is given in %
-var TOLERATION_RADIUS = 1;
->>>>>>> 0d60586686600c3762130ccf1510c41aff59f7ff
+var TOLERATION_RADIUS = 10;
 function checkForDuplicate(objToCheck, compareToList)
 {
     let i;
@@ -237,11 +282,14 @@ function createNewSoundObjects(newObjects)
         
         for(property in tempObject)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
+        
+        //add a new element to the hierarchy here (by prototype?) => add eventlistener as shown in line 66
     }
 }
 
 function removeSoundObject(index)
 {
+    //remove the corresponding element in the hierarchy here
     htmlAudioElements[index].pause();
     for(property in currentSoundObjectsInScene[index])
         currentSoundObjectsInScene[index][property] = undefined;  //Object has been removed from the scene 
@@ -300,10 +348,55 @@ function resetToDefaultSettings(objToReset)
     //updateUIElement(uiElement)
 }
 
-function updateHierarchyElement(index)
+function hierarchyVolumeSlider(index)
 {
-    //hierarchyVolumeSliders[index].value = currentSoundObjectsInScene[index].volume;
-    //hierarchyPitchSliders[index].value = currentSoundObjectsInScene[index].pitch;
+    let newValue = hierarchyVolumeSliders[index].value;
+    currentSoundObjectsInScene[index].volume = newValue;
 }
 
-init();
+function hierarchyPitchSlider(index)
+{
+    let newValue = hierarchyPitchSliders[index].value;
+    currentSoundObjectsInScene[index].pitch = newValue;
+}
+
+function slideDownVolumeSlider(index)
+{
+    let newValue = slideDownVolumeSliders[index].value;
+    //update text here
+    defaultSoundObjects[index].volume = newValue;
+    
+    for(let i = 0; i < currentSoundObjectsInScene.length; i++) 
+        if(currentSoundObjectsInScene[i].xPosition != undefined 
+           && currentSoundObjectsInScene[i].shape == defaultSoundObjects[index].shape
+           && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
+            currentSoundObjectsInScene[i].updateVolume(newValue);
+}
+
+function slideDownPitchSlider(index)
+{
+    let newValue = slideDownPitchSliders[index].value;
+    //update text here
+    defaultSoundObjects[index].pitch = newValue;
+    
+    for(let i = 0; i < currentSoundObjectsInScene.length; i++) 
+        if(currentSoundObjectsInScene[i].xPosition != undefined 
+           && currentSoundObjectsInScene[i].shape == defaultSoundObjects[index].shape
+           && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
+            currentSoundObjectsInScene[i].updatePitch(newValue);
+}
+
+function switchSoundClipForDefaultObject(index) 
+{
+    console.log(index);
+    console.log(slideDownSoundClipText[index])
+    var newClipString = slideDownSoundClipText[index].options[slideDownSoundClipText[index].selectedIndex].value;
+    console.log('swap to ' + newClipString);
+    defaultSoundObjects[index].soundFileName = newClipString;
+    
+    for(let i = 0; i < currentSoundObjectsInScene.length; i++) 
+        if(currentSoundObjectsInScene[i].xPosition != undefined 
+           && currentSoundObjectsInScene[i].shape == defaultSoundObjects[index].shape
+           && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
+        {currentSoundObjectsInScene[i].updateSoundClip(newClipString);console.log('call for : ' + JSON.stringify(currentSoundObjectsInScene[i]));}
+}
