@@ -16,20 +16,25 @@
     	<button data-toggle="collapse" data-target="#demo" id="a" onclick="colorchange('a')" class="font-size-19 FigurObject" style="background:white;">Figur: Dreieck Farbe: Blau Position: "1"</button>  
 	</div>
     <div id="demo" class="collapse">
-            <div class="col-sm-9 border-groove" style="width: 82.0%;">
+            <div class="col-sm-9 border-groove" style="width: 100%;">
 
-                        <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
-                      <strong>Lautstärke:</strong>
-                      <output name="x" for="`+that.soundvolume+`"></output>
-                        <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
-                    </form>
-
-                    <form oninput="y.value=parseInt(`+that.pitch+`.value)">
-                      <strong>Pitch:</strong>
-                      <output name="y" for="`+that.pitch+`"></output>
-                        <input id=`+that.pitch+` type="range" min="0" max="100" disabled>
-                    </form> 
-                    <br>
+                <form>
+                    <strong>Lautstärke:</strong>
+                    <div id="slider">
+                        <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
+                        <span class="highlight"></span>
+                        <output class="rangevalue" id="rangevalue">50</output>
+                    </div>   
+                </form>  
+                
+                <form>
+                    <strong>Pitch:</strong>
+                    <div id="slider">
+                        <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue">50</output>
+                    </div>   
+                </form>
 
                 <div class="col-sm-3 col-sm-offset-1">
                     <button type="button" class="btn btn-xs btn-danger btn-change">Reset to Default </button>
@@ -47,20 +52,23 @@
 
     <div id="demo2" class="collapse">
     	    <div class="col-sm-9 border-groove" style="width: 82.0%;">
-
-                <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
-                      <strong>Lautstärke:</strong>
-                      <output name="x" for="`+that.soundvolume+`"></output>
-                        <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
-                </form>
-
-                <form oninput="y.value=parseInt(`+that.pitch+`.value)">
-                      <strong>Pitch:</strong>
-                      <output name="y" for="`+that.pitch+`"></output>
-                        <input id=`+that.pitch+` type="range" min="0" max="100" disabled>
+                <form>
+                    <strong>Lautstärke:</strong>
+                    <div id="slider">
+                        <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
+                        <span class="highlight"></span>
+                        <output class="rangevalue" id="rangevalue">50</output>
+                    </div>   
+                </form>  
+                
+                <form>
+                    <strong>Pitch:</strong>
+                    <div id="slider">
+                        <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue">50</output>
+                    </div>   
                 </form> 
-                    <br>
-
                 <div class="col-sm-4 col-sm-offset-2">
                     <button type="button" class="btn btn-xs btn-danger btn-change">Reset to Default </button>
                 </div>
