@@ -1,5 +1,6 @@
 //This should be the first script, executed by web page
 
+
 //WebAudio Setup
 var context = new AudioContext();
 var htmlAudioElements = [];
@@ -265,10 +266,10 @@ function inRange(objToCheck, existingObj)
 }
 
 //EventListener (=> Hierachy und DropDown Slider hier funktionalität geben)
-startBtn.addEventListener('click', function() {
+/*startBtn.addEventListener('click', function() {
    //start audio here 
     init();
-});
+});*/
 
 function resetToDefaultSettings(objToReset) 
 {
@@ -287,3 +288,5 @@ function updateHierarchyElement(index)
     //hierarchyVolumeSliders[index].value = currentSoundObjectsInScene[index].volume;
     //hierarchyPitchSliders[index].value = currentSoundObjectsInScene[index].pitch;
 }
+
+init();
