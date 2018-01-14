@@ -162,6 +162,7 @@ function findCorrespondingDefaultSoundObject(shape, color)
             return defaultSoundObjects[i];
 }
 
+//this is given in %
 var TOLERATION_RADIUS = 1;
 function checkForDuplicate(objToCheck, compareToList)
 {
