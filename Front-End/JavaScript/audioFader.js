@@ -22,7 +22,7 @@ function AudioFader(fadeInTime, fadeOutTime, step)
         }, that.step);
     }
     
-    this.fadeOut = function(audioSource)
+    this.fadeOut = function(audioSource, callback, callBackArgument)
     {
         //console.log('Fading out source: ' + audioSource);
         audioSource.volume = 1.0;
@@ -32,7 +32,7 @@ function AudioFader(fadeInTime, fadeOutTime, step)
             
             if(currentTime >= that.fadeOutTime)
             {
-                audioSource.pause();    
+                callback(callBackArgument);    
                 clearInterval(interval);
             }
             else    

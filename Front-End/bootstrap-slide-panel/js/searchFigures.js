@@ -170,19 +170,24 @@ Card.prototype = {
                         <p><strong>Farbe: </strong>`+that.description+`</p>
                         <p><strong>Soundclip:</strong><i>`+that.soundclipName+`</i></p>
 
+                    <form>
+                        <strong>Lautstärke:</strong>
+                        <div id="slider">
+                            <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
+                            <span class="highlight"></span>
+                            <output class="rangevalue" id="rangevalue">50</output>
+                        </div>   
+                    </form>  
 
-                    <form oninput="x.value=parseInt(`+that.soundvolume+`.value)">
-                      <strong>Lautstärke:</strong>
-                      <output name="x" for="`+that.soundvolume+`"></output>
-                        <input id=`+that.soundvolume+` type="range" min="1" max="100" disabled>
-                    </form>
-
-                    <form oninput="y.value=parseInt(`+that.pitch+`.value)">
-                      <strong>Pitch:</strong>
-                      <output name="y" for="`+that.pitch+`"></output>
-                        <input id=`+that.pitch+` type="range" min="0" max="100" disabled>
-                    </form>                    
-
+                    
+                    <form>
+                        <strong>Pitch:</strong>
+                        <div id="slider">
+                            <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
+                            <span class="highlight"></span>
+                            <output id="rangevalue">50</output>
+                        </div>   
+                    </form>  
                     <br>
                     <button type="button" id=`+that.configureButton+` class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
                     <br>

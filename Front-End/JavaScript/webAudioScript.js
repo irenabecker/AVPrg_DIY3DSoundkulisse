@@ -108,7 +108,8 @@ function createDefaultSoundObjects()
                 undefined,
                 undefined,
                 1,
-                1
+                1,
+                false
             ));
             currentHtmlAudioElement++;
         }
@@ -134,7 +135,7 @@ function updateAudioSources()
     {
         if(currentSoundObjectsInScene[i].soundFileName != undefined && htmlAudioElements[i].paused)
         {
-            console.log('fade it in');
+            console.log('fade it in: ' + JSON.stringify(currentSoundObjectsInScene[i]));
             audioFader.fadeIn(htmlAudioElements[i]);
             htmlAudioElements[i].play();
             htmlAudioElements[i].loop = true;
@@ -193,14 +194,11 @@ function updateObjectsInScene(midiData)
                 currentSoundObjectsInScene[i].zPosiiton=midiData[dupIndex].zPosition;  
                 maskArray[dupIndex]=true;
             }   
-            else
+            else if(!currentSoundObjectsInScene[i].isFading)
             {
-                console.log('fade it out');
-                audioFader.fadeOut(htmlAudioElements[i]);
-                for(property in currentSoundObjectsInScene[i])
-                {
-                    currentSoundObjectsInScene[i][property] = undefined;  //Object has been removed from the scene 
-                }   
+                console.log('fade it out: ' + JSON.stringify(currentSoundObjectsInScene[i]));
+                currentSoundObjectsInScene[i].isFading = true;
+                audioFader.fadeOut(htmlAudioElements[i], removeSoundObject, i);   
             }
         }
     }
@@ -230,6 +228,15 @@ function createNewSoundObjects(newObjects)
         for(property in tempObject)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
     }
+}
+
+function removeSoundObject(index)
+{
+    //htmlAudioElements[index].pause();
+    for(property in currentSoundObjectsInScene[index])
+        currentSoundObjectsInScene[index][property] = undefined;  //Object has been removed from the scene 
+    
+    currentSoundObjectsInScene[index].isFading = false;
 }
 
 function parseAllCurrentJSONToSoundObj(jsonObj) 

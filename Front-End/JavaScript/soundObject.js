@@ -1,4 +1,4 @@
-function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, zPosition, pitch, volume) 
+function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, zPosition, pitch, volume, isFading) 
 {
     this.shape = shape;
     this.color = color;
@@ -9,6 +9,7 @@ function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, z
     this.zPosition = zPosition;
     this.pitch = pitch;
     this.volume = volume;
+    this.isFading = isFading;
 }
 
 //Create a SoundTheme for related sounds and store them in an array
