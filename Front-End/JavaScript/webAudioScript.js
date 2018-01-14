@@ -43,6 +43,9 @@ function init()
     createEmptySoundObjects();
     
     initialize(); // code.js
+    
+    //htmlAudioElements[8].src = TESTSOUNDS_PATH + 'natSound1.wav';
+    //htmlAudioElements[8].play();
 }
 
 //create new Audio-Sources in here and pass them into the corresponding theme.
@@ -137,6 +140,7 @@ function updateAudioSources()
         {
             console.log('fade it in: ' + JSON.stringify(currentSoundObjectsInScene[i]));
             audioFader.fadeIn(htmlAudioElements[i]);
+            htmlAudioElements[i].src = TESTSOUNDS_PATH + currentSoundObjectsInScene[i].soundFileName;
             htmlAudioElements[i].play();
             htmlAudioElements[i].loop = true;
         }
