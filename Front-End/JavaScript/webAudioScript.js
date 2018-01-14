@@ -162,12 +162,8 @@ function findCorrespondingDefaultSoundObject(shape, color)
             return defaultSoundObjects[i];
 }
 
-<<<<<<< HEAD
+
 var TOLERATION_RADIUS = 10;
-=======
-//this is given in %
-var TOLERATION_RADIUS = 1;
->>>>>>> 0d60586686600c3762130ccf1510c41aff59f7ff
 function checkForDuplicate(objToCheck, compareToList)
 {
     let i;
@@ -237,6 +233,7 @@ function createNewSoundObjects(newObjects)
         
         for(property in tempObject)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
+        addObjectToHierachy(currentSoundObjectsInScene[tempObject.index],tempObject.index);
     }
 }
 
@@ -247,6 +244,7 @@ function removeSoundObject(index)
         currentSoundObjectsInScene[index][property] = undefined;  //Object has been removed from the scene 
     
     currentSoundObjectsInScene[index].isFading = false;
+    deleteObjectFromHierachy(index);
 }
 
 function parseAllCurrentJSONToSoundObj(jsonObj) 
