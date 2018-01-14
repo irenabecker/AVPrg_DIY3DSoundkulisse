@@ -36,7 +36,7 @@ function init()
 {
     
     threeDAudioObj = new threeDAudio(context);
-    audioFader = new AudioFader(2000, 4000, 100);
+    audioFader = new AudioFader(3000, 2500, 100);
     //fillThemes();
     createAudioSources();
     createDefaultSoundObjects();
@@ -202,6 +202,7 @@ function updateObjectsInScene(midiData)
             {
                 console.log('fade it out: ' + JSON.stringify(currentSoundObjectsInScene[i]));
                 currentSoundObjectsInScene[i].isFading = true;
+                
                 audioFader.fadeOut(htmlAudioElements[i], removeSoundObject, i);   
             }
         }
