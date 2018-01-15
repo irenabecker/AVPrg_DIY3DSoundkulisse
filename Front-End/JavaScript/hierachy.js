@@ -30,13 +30,14 @@ Obj.prototype = {
         var that = this;
         i = hierachyHTMLObjects.length;
 
-        hierachyHTMLObjects[this.index] = `<div class="col-sm-12 padding-left-0" id="index`+that.index+`">
-    	<button data-toggle="collapse" data-target="#demo`+that.index+`" id="btn`+that.index+`" onclick="colorchange('`+that.index+`')" class="font-size-19 FigurObject" style="background:white;">Shape:  `+that.shape+` Color: `+that.color+`</button>  
+        hierachyHTMLObjects[this.index] = `<div class="col-sm-12" id="index`+that.index+`">
+    	<button data-toggle="collapse" data-target="#demo`+that.index+`" id="btn`+that.index+`" onclick="colorchange('`+that.index+`')" class="font-size-19 FigurObject border-groove">`+that.color+` `+that.shape+`</button>  
 	</div>
-    <div id="demo`+that.index+`" class="collapse">
-            <div class="col-sm-9 border-groove" style="width: 100%;">
 
-                <form>
+    <div id="demo`+that.index+`" class="collapse">
+            <div class="col-sm-12">
+                <div class="border-groove padding-bottom-5">
+                <form class="margin-right-25">
                     <strong>Volume:</strong>
                     <div id="slider">
                         <input class="bar" type="range" id=`+that.soundvolume+` value="0" min="-3" max="3" step="0.1"  oninput="rangevalue.value=value" disabled/>
@@ -45,23 +46,21 @@ Obj.prototype = {
                     </div>   
                 </form>  
                 
-                <form>
+                <form class="margin-right-25">
                     <strong>Pitch:</strong>
                     <div id="slider">
                         <input class="bar" type="range" id="`+that.pitch+`" value="0" min="-3" max="3" step="0.1"  oninput="rangevalue.value=value" disabled/>
                         <span class="highlight"></span>
                         <output id="rangevalue">50</output>
                     </div>   
-                </form>
 
-                <div class="col-sm-3 col-sm-offset-1">
-                    <button type="button" class="btn btn-xs btn-danger btn-change" id="`+that.resetButton+`" onclick="resetHierachyObject('`+that.index+`')">Reset to Default </button>
-                </div>
-                <div class="col-sm-3 col-sm-offset-2 padding-bottom-5">
-                    <button type="button" class="btn btn-danger btn btn-xs btn-change" id="`+that.configButton+`" onclick="configureHierachy('`+that.index+`')">Configure</button>
-                </div>
+                    <button type="button" class="btn btn-xs btn-danger btn-change col-sm-offset-2" id="`+that.resetButton+`" onclick="resetHierachyObject('`+that.index+`')">Reset to Default </button>
+
+                    <button type="button" class="btn btn-danger btn-warning btn-xs btn-change" id="`+that.configButton+`" onclick="configureHierachy('`+that.index+`')">Configure</button>
+                </form>
             </div>
-    </div>`;
+    </div>
+</div>`;
         
 
         this.container.insertAdjacentHTML('beforeend', hierachyHTMLObjects[this.index]);

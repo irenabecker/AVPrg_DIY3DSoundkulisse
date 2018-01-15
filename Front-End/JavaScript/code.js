@@ -17,7 +17,7 @@ function initialize(){
         createJSONObject(testObj.shape, testObj.color, testObj.xPosition, testObj.yPosition, testObj.zPosition);
         resetJSONObjects();
     }, 5000);*/
-    /*let counter=0;
+    let counter=0;
     setTimeout(function () {
         
         window.setInterval(function()
@@ -32,7 +32,7 @@ function initialize(){
             createJSONObject('RECTANGLE','RED', counter, 20, 30);
             resetJSONObjects();
         },2000)
-    }, 5000);*/
+    }, 5000);
     /*createJSONObject('RECTANGLE','RED',  10, 20, 30);
     resetJSONObjects();
     createJSONObject('RECTANGLE','RED',  80, 20,  30);
