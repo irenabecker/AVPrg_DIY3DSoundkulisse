@@ -38,7 +38,7 @@ var themeTest = [
     ['citySound2.wav', 'natSound1.wav', 'natSound2.wav']    //Thunder
 ];
 
-var themeImages = ['Forest.png', 'Mountain.png', 'Sea.png', 'Urban.png', 'Thunder.png'];
+var themeImages = ['ForestTransparent.png', 'MountainTransparent.png', 'SeaTransparent.png', 'UrbanTransparent.png', 'ThunderTransparent.png'];
 
 //Cache the DOM here (=> hierarchy und dropdown items hier empfangen)
 //var startBtn = document.getElementById('startBtn');
