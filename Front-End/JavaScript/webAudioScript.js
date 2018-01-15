@@ -96,17 +96,12 @@ function init()
     
     threeDAudioObj = new threeDAudio(context);
     audioFader = new AudioFader(3000, 2500, 100);
-    //fillThemes();
     createGainNodes();
     createAudioSources();
     createDefaultSoundObjects();
     createEmptySoundObjects();
-    
-    //fillSlideDownCards();
     initialize(); // code.js
 }
-
-
 
 //create new Audio-Sources in here and pass them into the corresponding theme.
 function fillThemes() 
@@ -159,6 +154,7 @@ function createAudioSources()
         
     }       
 }
+
 function createGainNodes()
 {
     for(var i=0;i<maxItemsInScene;i++)
@@ -200,12 +196,8 @@ function createDefaultSoundObjects()
     console.log(defaultSoundObjects);
 }
 
-//use audioSource.src = newSourcePath and audioSource.play here
-//let currentObjectIndex = 0;
- let objectsInScene=[];
 function getJSONObjects(midiJSONObjects)
 {
-    //console.log('Just received this: ' + midiJSONObjects);
     let tempObjects = parseAllCurrentJSONToSoundObj(midiJSONObjects);
     let newObjects = updateObjectsInScene(tempObjects);
     createNewSoundObjects(newObjects);
@@ -215,13 +207,15 @@ function getJSONObjects(midiJSONObjects)
 function updateAudioSources() 
 {
     let i;
-    for(i = 0; i < htmlAudioElements.length; i++) //should rather only loop over all elements below the highest filled one
+    for(i = 0; i < htmlAudioElements.length; i++) 
     {
-        if(currentSoundObjectsInScene[i].soundFileName != undefined && htmlAudioElements[i].paused)
+        if(currentSoundObjectsInScene[i].soundFileName == undefined) return;
+        if(htmlAudioElements[i].paused)
         {
             playNewAudioSource(i);
         }
-        if(currentSoundObjectsInScene[i].xPosition != undefined)
+        else
+        {
             threeDAudioObj.updateThreeDSource(
                 i,
                 currentSoundObjectsInScene[i].xPosition,
@@ -229,7 +223,8 @@ function updateAudioSources()
                 currentSoundObjectsInScene[i].zPosition,
                 currentSoundObjectsInScene[i].volume,
                 currentSoundObjectsInScene[i].pitch
-            );
+            );   
+        }
     }
 }
 
@@ -270,7 +265,6 @@ function checkForDuplicate(objToCheck, compareToList)
 
 function updateObjectsInScene(midiData)
 {
-    
     let newMidiDataArray = midiData;
     let maskArray=new Array(newMidiDataArray.length);
     let i;
@@ -490,7 +484,4 @@ function swapTheme()
         }
 }
 
-/*window.onload = function() {
-  init();
-};*/
 init();

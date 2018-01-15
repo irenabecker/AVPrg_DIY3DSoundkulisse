@@ -41,9 +41,6 @@ function saveDefaultCard(cardIndex)
             currentSoundObjectsInScene[i].updatePitch(defaultCard.pitch);
             updateSlider(hierachyObjs[i],currentSoundObjectsInScene[i]);
         }
-    
-    
-    //console.log(defaultSoundObjects);
 }
 
 function saveHierachyObject(objId)
@@ -53,7 +50,6 @@ function saveHierachyObject(objId)
     objectInScene.volume=document.getElementById(hierachyObjs[objId].soundvolume).value;
     objectInScene.updateVolume(objectInScene.volume);
     objectInScene.updatePitch(objectInScene.pitch);
-    //console.log(currentSoundObjectsInScene);
 }
 
 function resetHierachyObject(objId)
@@ -64,7 +60,6 @@ function resetHierachyObject(objId)
     objectInScene.updateVolume(objectInScene.volume);
     objectInScene.updatePitch(objectInScene.pitch);
     updateSlider(hierachyObjs[objId],objectInScene);
-    //console.log(currentSoundObjectsInScene);
 }
 
 function addObjectToHierachy(objToAdd,index)
@@ -81,7 +76,6 @@ function deleteObjectFromHierachy(index)
 {
     var elem = document.getElementById("index"+index);
     elem.parentNode.removeChild(elem);
-     //document.getElementById("index"+i).outerHTML='';
 }
 
 function updateSlider(htmlObj, soundObject)

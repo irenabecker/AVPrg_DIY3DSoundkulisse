@@ -19,9 +19,6 @@
         <script src="JavaScript/btnListener.js"></script>
         <script src ="JavaScript/webAudioScript.js"></script>
         
-        <!--<script src="bootstrap-slide-panel/js/modernizr-2.8.3.min.js"></script>
-    <script src='bootstrap-slide-panel/js/jquery-1.11.2.min.js' type='text/javascript'></script>
-        <script src='bootstrap-slide-panel/js/searchFigures.js' type='text/javascript'></script>-->
         <?php include("background-carousel/background-carousel.php") ?>
         <?php include("bootstrap-slide-panel/topSlide.html") ?>
         <?php include("videoTransfer.html") ?>

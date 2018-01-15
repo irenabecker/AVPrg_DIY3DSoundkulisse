@@ -11,73 +11,6 @@
 
      Figur.ausgabe();
     </script>
-<div>
-    <div class="col-sm-12" >
-    	<button data-toggle="collapse" data-target="#demo" id="a" onclick="colorchange('a')" class="font-size-19 FigurObject border-groove">Figur: Dreieck Farbe: Blau Position: 1</button>  
-	</div>
-    <div id="demo" class="collapse">
-        <div class="col-sm-12 margin-bottom-5">
-
-            <div class="border-groove padding-bottom-5">
-                <form class="margin-right-25">
-                    <strong>Lautstärke:</strong>
-                    <div id="slider">
-                        <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
-                        <span class="highlight"></span>
-                        <output class="rangevalue" id="rangevalue">50</output>
-                    </div>   
-                </form>  
-                
-                <form class="margin-right-25">
-                    <strong>Pitch:</strong>
-                    <div id="slider">
-                        <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
-                        <span class="highlight"></span>
-                        <output id="rangevalue">50</output>
-                    </div>   
-                    <button type="button" class="btn btn-xs btn-danger btn-change col-sm-offset-2">Reset to Default </button>
-                    <button type="button" class="btn btn-xs btn-warning btn-change">Configure</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-    	<div class="col-sm-12">
-        	<button data-toggle="collapse" data-target="#demo2" id="b" onclick="colorchange('b')" class="font-size-19 FigurObject border-groove" style="background:white;">Figur: Dreieck Farbe: Blau Position: 2<br></button>
-		</div>
-
-    <div id="demo2" class="collapse">
-    	    <div class="col-sm-12">
-
-            <div class="border-groove padding-bottom-5">
-                <form class="margin-right-25">
-                    <strong>Lautstärke:</strong>
-                    <div id="slider">
-                        <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
-                        <span class="highlight"></span>
-                        <output class="rangevalue" id="rangevalue">50</output>
-                    </div>   
-                </form>  
-                
-                <form class="margin-right-25">
-                    <strong>Pitch:</strong>
-                    <div id="slider">
-                        <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
-                        <span class="highlight"></span>
-                        <output id="rangevalue">50</output>
-                    </div>   
-                    <button type="button" class="btn btn-xs btn-danger btn-change col-sm-offset-2">Reset to Default </button>
-                    <button type="button" class="btn btn-xs btn-warning btn-change">Configure</button>
-                </form>
-            </div>
-            </div>
-    </div>
-
-    <br>
-
 
 <script type="text/javascript">
         function colorchange(id) {
@@ -88,32 +21,5 @@
                 document.getElementById(id).style.background = "white";
             }      
         }
-
-
-   <!-- <div class="col-sm-8">
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "2"<br>
-	    Figur: Dreieck Farbe: Blau Position: "3"<br>
-	    Figur: Dreieck Farbe: Blau Position: "4"<br>
-	    Figur: Dreieck Farbe: Blau Position: "5"<br>
-	    Figur: Dreieck Farbe: Blau Position: "6"<br>
-	    Figur: Dreieck Farbe: Blau Position: "7"<br>
-	    Figur: Dreieck Farbe: Blau Position: "8"<br>
-	    Figur: Dreieck Farbe: Blau Position: "9"<br>
-	    Figur: Dreieck Farbe: Blau Position: "10"<br>
-	    Figur: Dreieck Farbe: Blau Position: "11"<br>
-	    Figur: Dreieck Farbe: Blau Position: "12"<br>
-	    Figur: Dreieck Farbe: Blau Position: "13"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-	    Figur: Dreieck Farbe: Blau Position: "1"<br>
-    </div>-->
+</script>
 </div>
