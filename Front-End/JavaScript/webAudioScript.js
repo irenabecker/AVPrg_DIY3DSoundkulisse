@@ -7,6 +7,7 @@ var htmlAudioElements = [];
 var mediaElementAudioSources = [];
 let threeDAudioObj = {};
 let audioFader = {};
+let gainNodes=[];
 
 //SoundObjects
 var defaultSoundObjects = [];
@@ -25,6 +26,7 @@ var soundClipStrings = {
 };
 
 var colors = ['Red','Green','Blue'];
+var colorValues=[10,2,5];
 var shapes = ['Rectangle', 'Circle', 'Triangle'];
 //delete later
 var testSounds = ['natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav', 'citySound3.wav','natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav'];
@@ -91,13 +93,16 @@ function init()
     threeDAudioObj = new threeDAudio(context);
     audioFader = new AudioFader(3000, 2500, 100);
     //fillThemes();
+    createGainNodes();
     createAudioSources();
     createDefaultSoundObjects();
     createEmptySoundObjects();
-    //fillSlideDownCards();
     
+    //fillSlideDownCards();
     initialize(); // code.js
 }
+
+
 
 //create new Audio-Sources in here and pass them into the corresponding theme.
 function fillThemes() 
@@ -164,8 +169,17 @@ function createAudioSources()
     {
         htmlAudioElements.push(new Audio());
         mediaElementAudioSources[i] = context.createMediaElementSource(htmlAudioElements[i]);
-        mediaElementAudioSources[i].connect(threeDAudioObj.sources[i].input);
+       mediaElementAudioSources[i].connect(gainNodes[i]); //mediaElementAudioSources[i].connect(threeDAudioObj.sources[i].input);
+        
     }       
+}
+function createGainNodes()
+{
+    for(var i=0;i<maxItemsInScene;i++)
+    {
+        gainNodes.push(context.createGain());
+        gainNodes[i].connect(threeDAudioObj.sources[i].input);
+    }
 }
 
 function createEmptySoundObjects() 
@@ -185,14 +199,14 @@ function createDefaultSoundObjects()
                 shapes[j].toLowerCase(),
                 colors[i].toLowerCase(),
                 undefined,
-                'citySound2.wav',
-                //themeTest[0][j], //default theme: nature
+                themeTest[0][j], //default theme: nature
                 undefined,
                 undefined,
                 undefined,
-                1,
-                1,
-                false
+                0,
+                0,
+                false,
+                colorValues[i]
             ));
             currentHtmlAudioElement++;
         }
@@ -455,11 +469,14 @@ function swapTheme()
     
     //clear all current soundClipDropDowns options
     for(i = 0; i < slideDownSoundClipText.length; i++)
-        for(j = 0; j < slideDownSoundClipText[i].options.length; j++)
-            slideDownThemes.remove(j);
+        for(j = slideDownSoundClipText[i].options.length-1; j >=0 ; j--)
+        {   slideDownSoundClipText[i].removeChild(slideDownSoundClipText[i].options[j])
+            //slideDownThemes.remove(j);
+        }
     
     //fill the soundClipDropDowns with options again
     for(i = 0; i < slideDownSoundClipText.length; i++)
+    {
         for(j = 0; j < themeTest[parsedIndex].length; j++)
         {
             option = document.createElement('option');
@@ -467,6 +484,10 @@ function swapTheme()
             option.innerHTML = defaultSoundObjects[j].soundFileName;
             slideDownSoundClipText[i].appendChild(option);
         }
+         slideDownSoundClipText[i].value=slideDownCards[i].defaultSoundObject.soundFileName;
+    }
+   
+    
     
     //Call updateSoundClip(newClipString) for each currentSoundObjectsInScene
     for(i = 0; i < currentSoundObjectsInScene.length; i++) 

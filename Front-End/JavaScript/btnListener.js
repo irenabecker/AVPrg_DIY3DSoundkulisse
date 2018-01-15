@@ -1,4 +1,4 @@
-var slideDownCards= new Array(9);
+var slideDownCards= new Array(9)
 var hierachyHTML;
 var hierachyObjs=new Array();
 //get all default cards
@@ -8,14 +8,16 @@ function setSlideDownCards(getCards)
     {
         slideDownCards[i]=getCards[i];
         slideDownSoundClipText.push(document.getElementById(getCards[i].soundclipName));
+        
         for(let j = 0; j < themeTest[0].length; j++)
         {
             option = document.createElement('option');
-            option.value = getCards[i].defaultSoundObject.soundFileName;
-            option.innerHTML = getCards[i].defaultSoundObject.soundFileName;
+            option.value = defaultSoundObjects[j].soundFileName;
+            option.innerHTML = defaultSoundObjects[j].soundFileName;
             slideDownSoundClipText[i].appendChild(option);
         }
         slideDownSoundClipText[i].addEventListener('change', function(e){switchSoundClipForDefaultObject(currElement)})
+        slideDownSoundClipText[i].value=getCards[i].defaultSoundObject.soundFileName;
        document.getElementById(getCards[i].soundvolume).value=getCards[i].defaultSoundObject.volume; document.getElementById(getCards[i].soundvolume).parentElement.querySelector("#rangevalue").value=getCards[i].defaultSoundObject.volume;
        document.getElementById(getCards[i].pitch).value=getCards[i].defaultSoundObject.volume; document.getElementById(getCards[i].pitch).parentElement.querySelector("#rangevalue").value=getCards[i].defaultSoundObject.volume;
     }

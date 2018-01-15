@@ -39,7 +39,7 @@ Obj.prototype = {
                 <form>
                     <strong>Volume:</strong>
                     <div id="slider">
-                        <input class="bar" type="range" id=`+that.soundvolume+` value="50" oninput="rangevalue.value=value" disabled/>
+                        <input class="bar" type="range" id=`+that.soundvolume+` value="0" min="-3" max="3" step="0.1"  oninput="rangevalue.value=value" disabled/>
                         <span class="highlight"></span>
                         <output class="rangevalue" id="rangevalue">50</output>
                     </div>   
@@ -48,7 +48,7 @@ Obj.prototype = {
                 <form>
                     <strong>Pitch:</strong>
                     <div id="slider">
-                        <input class="bar" type="range" id="`+that.pitch+`" value="50" oninput="rangevalue.value=value" disabled/>
+                        <input class="bar" type="range" id="`+that.pitch+`" value="0" min="-3" max="3" step="0.1"  oninput="rangevalue.value=value" disabled/>
                         <span class="highlight"></span>
                         <output id="rangevalue">50</output>
                     </div>   

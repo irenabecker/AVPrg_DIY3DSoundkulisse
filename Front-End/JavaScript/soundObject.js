@@ -1,4 +1,4 @@
-function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, zPosition, pitch, volume, isFading) 
+function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, zPosition, pitch, volume, isFading,colorVolume) 
 {
     this.shape = shape;
     this.color = color;
@@ -10,18 +10,20 @@ function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, z
     this.pitch = pitch;
     this.volume = volume;
     this.isFading = isFading;
+    this.colorVolume=colorVolume;
 }
 
 SoundObject.prototype.updateVolume = function(newValue) 
 {
     this.volume = newValue;
     console.log('change for' + JSON.stringify(this));
-    htmlAudioElements[this.index].volume = (newValue/100);
+    //htmlAudioElements[this.index].volume = newValue;
+    gainNodes[this.index].gain.value=newValue+this.colorVolume;
 }
 
 SoundObject.prototype.updatePitch = function(newValue) 
 {
-    this.pitch = (newValue/100);
+    this.pitch = newValue;
     //htmlAudioElements[this.index].volume = newValue;
 }
 
