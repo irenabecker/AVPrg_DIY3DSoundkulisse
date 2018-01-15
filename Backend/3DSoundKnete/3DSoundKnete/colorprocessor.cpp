@@ -43,7 +43,7 @@ Vec3b ColorProcessor::getHSVAtPoint(int x, int y)
 
 int ColorProcessor::checkForColor(int hueToCheck, int satToCeck, int valToCheck)
 {
-    if(valToCheck < 35)
+    if(valToCheck < 85&&!Calibration::getCalibrated())
         return DSoundKnete::CALIBRATION_COLOR;
     if(hueToCheck > 155 && hueToCheck < 180 || hueToCheck > 0 && hueToCheck < 15)
         return DSoundKnete::RED;
