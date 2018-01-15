@@ -132,12 +132,13 @@
     background-image: url(resources/Forest.png);
 }
 
+
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1360px) and (max-width:1400px ) {
 	.thumbnail a>img, .thumbnail>img {
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 70%;
 	}
 	
 	.thumbnail {

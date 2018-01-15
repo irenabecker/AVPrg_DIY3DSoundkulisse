@@ -94,17 +94,17 @@ $(document).ready(function() {
 */
     var cards=[];
     
-    cards[0] = new Card($('#itembox_1'), 'Triangle', 'Blue','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png',THEMEIMAGE_PATH+themeImages[0], 'soundClip0','soundvolume0','pitch0','configureButton0' );
-    cards[1] = new Card($('#itembox_1'), 'Circle', 'Blue', 'https://ae01.alicdn.com/kf/HTB1ikMkIpXXXXX_XpXXq6xXFXXXK/Charming-modeschmuck-perlen-Charming-40mm-Blau-Mexican-Opal-Kugel-Kristallkugel-chalcedon-Gro%C3%9Fhandel-und-einzelhandel.jpg_220x220.jpg',THEMEIMAGE_PATH+themeImages[0],'soundClip1','soundvolume1','pitch1','configureButton1');
-    cards[2] = new Card($('#itembox_1'), 'Rectangle','Blue','http://web-spiele.de/onlinespiele/tetris-und-co/moonstar/_shot.gif',THEMEIMAGE_PATH+themeImages[0],'soundClip2','soundvolume2','pitch2','configureButton2');
-    cards[3] = new Card($('#itembox_1'), 'Triangle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png',THEMEIMAGE_PATH+themeImages[0],'soundClip3','soundvolume3','pitch3','configureButton3');
+    cards[0] = new Card($('#itembox_1'), 'Triangle', 'Blue','resources/BlueTriangle.png', 'soundClip0','soundvolume0','pitch0','configureButton0' );
+    cards[1] = new Card($('#itembox_1'), 'Circle', 'Blue', 'resources/BlueCircle.png','soundClip1','soundvolume1','pitch1','configureButton1');
+    cards[2] = new Card($('#itembox_1'), 'Rectangle','Blue','resources/BlueRectangle.png','soundClip2','soundvolume2','pitch2','configureButton2');
+    cards[3] = new Card($('#itembox_1'), 'Triangle','Red','resources/RedTriangle.png','soundClip3','soundvolume3','pitch3','configureButton3');
 
-    cards[4] = new Card($('#itembox_2'), 'Circle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png',THEMEIMAGE_PATH+themeImages[0],'soundClip4','soundvolume4','pitch4','configureButton4' );
-    cards[5] = new Card($('#itembox_2'), 'Rectangle','Red','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png',THEMEIMAGE_PATH+themeImages[0],'soundClip5','soundvolume5','pitch5','configureButton5');
-    cards[6] = new Card($('#itembox_2'), 'Triangle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png',THEMEIMAGE_PATH+themeImages[0],'soundClip6','soundvolume6','#itch6','configureButton6');
-    cards[7] = new Card($('#itembox_2'), 'Circle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png',THEMEIMAGE_PATH+themeImages[0],'soundClip7','soundvolume7','pitch7','configureButton7');
+    cards[4] = new Card($('#itembox_2'), 'Circle','Red','resources/RedCircle.png','soundClip4','soundvolume4','pitch4','configureButton4' );
+    cards[5] = new Card($('#itembox_2'), 'Rectangle','Red','resources/RedRectangle.png','soundClip5','soundvolume5','pitch5','configureButton5');
+    cards[6] = new Card($('#itembox_2'), 'Triangle','Green','resources/GreenTriangle.png','soundClip6','soundvolume6','#itch6','configureButton6');
+    cards[7] = new Card($('#itembox_2'), 'Circle','Green','resources/GreenCircle.png','soundClip7','soundvolume7','pitch7','configureButton7');
 
-    cards[8] = new Card($('#itembox_3'), 'Rectangle','Green','http://www.memleb.de/UnterrichtsDownLoad/tz/kugel-blau.png',THEMEIMAGE_PATH+themeImages[0],'soundClip8','soundvolume8','pitch8','configureButton8');
+    cards[8] = new Card($('#itembox_3'), 'Rectangle','Green','resources/GreenRectangle.png','soundClip8','soundvolume8','pitch8','configureButton8');
 
     setSlideDownCards(cards);
     
@@ -155,7 +155,7 @@ function Card(container, headline,  description, image, bgImage, soundclipName, 
 
 Card.prototype = {
 
-    init: function(container, headline, description, image, bgImage, soundclipName,soundvolume,pitch,configureButton) {
+    init: function(container, headline, description, image, soundclipName,soundvolume,pitch,configureButton) {
 
         this.headline = headline;   //shape
         this.container = container; 
@@ -183,7 +183,7 @@ Card.prototype = {
         </select>
 */
         cardboxes[i] = `<div class="col-sm-3 content" id="card_`+i+`" style="padding-top: 2%; margin-left: -0.1%!important;">
-                <div class="thumbnail thumbnailBGIMG figures">
+                    <div class="thumbnail thumbnailBGIMG figures">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
                         <h4 id="`+that.headline+`">`+that.headline+`</h4>
@@ -198,12 +198,12 @@ Card.prototype = {
                             <output class="rangevalue" id="rangevalue">0</output>
                         </div>   
                     </form>     
-                    <form>
+                    <form">
                         <strong>Pitch:</strong>
                         <div id="slider">
                             <input class="bar" type="range" id="`+that.pitch+`" value="0" min="-3" max="3" step="0.1" oninput="rangevalue.value=value" disabled/>
                             <span class="highlight"></span>
-                            <output class="rangevalue" id="rangevalue">50</output>
+                            <output class"rangevalue" id="rangevalue">50</output>
                         </div>   
                     </form>  
                     <br>
