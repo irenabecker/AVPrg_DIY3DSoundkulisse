@@ -8,7 +8,7 @@ function setSlideDownCards(getCards)
     {
         slideDownCards[i]=getCards[i];
         slideDownSoundClipText.push(document.getElementById(getCards[i].soundclipName));
-        
+        let currElement = i;
         for(let j = 0; j < themeTest[0].length; j++)
         {
             option = document.createElement('option');
@@ -37,7 +37,7 @@ function saveDefaultCard(cardIndex)
            && currentSoundObjectsInScene[i].shape == defaultCard.shape
            && currentSoundObjectsInScene[i].color == defaultCard.color)
         {
-            currentSoundObjectsInScene[i].updateVolume(defaultCard.volume);
+            currentSoundObjectsInScene[i].updateVolume(parseFloat(defaultCard.volume));
             updateSlider(hierachyObjs[i],currentSoundObjectsInScene[i]);
         }
     

@@ -332,6 +332,7 @@ function createNewSoundObjects(newObjects)
         tempObject.soundFileName = tempDefault.soundFileName;
         tempObject.speed = tempDefault.speed;
         tempObject.volume = tempDefault.volume;
+        tempObject.colorVolume = tempDefault.colorVolume;
         
         for(property in tempObject)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];

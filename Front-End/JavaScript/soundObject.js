@@ -17,6 +17,7 @@ SoundObject.prototype.updateVolume = function(newValue)
 {
     this.volume = newValue;
     console.log('change for' + JSON.stringify(this));
+    
     //htmlAudioElements[this.index].volume = newValue;
     gainNodes[this.index].gain.value=newValue+this.colorVolume;
 }
