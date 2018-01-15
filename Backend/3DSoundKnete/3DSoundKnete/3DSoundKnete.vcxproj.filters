@@ -36,12 +36,12 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{c2f2e2f3-d793-4778-bee2-64ec9c561862}</UniqueIdentifier>
+      <UniqueIdentifier>{f6b4b72c-0056-4745-b9eb-9ce1f898dd77}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{a42fd5c4-f1fc-4b7a-9293-37a91b9d653d}</UniqueIdentifier>
+      <UniqueIdentifier>{d2298bb6-dbb5-4049-8b1d-cfb2c8f88645}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -89,10 +89,10 @@
     <ClCompile Include="Release\moc_midiinput.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Debug\moc_midioutput.cpp">
+    <ClCompile Include="Debug\moc_videowidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_midioutput.cpp">
+    <ClCompile Include="Release\moc_videowidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_videoengine.cpp">
@@ -101,10 +101,10 @@
     <ClCompile Include="Release\moc_videoengine.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Debug\moc_videowidget.cpp">
+    <ClCompile Include="Debug\moc_midioutput.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_videowidget.cpp">
+    <ClCompile Include="Release\moc_midioutput.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>

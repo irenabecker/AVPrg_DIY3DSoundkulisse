@@ -37,21 +37,22 @@ var themeTest = [
 //Cache the DOM here (=> hierarchy und dropdown items hier empfangen)
 //var startBtn = document.getElementById('startBtn');
 //DOM From SlideDownView
-var slideDownFigures = document.getElementsByClassName('caption');
+var slideDownFigures;
 var slideDownVolumeSliders = [];
 var slideDownVolumeText = []; //use this to update volume text amount
 var slideDownSoundClipText = [];
 var slideDownPitchSliders = [];
 var slideDownPitchText = []; //use this to update pitch text amount
 console.log(slideDownFigures);
-var slideDownThemes = document.getElementById('themes');
+var slideDownThemes;
 
 //DOM from hierarchy view (must be dynamically accessed...)
 var hierarchyVolumeSliders = [];
 var hierarchyPitchSliders = [];
 
-function fillSlideDownCards() 
+/*function fillSlideDownCards() 
 {
+    slideDownCards = document.getElementsByClassName('caption')
     let i;
     for(i = 0; i < slideDownFigures.length; i++) 
     {
@@ -72,6 +73,7 @@ function fillSlideDownCards()
             slideDownSoundClipText[i].appendChild(option);
         }
         slideDownSoundClipText[i].addEventListener('change', function(e){switchSoundClipForDefaultObject(currElement)})
+        slideDownSoundClipText[i].addEventListener('change', function(e){switchSoundClipForDefaultObject(currElement)})
         
         slideDownVolumeSliders.push(document.getElementById('soundvolume'+i));
         slideDownVolumeSliders[i].value = defaultSoundObjects[i].volume;
@@ -81,18 +83,18 @@ function fillSlideDownCards()
         slideDownPitchSliders[i].value = defaultSoundObjects[i].pitch;
         slideDownPitchSliders[i].addEventListener('input', function(e){slideDownPitchSlider(currElement)});
     }
-}
+}*/
 
 function init() 
 {
     
     threeDAudioObj = new threeDAudio(context);
     audioFader = new AudioFader(3000, 2500, 100);
-    fillThemes();
+    //fillThemes();
     createAudioSources();
     createDefaultSoundObjects();
     createEmptySoundObjects();
-    fillSlideDownCards();
+    //fillSlideDownCards();
     
     initialize(); // code.js
 }
@@ -100,6 +102,7 @@ function init()
 //create new Audio-Sources in here and pass them into the corresponding theme.
 function fillThemes() 
 {
+    slideDownThemes = document.getElementById('themes');
     let i;
     console.log(themeTest.length);
     for(let i = 0; i < themeTest.length; i++)
@@ -182,7 +185,8 @@ function createDefaultSoundObjects()
                 shapes[j].toLowerCase(),
                 colors[i].toLowerCase(),
                 undefined,
-                themeTest[0][j], //default theme: nature
+                'citySound2.wav',
+                //themeTest[0][j], //default theme: nature
                 undefined,
                 undefined,
                 undefined,
@@ -222,7 +226,9 @@ function updateAudioSources()
                 i,
                 currentSoundObjectsInScene[i].xPosition,
                 currentSoundObjectsInScene[i].yPosition,
-                currentSoundObjectsInScene[i].zPosition
+                currentSoundObjectsInScene[i].zPosition,
+                currentSoundObjectsInScene[i].volume,
+                currentSoundObjectsInScene[i].pitch
             );
     }
 }
@@ -371,7 +377,7 @@ function inRange(objToCheck, existingObj)
     init();
 });*/
 
-function resetToDefaultSettings(objToReset) 
+/*function resetToDefaultSettings(objToReset) 
 {
     let tempObj = findCorrespondingDefaultSoundObject(objToReset.shape, objToReset.color);
     
@@ -382,8 +388,8 @@ function resetToDefaultSettings(objToReset)
     console.log('Reset Object to: \n' + JSON.stringify(objToReset));
     //updateUIElement(uiElement)
 }
-
-function hierarchyVolumeSlider(index)
+*/
+/*function hierarchyVolumeSlider(index)
 {
     let newValue = hierarchyVolumeSliders[index].value;
     currentSoundObjectsInScene[index].volume = newValue;
@@ -419,7 +425,7 @@ function slideDownPitchSlider(index)
            && currentSoundObjectsInScene[i].shape == defaultSoundObjects[index].shape
            && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
             currentSoundObjectsInScene[i].updatePitch(newValue);
-}
+}*/
 
 function switchSoundClipForDefaultObject(index) 
 {
@@ -471,3 +477,8 @@ function swapTheme()
                 currentSoundObjectsInScene[i].updateSoundClip(tempDefault.soundFileName);
         }
 }
+
+/*window.onload = function() {
+  init();
+};*/
+init();

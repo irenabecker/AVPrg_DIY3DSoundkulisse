@@ -16,12 +16,12 @@ SoundObject.prototype.updateVolume = function(newValue)
 {
     this.volume = newValue;
     console.log('change for' + JSON.stringify(this));
-    htmlAudioElements[this.index].volume = newValue;
+    htmlAudioElements[this.index].volume = (newValue/100);
 }
 
 SoundObject.prototype.updatePitch = function(newValue) 
 {
-    this.pitch = newValue;
+    this.pitch = (newValue/100);
     //htmlAudioElements[this.index].volume = newValue;
 }
 

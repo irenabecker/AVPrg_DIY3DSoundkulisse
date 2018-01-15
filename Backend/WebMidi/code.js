@@ -18,10 +18,20 @@ function initialize(){
         resetJSONObjects();
     }, 5000);
     */
-    /*createJSONObject('RECTANGLE','RED',  10, 20, 30);
-    resetJSONObjects();
-    createJSONObject('RECTANGLE','RED',  80, 20,  30);
-    resetJSONObjects();*/
+    setTimeout(function () {
+        window.setInterval(function()
+        {
+            let counter=0;
+            let direction=1;
+            createJSONObject('RECTANGLE','RED', counter, 20, 30);
+            resetJSONObjects();
+            counter+=(10*direction);
+            if(counter>=100)
+                {
+                    direction*=-1;
+                }
+        },2000)
+    }, 5000);
 	let midi = null;  // global MIDIAccess object
 	let midiInputs = [];
     
