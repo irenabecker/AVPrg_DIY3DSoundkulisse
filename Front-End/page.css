@@ -83,8 +83,14 @@
 .margin-right-8-negativ{
     margin-right: -8%!important;
 }
+.margin-right-25{
+    margin-right: 25px!important;
+}
 /*-------------------*/
 
+.margin-bottom-5{
+	margin-bottom: 5%!important;
+}
 /* Padding*/
 .padding-left-0{
     padding-left:0px; 

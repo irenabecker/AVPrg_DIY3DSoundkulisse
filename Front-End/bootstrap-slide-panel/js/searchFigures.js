@@ -113,6 +113,7 @@ $(document).ready(function() {
 
 
         if($("#soundvolume"+i).is(':disabled')){
+            $("#soundClip"+i).removeAttr('disabled');
             $("#soundvolume"+i).removeAttr('disabled');
             $("#pitch"+i).removeAttr('disabled'); 
             $("#configureButton"+i).removeClass("btn-danger");
@@ -120,6 +121,7 @@ $(document).ready(function() {
             $("#configureButton"+i).text('Save');  
         }
         else if($("#soundvolume"+i).is(':enabled')){
+            $("#soundClip"+i).prop('disabled',true);
             $("#soundvolume"+i).prop('disabled', true);
             $("#pitch"+i).prop('disabled', true);
             $("#configureButton"+i).removeClass("btn-success");
@@ -185,7 +187,7 @@ Card.prototype = {
                     <div class="caption">
                         <h4 id="`+that.headline+`">`+that.headline+`</h4>
                         <p><strong>Color:  </strong><div id="`+that.description+`">`+that.description+`</div></p>
-                        <p><strong>Soundclip:</strong><select id="`+that.soundclipName+`"></select></p>
+                        <p><strong>Soundclip:</strong><select id="`+that.soundclipName+`" style="background: #05080a!important; color: white!important;" disabled></select></p>
 
                     <form>
                         <strong>Volume:</strong>
@@ -194,10 +196,8 @@ Card.prototype = {
                             <span class="highlight"></span>
                             <output class="rangevalue" id="rangevalue">0</output>
                         </div>   
-                    </form>  
-
-                    
-                    <form>
+                    </form>     
+                    <form">
                         <strong>Pitch:</strong>
                         <div id="slider">
                             <input class="bar" type="range" id="`+that.pitch+`" value="0" min="-3" max="3" step="0.1" joninput="rangevalue.value=value" disabled/>

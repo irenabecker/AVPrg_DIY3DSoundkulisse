@@ -2,7 +2,9 @@
   width: 210px;
   height: 17px;
   position: relative;
-  margin: 30px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
   background: #10171D;
   
   -webkit-border-radius: 40px;
@@ -113,7 +115,7 @@ input[type="range"]:hover ~ #rangevalue,input[type="range"]:active ~ #rangevalue
   -o-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  top: -75px;
+  top: -60px!important;
 }
 
 input[type="range"]:focus{
