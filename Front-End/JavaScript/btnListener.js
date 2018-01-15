@@ -8,7 +8,7 @@ function setSlideDownCards(getCards)
     {
         slideDownCards[i]=getCards[i];
         slideDownSoundClipText.push(document.getElementById(getCards[i].soundclipName));
-        
+        let currElement = i;
         for(let j = 0; j < themeTest[0].length; j++)
         {
             option = document.createElement('option');
