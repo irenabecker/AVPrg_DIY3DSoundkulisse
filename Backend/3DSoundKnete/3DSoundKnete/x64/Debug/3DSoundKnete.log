@@ -1,7 +1,6 @@
-﻿  colorprocessor.cpp
+﻿  shapeRecognition.cpp
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
 d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
-colorprocessor.cpp(14): warning C4100: "format": Unreferenzierter formaler Parameter
-colorprocessor.cpp(44): warning C4100: "satToCeck": Unreferenzierter formaler Parameter
+shapeRecognition.cpp(18): warning C4100: "format": Unreferenzierter formaler Parameter
   3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\debug\3DSoundKnete.exe

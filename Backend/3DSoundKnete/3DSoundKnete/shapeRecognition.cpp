@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <calibration.h>
+#include <math.h>       /* acos */
+
+#define PI 3.14159265
 using namespace cv;
 using namespace std;
 
@@ -29,7 +32,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 	{
 		cvtColor(output, HSV, CV_BGR2HSV);
 		Mat mask;
-        inRange(HSV, Scalar(0, 0, 0), Scalar(179, 85, 85), mask);		//look for all colorless pixels
+        inRange(HSV, Scalar(0, 0, 0), Scalar(179, 100, 100), mask);		//look for all colorless pixels
 		output.setTo(Scalar(255, 255, 255), mask);						//set them as white pixels in output
 	}
 	
@@ -65,17 +68,18 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 //        if (std::fabs(cv::contourArea(contours[i])) < 100)
 			continue;
 
-		if (contours_poly[i].size() == 4)
+		if (contours_poly[i].size() == 4 && rightAngles(contours_poly[i]))
 		{
-            center[i]=setLabel(dst, "RECT", contours_poly[i]);
-			//create new Data-class and write center[i] and "RECT" in Data-class
-            if(!(center[i].x == -1 || center[i].y == -1))
-                DSoundKnete::objects.push_back(
-                        DSoundKnete::createNewObjData(
-                            DSoundKnete::RECTANGLE,
-                            center[i],
+				center[i] = setLabel(dst, "RECT", contours_poly[i]);
+				//create new Data-class and write center[i] and "RECT" in Data-class
+				if (!(center[i].x == -1 || center[i].y == -1))
+					DSoundKnete::objects.push_back(
+						DSoundKnete::createNewObjData(
+							DSoundKnete::RECTANGLE,
+							center[i],
 							std::fabs(cv::contourArea(contours[i]))
-                        ));
+							));
+			
 		}
 		else if (contours_poly[i].size() >= 3 && contours_poly[i].size() < 8)
 		{
@@ -104,6 +108,42 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		
 	}
 	return dst;
+}
+
+bool ShapeRecognition::rightAngles(std::vector<cv::Point> contourPoints)
+{
+	int degreeTolerance = 20;
+	cv::Point a = contourPoints.at(0);
+	cv::Point b = contourPoints.at(1);
+	cv::Point c = contourPoints.at(2);
+	cv::Point d = contourPoints.at(3);
+	double sideALength = ShapeRecognition::distanceBetween(c,b);
+	double sideBLength = ShapeRecognition::distanceBetween(c, d);
+	double sideCLength = ShapeRecognition::distanceBetween(a, d);
+	double sideDLength = ShapeRecognition::distanceBetween(a, b);
+	double sideELength = ShapeRecognition::distanceBetween(c, a);
+	double sideFLength = ShapeRecognition::distanceBetween(b, d);
+	double alpha = acos((pow(sideALength, 2) + pow(sideDLength, 2) - pow(sideFLength, 2))/(2 * sideALength*sideDLength)) *(180.0/PI);
+	double beta= acos((pow(sideALength, 2) + pow(sideBLength, 2) - pow(sideELength, 2)) / (2 * sideALength*sideBLength)) *(180.0 / PI);
+	double gamma=acos((pow(sideBLength, 2) + pow(sideCLength, 2) - pow(sideFLength, 2)) / (2 * sideBLength*sideCLength)) *(180.0 / PI);
+	double delta = acos((pow(sideCLength, 2) + pow(sideDLength, 2) - pow(sideELength, 2)) / (2 * sideDLength*sideCLength)) *(180.0 / PI);
+	if (alpha > 90 - degreeTolerance && alpha < 90 + degreeTolerance && beta>90 - degreeTolerance && 
+		beta < 90 + degreeTolerance&&gamma>90 - degreeTolerance&&gamma < 90 + degreeTolerance &&
+		delta>90-degreeTolerance&&delta<90+degreeTolerance)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+double ShapeRecognition::distanceBetween(cv::Point a, cv::Point b)
+{
+	double distance;
+	distance = sqrt(pow(abs(a.x-b.x), 2) + pow(abs(a.y-b.y), 2));
+	return distance;
 }
 
 /**
