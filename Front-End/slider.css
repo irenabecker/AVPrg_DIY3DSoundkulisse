@@ -1,4 +1,3 @@
-
 #slider {
   width: 210px;
   height: 17px;
@@ -114,7 +113,7 @@ input[type="range"]:hover ~ #rangevalue,input[type="range"]:active ~ #rangevalue
   -o-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  top: -70px;
+  top: -75px;
 }
 
 input[type="range"]:focus{
