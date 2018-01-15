@@ -149,8 +149,8 @@ Card.prototype = {
         this.index = index;
         this.createCard();
     },*/
-function Card(container, headline,  description, image, bgImage, soundclipName, soundvolume, pitch, configureButton) {
-    this.init(container, headline, description, image, bgImage, soundclipName,soundvolume, pitch, configureButton);
+function Card(container, headline,  description, image, soundclipName, soundvolume, pitch, configureButton) {
+    this.init(container, headline, description, image, soundclipName,soundvolume, pitch, configureButton);
 }
 
 Card.prototype = {
@@ -161,7 +161,6 @@ Card.prototype = {
         this.container = container; 
         this.description =  description;    //color
         this.image = image;
-        this.bgImage = bgImage;
         this.soundclipName = soundclipName;
         this.soundvolume =soundvolume;
         this.pitch = pitch;
