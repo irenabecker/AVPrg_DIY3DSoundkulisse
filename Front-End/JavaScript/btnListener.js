@@ -37,7 +37,8 @@ function saveDefaultCard(cardIndex)
            && currentSoundObjectsInScene[i].shape == defaultCard.shape
            && currentSoundObjectsInScene[i].color == defaultCard.color)
         {
-            currentSoundObjectsInScene[i].updateVolume(parseFloat(defaultCard.volume));
+            currentSoundObjectsInScene[i].updateVolume(defaultCard.volume);
+            currentSoundObjectsInScene[i].updatePitch(defaultCard.pitch);
             updateSlider(hierachyObjs[i],currentSoundObjectsInScene[i]);
         }
     

@@ -24,7 +24,7 @@ function initialize(){
         {
             counter;
             let direction=1;
-            counter+=(10*direction);
+            counter+=(5*direction);
             if(counter>=100)
                 {
                     direction*=-1;

@@ -20,6 +20,8 @@ var citySoundTheme= {};
 
 var SOUNDS_PATH = '../../Sounds/';
 var TESTSOUNDS_PATH = SOUNDS_PATH + 'TestSounds/';
+var THEMEIMAGE_PATH = 'resources/';
+
 var soundClipStrings = {
     natSounds: ['natSound1.wav', 'natSound2.wav'],
     citySounds: ['citySound1.wav', 'citySound2.wav', 'citySound3.wav']
@@ -29,10 +31,14 @@ var colors = ['Red','Green','Blue'];
 var colorValues=[10,2,5];
 var shapes = ['Rectangle', 'Circle', 'Triangle'];
 var themeTest = [
-    ['natSound1.wav', 'natSound2.wav', 'citySound2.wav'], //nature
-    ['citySound1.wav', 'citySound2.wav', 'citySound3.wav'], //city
-    ['citySound2.wav', 'natSound1.wav', 'natSound2.wav']  //theme3
+    ['natSound1.wav', 'natSound2.wav', 'citySound2.wav'],   //Forest
+    ['citySound1.wav', 'citySound2.wav', 'citySound3.wav'], //Mountain
+    ['citySound2.wav', 'natSound1.wav', 'natSound2.wav'],   //Sea
+    ['citySound2.wav', 'natSound1.wav', 'natSound2.wav'],   //Urban
+    ['citySound2.wav', 'natSound1.wav', 'natSound2.wav']    //Thunder
 ];
+
+var themeImages = ['Forest.png', 'Mountain.png', 'Sea.png', 'Urban.png', 'Thunder.png'];
 
 //Cache the DOM here (=> hierarchy und dropdown items hier empfangen)
 //var startBtn = document.getElementById('startBtn');
@@ -115,13 +121,19 @@ function fillThemes()
         switch(i)
         {
             case 0:
-                theme = 'Nature - Theme';
+                theme = 'Forest - Theme';
                 break;
             case 1:
-                theme = 'Urban - Theme';
+                theme = 'Mountain - Theme';
                 break;
             case 2:
-                theme = 'Mix - Theme';
+                theme = 'Sea - Theme';
+                break;
+            case 3:
+                theme = 'Urban - Theme';
+                break;
+            case 4:
+                theme = 'Thunder - Theme';
                 break;
             default:
                 theme = undefined;
@@ -462,7 +474,11 @@ function swapTheme()
          slideDownSoundClipText[i].value=slideDownCards[i].defaultSoundObject.soundFileName;
     }
    
-    
+    //Update Image
+
+    $('.thumbnailBGIMG').css('backgroundImage','url('+THEMEIMAGE_PATH+themeImages[parsedIndex]+')');
+    console.log(THEMEIMAGE_PATH+themeImages[parsedIndex]);
+    console.log($('thumbnail'));
     
     //Call updateSoundClip(newClipString) for each currentSoundObjectsInScene
     for(i = 0; i < currentSoundObjectsInScene.length; i++) 

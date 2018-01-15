@@ -15,16 +15,14 @@ function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, z
 
 SoundObject.prototype.updateVolume = function(newValue) 
 {
-    this.volume = newValue;
+    this.volume = parseFloat(newValue);
     console.log('change for' + JSON.stringify(this));
-    
-    //htmlAudioElements[this.index].volume = newValue;
     gainNodes[this.index].gain.value=newValue+this.colorVolume;
 }
 
 SoundObject.prototype.updatePitch = function(newValue) 
 {
-    this.pitch = newValue;
+    this.pitch = parseFloat(newValue);
     //htmlAudioElements[this.index].volume = newValue;
 }
 
