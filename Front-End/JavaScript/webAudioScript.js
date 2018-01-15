@@ -28,8 +28,6 @@ var soundClipStrings = {
 var colors = ['Red','Green','Blue'];
 var colorValues=[10,2,5];
 var shapes = ['Rectangle', 'Circle', 'Triangle'];
-//delete later
-var testSounds = ['natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav', 'citySound3.wav','natSound1.wav', 'natSound2.wav', 'citySound1.wav', 'citySound2.wav'];
 var themeTest = [
     ['natSound1.wav', 'natSound2.wav', 'citySound2.wav'], //nature
     ['citySound1.wav', 'citySound2.wav', 'citySound3.wav'], //city
@@ -117,13 +115,13 @@ function fillThemes()
         switch(i)
         {
             case 0:
-                theme = 'Nature';
+                theme = 'Nature - Theme';
                 break;
             case 1:
-                theme = 'City';
+                theme = 'Urban - Theme';
                 break;
             case 2:
-                theme = 'Mix';
+                theme = 'Mix - Theme';
                 break;
             default:
                 theme = undefined;
@@ -135,37 +133,13 @@ function fillThemes()
         slideDownThemes.appendChild(option);
     }
     slideDownThemes.addEventListener('change', function(e){swapTheme()});
-    /*
-    let i;
-    for(soundClipCollection in soundClipStrings) 
-    {
-        let audioSources = [];
-        for(i = 0; i < soundClipCollection.length; i++) 
-        {
-            audioSources.push(new Audio('../../Sounds/TestSounds/' + soundClipCollection[i]));
-        }
-        natureSoundTheme = new SoundTheme(audioSources);
-    }
-    //Nature-Sounds
-    let natSound1 = new Audio('../../Sounds/TestSounds/natSound1.wav');
-    let natSound2 = new Audio('../../Sounds/TestSounds/natSound2.wav');
-    
-    natureSoundTheme = new SoundTheme(natSound1, natSound2);
-    
-    //City-Sounds
-    let citySound1 = new Audio('../../Sounds/TestSounds/citySound1.wav');
-    let citySound2 = new Audio('../../Sounds/TestSounds/citySound2.wav');
-    let citySound3 = new Audio('../../Sounds/TestSounds/citySound3.wav');
-    
-    citySoundTheme = new SoundTheme(citySound1, citySound2, citySound3);
-    */
 }
 
 function createAudioSources() 
 {
     let i;
     
-    for(i = 0; i < testSounds.length; i++) 
+    for(i = 0; i < maxItemsInScene; i++) 
     {
         htmlAudioElements.push(new Audio());
         mediaElementAudioSources[i] = context.createMediaElementSource(htmlAudioElements[i]);

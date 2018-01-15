@@ -30,10 +30,10 @@ Obj.prototype = {
         var that = this;
         i = hierachyHTMLObjects.length;
 
-        hierachyHTMLObjects[i] = `<div class="col-sm-12 padding-left-0" id="index`+i+`">
-    	<button data-toggle="collapse" data-target="#demo`+i+`" id="btn`+i+`" onclick="colorchange('`+i+`')" class="font-size-19 FigurObject" style="background:white;">Shape:  `+that.shape+` Color: `+that.color+`</button>  
+        hierachyHTMLObjects[this.index] = `<div class="col-sm-12 padding-left-0" id="index`+that.index+`">
+    	<button data-toggle="collapse" data-target="#demo`+that.index+`" id="btn`+that.index+`" onclick="colorchange('`+that.index+`')" class="font-size-19 FigurObject" style="background:white;">Shape:  `+that.shape+` Color: `+that.color+`</button>  
 	</div>
-    <div id="demo`+i+`" class="collapse">
+    <div id="demo`+that.index+`" class="collapse">
             <div class="col-sm-9 border-groove" style="width: 100%;">
 
                 <form>
@@ -64,7 +64,7 @@ Obj.prototype = {
     </div>`;
         
 
-        this.container.insertAdjacentHTML('beforeend', hierachyHTMLObjects[i]);
+        this.container.insertAdjacentHTML('beforeend', hierachyHTMLObjects[this.index]);
         //this.container.append(hierachyHTMLObjects[i]);
     },
 };

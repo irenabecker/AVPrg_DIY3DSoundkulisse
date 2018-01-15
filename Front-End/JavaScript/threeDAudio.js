@@ -3,6 +3,7 @@
 function threeDAudio(audioContext) 
 {
     this.audioContext = audioContext;
+    //audioContext.destination.channelCount = 8; //3d anlage
     
     //materials for the "walls" (for different sound reflections)
     this.materials = {
@@ -23,7 +24,7 @@ function threeDAudio(audioContext)
     
     //Third Order Ambisonic ResonanceAudio scene
     this.resonanceAudioScene = new ResonanceAudio(this.audioContext, {
-       ambisonicOrder: 3,
+       ambisonicOrder: 1,
         dimensions: this.dimensions,
         materials: this.materials
     });
@@ -32,7 +33,7 @@ function threeDAudio(audioContext)
     this.resonanceAudioScene.output.connect(context.destination);
     
     //This provides us with the ambisonicOutput, probably the one we need in maxsp (given as web audio node)
-    //resonanceAudioScene.ambisonicOutput
+    //this.resonanceAudioScene.ambisonicOutput.connect(context.destination);
     
     this.sources = [];
     let i;

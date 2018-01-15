@@ -19,11 +19,12 @@ function initialize(){
     }, 5000);*/
     /*let counter=0;
     setTimeout(function () {
+        
         window.setInterval(function()
         {
             counter;
             let direction=1;
-            counter+=(5*direction);
+            counter+=(10*direction);
             if(counter>=100)
                 {
                     direction*=-1;
