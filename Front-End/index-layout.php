@@ -11,7 +11,7 @@
     <body>
        
         <script type="text/javascript" src ="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
-        <script src="../Backend/WebMidi/code.js"></script>
+        <script src="JavaScript/code.js"></script>
         <script src="JavaScript/threeDAudio.js"></script>
         <script src="JavaScript/audioFader.js"></script>  
         <script src ="JavaScript/soundObject.js"></script>

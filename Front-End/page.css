@@ -128,8 +128,8 @@
    top:16px;
 }
 
-.thumbnailBGIMG {
-    background-image: url(resources/Forest.png);
+.thumbnail {
+    background-image: url(resources/ForestTransparent.png);
 }
 
 

@@ -182,7 +182,7 @@ Card.prototype = {
         </select>
 */
         cardboxes[i] = `<div class="col-sm-3 content" id="card_`+i+`" style="padding-top: 2%; margin-left: -0.1%!important;">
-                    <div class="thumbnail thumbnailBGIMG figures">
+                    <div class="thumbnail figures">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
                         <h4 id="`+that.headline+`">`+that.headline+`</h4>
@@ -197,7 +197,7 @@ Card.prototype = {
                             <output class="rangevalue" id="rangevalue">0</output>
                         </div>   
                     </form>     
-                    <form">
+                    <form>
                         <strong>Pitch:</strong>
                         <div id="slider">
                             <input class="bar" type="range" id="`+that.pitch+`" value="0" min="-3" max="3" step="0.1" oninput="rangevalue.value=value" disabled/>
