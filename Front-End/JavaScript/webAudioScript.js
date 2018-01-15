@@ -476,7 +476,7 @@ function swapTheme()
    
     //Update Image
 
-    $('.thumbnailBGIMG').css('backgroundImage','url('+THEMEIMAGE_PATH+themeImages[parsedIndex]+')');
+    $('.thumbnail').css('backgroundImage','url('+THEMEIMAGE_PATH+themeImages[parsedIndex]+')');
     console.log(THEMEIMAGE_PATH+themeImages[parsedIndex]);
     console.log($('thumbnail'));
     

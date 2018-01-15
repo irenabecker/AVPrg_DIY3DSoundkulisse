@@ -153,6 +153,7 @@
     -o-transition: border .2s ease-in-out;
     transition: border .2s ease-in-out;
     margin-top: -5%;
+    background-image: url(resources/ForestTransparent.png);
 }
 
 }
