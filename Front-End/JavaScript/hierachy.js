@@ -31,7 +31,7 @@ Obj.prototype = {
         i = hierachyHTMLObjects.length;
 
         hierachyHTMLObjects[this.index] = `<div class="col-sm-12" id="index`+that.index+`">
-    	<button data-toggle="collapse" data-target="#demo`+that.index+`" id="btn`+that.index+`" onclick="colorchange('`+that.index+`')" class="font-size-19 FigurObject border-groove">`+that.color+` `+that.shape+`</button>  
+    	<button data-toggle="collapse" data-target="#demo`+that.index+`" id="btn`+that.index+`" onclick="colorchange('`+that.index+`')" class="font-size-19 FigurObject border-groove" style="width: 269px;background: white;!important">`+that.color+` `+that.shape+`</button>  
 	</div>
 
     <div id="demo`+that.index+`" class="collapse">
