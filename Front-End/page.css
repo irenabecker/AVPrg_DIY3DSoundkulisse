@@ -133,6 +133,10 @@
     background-image: url(resources/ForestTransparent.png);
 }
 
+.black{
+    color:black!important;
+}
+
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1360px) and (max-width:1400px ) {

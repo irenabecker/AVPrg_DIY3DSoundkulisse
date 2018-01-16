@@ -144,12 +144,12 @@ Card.prototype = {
                     <div class="thumbnail figures">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
-                        <h4 id="`+that.headline+`">`+that.headline+`</h4>
-                        <p><strong>Color:  </strong><div id="`+that.description+`">`+that.description+`</div></p>
-                        <p><strong>Soundclip:</strong><select id="`+that.soundclipName+`" style="background: #05080a!important; color: white!important;" disabled></select></p>
+                        <h4 class="text-center black"id="`+that.headline+`">`+that.headline+`</h4>
+                        <p class="black"><strong>Color:</strong><strong>`+that.description+`</strong></p>
+                        <p><select id="`+that.soundclipName+`" style="background: #05080a!important; color: white!important;" disabled></select></p>
 
                     <form>
-                        <strong>Volume:</strong>
+                        <strong class="black">Volume:</strong>
                         <div id="slider">
                             <input class="bar" type="range" id="`+that.soundvolume+`" value="0" min="-3" max="3" step="0.1"  oninput="rangevalue.value=value"  disabled/>
                             <span class="highlight"></span>
@@ -157,14 +157,14 @@ Card.prototype = {
                         </div>   
                     </form>     
                     <form>
-                        <strong>Pitch:</strong>
+                        <strong class="black">Pitch:</strong>
                         <div id="slider">
                             <input class="bar" type="range" id="`+that.pitch+`" value="0" min="-3" max="3" step="0.1" oninput="rangevalue.value=value" disabled/>
                             <span class="highlight"></span>
                             <output class"rangevalue" id="rangevalue">50</output>
                         </div>   
                     </form>  
-                    <br>
+                    
                     <button type="button" id="`+that.configureButton+`" class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
                     <br>
                     </div>
@@ -174,3 +174,4 @@ Card.prototype = {
         this.container.append(cardboxes[i]);
     },
 };
+
