@@ -18,13 +18,13 @@ let maxItemsInScene = 20;
 var natureSoundTheme = {};
 var citySoundTheme= {};
 
-var SOUNDS_PATH = '../../Sounds/';
+var SOUNDS_PATH = '../Sounds/';
 var TESTSOUNDS_PATH = SOUNDS_PATH + 'TestSounds/';
 var THEMEIMAGE_PATH = 'resources/';
 var THEMEPATHS = ['Forest/', 'Mountains/', 'Sea/', 'Urban/', 'Thunder'];
 var CURRENT_THEME_PATH = 'Forest/';
 
-var colorValues=[10,2,5];
+var colorValues=[6,1,4];
 var colors = ['Red','Green','Blue'];
 var shapes = ['Rectangle', 'Circle', 'Triangle'];
 
@@ -176,7 +176,6 @@ function createDefaultSoundObjects()
                 undefined,
                 undefined,
                 0,
-                0,
                 false,
                 colorValues[i]
             ));
@@ -305,7 +304,7 @@ function createNewSoundObjects(newObjects)
             currentSoundObjectsInScene[tempObject.index][property] = tempObject[property];
 
         //add a new element to the hierarchy here (by prototype?) => add eventlistener as shown in line 66
-        addObjectToHierachy(currentSoundObjectsInScene[tempObject.index],tempObject.index);
+       currentSoundObjectsInScene[tempObject.index].updateVolume(tempDefault.volume); addObjectToHierachy(currentSoundObjectsInScene[tempObject.index],tempObject.index);
     }
 }
 
@@ -313,10 +312,21 @@ function removeSoundObject(index)
 {
     //remove the corresponding element in the hierarchy here
     htmlAudioElements[index].pause();
-    for(property in currentSoundObjectsInScene[index])
-        currentSoundObjectsInScene[index][property] = undefined;  //Object has been removed from the scene 
+    //reset the SoundObject (the commented out version underneath would look a lot nicer, but also sets updateVolume and updateSoundClip to undefined, which causes errors running the application)
+    currentSoundObjectsInScene[index].shape=undefined;
+    currentSoundObjectsInScene[index].color=undefined;
+    currentSoundObjectsInScene[index].index=undefined;
+    currentSoundObjectsInScene[index].soundFileName="";
+    currentSoundObjectsInScene[index].xPosition=undefined;
+    currentSoundObjectsInScene[index].yPosition=undefined;
+    currentSoundObjectsInScene[index].zPosiiton=undefined;
+    currentSoundObjectsInScene[index].volume=undefined;
+    currentSoundObjectsInScene[index].isFading=false;
+    currentSoundObjectsInScene[index].colorVolume=undefined;
+    /*for(property in currentSoundObjectsInScene[index])
+        currentSoundObjectsInScene[index][property] = undefined;  //Object has been removed from the scene */
     
-    currentSoundObjectsInScene[index].isFading = false;
+    //currentSoundObjectsInScene[index].isFading = false;
     deleteObjectFromHierachy(index);
 }
 
@@ -388,9 +398,9 @@ function slideDownVolumeSlider(index)
            && currentSoundObjectsInScene[i].shape == defaultSoundObjects[index].shape
            && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
             currentSoundObjectsInScene[i].updateVolume(newValue);
-}
+}*/
 
-function switchSoundClipForDefaultObject(index) 
+/*function switchSoundClipForDefaultObject(index) 
 {
     var newClipString = slideDownSoundClipText[index].options[slideDownSoundClipText[index].selectedIndex].value;
     defaultSoundObjects[index].soundFileName = newClipString;
@@ -400,8 +410,8 @@ function switchSoundClipForDefaultObject(index)
            && currentSoundObjectsInScene[i].shape == defaultSoundObjects[index].shape
            && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
         {currentSoundObjectsInScene[i].updateSoundClip(newClipString);console.log('call for : ' + JSON.stringify(currentSoundObjectsInScene[i]));}
-}
-*/
+}*/
+
 function swapTheme()
 {
     let parsedIndex = slideDownThemes.selectedIndex;

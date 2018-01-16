@@ -16,8 +16,9 @@
         <script src="JavaScript/audioFader.js"></script>  
         <script src ="JavaScript/soundObject.js"></script>
         <script src ="JavaScript/hierachy.js"></script>
-        <script src="JavaScript/btnListener.js"></script>
+        
         <script src ="JavaScript/webAudioScript.js"></script>
+        <script src="JavaScript/btnListener.js"></script>
         
         <?php include("background-carousel/background-carousel.php") ?>
         <?php include("bootstrap-slide-panel/topSlide.html") ?>

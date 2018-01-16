@@ -15,6 +15,7 @@ function SoundObject(shape, color, index, soundFileName, xPosition, yPosition, z
 SoundObject.prototype.updateVolume = function(newValue) 
 {
     this.volume = parseFloat(newValue);
+    newValue=parseFloat(newValue);
     console.log('change for' + JSON.stringify(this));
     gainNodes[this.index].gain.value=newValue+this.colorVolume;
 }
