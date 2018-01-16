@@ -140,13 +140,13 @@ Card.prototype = {
         var that = this;
         i = cardboxes.length;
         
-        cardboxes[i] = `<div class="col-sm-3 content" id="card_`+i+`" style="padding-top: 2%; margin-left: -0.1%!important;">
+        cardboxes[i] = `<div class="col-sm-3 content padding-top-2 margin-left-0-1" id="card_`+i+`">
                     <div class="thumbnail figures">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
-                        <h4 class="text-center black"id="`+that.headline+`">`+that.headline+`</h4>
+                        <h3 class="text-center black"id="`+that.headline+`">`+that.headline+`</h3>
                         <p class="black"><strong>Color:</strong><strong>`+that.description+`</strong></p>
-                        <p><select id="`+that.soundclipName+`" style="background: #05080a!important; color: white!important;" disabled></select></p>
+                        <p><select id="`+that.soundclipName+`" class="likeBlack white" disabled></select></p>
 
                     <form>
                         <strong class="black">Volume:</strong>
