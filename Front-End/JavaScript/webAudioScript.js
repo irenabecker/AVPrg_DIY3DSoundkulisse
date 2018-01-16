@@ -21,21 +21,19 @@ var citySoundTheme= {};
 var SOUNDS_PATH = '../../Sounds/';
 var TESTSOUNDS_PATH = SOUNDS_PATH + 'TestSounds/';
 var THEMEIMAGE_PATH = 'resources/';
+var THEMEPATHS = ['Forest/', 'Mountains/', 'Sea/', 'Urban/', 'Thunder'];
+var CURRENT_THEME_PATH = 'Forest/';
 
-var soundClipStrings = {
-    natSounds: ['natSound1.wav', 'natSound2.wav'],
-    citySounds: ['citySound1.wav', 'citySound2.wav', 'citySound3.wav']
-};
-
-var colors = ['Red','Green','Blue'];
 var colorValues=[10,2,5];
+var colors = ['Red','Green','Blue'];
 var shapes = ['Rectangle', 'Circle', 'Triangle'];
+
 var themeTest = [
-    ['natSound1.wav', 'natSound2.wav', 'citySound2.wav'],   //Forest
-    ['citySound1.wav', 'citySound2.wav', 'citySound3.wav'], //Mountain
-    ['citySound2.wav', 'natSound1.wav', 'natSound2.wav'],   //Sea
-    ['citySound2.wav', 'natSound1.wav', 'natSound2.wav'],   //Urban
-    ['citySound2.wav', 'natSound1.wav', 'natSound2.wav']    //Thunder
+    ['Birds_And_Slight_Rain.mp3', 'Blowing_Wind.mp3', 'Chimpanzee.mp3', 'Cricket.mp3', 'Frogs.mp3', 'Jungle.mp3', 'Osprey_Call.mp3', 'Raven.mp3', 'Redstart.mp3'],   //Forest
+    ['Birds.mp3', 'Blowing_Wind.mp3', 'Osprey_Call.mp3', 'Raven.mp3', 'Redstart.mp3', 'River.mp3'], //Mountains
+    ['Blowing_Wind.mp3', 'Calm_Waves.mp3', 'Ducks.mp3', 'Laughing_Gulls_2.mp3', 'Ocean_Waves.mp3', 'Seagull_Single.mp3', 'Seagulls_Swarm.mp3'],   //Sea
+    ['Airplane_Takeoff.mp3', 'Car.mp3', 'People_in_Bus.mp3', 'People_in_Mall.mp3', 'Police_Sirens.mp3', 'Traffic_Jam.mp3', 'Train.mp3', 'Urban_Traffic.mp3', 'Hare_Crishna_Chanting.mp3'],   //Urban
+    ['Rainstom.mp3', 'Thunderstorm_and_Rain.mp3', 'Wind.mp3']    //Thunder
 ];
 
 var themeImages = ['ForestTransparent.png', 'MountainTransparent.png', 'SeaTransparent.png', 'UrbanTransparent.png', 'ThunderTransparent.png'];
@@ -119,7 +117,7 @@ function fillThemes()
                 theme = 'Forest - Theme';
                 break;
             case 1:
-                theme = 'Mountain - Theme';
+                theme = 'Mountains - Theme';
                 break;
             case 2:
                 theme = 'Sea - Theme';
@@ -232,7 +230,7 @@ function playNewAudioSource(index)
 {
     console.log('fade it in: ' + JSON.stringify(currentSoundObjectsInScene[index]));
     audioFader.fadeIn(htmlAudioElements[index]);
-    htmlAudioElements[index].src = TESTSOUNDS_PATH + currentSoundObjectsInScene[index].soundFileName;
+    htmlAudioElements[index].src = SOUNDS_PATH + CURRENT_THEME_PATH + currentSoundObjectsInScene[index].soundFileName;
     htmlAudioElements[index].play();
     htmlAudioElements[index].loop = true;
 }
@@ -441,13 +439,14 @@ function swapTheme()
 {
     console.log(slideDownThemes.selectedIndex);
     let parsedIndex = slideDownThemes.selectedIndex;
+    CURRENT_THEME_PATH = THEMEPATHS[parsedIndex];
+    
     //change the soundclips of all defaultSoundObjects
     let i, j;
     for(i = 0; i < defaultSoundObjects.length; i++)
     {
         defaultSoundObjects[i].soundFileName = themeTest[parsedIndex][(i%shapes.length)];
     }
-    
     //clear all current soundClipDropDowns options
     for(i = 0; i < slideDownSoundClipText.length; i++)
         for(j = slideDownSoundClipText[i].options.length-1; j >=0 ; j--)
@@ -461,8 +460,8 @@ function swapTheme()
         for(j = 0; j < themeTest[parsedIndex].length; j++)
         {
             option = document.createElement('option');
-            option.value = defaultSoundObjects[j].soundFileName;
-            option.innerHTML = defaultSoundObjects[j].soundFileName;
+            option.value = themeTest[parsedIndex][j];
+            option.innerHTML = themeTest[parsedIndex][j];
             slideDownSoundClipText[i].appendChild(option);
         }
          slideDownSoundClipText[i].value=slideDownCards[i].defaultSoundObject.soundFileName;
