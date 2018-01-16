@@ -132,6 +132,9 @@
     background-image: url(resources/ForestTransparent.png);
 }
 
+.input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn {
+    font-size: 15px!important;
+}
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1360px) and (max-width:1400px ) {
