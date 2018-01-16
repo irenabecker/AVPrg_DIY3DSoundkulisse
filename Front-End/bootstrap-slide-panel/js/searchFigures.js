@@ -152,9 +152,11 @@ Card.prototype = {
                             <span class="highlight"></span>
                             <output class="rangevalue" id="rangevalue">0</output>
                         </div>   
-                    </form>     
+                    </form>
+                    <br>
                     
                     <button type="button" id="`+that.configureButton+`" class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
+                    <br>
                     <br>
                     </div>
                 </div>
