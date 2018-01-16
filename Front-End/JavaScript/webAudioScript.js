@@ -106,7 +106,6 @@ function fillThemes()
 {
     slideDownThemes = document.getElementById('themes');
     let i;
-    console.log(themeTest.length);
     for(let i = 0; i < themeTest.length; i++)
     {
         option = document.createElement('option');
@@ -191,7 +190,6 @@ function createDefaultSoundObjects()
             currentHtmlAudioElement++;
         }
     }
-    console.log(defaultSoundObjects);
 }
 
 function getJSONObjects(midiJSONObjects)
@@ -308,7 +306,7 @@ function createNewSoundObjects(newObjects)
         
         tempObject.index = findEmptyIndex();
         tempObject.soundFileName = tempDefault.soundFileName;
-        tempObject.speed = tempDefault.speed;
+        tempObject.pitch = tempDefault.pitch;
         tempObject.volume = tempDefault.volume;
         tempObject.colorVolume = tempDefault.colorVolume;
         
@@ -422,10 +420,7 @@ function slideDownPitchSlider(index)
 
 function switchSoundClipForDefaultObject(index) 
 {
-    console.log(index);
-    console.log(slideDownSoundClipText[index])
     var newClipString = slideDownSoundClipText[index].options[slideDownSoundClipText[index].selectedIndex].value;
-    console.log('swap to ' + newClipString);
     defaultSoundObjects[index].soundFileName = newClipString;
     
     for(let i = 0; i < currentSoundObjectsInScene.length; i++) 
@@ -437,7 +432,6 @@ function switchSoundClipForDefaultObject(index)
 
 function swapTheme()
 {
-    console.log(slideDownThemes.selectedIndex);
     let parsedIndex = slideDownThemes.selectedIndex;
     CURRENT_THEME_PATH = THEMEPATHS[parsedIndex];
     
@@ -460,18 +454,16 @@ function swapTheme()
         for(j = 0; j < themeTest[parsedIndex].length; j++)
         {
             option = document.createElement('option');
-            option.value = themeTest[parsedIndex][j];
-            option.innerHTML = themeTest[parsedIndex][j];
+            option.value = themeTest[parsedIndex][j].replace(/_/g,' ');
+            option.innerHTML = themeTest[parsedIndex][j].replace(/_/g,' ');
             slideDownSoundClipText[i].appendChild(option);
         }
-         slideDownSoundClipText[i].value=slideDownCards[i].defaultSoundObject.soundFileName;
+         slideDownSoundClipText[i].value=slideDownCards[i].defaultSoundObject.soundFileName.replace(/_/g,' ');
     }
    
     //Update Image
 
     $('.thumbnail').css('backgroundImage','url('+THEMEIMAGE_PATH+themeImages[parsedIndex]+')');
-    console.log(THEMEIMAGE_PATH+themeImages[parsedIndex]);
-    console.log($('thumbnail'));
     
     //Call updateSoundClip(newClipString) for each currentSoundObjectsInScene
     for(i = 0; i < currentSoundObjectsInScene.length; i++) 

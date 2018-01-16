@@ -31,7 +31,7 @@ Obj.prototype = {
         i = hierachyHTMLObjects.length;
 
         hierachyHTMLObjects[this.index] = `<div class="col-sm-12" id="index`+that.index+`">
-    	<button data-toggle="collapse" data-target="#demo`+that.index+`" id="btn`+that.index+`" onclick="colorchange('`+that.index+`')" class="font-size-19 FigurObject border-groove" style="width: 269px;background: white;!important">`+that.color+` `+that.shape+`</button>  
+    	<button data-toggle="collapse" data-target="#demo`+that.index+`" id="btn`+that.index+`" onclick="colorchange('btn`+that.index+`')" class="font-size-19 FigurObject border-groove" style="width: 269px;background: white;!important">`+that.color+` `+that.shape+`</button>  
 	</div>
 
     <div id="demo`+that.index+`" class="collapse">
@@ -70,7 +70,7 @@ Obj.prototype = {
 
 function colorchange(id) {
     var obj=document.getElementById("btn"+id);
-            var background = document.getElementById("btn"+id).style.backgroundColor;
+            var background = obj.style.backgroundColor;
             if (background == "white") {
                 document.getElementById("btn"+id).style.background = "rgb(26,255,0)";
             } else {
