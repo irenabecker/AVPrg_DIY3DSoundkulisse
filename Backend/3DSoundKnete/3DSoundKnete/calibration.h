@@ -18,6 +18,7 @@ public:
 	static int getCalibrateCounter() { return calibrateCounter; }
 	static int getMaxCalTries() { return maxCalTries; }
 	static int calibrateCounter;
+	static std::vector<int> stdSize;
 private:
     static int boardWidth, boardHeight;
     static bool calibrated;
@@ -26,7 +27,7 @@ private:
 	static int stdFillArea;	//same order as SHAPE: RECTANGLE, CIRCLE, TRIANGLE
 	static int focalLength;
 	static cv::Point boardCenter;
-	static std::vector<int> stdSize;
+	
 	
 	static int maxCalTries;
 };

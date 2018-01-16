@@ -1,1 +1,17 @@
-﻿  3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\debug\3DSoundKnete.exe
+﻿  handleData.cpp
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+handleData.cpp(37): warning C4309: "Argument": Verkürzung eines konstanten Wertes
+handleData.cpp(43): warning C4309: "Argument": Verkürzung eines konstanten Wertes
+handleData.cpp(112): warning C4189: "posY1": Lokale Variable ist initialisiert aber nicht referenziert
+handleData.cpp(110): warning C4189: "posX1": Lokale Variable ist initialisiert aber nicht referenziert
+handleData.cpp(113): warning C4189: "posY2": Lokale Variable ist initialisiert aber nicht referenziert
+handleData.cpp(111): warning C4189: "posX2": Lokale Variable ist initialisiert aber nicht referenziert
+  shapeRecognition.cpp
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(36): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(44): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+d:\github\avprg_diy3dsoundkulisse\backend\3dsoundknete\opencv\cvmattoqimage.h(61): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+shapeRecognition.cpp(19): warning C4100: "format": Unreferenzierter formaler Parameter
+  Code wird generiert...
+  3DSoundKnete.vcxproj -> D:\github\AVPrg_DIY3DSoundkulisse\Backend\3DSoundKnete\3DSoundKnete\debug\3DSoundKnete.exe

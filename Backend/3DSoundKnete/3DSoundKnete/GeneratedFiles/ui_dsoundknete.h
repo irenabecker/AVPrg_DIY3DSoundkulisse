@@ -90,6 +90,9 @@ public:
         radioButton3D = new QRadioButton(centralWidget);
         radioButton3D->setObjectName(QStringLiteral("radioButton3D"));
         radioButton3D->setGeometry(QRect(300, 390, 82, 17));
+        radioButton3D->setAcceptDrops(false);
+        radioButton3D->setAutoFillBackground(false);
+        radioButton3D->setChecked(true);
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));

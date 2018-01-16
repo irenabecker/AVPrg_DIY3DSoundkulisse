@@ -135,3 +135,12 @@ void DSoundKnete::on_finishCalibrating(const bool &success)
 	}
 	//output success to label
 }
+
+void DSoundKnete::on_radioButton2D_clicked()
+{
+	Calibration::stdSize = { 100,75,50 };		//RECT, CIRCLE, TRI
+}
+void DSoundKnete::on_radioButton3D_clicked()
+{
+	Calibration::stdSize = { 120,50,75 };	//RECT,CIRCLE,TRI
+}

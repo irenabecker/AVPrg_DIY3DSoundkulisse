@@ -12,11 +12,12 @@ std::vector<int> Calibration::globalYReferences(2);
 int Calibration::stdFillArea=0;
 int Calibration::focalLength=0;
 cv::Point Calibration::boardCenter(0,0);
-std::vector<int> Calibration::stdSize = { 100,75,50 };
+std::vector<int> Calibration::stdSize = { 120,50,75 };
 
 Calibration::Calibration()
 {
 }
+
 
 /*
  * Calibrate and calculate the room as given by the two

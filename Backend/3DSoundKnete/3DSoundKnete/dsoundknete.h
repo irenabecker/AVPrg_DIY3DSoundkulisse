@@ -58,6 +58,8 @@ private slots:
 	void on_actionPlay_triggered();
     void on_comboBox_activated(const QString &arg1);
     void on_calibrateButton_clicked();
+	void on_radioButton2D_clicked();
+	void on_radioButton3D_clicked();
 
 
 private:
