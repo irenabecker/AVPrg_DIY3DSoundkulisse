@@ -1,6 +1,6 @@
-var slideDownCards= new Array(9)
-var hierachyHTML;
+var slideDownCards= new Array(9)    
 var hierachyObjs=new Array();
+var hierachyHTML;
 //get all default cards
 function setSlideDownCards(getCards)
 {
@@ -27,7 +27,8 @@ function setSlideDownCards(getCards)
 function saveDefaultCard(cardIndex)
 {
     let defaultCard=slideDownCards[cardIndex].defaultSoundObject;
-    defaultCard.soundFileName=slideDownCards[cardIndex].soundclipName;
+    let tempSoundFileDropDown = document.getElementById(slideDownCards[cardIndex].soundclipName);
+    defaultCard.soundFileName= tempSoundFileDropDown.options[tempSoundFileDropDown.selectedIndex].value;
     defaultCard.pitch=document.getElementById(slideDownCards[cardIndex].pitch).value;
     defaultCard.volume=document.getElementById(slideDownCards[cardIndex].soundvolume).value;
     
@@ -65,8 +66,7 @@ function resetHierachyObject(objId)
 function addObjectToHierachy(objToAdd,index)
 {
     let defaultObject=findCorrespondingDefaultSoundObject(objToAdd.shape,objToAdd.color,index);
-    hierachyHTML=document.getElementById("hierachy");
-    
+    hierachyHTML = document.getElementById("hierachy");
     hierachyObjs[index]=new Obj(hierachyHTML,objToAdd.shape,objToAdd.color,defaultObject.soundFileName,"hierachyVolume"+index,"hierachyPitch"+index,"hierachyConfigButton"+index,"hierachyResetButton"+index,objToAdd,defaultObject,index);
     
     updateSlider(hierachyObjs[index],defaultObject);
@@ -74,8 +74,8 @@ function addObjectToHierachy(objToAdd,index)
 
 function deleteObjectFromHierachy(index)
 {
-    var elem = document.getElementById("index"+index);
-    elem.parentNode.removeChild(elem); // <- hier den bug für das entfernen des childs fixen
+    hierachyHTML.removeChild(document.getElementById('index'+index));
+    hierachyHTML.removeChild(document.getElementById('demo'+index));
 }
 
 function updateSlider(htmlObj, soundObject)

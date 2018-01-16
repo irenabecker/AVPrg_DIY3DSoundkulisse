@@ -228,7 +228,7 @@ function playNewAudioSource(index)
 {
     console.log('fade it in: ' + JSON.stringify(currentSoundObjectsInScene[index]));
     audioFader.fadeIn(htmlAudioElements[index]);
-    htmlAudioElements[index].src = SOUNDS_PATH + CURRENT_THEME_PATH + currentSoundObjectsInScene[index].soundFileName;
+    htmlAudioElements[index].src = SOUNDS_PATH + CURRENT_THEME_PATH + currentSoundObjectsInScene[index].soundFileName.replace(/ /g, '_');
     htmlAudioElements[index].play();
     htmlAudioElements[index].loop = true;
 }
