@@ -4,7 +4,10 @@
 #include "calibration.h"
 
 
-std::vector<DSoundKnete::objData> DSoundKnete::objects(5);
+std::vector<DSoundKnete::objData> DSoundKnete::objects(1);
+std::vector<DSoundKnete::objData> DSoundKnete::dataToSendObjects(0);
+std::vector<std::vector<DSoundKnete::objData>> DSoundKnete::savedObjects(1);
+
 
 DSoundKnete::DSoundKnete(QWidget *parent)
 	: QMainWindow(parent)
@@ -13,7 +16,6 @@ DSoundKnete::DSoundKnete(QWidget *parent)
     , videoThreadFront(new VideoEngine)
 	, colorProcessor(new ColorProcessor)
     , shapeRecognition(new ShapeRecognition)
-	//,handleData(new HandleData)
 {
     ui->setupUi(this);
 	videoThreadTop->setProcessor(colorProcessor,shapeRecognition);
@@ -35,6 +37,11 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 	connect(videoThreadTop, &VideoEngine::sendDataSignal,
 				this,&DSoundKnete::on_dataSend);
 	std::cout << test << endl;
+
+	for (int i = 0; i < DSoundKnete::savedObjects.size(); i++)
+	{
+		DSoundKnete::savedObjects[i].push_back({});
+	}
 }
 
 
@@ -64,10 +71,6 @@ DSoundKnete::objData DSoundKnete::createNewObjData(SHAPE shape, cv::Point point,
     return temp;
 }
 
-void DSoundKnete::emptyDataList()
-{
-    objects.clear();
-}
 
 void DSoundKnete::on_dataSend()
 {

@@ -13,13 +13,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QWidget>
 #include "videowidget.h"
 
@@ -34,11 +34,11 @@ public:
     QAction *actionVideo_Front;
     QWidget *centralWidget;
     VideoWidget *inputFrameTop;
-    QComboBox *comboBox;
     VideoWidget *processedFrameTop;
-    QLabel *label;
     QPushButton *calibrateButton;
     QLabel *calibrateLabel;
+    QRadioButton *radioButton2D;
+    QRadioButton *radioButton3D;
     QMenuBar *menuBar;
     QMenu *menuVideo;
     QMenu *menuVideodatei_ffnen;
@@ -66,18 +66,12 @@ public:
         inputFrameTop->setFrameShape(QFrame::Box);
         inputFrameTop->setScaledContents(false);
         inputFrameTop->setAlignment(Qt::AlignCenter);
-        comboBox = new QComboBox(centralWidget);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(390, 350, 181, 22));
         processedFrameTop = new VideoWidget(centralWidget);
         processedFrameTop->setObjectName(QStringLiteral("processedFrameTop"));
         processedFrameTop->setGeometry(QRect(250, 10, 631, 321));
         processedFrameTop->setFrameShape(QFrame::Box);
         processedFrameTop->setScaledContents(false);
         processedFrameTop->setAlignment(Qt::AlignCenter);
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(270, 350, 101, 16));
         calibrateButton = new QPushButton(centralWidget);
         calibrateButton->setObjectName(QStringLiteral("calibrateButton"));
         calibrateButton->setEnabled(false);
@@ -90,6 +84,12 @@ public:
         font.setPointSize(12);
         calibrateLabel->setFont(font);
         calibrateLabel->setWordWrap(true);
+        radioButton2D = new QRadioButton(centralWidget);
+        radioButton2D->setObjectName(QStringLiteral("radioButton2D"));
+        radioButton2D->setGeometry(QRect(300, 350, 82, 17));
+        radioButton3D = new QRadioButton(centralWidget);
+        radioButton3D->setObjectName(QStringLiteral("radioButton3D"));
+        radioButton3D->setGeometry(QRect(300, 390, 82, 17));
         DSoundKnete->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DSoundKnete);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -123,9 +123,10 @@ public:
         actionVideo_Front->setText(QApplication::translate("DSoundKnete", "Video Front", Q_NULLPTR));
         inputFrameTop->setText(QString());
         processedFrameTop->setText(QString());
-        label->setText(QApplication::translate("DSoundKnete", "MIDI Output Device", Q_NULLPTR));
         calibrateButton->setText(QApplication::translate("DSoundKnete", "Calibrate", Q_NULLPTR));
         calibrateLabel->setText(QApplication::translate("DSoundKnete", "Place two black cubes to calibrate your room.", Q_NULLPTR));
+        radioButton2D->setText(QApplication::translate("DSoundKnete", "2D", Q_NULLPTR));
+        radioButton3D->setText(QApplication::translate("DSoundKnete", "3D", Q_NULLPTR));
         menuVideo->setTitle(QApplication::translate("DSoundKnete", "Video", Q_NULLPTR));
         menuVideodatei_ffnen->setTitle(QApplication::translate("DSoundKnete", "Videodatei \303\226ffnen ...", Q_NULLPTR));
         menuPlay->setTitle(QApplication::translate("DSoundKnete", "Play", Q_NULLPTR));

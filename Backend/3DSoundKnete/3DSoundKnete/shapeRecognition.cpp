@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <calibration.h>
 #include <math.h>       /* acos */
+#include "DSoundKnete.h"
 
 #define PI 3.14159265
 using namespace cv;

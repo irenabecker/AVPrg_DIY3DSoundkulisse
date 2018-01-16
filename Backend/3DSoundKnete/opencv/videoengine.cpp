@@ -102,7 +102,7 @@ void VideoEngine::run()
 			cv::Mat shapeProcessedFrame;
             // Process Video Frame
             if (shapeProcessor != 0){
-                DSoundKnete::emptyDataList();
+                HandleData::emptyDataList();
                 shapeProcessedFrame = shapeProcessor->process(cvFrame);
                 cvFrame = colorProcessor->process(cvFrame);
                 //Only send data to frontend, when camera is calibrated and enough frames have been processed

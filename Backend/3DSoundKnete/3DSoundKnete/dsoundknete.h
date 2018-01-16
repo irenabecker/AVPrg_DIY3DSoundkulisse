@@ -42,7 +42,8 @@ public:
     } objData;
 
     static std::vector<objData> objects;
-    static void emptyDataList();
+	static std::vector<std::vector<DSoundKnete::objData>>savedObjects;
+	static std::vector<objData>dataToSendObjects;
     static objData createNewObjData(SHAPE shape, cv::Point point,int fillArea);
     //void sendData();
 
