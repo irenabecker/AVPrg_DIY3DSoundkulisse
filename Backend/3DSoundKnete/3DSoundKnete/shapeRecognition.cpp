@@ -32,7 +32,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 	{
 		cvtColor(output, HSV, CV_BGR2HSV);
 		Mat mask;
-        inRange(HSV, Scalar(0, 0, 0), Scalar(179, 100, 100), mask);		//look for all colorless pixels
+        inRange(HSV, Scalar(0, 0, 0), Scalar(179, 80, 100), mask);		//look for all colorless pixels
 		output.setTo(Scalar(255, 255, 255), mask);						//set them as white pixels in output
 	}
 	
@@ -60,7 +60,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		cv::approxPolyDP(cv::Mat(contours[i]), contours_poly[i], cv::arcLength(cv::Mat(contours[i]), true)*0.02, true);
 
 		// Skip small or non-convex objects
-        if (std::fabs(cv::contourArea(contours[i])) < 100 || !cv::isContourConvex(contours_poly[i]))
+        if (std::fabs(cv::contourArea(contours[i])) < 200 || !cv::isContourConvex(contours_poly[i]))
         /*
          * The above line might be "too much", as we dont seem to need the second part of if
          * the first check probably is for the min size of recognizable objects
@@ -68,7 +68,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 //        if (std::fabs(cv::contourArea(contours[i])) < 100)
 			continue;
 
-		if (contours_poly[i].size() == 4 && rightAngles(contours_poly[i]))
+		if (contours_poly[i].size() >=4 && contours_poly[i].size()<8 && rightAngles(contours_poly[i]))
 		{
 				center[i] = setLabel(dst, "RECT", contours_poly[i]);
 				//create new Data-class and write center[i] and "RECT" in Data-class
@@ -113,6 +113,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 bool ShapeRecognition::rightAngles(std::vector<cv::Point> contourPoints)
 {
 	int degreeTolerance = 20;
+	int rightAnglesCounter = 0;
 	cv::Point a = contourPoints.at(0);
 	cv::Point b = contourPoints.at(1);
 	cv::Point c = contourPoints.at(2);
@@ -123,13 +124,19 @@ bool ShapeRecognition::rightAngles(std::vector<cv::Point> contourPoints)
 	double sideDLength = ShapeRecognition::distanceBetween(a, b);
 	double sideELength = ShapeRecognition::distanceBetween(c, a);
 	double sideFLength = ShapeRecognition::distanceBetween(b, d);
-	double alpha = acos((pow(sideALength, 2) + pow(sideDLength, 2) - pow(sideFLength, 2))/(2 * sideALength*sideDLength)) *(180.0/PI);
-	double beta= acos((pow(sideALength, 2) + pow(sideBLength, 2) - pow(sideELength, 2)) / (2 * sideALength*sideBLength)) *(180.0 / PI);
-	double gamma=acos((pow(sideBLength, 2) + pow(sideCLength, 2) - pow(sideFLength, 2)) / (2 * sideBLength*sideCLength)) *(180.0 / PI);
-	double delta = acos((pow(sideCLength, 2) + pow(sideDLength, 2) - pow(sideELength, 2)) / (2 * sideDLength*sideCLength)) *(180.0 / PI);
-	if (alpha > 90 - degreeTolerance && alpha < 90 + degreeTolerance && beta>90 - degreeTolerance && 
-		beta < 90 + degreeTolerance&&gamma>90 - degreeTolerance&&gamma < 90 + degreeTolerance &&
-		delta>90-degreeTolerance&&delta<90+degreeTolerance)
+	std::vector<double> angle(4);
+	angle[0] = acos((pow(sideALength, 2) + pow(sideDLength, 2) - pow(sideFLength, 2))/(2 * sideALength*sideDLength)) *(180.0/PI);
+	angle[1] = acos((pow(sideALength, 2) + pow(sideBLength, 2) - pow(sideELength, 2)) / (2 * sideALength*sideBLength)) *(180.0 / PI);
+	angle[2] =acos((pow(sideBLength, 2) + pow(sideCLength, 2) - pow(sideFLength, 2)) / (2 * sideBLength*sideCLength)) *(180.0 / PI);
+	angle[3] = acos((pow(sideCLength, 2) + pow(sideDLength, 2) - pow(sideELength, 2)) / (2 * sideDLength*sideCLength)) *(180.0 / PI);
+	for (int i = 0; i < angle.size(); i++)
+	{
+		if (angle[i] > 90 - degreeTolerance && angle[i] < 90 + degreeTolerance)
+		{
+			rightAnglesCounter++;
+		}
+	}
+	if (rightAnglesCounter>=3)
 	{
 		return true;
 	}

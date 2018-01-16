@@ -13,6 +13,7 @@ DSoundKnete::DSoundKnete(QWidget *parent)
     , videoThreadFront(new VideoEngine)
 	, colorProcessor(new ColorProcessor)
     , shapeRecognition(new ShapeRecognition)
+	//,handleData(new HandleData)
 {
     ui->setupUi(this);
 	videoThreadTop->setProcessor(colorProcessor,shapeRecognition);
@@ -29,9 +30,8 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 		this, &DSoundKnete::on_finishCalibrating);
 
 	//for MIDI connection
-	QStringList connections = midiOutput.connections(true);
-	midiOutput.open("LoopBe Internal MIDI");
-	ui->comboBox->addItems(connections);
+	HandleData::openMidi("LoopBe Internal MIDI");
+	//ui->comboBox->addItems(connections);
 	connect(videoThreadTop, &VideoEngine::sendDataSignal,
 				this,&DSoundKnete::on_dataSend);
 	std::cout << test << endl;
@@ -71,34 +71,7 @@ void DSoundKnete::emptyDataList()
 
 void DSoundKnete::on_dataSend()
 {
-	QByteArray data;
-	data.resize(6);
-	
-    qDebug() << objects.size();
-	for (int i = 0; i < objects.size(); i++)
-	{
-		data[0] = 0xf0;	//start byte
-		data[1] = (objects[i].objectShape << 4) | (objects[i].objectColor);	//first 4 bit: shape; second 4 bit: color
-		data[2] = objects[i].relativePosition.x;	//xPos
-		data[3] = objects[i].relativePosition.y;	//yPos
-		data[4] = objects[i].zPos;	//zPos
-
-		data[5] = 0xf7;	//end byte
-		midiOutput.sendSysex(data);
-        /*
-         * Colors: 0 = RED, 1 = GREEN, 2 = BLUE
-         * Shapes: 0 = RECTANGLE, 1 = CIRCLE, 2 = TRIANGLE
-         */
-        //Blauer Kreis, Blaues Rechteck, rotes dreieck, roter kreis		
-        qDebug() << "Sending: " << objects[i].objectShape << ", "
-                                << objects[i].objectColor << ", "
-                                << objects[i].relativePosition.x << ", "
-                                << objects[i].relativePosition.y << ", "
-                                <<  objects[i].zPos;
-	}
-	midiOutput.sendProgram(0,0);
-
-
+	HandleData::sendData();
 }
 
 void DSoundKnete::on_actionVideo_Top_triggered()
@@ -129,12 +102,12 @@ void DSoundKnete::on_actionPlay_triggered()
 
 void DSoundKnete::on_actionKamera_ffnen_triggered()
 {
-    videoThreadTop->openCamera(2);
+    videoThreadTop->openCamera(1);
 }
 
 void DSoundKnete::on_comboBox_activated(const QString &arg1)
 {
-    midiOutput.open(arg1);
+	HandleData::openMidi(arg1);
 }
 
 void DSoundKnete::on_calibrateButton_clicked()

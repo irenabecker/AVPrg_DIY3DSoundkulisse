@@ -156,6 +156,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="dsoundknete.cpp" />
+    <ClCompile Include="handleData.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Release\moc_dsoundknete.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

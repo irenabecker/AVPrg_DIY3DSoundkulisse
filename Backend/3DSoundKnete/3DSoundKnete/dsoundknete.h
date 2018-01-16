@@ -8,6 +8,7 @@
 #include "colorprocessor.h"
 #include "shapeRecognition.h"
 #include "midioutput.h"
+#include "handleData.h"
 
 //#include "webcommunication.h"
 //#include "QtNetwork\qnetworkaccessmanager.h"
@@ -64,10 +65,9 @@ private:
     VideoEngine *videoThreadFront;
     ShapeRecognition *shapeRecognition;
     ColorProcessor *colorProcessor;
+	
+	//HandleData *handleData;
+
 	//QNetworkAccessManager *manager;
-	drumstick::rt::MIDIOutput midiOutput;
-	int midichannel;
-	int midinote;
-	int midivolume;
 };
 #endif // DSOUNDKNETE_H
