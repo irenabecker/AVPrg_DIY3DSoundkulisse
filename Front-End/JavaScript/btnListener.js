@@ -12,8 +12,8 @@ function setSlideDownCards(getCards)
         for(let j = 0; j < themeTest[0].length; j++)
         {
             option = document.createElement('option');
-            option.value = defaultSoundObjects[j].soundFileName;
-            option.innerHTML = defaultSoundObjects[j].soundFileName;
+            option.value = themeTest[0][j];
+            option.innerHTML = themeTest[0][j];
             slideDownSoundClipText[i].appendChild(option);
         }
         slideDownSoundClipText[i].addEventListener('change', function(e){switchSoundClipForDefaultObject(currElement)})
