@@ -12,12 +12,12 @@ function setSlideDownCards(getCards)
         for(let j = 0; j < themeTest[0].length; j++)
         {
             option = document.createElement('option');
-            option.value = themeTest[0][j];
-            option.innerHTML = themeTest[0][j];
+            option.value = themeTest[0][j].replace(/_/g,' ');
+            option.innerHTML = themeTest[0][j].replace(/_/g,' ');
             slideDownSoundClipText[i].appendChild(option);
         }
         slideDownSoundClipText[i].addEventListener('change', function(e){switchSoundClipForDefaultObject(currElement)})
-        slideDownSoundClipText[i].value=getCards[i].defaultSoundObject.soundFileName;
+        slideDownSoundClipText[i].value=getCards[i].defaultSoundObject.soundFileName.replace(/_/g,' ');
        document.getElementById(getCards[i].soundvolume).value=getCards[i].defaultSoundObject.volume; document.getElementById(getCards[i].soundvolume).parentElement.querySelector("#rangevalue").value=getCards[i].defaultSoundObject.volume;
        document.getElementById(getCards[i].pitch).value=getCards[i].defaultSoundObject.volume; document.getElementById(getCards[i].pitch).parentElement.querySelector("#rangevalue").value=getCards[i].defaultSoundObject.volume;
     }
@@ -75,7 +75,7 @@ function addObjectToHierachy(objToAdd,index)
 function deleteObjectFromHierachy(index)
 {
     var elem = document.getElementById("index"+index);
-    elem.parentNode.removeChild(elem);
+    elem.parentNode.removeChild(elem); // <- hier den bug für das entfernen des childs fixen
 }
 
 function updateSlider(htmlObj, soundObject)
