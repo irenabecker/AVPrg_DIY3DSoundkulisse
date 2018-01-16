@@ -4,7 +4,7 @@ var midiJSONObjects=[];
 function initialize(){
     
     //for testing without backend
-    let counter=0;
+    /*let counter=0;
     setTimeout(function () {
         
         window.setInterval(function()
@@ -20,7 +20,7 @@ function initialize(){
             resetJSONObjects();
         },2000)
     }, 5000);
-    
+    */
 	let midi = null;  // global MIDIAccess object
 	let midiInputs = [];
     

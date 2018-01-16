@@ -29,8 +29,8 @@ var colors = ['Red','Green','Blue'];
 var shapes = ['Rectangle', 'Circle', 'Triangle'];
 
 var themeTest = [
-    ['Birds_And_Slight_Rain.mp3', 'Blowing_Wind.mp3', 'Chimpanzee.mp3', 'Cricket.mp3', 'Frogs.mp3', 'Jungle.mp3', 'Osprey_Call.mp3', 'Raven.mp3', 'Redstart.mp3'],   //Forest
-    ['Birds.mp3', 'Blowing_Wind.mp3', 'Osprey_Call.mp3', 'Raven.mp3', 'Redstart.mp3', 'River.mp3'], //Mountains
+    ['Birds_And_Slight_Rain.mp3', 'Blowing_Wind.mp3', 'Chimpanzee.mp3', 'Cricket.mp3', 'Frogs.mp3', 'Jungle.mp3', 'Osprey_Call.mp3', 'Raven.mp3', 'Redstart.mp3','Owl.mp3'],   //Forest
+    ['Birds.mp3', 'Blowing_Wind.mp3', 'Yodelling.mp3', 'Raven.mp3', 'Redstart.mp3', 'River.mp3', 'Cow_with_Bell.mp3', 'Goat.mp3', 'Hawk_Scream.mp3', 'Walking_in_Snow.mp3', 'Osprey_Call.mp3'], //Mountains
     ['Blowing_Wind.mp3', 'Calm_Waves.mp3', 'Ducks.mp3', 'Laughing_Gulls_2.mp3', 'Ocean_Waves.mp3', 'Seagull_Single.mp3', 'Seagulls_Swarm.mp3'],   //Sea
     ['Airplane_Takeoff.mp3', 'Car.mp3', 'People_in_Bus.mp3', 'People_in_Mall.mp3', 'Police_Sirens.mp3', 'Traffic_Jam.mp3', 'Train.mp3', 'Urban_Traffic.mp3', 'Hare_Crishna_Chanting.mp3'],   //Urban
     ['Rainstom.mp3', 'Thunderstorm_and_Rain.mp3', 'Wind.mp3']    //Thunder
@@ -45,14 +45,11 @@ var slideDownFigures;
 var slideDownVolumeSliders = [];
 var slideDownVolumeText = []; //use this to update volume text amount
 var slideDownSoundClipText = [];
-var slideDownPitchSliders = [];
-var slideDownPitchText = []; //use this to update pitch text amount
 console.log(slideDownFigures);
 var slideDownThemes;
 
 //DOM from hierarchy view (must be dynamically accessed...)
 var hierarchyVolumeSliders = [];
-var hierarchyPitchSliders = [];
 
 /*function fillSlideDownCards() 
 {
@@ -82,10 +79,6 @@ var hierarchyPitchSliders = [];
         slideDownVolumeSliders.push(document.getElementById('soundvolume'+i));
         slideDownVolumeSliders[i].value = defaultSoundObjects[i].volume;
         slideDownVolumeSliders[i].addEventListener('input', function(e){slideDownVolumeSlider(currElement)});
-        
-        slideDownPitchSliders.push(document.getElementById('pitch'+i));
-        slideDownPitchSliders[i].value = defaultSoundObjects[i].pitch;
-        slideDownPitchSliders[i].addEventListener('input', function(e){slideDownPitchSlider(currElement)});
     }
 }*/
 
@@ -218,7 +211,6 @@ function updateAudioSources()
                 currentSoundObjectsInScene[i].yPosition,
                 currentSoundObjectsInScene[i].zPosition,
                 currentSoundObjectsInScene[i].volume,
-                currentSoundObjectsInScene[i].pitch
             );   
         }
     }
@@ -306,7 +298,6 @@ function createNewSoundObjects(newObjects)
         
         tempObject.index = findEmptyIndex();
         tempObject.soundFileName = tempDefault.soundFileName;
-        tempObject.pitch = tempDefault.pitch;
         tempObject.volume = tempDefault.volume;
         tempObject.colorVolume = tempDefault.colorVolume;
         
@@ -386,12 +377,6 @@ function inRange(objToCheck, existingObj)
     currentSoundObjectsInScene[index].volume = newValue;
 }
 
-function hierarchyPitchSlider(index)
-{
-    let newValue = hierarchyPitchSliders[index].value;
-    currentSoundObjectsInScene[index].pitch = newValue;
-}
-
 function slideDownVolumeSlider(index)
 {
     let newValue = slideDownVolumeSliders[index].value;
@@ -405,19 +390,6 @@ function slideDownVolumeSlider(index)
             currentSoundObjectsInScene[i].updateVolume(newValue);
 }
 
-function slideDownPitchSlider(index)
-{
-    let newValue = slideDownPitchSliders[index].value;
-    //update text here
-    defaultSoundObjects[index].pitch = newValue;
-    
-    for(let i = 0; i < currentSoundObjectsInScene.length; i++) 
-        if(currentSoundObjectsInScene[i].xPosition != undefined 
-           && currentSoundObjectsInScene[i].shape == defaultSoundObjects[index].shape
-           && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
-            currentSoundObjectsInScene[i].updatePitch(newValue);
-}*/
-
 function switchSoundClipForDefaultObject(index) 
 {
     var newClipString = slideDownSoundClipText[index].options[slideDownSoundClipText[index].selectedIndex].value;
@@ -429,7 +401,7 @@ function switchSoundClipForDefaultObject(index)
            && currentSoundObjectsInScene[i].color == defaultSoundObjects[index].color)
         {currentSoundObjectsInScene[i].updateSoundClip(newClipString);console.log('call for : ' + JSON.stringify(currentSoundObjectsInScene[i]));}
 }
-
+*/
 function swapTheme()
 {
     let parsedIndex = slideDownThemes.selectedIndex;

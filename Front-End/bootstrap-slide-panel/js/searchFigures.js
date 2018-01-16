@@ -59,17 +59,17 @@ $(document).ready(function() {
     
     var cards=[];
     
-    cards[0] = new Card($('#itembox_1'), 'Triangle', 'Blue','resources/BlueTriangle.png', 'soundClip0','soundvolume0','pitch0','configureButton0' );
-    cards[1] = new Card($('#itembox_1'), 'Circle', 'Blue', 'resources/BlueCircle.png','soundClip1','soundvolume1','pitch1','configureButton1');
-    cards[2] = new Card($('#itembox_1'), 'Rectangle','Blue','resources/BlueRectangle.png','soundClip2','soundvolume2','pitch2','configureButton2');
-    cards[3] = new Card($('#itembox_1'), 'Triangle','Red','resources/RedTriangle.png','soundClip3','soundvolume3','pitch3','configureButton3');
+    cards[0] = new Card($('#itembox_1'), 'Triangle', 'Blue','resources/BlueTriangle.png', 'soundClip0','soundvolume0','configureButton0' );
+    cards[1] = new Card($('#itembox_1'), 'Circle', 'Blue', 'resources/BlueCircle.png','soundClip1','soundvolume1','configureButton1');
+    cards[2] = new Card($('#itembox_1'), 'Rectangle','Blue','resources/BlueRectangle.png','soundClip2','soundvolume2','configureButton2');
+    cards[3] = new Card($('#itembox_1'), 'Triangle','Red','resources/RedTriangle.png','soundClip3','soundvolume3','configureButton3');
 
-    cards[4] = new Card($('#itembox_2'), 'Circle','Red','resources/RedCircle.png','soundClip4','soundvolume4','pitch4','configureButton4' );
-    cards[5] = new Card($('#itembox_2'), 'Rectangle','Red','resources/RedRectangle.png','soundClip5','soundvolume5','pitch5','configureButton5');
-    cards[6] = new Card($('#itembox_2'), 'Triangle','Green','resources/GreenTriangle.png','soundClip6','soundvolume6','pitch6','configureButton6');
-    cards[7] = new Card($('#itembox_2'), 'Circle','Green','resources/GreenCircle.png','soundClip7','soundvolume7','pitch7','configureButton7');
+    cards[4] = new Card($('#itembox_2'), 'Circle','Red','resources/RedCircle.png','soundClip4','soundvolume4','configureButton4' );
+    cards[5] = new Card($('#itembox_2'), 'Rectangle','Red','resources/RedRectangle.png','soundClip5','soundvolume5','configureButton5');
+    cards[6] = new Card($('#itembox_2'), 'Triangle','Green','resources/GreenTriangle.png','soundClip6','soundvolume6','configureButton6');
+    cards[7] = new Card($('#itembox_2'), 'Circle','Green','resources/GreenCircle.png','soundClip7','soundvolume7','configureButton7');
 
-    cards[8] = new Card($('#itembox_3'), 'Rectangle','Green','resources/GreenRectangle.png','soundClip8','soundvolume8','pitch8','configureButton8');
+    cards[8] = new Card($('#itembox_3'), 'Rectangle','Green','resources/GreenRectangle.png','soundClip8','soundvolume8','configureButton8');
 
     setSlideDownCards(cards);
     
@@ -80,7 +80,6 @@ $(document).ready(function() {
         if($("#soundvolume"+i).is(':disabled')){
             $("#soundClip"+i).removeAttr('disabled');
             $("#soundvolume"+i).removeAttr('disabled');
-            $("#pitch"+i).removeAttr('disabled'); 
             $("#configureButton"+i).removeClass("btn-danger");
             $("#configureButton"+i).addClass("btn-success"); 
             $("#configureButton"+i).text('Save');  
@@ -88,7 +87,6 @@ $(document).ready(function() {
         else if($("#soundvolume"+i).is(':enabled')){
             $("#soundClip"+i).prop('disabled',true);
             $("#soundvolume"+i).prop('disabled', true);
-            $("#pitch"+i).prop('disabled', true);
             $("#configureButton"+i).removeClass("btn-success");
             $("#configureButton"+i).addClass("btn-danger");
             $("#configureButton"+i).text('Configure');  
@@ -114,13 +112,13 @@ Card.prototype = {
         this.index = index;
         this.createCard();
     },*/
-function Card(container, headline,  description, image, soundclipName, soundvolume, pitch, configureButton) {
-    this.init(container, headline, description, image, soundclipName,soundvolume, pitch, configureButton);
+function Card(container, headline,  description, image, soundclipName, soundvolume, configureButton) {
+    this.init(container, headline, description, image, soundclipName,soundvolume, configureButton);
 }
 
 Card.prototype = {
 
-    init: function(container, headline, description, image, soundclipName,soundvolume,pitch,configureButton) {
+    init: function(container, headline, description, image, soundclipName,soundvolume,configureButton) {
 
         this.headline = headline;   //shape
         this.container = container; 
@@ -128,7 +126,6 @@ Card.prototype = {
         this.image = image;
         this.soundclipName = soundclipName;
         this.soundvolume =soundvolume;
-        this.pitch = pitch;
         this.configureButton = configureButton;
         this.defaultSoundObject=findCorrespondingDefaultSoundObject( headline.toLowerCase(), description.toLowerCase());
 
@@ -156,14 +153,6 @@ Card.prototype = {
                             <output class="rangevalue" id="rangevalue">0</output>
                         </div>   
                     </form>     
-                    <form>
-                        <strong class="black">Pitch:</strong>
-                        <div id="slider">
-                            <input class="bar" type="range" id="`+that.pitch+`" value="0" min="-3" max="3" step="0.1" oninput="rangevalue.value=value" disabled/>
-                            <span class="highlight"></span>
-                            <output class"rangevalue" id="rangevalue">50</output>
-                        </div>   
-                    </form>  
                     
                     <button type="button" id="`+that.configureButton+`" class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
                     <br>

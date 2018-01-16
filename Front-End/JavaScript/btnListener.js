@@ -19,7 +19,6 @@ function setSlideDownCards(getCards)
         slideDownSoundClipText[i].addEventListener('change', function(e){switchSoundClipForDefaultObject(currElement)})
         slideDownSoundClipText[i].value=getCards[i].defaultSoundObject.soundFileName.replace(/_/g,' ');
        document.getElementById(getCards[i].soundvolume).value=getCards[i].defaultSoundObject.volume; document.getElementById(getCards[i].soundvolume).parentElement.querySelector("#rangevalue").value=getCards[i].defaultSoundObject.volume;
-       document.getElementById(getCards[i].pitch).value=getCards[i].defaultSoundObject.volume; document.getElementById(getCards[i].pitch).parentElement.querySelector("#rangevalue").value=getCards[i].defaultSoundObject.volume;
     }
     fillThemes();
 }
@@ -29,7 +28,6 @@ function saveDefaultCard(cardIndex)
     let defaultCard=slideDownCards[cardIndex].defaultSoundObject;
     let tempSoundFileDropDown = document.getElementById(slideDownCards[cardIndex].soundclipName);
     defaultCard.soundFileName= tempSoundFileDropDown.options[tempSoundFileDropDown.selectedIndex].value;
-    defaultCard.pitch=document.getElementById(slideDownCards[cardIndex].pitch).value;
     defaultCard.volume=document.getElementById(slideDownCards[cardIndex].soundvolume).value;
     
     //update volume of all objects in Scene
@@ -39,7 +37,6 @@ function saveDefaultCard(cardIndex)
            && currentSoundObjectsInScene[i].color == defaultCard.color)
         {
             currentSoundObjectsInScene[i].updateVolume(defaultCard.volume);
-            currentSoundObjectsInScene[i].updatePitch(defaultCard.pitch);
             updateSlider(hierachyObjs[i],currentSoundObjectsInScene[i]);
         }
 }
@@ -47,19 +44,15 @@ function saveDefaultCard(cardIndex)
 function saveHierachyObject(objId)
 {
     let objectInScene=hierachyObjs[objId].soundElementInScene;
-     objectInScene.pitch=document.getElementById(hierachyObjs[objId].pitch).value;
     objectInScene.volume=document.getElementById(hierachyObjs[objId].soundvolume).value;
     objectInScene.updateVolume(objectInScene.volume);
-    objectInScene.updatePitch(objectInScene.pitch);
 }
 
 function resetHierachyObject(objId)
 {
     let objectInScene=hierachyObjs[objId].soundElementInScene;
-    objectInScene.pitch=hierachyObjs[objId].defaultSoundObject.pitch;
     objectInScene.volume=hierachyObjs[objId].defaultSoundObject.volume; 
     objectInScene.updateVolume(objectInScene.volume);
-    objectInScene.updatePitch(objectInScene.pitch);
     updateSlider(hierachyObjs[objId],objectInScene);
 }
 
@@ -67,7 +60,7 @@ function addObjectToHierachy(objToAdd,index)
 {
     let defaultObject=findCorrespondingDefaultSoundObject(objToAdd.shape,objToAdd.color,index);
     hierachyHTML = document.getElementById("hierachy");
-    hierachyObjs[index]=new Obj(hierachyHTML,objToAdd.shape,objToAdd.color,defaultObject.soundFileName,"hierachyVolume"+index,"hierachyPitch"+index,"hierachyConfigButton"+index,"hierachyResetButton"+index,objToAdd,defaultObject,index);
+    hierachyObjs[index]=new Obj(hierachyHTML,objToAdd.shape,objToAdd.color,defaultObject.soundFileName,"hierachyVolume"+index,"hierachyConfigButton"+index,"hierachyResetButton"+index,objToAdd,defaultObject,index);
     
     updateSlider(hierachyObjs[index],defaultObject);
 }
@@ -80,8 +73,6 @@ function deleteObjectFromHierachy(index)
 
 function updateSlider(htmlObj, soundObject)
 {
-    document.getElementById(htmlObj.pitch).value=soundObject.pitch;
-    document.getElementById(htmlObj.pitch).parentElement.querySelector("#rangevalue").value=soundObject.pitch;
     document.getElementById(htmlObj.soundvolume).value=soundObject.volume;
     document.getElementById(htmlObj.soundvolume).parentElement.querySelector("#rangevalue").value=soundObject.volume;
 }
