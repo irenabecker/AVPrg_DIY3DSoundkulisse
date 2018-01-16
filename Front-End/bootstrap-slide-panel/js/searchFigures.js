@@ -1,7 +1,4 @@
 $(document).ready(function() {
-    // $('.ttt').hide();
-    // $('.test2').hide();
-
     $('#search').keyup(function() {
 
         // Search text
@@ -59,39 +56,7 @@ $(document).ready(function() {
     $('form input').on('keypress', function(e) {
         return e.which !== 13;
     });
-
-/*
-    var all_cards = {
-        card_1: {
-            shape: 'Dreieck',
-            value_1: 100,
-            value_2: 1000,
-        },
-        card_2: {
-            shape: 'Viereck',
-            value_1: 100,
-            value_2: 1000,
-        },
-        card_3: {
-            shape: 'Kreis',
-            value_1: 100,
-            value_2: 1000,
-        },
-        card_4: {
-            shape: 'Mond',
-            value_1: 100,
-            value_2: 1000,
-        },
-    };
-*/
-
-    // console.log(JSON.stringify(all_cards));
-
-   /* $.each(all_cards, function(index, value) {
-        var _current = all_cards[index];
-        new Card($('#itembox_1'), _current.shape);
-    }); 
-*/
+    
     var cards=[];
     
     cards[0] = new Card($('#itembox_1'), 'Triangle', 'Blue','resources/BlueTriangle.png', 'soundClip0','soundvolume0','pitch0','configureButton0' );
@@ -101,7 +66,7 @@ $(document).ready(function() {
 
     cards[4] = new Card($('#itembox_2'), 'Circle','Red','resources/RedCircle.png','soundClip4','soundvolume4','pitch4','configureButton4' );
     cards[5] = new Card($('#itembox_2'), 'Rectangle','Red','resources/RedRectangle.png','soundClip5','soundvolume5','pitch5','configureButton5');
-    cards[6] = new Card($('#itembox_2'), 'Triangle','Green','resources/GreenTriangle.png','soundClip6','soundvolume6','#itch6','configureButton6');
+    cards[6] = new Card($('#itembox_2'), 'Triangle','Green','resources/GreenTriangle.png','soundClip6','soundvolume6','pitch6','configureButton6');
     cards[7] = new Card($('#itembox_2'), 'Circle','Green','resources/GreenCircle.png','soundClip7','soundvolume7','pitch7','configureButton7');
 
     cards[8] = new Card($('#itembox_3'), 'Rectangle','Green','resources/GreenRectangle.png','soundClip8','soundvolume8','pitch8','configureButton8');
@@ -174,15 +139,9 @@ Card.prototype = {
 
         var that = this;
         i = cardboxes.length;
-/*
-<select id="selectList">
-            <option value="natSound1.wav">NatSound1</option>
-            <option value="natSound2.wav">NatSound2</option>
-            <option value="citySound1.wav">CitySound1</option>
-        </select>
-*/
+        
         cardboxes[i] = `<div class="col-sm-3 content" id="card_`+i+`" style="padding-top: 2%; margin-left: -0.1%!important;">
-                    <div class="thumbnail thumbnailBGIMG figures">
+                    <div class="thumbnail figures">
                     <img src="`+that.image+`" alt="fake image" class="img-responsive">
                     <div class="caption">
                         <h4 id="`+that.headline+`">`+that.headline+`</h4>
@@ -197,7 +156,7 @@ Card.prototype = {
                             <output class="rangevalue" id="rangevalue">0</output>
                         </div>   
                     </form>     
-                    <form">
+                    <form>
                         <strong>Pitch:</strong>
                         <div id="slider">
                             <input class="bar" type="range" id="`+that.pitch+`" value="0" min="-3" max="3" step="0.1" oninput="rangevalue.value=value" disabled/>
