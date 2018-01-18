@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         dsoundknete.cpp \
     colorprocessor.cpp \
     shapeRecognition.cpp \
-    calibration.cpp
+    calibration.cpp\
+	handleData.cpp
 
 HEADERS  += dsoundknete.h \
     colorprocessor.h \
     shapeRecognition.h \
-    calibration.h
+    calibration.h\
+	handleData.h
 
 FORMS    += dsoundknete.ui
 include(../opencv/videoengine.pri)

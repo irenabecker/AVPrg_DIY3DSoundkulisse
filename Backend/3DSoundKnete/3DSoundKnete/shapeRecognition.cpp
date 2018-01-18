@@ -62,11 +62,6 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 
 		// Skip small or non-convex objects
         if (std::fabs(cv::contourArea(contours[i])) < 200 || !cv::isContourConvex(contours_poly[i]))
-        /*
-         * The above line might be "too much", as we dont seem to need the second part of if
-         * the first check probably is for the min size of recognizable objects
-         */
-//        if (std::fabs(cv::contourArea(contours[i])) < 100)
 			continue;
 
 		if (contours_poly[i].size() >=4 && contours_poly[i].size()<8 && rightAngles(contours_poly[i]))

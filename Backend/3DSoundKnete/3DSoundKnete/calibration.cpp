@@ -100,6 +100,12 @@ cv::Point Calibration::calcRelative(int globalX, int globalY)
     return cv::Point((int)relativeX, (int)relativeY);
 }
 
+/*
+calibrates the relative Z-Coordinate of the object, 100% meaning the object lays on the table.
+First the relative distance to the center has to be calibrated, afterwards the distance of the object to the camera is calculated
+using focal length.
+Having these values triangulation can be used to determine the Z-Coordinate of the object in space.
+*/
 int Calibration::calcZPos(int absolutePositionX,int absolutePositionY, int fillArea,int shape)
 {
 	int zPos;
