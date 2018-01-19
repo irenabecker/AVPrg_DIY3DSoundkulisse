@@ -13,13 +13,11 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 	: QMainWindow(parent)
 	, ui(new Ui::DSoundKnete)
 	, videoThreadTop(new VideoEngine)
-    , videoThreadFront(new VideoEngine)
 	, colorProcessor(new ColorProcessor)
     , shapeRecognition(new ShapeRecognition)
 {
     ui->setupUi(this);
 	videoThreadTop->setProcessor(colorProcessor,shapeRecognition);
-    videoThreadFront->setProcessor(colorProcessor,shapeRecognition);
 
 	//for top camera
 	connect(videoThreadTop, &VideoEngine::sendInputImage,
@@ -48,7 +46,6 @@ DSoundKnete::DSoundKnete(QWidget *parent)
 DSoundKnete::~DSoundKnete()
 {
 	delete videoThreadTop;
-    delete videoThreadFront;
 	delete ui;
 	delete colorProcessor;
 	delete shapeRecognition;
@@ -86,20 +83,10 @@ void DSoundKnete::on_actionVideo_Top_triggered()
 		videoThreadTop->openFile(fileName);
 	}
 }
-void DSoundKnete::on_actionVideo_Front_triggered()
-{
-
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"), "../../../Videos");
-
-	if (!fileName.isEmpty()) {
-        videoThreadFront->openFile(fileName);
-	}
-}
 
 void DSoundKnete::on_actionPlay_triggered()
 {
 	videoThreadTop->start();
-    videoThreadFront->start();
     ui->calibrateButton->setEnabled(true);
 }
 

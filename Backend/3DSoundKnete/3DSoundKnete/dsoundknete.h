@@ -53,7 +53,6 @@ public:
 
 private slots:
 	void on_actionVideo_Top_triggered();
-	void on_actionVideo_Front_triggered();
     void on_actionKamera_ffnen_triggered();
 	void on_actionPlay_triggered();
     void on_comboBox_activated(const QString &arg1);
@@ -65,7 +64,6 @@ private slots:
 private:
 	Ui::DSoundKnete *ui;
     VideoEngine *videoThreadTop;
-    VideoEngine *videoThreadFront;
     ShapeRecognition *shapeRecognition;
     ColorProcessor *colorProcessor;
 	
