@@ -109,30 +109,40 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 bool ShapeRecognition::rightAngles(std::vector<cv::Point> contourPoints)
 {
 	int degreeTolerance = 20;
+	int lengthTolerance = 10;
 	int rightAnglesCounter = 0;
-	cv::Point a = contourPoints.at(0);
-	cv::Point b = contourPoints.at(1);
-	cv::Point c = contourPoints.at(2);
-	cv::Point d = contourPoints.at(3);
-	double sideALength = ShapeRecognition::distanceBetween(c,b);
-	double sideBLength = ShapeRecognition::distanceBetween(c, d);
-	double sideCLength = ShapeRecognition::distanceBetween(a, d);
-	double sideDLength = ShapeRecognition::distanceBetween(a, b);
-	double sideELength = ShapeRecognition::distanceBetween(c, a);
-	double sideFLength = ShapeRecognition::distanceBetween(b, d);
-	std::vector<double> angle(4);
-	angle[0] = acos((pow(sideALength, 2) + pow(sideDLength, 2) - pow(sideFLength, 2))/(2 * sideALength*sideDLength)) *(180.0/PI);
-	angle[1] = acos((pow(sideALength, 2) + pow(sideBLength, 2) - pow(sideELength, 2)) / (2 * sideALength*sideBLength)) *(180.0 / PI);
-	angle[2] =acos((pow(sideBLength, 2) + pow(sideCLength, 2) - pow(sideFLength, 2)) / (2 * sideBLength*sideCLength)) *(180.0 / PI);
-	angle[3] = acos((pow(sideCLength, 2) + pow(sideDLength, 2) - pow(sideELength, 2)) / (2 * sideDLength*sideCLength)) *(180.0 / PI);
-	for (int i = 0; i < angle.size(); i++)
+	int numCorners = contourPoints.size();
+	std::vector<double> edgeLengths(contourPoints.size());
+	std::vector<double> diagonalLengths(contourPoints.size());
+	int test = posMod(0-1, numCorners);
+	for (int i = 0; i < contourPoints.size(); i++)
 	{
+		//calculating length of all the edges going counter-clockwise
+		edgeLengths[i] = ShapeRecognition::distanceBetween(contourPoints.at(i), contourPoints.at((i+1)% numCorners));
+		//calculating length of all diagonals in the shape, diagonalLength[i] represent Hypothenuse of triangle with the right angle at i
+		diagonalLengths[i] = ShapeRecognition::distanceBetween(contourPoints.at((i + 1) % numCorners), contourPoints.at(posMod(i-1,numCorners)));
+	}
+
+	std::vector<double> angle(contourPoints.size());
+	for (int i = 0; i < contourPoints.size(); i++)
+	{
+		angle[i]= acos((pow(edgeLengths[i], 2) + pow(edgeLengths[posMod(i - 1, numCorners)], 2) - pow(diagonalLengths[i], 2)) / (2 * edgeLengths[i] * edgeLengths[posMod(i - 1, numCorners)])) *(180.0 / PI);
 		if (angle[i] > 90 - degreeTolerance && angle[i] < 90 + degreeTolerance)
 		{
 			rightAnglesCounter++;
 		}
 	}
-	if (rightAnglesCounter>=3)
+
+	if (rightAnglesCounter>=3)	//at least three right corners
+	{
+		return true;
+	}
+	else if (edgeLengths.size() == 4 && edgeLengths[0] > edgeLengths[2] - lengthTolerance && edgeLengths[0] < edgeLengths[2] + lengthTolerance
+		&&edgeLengths[1] > edgeLengths[3] - lengthTolerance && edgeLengths[1] < edgeLengths[3] + lengthTolerance)
+	{
+		return true;
+	}
+	else if (contourPoints.size() > 4 && rightAnglesCounter >= 2)
 	{
 		return true;
 	}
@@ -140,6 +150,11 @@ bool ShapeRecognition::rightAngles(std::vector<cv::Point> contourPoints)
 	{
 		return false;
 	}
+}
+
+int ShapeRecognition::posMod(int i, int n)
+{
+	return (n + (i % n)) % n;
 }
 
 double ShapeRecognition::distanceBetween(cv::Point a, cv::Point b)

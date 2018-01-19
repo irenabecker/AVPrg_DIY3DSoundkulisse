@@ -17,6 +17,7 @@ private:
 	cv::Point setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point> contour);
 	bool rightAngles(std::vector<cv::Point> contourPoints);
 	double distanceBetween(cv::Point a, cv::Point b);
+	int posMod(int i, int n);
 };
 
 #endif 
