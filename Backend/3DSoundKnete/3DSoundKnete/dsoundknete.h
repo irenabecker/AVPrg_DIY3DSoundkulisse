@@ -45,7 +45,6 @@ public:
 	static std::vector<std::vector<DSoundKnete::objData>>savedObjects;
 	static std::vector<objData>dataToSendObjects;
     static objData createNewObjData(SHAPE shape, cv::Point point,int fillArea);
-    //void sendData();
 
 	public slots:
 	void on_dataSend();
@@ -66,9 +65,5 @@ private:
     VideoEngine *videoThreadTop;
     ShapeRecognition *shapeRecognition;
     ColorProcessor *colorProcessor;
-	
-	//HandleData *handleData;
-
-	//QNetworkAccessManager *manager;
 };
 #endif // DSOUNDKNETE_H
