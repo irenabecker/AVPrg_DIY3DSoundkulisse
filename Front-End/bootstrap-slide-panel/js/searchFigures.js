@@ -5,7 +5,7 @@ $(document).ready(function() {
         var text = $(this).val().toLowerCase();
         var search_result = '';
 
-        
+        // remove the class active, so its not active anymore
         $('#item_container').find('.item').each(function(){
             $(this).removeClass('active');
         });
@@ -36,7 +36,7 @@ $(document).ready(function() {
         //append doesn't work here. use for loop instead or merge arrays?
         //cardboxes.append(tempArray);
 */
-
+        // if an item is found, so set it to active
         if(search_result.length>0) {
             if($('#item_search').length)
                 $('#item_search').html(search_result).addClass('active');
@@ -44,6 +44,7 @@ $(document).ready(function() {
                 $('#item_container').append(`<div class="item active" id="item_search">`+search_result+`</div>`);
         }
 
+        // Set the list of the item search to zero
         if(text.length == 0) {
             $('#item_search').remove();
             $('#itembox_1').addClass('active');
@@ -51,12 +52,14 @@ $(document).ready(function() {
 
     });
 
-    /* Deaktivert das Enter Drücken auf der Webseite, welches dazu führt das die Seite neugeladen wird */
+    /* disable the button that you can't press enter to search */
 
     $('form input').on('keypress', function(e) {
         return e.which !== 13;
     });
-    
+
+
+    /*Create the cards for the slider*/
     var cards=[];
     
     cards[0] = new Card($('#itembox_1'), 'Triangle', 'Blue','resources/BlueTriangle.png', 'soundClip0','soundvolume0','configureButton0' );
@@ -73,9 +76,10 @@ $(document).ready(function() {
 
     setSlideDownCards(cards);
     
+    /*if you press the configure button on each item */
+
     for(let i=0; i<cardboxes.length;i++){
         $(document).on("click","#configureButton"+i,function() {
-
 
         if($("#soundvolume"+i).is(':disabled')){
             $("#soundClip"+i).removeAttr('disabled');
@@ -111,11 +115,16 @@ Card.prototype = {
         this.image = image;
         this.index = index;
         this.createCard();
-    },*/
+    },
+*/
+
+/**/
+
 function Card(container, headline,  description, image, soundclipName, soundvolume, configureButton) {
     this.init(container, headline, description, image, soundclipName,soundvolume, configureButton);
 }
 
+/*Create the Prototype for the cards*/
 Card.prototype = {
 
     init: function(container, headline, description, image, soundclipName,soundvolume,configureButton) {
@@ -132,37 +141,36 @@ Card.prototype = {
         this.createCard();
     },
   
+    /*The Setup for one card*/
     createCard: function() {
 
         var that = this;
         i = cardboxes.length;
         
         cardboxes[i] = `<div class="col-sm-3 content padding-top-2 margin-left-0-1" id="card_`+i+`">
-                    <div class="thumbnail figures">
-                    <img src="`+that.image+`" alt="fake image" class="img-responsive">
-                    <div class="caption">
-                        <h3 class="text-center black"id="`+that.headline+`">`+that.headline+`</h3>
-                        <p class="black"><strong>Color:</strong><strong>`+that.description+`</strong></p>
-                        <p><select id="`+that.soundclipName+`" class="likeBlack white" disabled></select></p>
+                            <div class="thumbnail figures">
+                                <img src="`+that.image+`" alt="fake image" class="img-responsive">
+                                <div class="caption">
+                                        <h3 class="text-center black"id="`+that.headline+`">`+that.headline+`</h3>
+                                        <p class="black"><strong>Color:</strong><strong>`+that.description+`</strong></p>
+                                        <p><select id="`+that.soundclipName+`" class="likeBlack white" disabled></select></p>
 
-                    <form>
-                        <strong class="black">Volume:</strong>
-                        <div id="slider">
-                            <input class="bar" type="range" id="`+that.soundvolume+`" value="0" min="-3" max="3" step="0.1"  oninput="rangevalue.value=value"  disabled/>
-                            <span class="highlight"></span>
-                            <output class="rangevalue" id="rangevalue">0</output>
-                        </div>   
-                    </form>
-                    <br>
-                    
-                    <button type="button" id="`+that.configureButton+`" class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
-                    <br>
-                    <br>
-                    </div>
-                </div>
-            </div>`;
+                                    <form>
+                                        <strong class="black">Volume:</strong>
+                                        <div id="slider">
+                                            <input class="bar" type="range" id="`+that.soundvolume+`" value="0" min="-3" max="3" step="0.1"  oninput="rangevalue.value=value"  disabled/>
+                                            <span class="highlight"></span>
+                                            <output class="rangevalue" id="rangevalue">0</output>
+                                        </div>   
+                                    </form>
+                                    <br>                  
+                                    <button type="button" id="`+that.configureButton+`" class="btn btn-danger btn-sm col-sm-6 col-sm-offset-3">Configure</button>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>`;
 
         this.container.append(cardboxes[i]);
     },
 };
-
