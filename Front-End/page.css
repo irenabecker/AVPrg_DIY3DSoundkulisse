@@ -69,6 +69,10 @@
 .font-size-13{
     font-size: 13px;
 }
+
+.font-size-description{
+    font-size: 15px;
+}
 /*-------------------*/
 
 /* Margin*/
@@ -184,4 +188,8 @@
         margin-top: -5%;
         background-image: url(resources/ForestTransparent.png);
     }
+
+    .font-size-description{
+    font-size: 15px!important;
+}
 }
