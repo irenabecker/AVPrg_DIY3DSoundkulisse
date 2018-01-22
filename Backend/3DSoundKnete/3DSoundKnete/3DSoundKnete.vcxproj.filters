@@ -36,12 +36,12 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{1470ae8e-ea37-4552-9486-871e1aa927d8}</UniqueIdentifier>
+      <UniqueIdentifier>{94f4b5b8-b1c4-403b-8dde-2383c0de5e9b}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{4c4af6fd-59b3-4161-8dba-47cdf4ac6f14}</UniqueIdentifier>
+      <UniqueIdentifier>{f508522c-7298-4e05-9fab-670b72ab1b22}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -54,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dsoundknete.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="handleData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -77,6 +80,12 @@
     <ClCompile Include="..\drumstick\winmidioutput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Debug\moc_midiinput.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_midiinput.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
     <ClCompile Include="Debug\moc_dsoundknete.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -87,12 +96,6 @@
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="Release\moc_videowidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="Debug\moc_midiinput.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Release\moc_midiinput.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_videoengine.cpp">
@@ -106,9 +109,6 @@
     </ClCompile>
     <ClCompile Include="Release\moc_midioutput.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="handleData.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +124,9 @@
     <CustomBuild Include="dsoundknete.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <ClInclude Include="handleData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <CustomBuild Include="..\drumstick\midiinput.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
