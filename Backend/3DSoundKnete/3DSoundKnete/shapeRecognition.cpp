@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <calibration.h>
-#include <math.h>       /* acos */
+#include <math.h>      
 #include "DSoundKnete.h"
 
 #define PI 3.14159265
@@ -33,7 +33,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 	{
 		cvtColor(output, HSV, CV_BGR2HSV);
 		Mat mask;
-        inRange(HSV, Scalar(0, 0, 0), Scalar(179, 80, 100), mask);		//look for all colorless pixels
+        inRange(HSV, Scalar(0, 0, 0), Scalar(179, 60, 100), mask);		//look for all colorless pixels
 		output.setTo(Scalar(255, 255, 255), mask);						//set them as white pixels in output
 	}
 	
@@ -42,7 +42,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 	blur(output, output, Size(3, 3));
 	
 	//ust threshold to convert grayscale to black-and-white image
-	cv::threshold(output, canny_output, 100, 255, CV_THRESH_BINARY_INV);
+	cv::threshold(output, canny_output, 80, 255, CV_THRESH_BINARY_INV);
 	//canny_output.copyTo(dst);
 
 	//finding all contours in the image
@@ -61,7 +61,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 		cv::approxPolyDP(cv::Mat(contours[i]), contours_poly[i], cv::arcLength(cv::Mat(contours[i]), true)*0.02, true);
 
 		// Skip small or non-convex objects
-        if (std::fabs(cv::contourArea(contours[i])) < 200 || !cv::isContourConvex(contours_poly[i]))
+        if (std::fabs(cv::contourArea(contours[i])) < 200 || std::fabs(cv::contourArea(contours[i])) >50000 || !cv::isContourConvex(contours_poly[i]))
 			continue;
 
 		if (contours_poly[i].size() >=4 && contours_poly[i].size()<8 && rightAngles(contours_poly[i]))

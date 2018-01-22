@@ -24,16 +24,8 @@ void HandleData::sendData()
 	data.resize(6);
 
 	//qDebug() << DSoundKnete::objects.size();
-	//for (int i = 0; i < DSoundKnete::objects.size(); i++)
 	for (int i = 0; i < DSoundKnete::dataToSendObjects.size(); i++)
 	{
-		/*data[0] = 0xf0;	//start byte
-		data[1] = (DSoundKnete::objects[i].objectShape << 4) | (DSoundKnete::objects[i].objectColor);	//first 4 bit: shape; second 4 bit: color
-		data[2] = DSoundKnete::objects[i].relativePosition.x;	//xPos
-		data[3] = DSoundKnete::objects[i].relativePosition.y;	//yPos
-		data[4] = DSoundKnete::objects[i].zPos;	//zPos
-
-		data[5] = 0xf7;	//end byte*/
 		data[0] = 0xf0;	//start byte
 		data[1] = (DSoundKnete::dataToSendObjects[i].objectShape << 4) | (DSoundKnete::dataToSendObjects[i].objectColor);	//first 4 bit: shape; second 4 bit: color
 		data[2] = DSoundKnete::dataToSendObjects[i].relativePosition.x;	//xPos
