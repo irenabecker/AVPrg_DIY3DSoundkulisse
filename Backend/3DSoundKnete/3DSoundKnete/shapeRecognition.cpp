@@ -33,7 +33,7 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 	{
 		cvtColor(output, HSV, CV_BGR2HSV);
 		Mat mask;
-        inRange(HSV, Scalar(0, 0, 0), Scalar(179, 60, 100), mask);		//look for all colorless pixels
+        inRange(HSV, Scalar(0, 0, 0), Scalar(179, 60, 140), mask);		//look for all colorless pixels
 		output.setTo(Scalar(255, 255, 255), mask);						//set them as white pixels in output
 	}
 	
@@ -42,11 +42,12 @@ cv::Mat ShapeRecognition::process(const cv::Mat& input)
 	blur(output, output, Size(3, 3));
 	
 	//ust threshold to convert grayscale to black-and-white image
-	cv::threshold(output, canny_output, 80, 255, CV_THRESH_BINARY_INV);
+	cv::threshold(output, canny_output, 135, 255, CV_THRESH_BINARY_INV);
 	//canny_output.copyTo(dst);
 
 	//finding all contours in the image
-	findContours(canny_output, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
+	//findContours(canny_output, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
+	findContours(canny_output, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
 	
 	vector<vector<Point> > contours_poly(contours.size());
 	vector<Rect> boundRect(contours.size());
